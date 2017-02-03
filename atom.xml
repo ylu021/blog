@@ -47,23 +47,20 @@
     <link href="http://lycworks.me/blog/2017/02/02/find-path/"/>
     <id>http://lycworks.me/blog/2017/02/02/find-path/</id>
     <published>2017-02-02T05:00:00.000Z</published>
-    <updated>2017-02-03T01:48:12.000Z</updated>
+    <updated>2017-02-03T01:49:26.000Z</updated>
     
-    <content type="html"><![CDATA[<p>##the 套路  </p>
-<p>###问题<br>Unique path - 一个机器人从左上角走到右下角有多少种方法？  </p>
+    <content type="html"><![CDATA[<h2 id="the-套路"><a href="#the-套路" class="headerlink" title="the 套路"></a>the 套路</h2><h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><p>Unique path - 一个机器人从左上角走到右下角有多少种方法？  </p>
 <p>具体思路使用dp即可。首先把第0排和第0行全部设置为1因为只有一种方法走到。<br>通过左边和上边即可算出连接到中间点所需path数量  </p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">+ + + +</div><div class="line"></div><div class="line">+ X _ _ #能到达X的路只有上和左</div></pre></td></tr></table></figure>
 <h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">dp = [[0 for _ in range(n)] for _ in range(m)]</div><div class="line"></div><div class="line">for j in range(n):</div><div class="line">	dp[0][j] = 1</div><div class="line">for i in range(m):</div><div class="line">	dp[i][j] = 1</div><div class="line">for i in range(1,m):</div><div class="line">	for j in range(1,n):</div><div class="line">		dp[i][j]=dp[i-1][j]+dp[i][j-1]</div><div class="line"></div><div class="line">return dp[m-1][n-1]</div></pre></td></tr></table></figure>
-<h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><p>Minimum path sum - 算出最少cost的path  </p>
+<h3 id="问题-1"><a href="#问题-1" class="headerlink" title="问题"></a>问题</h3><p>Minimum path sum - 算出最少cost的path  </p>
 <p>跟上一道很像，得出了path sum基本上只要是matrix和dp就把边界算出来，<br>然后再乃个加和比较来求出最小  </p>
 <h3 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">dp[0][0] = matrix[0][0]</div><div class="line">for j in range(1,n): #the sum of first row</div><div class="line">	dp[0][j] = dp[0][j-1]+matrix[0][j]</div><div class="line"></div><div class="line">for i in range(1,m): #first col</div><div class="line">	dp[i][0] = dp[i-1][0]+matrix[i][0]</div><div class="line"></div><div class="line">for i in range(1, m):</div><div class="line">	for j in range(1,n):</div><div class="line">		dp[i][j] = min(dp[i-1][j], dp[i][j-1])+matrix[i][j]</div><div class="line"></div><div class="line">return dp[m-1][n-1]</div></pre></td></tr></table></figure>
 ]]></content>
     
     <summary type="html">
     
-      &lt;p&gt;##the 套路  &lt;/p&gt;
-&lt;p&gt;###问题&lt;br&gt;Unique path - 一个机器人从左上角走到右下角有多少种方法？  &lt;/p&gt;
-&lt;p&gt;具体思路使用dp即可。首先把第0排和第0行全部设置为1因为只有一种方法走到。&lt;br&gt;通过左边和上边即可算出连接到中间点所需path
+      &lt;h2 id=&quot;the-套路&quot;&gt;&lt;a href=&quot;#the-套路&quot; class=&quot;headerlink&quot; title=&quot;the 套路&quot;&gt;&lt;/a&gt;the 套路&lt;/h2&gt;&lt;h3 id=&quot;问题&quot;&gt;&lt;a href=&quot;#问题&quot; class=&quot;headerlink&quot; title=&quot;问题&quot;&gt;&lt;
     
     </summary>
     
@@ -73,6 +70,37 @@
       <category term="dfs" scheme="http://lycworks.me/blog/tags/dfs/"/>
     
       <category term="path" scheme="http://lycworks.me/blog/tags/path/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Divide &amp; Conquer</title>
+    <link href="http://lycworks.me/blog/2017/02/01/dc/"/>
+    <id>http://lycworks.me/blog/2017/02/01/dc/</id>
+    <published>2017-02-01T05:00:00.000Z</published>
+    <updated>2017-02-02T21:56:37.000Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="Divide-amp-Recursion-amp-Conquer"><a href="#Divide-amp-Recursion-amp-Conquer" class="headerlink" title="Divide &amp; Recursion &amp; Conquer"></a>Divide &amp; Recursion &amp; Conquer</h1><h2 id="二分"><a href="#二分" class="headerlink" title="二分"></a>二分</h2><p>算左，算右，算左+右</p>
+<blockquote>
+<blockquote>
+<p>例题 max subtree path, quicksort</p>
+</blockquote>
+</blockquote>
+<p>quicksort basic<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">def quicksort(arr):</div><div class="line">  if not arr or len(arr)&lt;=1: return arr</div><div class="line">  pivot = arr[0]</div><div class="line">  left = []</div><div class="line">  right = []</div><div class="line">  for q in arr[1:]:</div><div class="line">    if q&lt;=pivot:</div><div class="line">      left.append(q)</div><div class="line">    else:</div><div class="line">      right.append(q)</div><div class="line">  return quicksort(left)+[pivot]+quicksort(right)</div></pre></td></tr></table></figure></p>
+<h2 id="exponential"><a href="#exponential" class="headerlink" title="exponential"></a>exponential</h2><p>如果even算两个k的n/2如果odd算n-1的。。类似dp？</p>
+<h2 id="打乱数组"><a href="#打乱数组" class="headerlink" title="打乱数组"></a>打乱数组</h2><p>二分交换a1,a2 and b1,b2<br>使用random算random index然后swap</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;Divide-amp-Recursion-amp-Conquer&quot;&gt;&lt;a href=&quot;#Divide-amp-Recursion-amp-Conquer&quot; class=&quot;headerlink&quot; title=&quot;Divide &amp;amp; Recursion &amp;amp;
+    
+    </summary>
+    
+      <category term="Algo" scheme="http://lycworks.me/blog/categories/Algo/"/>
+    
+    
+      <category term="dc" scheme="http://lycworks.me/blog/tags/dc/"/>
     
   </entry>
   
@@ -153,37 +181,6 @@
     
     
       <category term="dp" scheme="http://lycworks.me/blog/tags/dp/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Divide &amp; Conquer</title>
-    <link href="http://lycworks.me/blog/2017/02/01/dc/"/>
-    <id>http://lycworks.me/blog/2017/02/01/dc/</id>
-    <published>2017-02-01T05:00:00.000Z</published>
-    <updated>2017-02-02T21:56:37.000Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="Divide-amp-Recursion-amp-Conquer"><a href="#Divide-amp-Recursion-amp-Conquer" class="headerlink" title="Divide &amp; Recursion &amp; Conquer"></a>Divide &amp; Recursion &amp; Conquer</h1><h2 id="二分"><a href="#二分" class="headerlink" title="二分"></a>二分</h2><p>算左，算右，算左+右</p>
-<blockquote>
-<blockquote>
-<p>例题 max subtree path, quicksort</p>
-</blockquote>
-</blockquote>
-<p>quicksort basic<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">def quicksort(arr):</div><div class="line">  if not arr or len(arr)&lt;=1: return arr</div><div class="line">  pivot = arr[0]</div><div class="line">  left = []</div><div class="line">  right = []</div><div class="line">  for q in arr[1:]:</div><div class="line">    if q&lt;=pivot:</div><div class="line">      left.append(q)</div><div class="line">    else:</div><div class="line">      right.append(q)</div><div class="line">  return quicksort(left)+[pivot]+quicksort(right)</div></pre></td></tr></table></figure></p>
-<h2 id="exponential"><a href="#exponential" class="headerlink" title="exponential"></a>exponential</h2><p>如果even算两个k的n/2如果odd算n-1的。。类似dp？</p>
-<h2 id="打乱数组"><a href="#打乱数组" class="headerlink" title="打乱数组"></a>打乱数组</h2><p>二分交换a1,a2 and b1,b2<br>使用random算random index然后swap</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;Divide-amp-Recursion-amp-Conquer&quot;&gt;&lt;a href=&quot;#Divide-amp-Recursion-amp-Conquer&quot; class=&quot;headerlink&quot; title=&quot;Divide &amp;amp; Recursion &amp;amp;
-    
-    </summary>
-    
-      <category term="Algo" scheme="http://lycworks.me/blog/categories/Algo/"/>
-    
-    
-      <category term="dc" scheme="http://lycworks.me/blog/tags/dc/"/>
     
   </entry>
   
@@ -449,6 +446,60 @@ function drawChart(str,id,val){
   </entry>
   
   <entry>
+    <title>HTML5特性</title>
+    <link href="http://lycworks.me/blog/2016/07/09/html5-tricks/"/>
+    <id>http://lycworks.me/blog/2016/07/09/html5-tricks/</id>
+    <published>2016-07-09T04:00:00.000Z</published>
+    <updated>2017-02-02T21:56:37.000Z</updated>
+    
+    <content type="html"><![CDATA[<hr>
+<h1 id="data-name"><a href="#data-name" class="headerlink" title="data-name"></a>data-name</h1><blockquote>
+<p>‘a great marriage of server side and client side’ -Stephen Calvert, Quora<br>resources: <a href="https://www.quora.com/What-is-the-best-way-to-pass-server-side-variables-to-client-side-JavaScript" target="_blank" rel="external">https://www.quora.com/What-is-the-best-way-to-pass-server-side-variables-to-client-side-JavaScript</a>  </p>
+</blockquote>
+<h3 id="HTML-lt-div-id-quot-mydiv-quot-data-myval-quot-10-quot-gt-lt-div-gt"><a href="#HTML-lt-div-id-quot-mydiv-quot-data-myval-quot-10-quot-gt-lt-div-gt" class="headerlink" title="HTML- &lt;div id=&quot;mydiv&quot;data-myval=&quot;10&quot;&gt;&lt;/div&gt;"></a>HTML- <code>&lt;div id=&quot;mydiv&quot;</code>data-myval<code>=&quot;10&quot;&gt;&lt;/div&gt;</code></h3><h3 id="JS"><a href="#JS" class="headerlink" title="JS"></a>JS</h3><ul>
+<li><code>var a = $(&#39;#mydiv&#39;).data(&#39;myval&#39;);</code> //getter  </li>
+<li><code>$(&#39;#mydiv&#39;).data(&#39;myval&#39;,20);</code> //setter  </li>
+</ul>
+<blockquote>
+<p>For older browser, use  <code>var myval = element.getAttribute(&#39;data-myval&#39;);</code>  </p>
+</blockquote>
+<h3 id="Or-merely-use-config-as-json-object"><a href="#Or-merely-use-config-as-json-object" class="headerlink" title="Or merely use config as json object"></a>Or merely use config as json object</h3><pre><code>config = {
+    userName: &apos;Scott Patten&apos;,
+    userLogin: &apos;spatten&apos;,
+    hasBoughtCurrentBook: true,
+    followers: [&apos;peterarmstrong&apos;, &apos;rolandtanglao&apos;]
+};
+</code></pre><h3 id="Advance-way"><a href="#Advance-way" class="headerlink" title="Advance way"></a>Advance way</h3><p>(<a href="https://teamtreehouse.com/community/how-do-i-make-a-variable-passed-to-a-jade-template-by-an-express-route-accessible-for-use-in-js-on-the-rendered-page" target="_blank" rel="external">https://teamtreehouse.com/community/how-do-i-make-a-variable-passed-to-a-jade-template-by-an-express-route-accessible-for-use-in-js-on-the-rendered-page</a>)  </p>
+<ul>
+<li><p>1)On the server side javascript file you put the object as a JSON string on the request  </p>
+<pre><code>res.render(&apos;index&apos;, { workflowData_server: JSON.stringify(workflowData) });
+</code></pre></li>
+<li><p>2) on the template view file,for example index.jade file you put script<br>var workflowData_client = !{workflowData_server} the ! is needed to unescape it to html  </p>
+</li>
+<li><p>3) now you can use the workflowData_client on your client javascript file,<br>for example a public/angular.js file  </p>
+<pre><code>angular.module(&apos;TestApp&apos;, []); angular.module(&apos;TestApp&apos;) .controller(&apos;MainController&apos;, ctrlFunc);
+
+function ctrlFunc() { this.workflowData = workflowData_client; }
+</code></pre></li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;hr&gt;
+&lt;h1 id=&quot;data-name&quot;&gt;&lt;a href=&quot;#data-name&quot; class=&quot;headerlink&quot; title=&quot;data-name&quot;&gt;&lt;/a&gt;data-name&lt;/h1&gt;&lt;blockquote&gt;
+&lt;p&gt;‘a great marriage of ser
+    
+    </summary>
+    
+      <category term="HTML" scheme="http://lycworks.me/blog/categories/HTML/"/>
+    
+    
+      <category term="data_passing, view_render" scheme="http://lycworks.me/blog/tags/data-passing-view-render/"/>
+    
+  </entry>
+  
+  <entry>
     <title>CSS grid方法</title>
     <link href="http://lycworks.me/blog/2016/07/09/css-grid/"/>
     <id>http://lycworks.me/blog/2016/07/09/css-grid/</id>
@@ -513,60 +564,6 @@ ul.posts li {
     
     
       <category term="grid" scheme="http://lycworks.me/blog/tags/grid/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>HTML5特性</title>
-    <link href="http://lycworks.me/blog/2016/07/09/html5-tricks/"/>
-    <id>http://lycworks.me/blog/2016/07/09/html5-tricks/</id>
-    <published>2016-07-09T04:00:00.000Z</published>
-    <updated>2017-02-02T21:56:37.000Z</updated>
-    
-    <content type="html"><![CDATA[<hr>
-<h1 id="data-name"><a href="#data-name" class="headerlink" title="data-name"></a>data-name</h1><blockquote>
-<p>‘a great marriage of server side and client side’ -Stephen Calvert, Quora<br>resources: <a href="https://www.quora.com/What-is-the-best-way-to-pass-server-side-variables-to-client-side-JavaScript" target="_blank" rel="external">https://www.quora.com/What-is-the-best-way-to-pass-server-side-variables-to-client-side-JavaScript</a>  </p>
-</blockquote>
-<h3 id="HTML-lt-div-id-quot-mydiv-quot-data-myval-quot-10-quot-gt-lt-div-gt"><a href="#HTML-lt-div-id-quot-mydiv-quot-data-myval-quot-10-quot-gt-lt-div-gt" class="headerlink" title="HTML- &lt;div id=&quot;mydiv&quot;data-myval=&quot;10&quot;&gt;&lt;/div&gt;"></a>HTML- <code>&lt;div id=&quot;mydiv&quot;</code>data-myval<code>=&quot;10&quot;&gt;&lt;/div&gt;</code></h3><h3 id="JS"><a href="#JS" class="headerlink" title="JS"></a>JS</h3><ul>
-<li><code>var a = $(&#39;#mydiv&#39;).data(&#39;myval&#39;);</code> //getter  </li>
-<li><code>$(&#39;#mydiv&#39;).data(&#39;myval&#39;,20);</code> //setter  </li>
-</ul>
-<blockquote>
-<p>For older browser, use  <code>var myval = element.getAttribute(&#39;data-myval&#39;);</code>  </p>
-</blockquote>
-<h3 id="Or-merely-use-config-as-json-object"><a href="#Or-merely-use-config-as-json-object" class="headerlink" title="Or merely use config as json object"></a>Or merely use config as json object</h3><pre><code>config = {
-    userName: &apos;Scott Patten&apos;,
-    userLogin: &apos;spatten&apos;,
-    hasBoughtCurrentBook: true,
-    followers: [&apos;peterarmstrong&apos;, &apos;rolandtanglao&apos;]
-};
-</code></pre><h3 id="Advance-way"><a href="#Advance-way" class="headerlink" title="Advance way"></a>Advance way</h3><p>(<a href="https://teamtreehouse.com/community/how-do-i-make-a-variable-passed-to-a-jade-template-by-an-express-route-accessible-for-use-in-js-on-the-rendered-page" target="_blank" rel="external">https://teamtreehouse.com/community/how-do-i-make-a-variable-passed-to-a-jade-template-by-an-express-route-accessible-for-use-in-js-on-the-rendered-page</a>)  </p>
-<ul>
-<li><p>1)On the server side javascript file you put the object as a JSON string on the request  </p>
-<pre><code>res.render(&apos;index&apos;, { workflowData_server: JSON.stringify(workflowData) });
-</code></pre></li>
-<li><p>2) on the template view file,for example index.jade file you put script<br>var workflowData_client = !{workflowData_server} the ! is needed to unescape it to html  </p>
-</li>
-<li><p>3) now you can use the workflowData_client on your client javascript file,<br>for example a public/angular.js file  </p>
-<pre><code>angular.module(&apos;TestApp&apos;, []); angular.module(&apos;TestApp&apos;) .controller(&apos;MainController&apos;, ctrlFunc);
-
-function ctrlFunc() { this.workflowData = workflowData_client; }
-</code></pre></li>
-</ul>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;hr&gt;
-&lt;h1 id=&quot;data-name&quot;&gt;&lt;a href=&quot;#data-name&quot; class=&quot;headerlink&quot; title=&quot;data-name&quot;&gt;&lt;/a&gt;data-name&lt;/h1&gt;&lt;blockquote&gt;
-&lt;p&gt;‘a great marriage of ser
-    
-    </summary>
-    
-      <category term="HTML" scheme="http://lycworks.me/blog/categories/HTML/"/>
-    
-    
-      <category term="data_passing, view_render" scheme="http://lycworks.me/blog/tags/data-passing-view-render/"/>
     
   </entry>
   
