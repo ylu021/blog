@@ -5,7 +5,7 @@
   <link href="/blog/atom.xml" rel="self"/>
   
   <link href="http://lycworks.me/blog/"/>
-  <updated>2017-02-02T23:04:08.000Z</updated>
+  <updated>2017-02-02T21:09:09.000Z</updated>
   <id>http://lycworks.me/blog/</id>
   
   <author>
@@ -14,40 +14,6 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
-  
-  <entry>
-    <title>Path路径查找问题</title>
-    <link href="http://lycworks.me/blog/2017/02/02/find-path/"/>
-    <id>http://lycworks.me/blog/2017/02/02/find-path/</id>
-    <published>2017-02-02T23:04:08.000Z</published>
-    <updated>2017-02-02T23:04:08.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>##the 套路  </p>
-<p>###问题<br>Unique path - 一个机器人从左上角走到右下角有多少种方法？  </p>
-<p>具体思路使用dp即可。首先把第0排和第0行全部设置为1因为只有一种方法走到。<br>通过左边和上边即可算出连接到中间点所需path数量  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">+ + + +</div><div class="line"></div><div class="line">+ X _ _ #能到达X的路只有上和左</div></pre></td></tr></table></figure>
-<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">dp = [[0 for _ in range(n)] for _ in range(m)]</div><div class="line"></div><div class="line">for j in range(n):</div><div class="line">	dp[0][j] = 1</div><div class="line">for i in range(m):</div><div class="line">	dp[i][j] = 1</div><div class="line">for i in range(1,m):</div><div class="line">	for j in range(1,n):</div><div class="line">		dp[i][j]=dp[i-1][j]+dp[i][j-1]</div><div class="line"></div><div class="line">return dp[m-1][n-1]</div></pre></td></tr></table></figure>
-<h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><p>Minimum path sum - 算出最少cost的path  </p>
-<p>跟上一道很像，得出了path sum基本上只要是matrix和dp就把边界算出来，<br>然后再乃个加和比较来求出最小  </p>
-<h3 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">dp[0][0] = matrix[0][0]</div><div class="line">for j in range(1,n): #the sum of first row</div><div class="line">	dp[0][j] = dp[0][j-1]+matrix[0][j]</div><div class="line"></div><div class="line">for i in range(1,m): #first col</div><div class="line">	dp[i][0] = dp[i-1][0]+matrix[i][0]</div><div class="line"></div><div class="line">for i in range(1, m):</div><div class="line">	for j in range(1,n):</div><div class="line">		dp[i][j] = min(dp[i-1][j], dp[i][j-1])+matrix[i][j]</div><div class="line"></div><div class="line">return dp[m-1][n-1]</div></pre></td></tr></table></figure>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;##the 套路  &lt;/p&gt;
-&lt;p&gt;###问题&lt;br&gt;Unique path - 一个机器人从左上角走到右下角有多少种方法？  &lt;/p&gt;
-&lt;p&gt;具体思路使用dp即可。首先把第0排和第0行全部设置为1因为只有一种方法走到。&lt;br&gt;通过左边和上边即可算出连接到中间点所需path
-    
-    </summary>
-    
-      <category term="Algo" scheme="http://lycworks.me/blog/categories/Algo/"/>
-    
-    
-      <category term="dfs" scheme="http://lycworks.me/blog/tags/dfs/"/>
-    
-      <category term="path" scheme="http://lycworks.me/blog/tags/path/"/>
-    
-  </entry>
   
   <entry>
     <title>Hello World</title>
@@ -77,38 +43,36 @@
   </entry>
   
   <entry>
-    <title>动态规划</title>
-    <link href="http://lycworks.me/blog/2017/02/01/dp/"/>
-    <id>http://lycworks.me/blog/2017/02/01/dp/</id>
-    <published>2017-02-01T05:00:00.000Z</published>
-    <updated>2017-02-02T21:56:37.000Z</updated>
+    <title>Path路径查找问题</title>
+    <link href="http://lycworks.me/blog/2017/02/02/find-path/"/>
+    <id>http://lycworks.me/blog/2017/02/02/find-path/</id>
+    <published>2017-02-02T05:00:00.000Z</published>
+    <updated>2017-02-03T01:48:12.000Z</updated>
     
-    <content type="html"><![CDATA[<h1 id="DP类型"><a href="#DP类型" class="headerlink" title="DP类型"></a>DP类型</h1><ul>
-<li><p>状态转移 <code>dp[x+y]+=dp[x]</code><br>转<br>当你遇到第n+1个数x_n+1的时候，前n+1个数中最大值是什么呢，就是拿这个新x去和之前那个max比，然后留下较大的一个，对吧，写下来就是<br><code>Max_n+1 = (x_n+1 &gt; Max_n) ? x_n+1 : Max_n</code> #if choose add to current max else not choose  </p>
-<h1 id="例题"><a href="#例题" class="headerlink" title="例题 ."></a>例题 .</h1><h3 id="combinationsum"><a href="#combinationsum" class="headerlink" title="combinationsum ."></a>combinationsum .</h3><h3 id="max-sum-subarray-Kadane’s"><a href="#max-sum-subarray-Kadane’s" class="headerlink" title="max sum subarray Kadane’s ."></a>max sum subarray Kadane’s .</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">def maxSum(arr):</div><div class="line">  prevSum = nums[0]</div><div class="line">  maxmax = nums[0]</div><div class="line">  del arr[0]</div><div class="line">  for num in nums:</div><div class="line">    prevSum = max(prevSum+num, num) #compare cursum and curnum</div><div class="line">    maxSum = max(maxSum, prevSum)</div><div class="line">  return maxSum</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<h4 id="follow-up-from-max-subarray"><a href="#follow-up-from-max-subarray" class="headerlink" title="follow up from max subarray ."></a>follow up from max subarray .</h4><ul>
-<li><p>max product subarray - when it is negative, swap max and min continuous product . </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">def maxProduct(arr):</div><div class="line">  prevSum = nums[0]</div><div class="line">  maxProduct = nums[0]</div><div class="line">  minProduct = nums[0]</div><div class="line">  maxmax = nums[0]</div><div class="line">  del arr[0]</div><div class="line">  for num in nums:</div><div class="line">    if num&lt;0:</div><div class="line">      #swap because -*- is happening</div><div class="line">      maxProduct, minProduct = minProduct, maxProduct</div><div class="line">    maxProduct = max(num, maxProduct*num)</div><div class="line">    minProduct = min(num, minProduct*num)</div><div class="line">    maxmax = max(maxmax, maxProduct)</div><div class="line">  return maxmax</div></pre></td></tr></table></figure>
-</li>
-<li><p>Robber</p>
-</li>
-<li>stocks</li>
-</ul>
+    <content type="html"><![CDATA[<p>##the 套路  </p>
+<p>###问题<br>Unique path - 一个机器人从左上角走到右下角有多少种方法？  </p>
+<p>具体思路使用dp即可。首先把第0排和第0行全部设置为1因为只有一种方法走到。<br>通过左边和上边即可算出连接到中间点所需path数量  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">+ + + +</div><div class="line"></div><div class="line">+ X _ _ #能到达X的路只有上和左</div></pre></td></tr></table></figure>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">dp = [[0 for _ in range(n)] for _ in range(m)]</div><div class="line"></div><div class="line">for j in range(n):</div><div class="line">	dp[0][j] = 1</div><div class="line">for i in range(m):</div><div class="line">	dp[i][j] = 1</div><div class="line">for i in range(1,m):</div><div class="line">	for j in range(1,n):</div><div class="line">		dp[i][j]=dp[i-1][j]+dp[i][j-1]</div><div class="line"></div><div class="line">return dp[m-1][n-1]</div></pre></td></tr></table></figure>
+<h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><p>Minimum path sum - 算出最少cost的path  </p>
+<p>跟上一道很像，得出了path sum基本上只要是matrix和dp就把边界算出来，<br>然后再乃个加和比较来求出最小  </p>
+<h3 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">dp[0][0] = matrix[0][0]</div><div class="line">for j in range(1,n): #the sum of first row</div><div class="line">	dp[0][j] = dp[0][j-1]+matrix[0][j]</div><div class="line"></div><div class="line">for i in range(1,m): #first col</div><div class="line">	dp[i][0] = dp[i-1][0]+matrix[i][0]</div><div class="line"></div><div class="line">for i in range(1, m):</div><div class="line">	for j in range(1,n):</div><div class="line">		dp[i][j] = min(dp[i-1][j], dp[i][j-1])+matrix[i][j]</div><div class="line"></div><div class="line">return dp[m-1][n-1]</div></pre></td></tr></table></figure>
 ]]></content>
     
     <summary type="html">
     
-      &lt;h1 id=&quot;DP类型&quot;&gt;&lt;a href=&quot;#DP类型&quot; class=&quot;headerlink&quot; title=&quot;DP类型&quot;&gt;&lt;/a&gt;DP类型&lt;/h1&gt;&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;状态转移 &lt;code&gt;dp[x+y]+=dp[x]&lt;/code&gt;&lt;br&gt;转&lt;br&gt;当你遇到第n+1个数x_
+      &lt;p&gt;##the 套路  &lt;/p&gt;
+&lt;p&gt;###问题&lt;br&gt;Unique path - 一个机器人从左上角走到右下角有多少种方法？  &lt;/p&gt;
+&lt;p&gt;具体思路使用dp即可。首先把第0排和第0行全部设置为1因为只有一种方法走到。&lt;br&gt;通过左边和上边即可算出连接到中间点所需path
     
     </summary>
     
       <category term="Algo" scheme="http://lycworks.me/blog/categories/Algo/"/>
     
     
-      <category term="dp" scheme="http://lycworks.me/blog/tags/dp/"/>
+      <category term="dfs" scheme="http://lycworks.me/blog/tags/dfs/"/>
+    
+      <category term="path" scheme="http://lycworks.me/blog/tags/path/"/>
     
   </entry>
   
@@ -153,6 +117,42 @@
       <category term="matrix" scheme="http://lycworks.me/blog/tags/matrix/"/>
     
       <category term="dfs" scheme="http://lycworks.me/blog/tags/dfs/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>动态规划</title>
+    <link href="http://lycworks.me/blog/2017/02/01/dp/"/>
+    <id>http://lycworks.me/blog/2017/02/01/dp/</id>
+    <published>2017-02-01T05:00:00.000Z</published>
+    <updated>2017-02-02T21:56:37.000Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="DP类型"><a href="#DP类型" class="headerlink" title="DP类型"></a>DP类型</h1><ul>
+<li><p>状态转移 <code>dp[x+y]+=dp[x]</code><br>转<br>当你遇到第n+1个数x_n+1的时候，前n+1个数中最大值是什么呢，就是拿这个新x去和之前那个max比，然后留下较大的一个，对吧，写下来就是<br><code>Max_n+1 = (x_n+1 &gt; Max_n) ? x_n+1 : Max_n</code> #if choose add to current max else not choose  </p>
+<h1 id="例题"><a href="#例题" class="headerlink" title="例题 ."></a>例题 .</h1><h3 id="combinationsum"><a href="#combinationsum" class="headerlink" title="combinationsum ."></a>combinationsum .</h3><h3 id="max-sum-subarray-Kadane’s"><a href="#max-sum-subarray-Kadane’s" class="headerlink" title="max sum subarray Kadane’s ."></a>max sum subarray Kadane’s .</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">def maxSum(arr):</div><div class="line">  prevSum = nums[0]</div><div class="line">  maxmax = nums[0]</div><div class="line">  del arr[0]</div><div class="line">  for num in nums:</div><div class="line">    prevSum = max(prevSum+num, num) #compare cursum and curnum</div><div class="line">    maxSum = max(maxSum, prevSum)</div><div class="line">  return maxSum</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="follow-up-from-max-subarray"><a href="#follow-up-from-max-subarray" class="headerlink" title="follow up from max subarray ."></a>follow up from max subarray .</h4><ul>
+<li><p>max product subarray - when it is negative, swap max and min continuous product . </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">def maxProduct(arr):</div><div class="line">  prevSum = nums[0]</div><div class="line">  maxProduct = nums[0]</div><div class="line">  minProduct = nums[0]</div><div class="line">  maxmax = nums[0]</div><div class="line">  del arr[0]</div><div class="line">  for num in nums:</div><div class="line">    if num&lt;0:</div><div class="line">      #swap because -*- is happening</div><div class="line">      maxProduct, minProduct = minProduct, maxProduct</div><div class="line">    maxProduct = max(num, maxProduct*num)</div><div class="line">    minProduct = min(num, minProduct*num)</div><div class="line">    maxmax = max(maxmax, maxProduct)</div><div class="line">  return maxmax</div></pre></td></tr></table></figure>
+</li>
+<li><p>Robber</p>
+</li>
+<li>stocks</li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;DP类型&quot;&gt;&lt;a href=&quot;#DP类型&quot; class=&quot;headerlink&quot; title=&quot;DP类型&quot;&gt;&lt;/a&gt;DP类型&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;状态转移 &lt;code&gt;dp[x+y]+=dp[x]&lt;/code&gt;&lt;br&gt;转&lt;br&gt;当你遇到第n+1个数x_
+    
+    </summary>
+    
+      <category term="Algo" scheme="http://lycworks.me/blog/categories/Algo/"/>
+    
+    
+      <category term="dp" scheme="http://lycworks.me/blog/tags/dp/"/>
     
   </entry>
   
@@ -637,52 +637,29 @@ cd .. &amp;&amp; git add myfolder &amp;&amp; commit -m &quot;updated myfolder&qu
   </entry>
   
   <entry>
-    <title>JS执行上下文</title>
-    <link href="http://lycworks.me/blog/2016/05/20/JS-EC/"/>
-    <id>http://lycworks.me/blog/2016/05/20/JS-EC/</id>
+    <title>JS正则表达式regexexp</title>
+    <link href="http://lycworks.me/blog/2016/05/20/JS-regex/"/>
+    <id>http://lycworks.me/blog/2016/05/20/JS-regex/</id>
     <published>2016-05-20T04:00:00.000Z</published>
     <updated>2017-02-02T21:56:37.000Z</updated>
     
     <content type="html"><![CDATA[<hr>
-<h1 id="抽象概念"><a href="#抽象概念" class="headerlink" title="抽象概念"></a>抽象概念</h1><p>而javascript的函数进入执行上下文,里面的局部变量是保存在堆中的一个对象中(VO)  </p>
-<h2 id="execution-context-上下文-EC"><a href="#execution-context-上下文-EC" class="headerlink" title="execution context - 上下文/EC"></a>execution context - 上下文/EC</h2><p>  站级结构 Ec3-&gt;2-&gt;1-&gt;global<br>  随着函数的重复调用，会创建新的上下文  </p>
-<h2 id="variable-object-变量对象-VO"><a href="#variable-object-变量对象-VO" class="headerlink" title="variable object - 变量对象/VO"></a>variable object - 变量对象/VO</h2><p>  存储EC中的变量<br>  函数声明<br>  函数参数  </p>
-<h2 id="激活对象-Arguments-object-AO"><a href="#激活对象-Arguments-object-AO" class="headerlink" title="激活对象 - Arguments object/AO"></a>激活对象 - Arguments object/AO</h2><p>  初始化  </p>
-<h2 id="VO"><a href="#VO" class="headerlink" title="VO"></a>VO</h2><ol>
-<li>填充顺序/初始化/declare<br>函数参数 - 未传入，初始undefined<br>函数声明 - 命名冲突会覆盖 - 解释它为什么会被前置<br>变量声明 - 初始undefined，命名冲突则忽略，因为都是undefined anyway  </li>
-</ol>
-<blockquote>
-<p>函数表达式不会影响VO的任何填充，thus也不能外部调用<br>var obj = new foo() but foo()-&gt;undefined 科科  </p>
-</blockquote>
-<ol>
-<li><p>代码执行<br>在函数执行前,我们已经知道此函数可以使用哪些变量了，因此直接执行里面的赋值语句<br>当函数执行完后,那么此次在堆中创建的对象就会变成匿名对象  </p>
-</li>
-<li><p>最终例子  </p>
-</li>
-</ol>
-<p><img src="http://img.mukewang.com/564ae5700001338112800720.jpg" alt="&quot;test&quot;">  </p>
-<p>首先，会查看函数声明，如果声明的函数名重复，则覆盖前面声明的函数。<br>接着，查看变量声明，如果变量名重复，则会忽略这次的声明。<br>填充时，不会执行赋值操作。<br>填充完毕后，开始逐行执行。  </p>
-<p>填充阶段，先声明了函数x，然后变量x的声明冲突，所以被忽略；变量a、b会被声明为undefined。<br>第一行，会弹出已被赋了函数的x代码；<br>第二行，会将函数x赋值成10。  </p>
-<p>区别：</p>
-<pre><code>alert(x); //function x(){};
-var x = 10;
-function x(){};
-alert(x); // 10
-————————————————————
-alert(x); //function x(){};
-var x;
-function x(){};
-alert(x); //function x(){};
-</code></pre><blockquote>
-<p>匿名函数Anonymous function<br><code>function(){}</code>加上括号就变成了函数表达式<code>(</code>function(){}<code>)</code><br>再加个括号，就变成了立即执行函数…(function(){})<code>()</code></p>
-</blockquote>
+<h1 id="Regex正则"><a href="#Regex正则" class="headerlink" title="Regex正则"></a>Regex正则</h1><h2 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h2><p><code>/</code>起始和结尾<br><code>.</code> - 代表任意，除了换行/n,/r etc<br><code>\d</code>- 0-9<br><code>\D</code>- !(0-9)<br><code>\w</code>- 0-9或a-zA-Z,_<br><code>\W</code>- !(\w)<br><code>\s</code>- 空格，tab，\n\r etc<br><code>\S</code>- !(\s)<br><code>\t\r\n\v\f</code> - tab，回车，换行，垂直|，换页  </p>
+<p>范围<br>[] - 字符范围, eg [a-zA-Z]<br>[^..] - 字符意外<br>^ - 行首<br>$ - 行尾<br><code>\b</code> - 零宽单词边界 eg ‘a no’<br><code>\B</code> - !(\b)  </p>
+<p>符号<br><code>\</code> - escape符号  </p>
+<p>分组<br><code>(x)</code>, <code>\n</code> - e.g. (abc)\n 表示abc再重复n次<br><code>(?:x)</code> - 仅分组，重复没有效果 eg <code>(?:abc)(def)\1.test(&#39;abcdefdef&#39;)</code>  </p>
+<p>重复<br>贪婪算法 x<em> &gt;=0, x+ &gt;=1<br>eg abc</em> 匹配 ab, abc, abccccc<br>   abc+ 匹配 abc,abccccc  </p>
+<p>非贪婪算法 x<em>? == 0, x+? ==1<br>  eg abc</em>? 匹配 ab<br>     abc+? 匹配 abc  </p>
+<p>x? 出现0或1次<br>x|y x或y<br>  eg ab|cd|ef 匹配 ab或cd或ef<br>x{n} - 固定n次<br>x(n,) - &gt;= n次<br>x(n,m) - n-m次  </p>
+<p>标志类flag  gim<br>g - global<br>i - ignoreCase<br>m - multiline - 跨行检索  </p>
+<h2 id="相关方法"><a href="#相关方法" class="headerlink" title="相关方法"></a>相关方法</h2><p>.search(regex) - 返回找到位置index<br>.replace(regex,replacement)<br>.match(regex) - 返回匹配结果数组<br>.split(regex) - 返回数组</p>
+<h2 id="资料"><a href="#资料" class="headerlink" title="资料"></a>资料</h2><p><a href="http://regexone.com/lesson/kleene_operators?" target="_blank" rel="external">http://regexone.com/lesson/kleene_operators?</a> 练习站<br><a href="https://developers.google.com/edu/python/regular-expressions" target="_blank" rel="external">https://developers.google.com/edu/python/regular-expressions</a> 教程<br><a href="http://pythex.org/" target="_blank" rel="external">http://pythex.org/</a> python正则练习站</p>
 ]]></content>
     
     <summary type="html">
     
       &lt;hr&gt;
-&lt;h1 id=&quot;抽象概念&quot;&gt;&lt;a href=&quot;#抽象概念&quot; class=&quot;headerlink&quot; title=&quot;抽象概念&quot;&gt;&lt;/a&gt;抽象概念&lt;/h1&gt;&lt;p&gt;而javascript的函数进入执行上下文,里面的局部变量是保存在堆中的一个对象中(VO)  &lt;/p&gt;
-&lt;h2 i
+&lt;h1 id=&quot;Regex正则&quot;&gt;&lt;a href=&quot;#Regex正则&quot; class=&quot;headerlink&quot; title=&quot;Regex正则&quot;&gt;&lt;/a&gt;Regex正则&lt;/h1&gt;&lt;h2 id=&quot;基础&quot;&gt;&lt;a href=&quot;#基础&quot; class=&quot;headerlink&quot; tit
     
     </summary>
     
@@ -767,29 +744,151 @@ Student.prototype = new Person(&apos;mary&apos;,&apos;the only student keke&apos
   </entry>
   
   <entry>
-    <title>JS正则表达式regexexp</title>
-    <link href="http://lycworks.me/blog/2016/05/20/JS-regex/"/>
-    <id>http://lycworks.me/blog/2016/05/20/JS-regex/</id>
+    <title>JS执行上下文</title>
+    <link href="http://lycworks.me/blog/2016/05/20/JS-EC/"/>
+    <id>http://lycworks.me/blog/2016/05/20/JS-EC/</id>
     <published>2016-05-20T04:00:00.000Z</published>
     <updated>2017-02-02T21:56:37.000Z</updated>
     
     <content type="html"><![CDATA[<hr>
-<h1 id="Regex正则"><a href="#Regex正则" class="headerlink" title="Regex正则"></a>Regex正则</h1><h2 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h2><p><code>/</code>起始和结尾<br><code>.</code> - 代表任意，除了换行/n,/r etc<br><code>\d</code>- 0-9<br><code>\D</code>- !(0-9)<br><code>\w</code>- 0-9或a-zA-Z,_<br><code>\W</code>- !(\w)<br><code>\s</code>- 空格，tab，\n\r etc<br><code>\S</code>- !(\s)<br><code>\t\r\n\v\f</code> - tab，回车，换行，垂直|，换页  </p>
-<p>范围<br>[] - 字符范围, eg [a-zA-Z]<br>[^..] - 字符意外<br>^ - 行首<br>$ - 行尾<br><code>\b</code> - 零宽单词边界 eg ‘a no’<br><code>\B</code> - !(\b)  </p>
-<p>符号<br><code>\</code> - escape符号  </p>
-<p>分组<br><code>(x)</code>, <code>\n</code> - e.g. (abc)\n 表示abc再重复n次<br><code>(?:x)</code> - 仅分组，重复没有效果 eg <code>(?:abc)(def)\1.test(&#39;abcdefdef&#39;)</code>  </p>
-<p>重复<br>贪婪算法 x<em> &gt;=0, x+ &gt;=1<br>eg abc</em> 匹配 ab, abc, abccccc<br>   abc+ 匹配 abc,abccccc  </p>
-<p>非贪婪算法 x<em>? == 0, x+? ==1<br>  eg abc</em>? 匹配 ab<br>     abc+? 匹配 abc  </p>
-<p>x? 出现0或1次<br>x|y x或y<br>  eg ab|cd|ef 匹配 ab或cd或ef<br>x{n} - 固定n次<br>x(n,) - &gt;= n次<br>x(n,m) - n-m次  </p>
-<p>标志类flag  gim<br>g - global<br>i - ignoreCase<br>m - multiline - 跨行检索  </p>
-<h2 id="相关方法"><a href="#相关方法" class="headerlink" title="相关方法"></a>相关方法</h2><p>.search(regex) - 返回找到位置index<br>.replace(regex,replacement)<br>.match(regex) - 返回匹配结果数组<br>.split(regex) - 返回数组</p>
-<h2 id="资料"><a href="#资料" class="headerlink" title="资料"></a>资料</h2><p><a href="http://regexone.com/lesson/kleene_operators?" target="_blank" rel="external">http://regexone.com/lesson/kleene_operators?</a> 练习站<br><a href="https://developers.google.com/edu/python/regular-expressions" target="_blank" rel="external">https://developers.google.com/edu/python/regular-expressions</a> 教程<br><a href="http://pythex.org/" target="_blank" rel="external">http://pythex.org/</a> python正则练习站</p>
+<h1 id="抽象概念"><a href="#抽象概念" class="headerlink" title="抽象概念"></a>抽象概念</h1><p>而javascript的函数进入执行上下文,里面的局部变量是保存在堆中的一个对象中(VO)  </p>
+<h2 id="execution-context-上下文-EC"><a href="#execution-context-上下文-EC" class="headerlink" title="execution context - 上下文/EC"></a>execution context - 上下文/EC</h2><p>  站级结构 Ec3-&gt;2-&gt;1-&gt;global<br>  随着函数的重复调用，会创建新的上下文  </p>
+<h2 id="variable-object-变量对象-VO"><a href="#variable-object-变量对象-VO" class="headerlink" title="variable object - 变量对象/VO"></a>variable object - 变量对象/VO</h2><p>  存储EC中的变量<br>  函数声明<br>  函数参数  </p>
+<h2 id="激活对象-Arguments-object-AO"><a href="#激活对象-Arguments-object-AO" class="headerlink" title="激活对象 - Arguments object/AO"></a>激活对象 - Arguments object/AO</h2><p>  初始化  </p>
+<h2 id="VO"><a href="#VO" class="headerlink" title="VO"></a>VO</h2><ol>
+<li>填充顺序/初始化/declare<br>函数参数 - 未传入，初始undefined<br>函数声明 - 命名冲突会覆盖 - 解释它为什么会被前置<br>变量声明 - 初始undefined，命名冲突则忽略，因为都是undefined anyway  </li>
+</ol>
+<blockquote>
+<p>函数表达式不会影响VO的任何填充，thus也不能外部调用<br>var obj = new foo() but foo()-&gt;undefined 科科  </p>
+</blockquote>
+<ol>
+<li><p>代码执行<br>在函数执行前,我们已经知道此函数可以使用哪些变量了，因此直接执行里面的赋值语句<br>当函数执行完后,那么此次在堆中创建的对象就会变成匿名对象  </p>
+</li>
+<li><p>最终例子  </p>
+</li>
+</ol>
+<p><img src="http://img.mukewang.com/564ae5700001338112800720.jpg" alt="&quot;test&quot;">  </p>
+<p>首先，会查看函数声明，如果声明的函数名重复，则覆盖前面声明的函数。<br>接着，查看变量声明，如果变量名重复，则会忽略这次的声明。<br>填充时，不会执行赋值操作。<br>填充完毕后，开始逐行执行。  </p>
+<p>填充阶段，先声明了函数x，然后变量x的声明冲突，所以被忽略；变量a、b会被声明为undefined。<br>第一行，会弹出已被赋了函数的x代码；<br>第二行，会将函数x赋值成10。  </p>
+<p>区别：</p>
+<pre><code>alert(x); //function x(){};
+var x = 10;
+function x(){};
+alert(x); // 10
+————————————————————
+alert(x); //function x(){};
+var x;
+function x(){};
+alert(x); //function x(){};
+</code></pre><blockquote>
+<p>匿名函数Anonymous function<br><code>function(){}</code>加上括号就变成了函数表达式<code>(</code>function(){}<code>)</code><br>再加个括号，就变成了立即执行函数…(function(){})<code>()</code></p>
+</blockquote>
 ]]></content>
     
     <summary type="html">
     
       &lt;hr&gt;
-&lt;h1 id=&quot;Regex正则&quot;&gt;&lt;a href=&quot;#Regex正则&quot; class=&quot;headerlink&quot; title=&quot;Regex正则&quot;&gt;&lt;/a&gt;Regex正则&lt;/h1&gt;&lt;h2 id=&quot;基础&quot;&gt;&lt;a href=&quot;#基础&quot; class=&quot;headerlink&quot; tit
+&lt;h1 id=&quot;抽象概念&quot;&gt;&lt;a href=&quot;#抽象概念&quot; class=&quot;headerlink&quot; title=&quot;抽象概念&quot;&gt;&lt;/a&gt;抽象概念&lt;/h1&gt;&lt;p&gt;而javascript的函数进入执行上下文,里面的局部变量是保存在堆中的一个对象中(VO)  &lt;/p&gt;
+&lt;h2 i
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>JS闭包</title>
+    <link href="http://lycworks.me/blog/2016/05/18/JS-closure/"/>
+    <id>http://lycworks.me/blog/2016/05/18/JS-closure/</id>
+    <published>2016-05-18T04:00:00.000Z</published>
+    <updated>2017-02-02T21:56:37.000Z</updated>
+    
+    <content type="html"><![CDATA[<hr>
+<h2 id="作用域scope"><a href="#作用域scope" class="headerlink" title="作用域scope"></a>作用域scope</h2><p>因为JS有全局/局部变量的限制，不能从外部读取局部变量  </p>
+<h3 id="Closure闭包-为了从外部读取局部变量而在函数的内部再创建的函数"><a href="#Closure闭包-为了从外部读取局部变量而在函数的内部再创建的函数" class="headerlink" title="Closure闭包 - 为了从外部读取局部变量而在函数的内部再创建的函数"></a>Closure闭包 - 为了从外部读取局部变量而在函数的内部再创建的函数</h3><blockquote>
+<p>同时根据<strong>chain scope</strong>链式作用域的定义,父对象的所有变量，对子对象都是可见的，反之则不成立<br>因此直接call f1() 没有返回值，要在f1里return f2，var result = f1()，再call result()<br>或者f1里直接call f2(), 这样f1()就有返回值了</p>
+</blockquote>
+<pre><code>function f1(){
+    var n = 1
+    function f2(){console.log(n)}
+    f2()                
+}
+f1()//1        
+</code></pre><p>  闭包的第二种用途 - 让局部变量保持在内存中(localval可以连续调用)  </p>
+<pre><code>function f1(){
+    var n=999
+    nAdd=function(){n+=1}
+    function f2(){
+        alert(n);
+    }
+    return f2;
+}
+var result = f1()
+result()//999
+nAdd()
+result()// 1000
+</code></pre><p>好处<br>函数有自己的作用域，定义的变量外部访问不到。封装具体的复杂的函数逻辑<br>弊端  </p>
+<ul>
+<li>内存消耗，解决方法是删除不使用的局部变量  </li>
+<li>父函数的值会受闭包的影响  </li>
+</ul>
+<p>循环的陷阱 - i是全局变量，addEventListener()是一个callback函数，只有等循环结束后才会执行（i=4)。<br>解决方法是使用IEF匿名函数来立即调用闭包环境的i值  </p>
+<pre><code>var i = 1        
+for(;i&lt;4;i++){
+    document.getElementById(&apos;div&apos;+i)
+    .addEventListener(&apos;click&apos;,function(){
+        console.log(i)//闭包内全是4            
+    })        
+}
+
+var i = 1
+for(;i&lt;4;i++){
+    (function(i){//得到闭包环境的i
+        document.get...//返回正常            
+    })(i)        
+}
+</code></pre><p>公用/私用<br>  私用  </p>
+<pre><code>* 封装 - 从外部看不到复杂的计算并实现函数的私有变量的调用
+![&quot;chart&quot;](http://img.mukewang.com/56a8b573000103af12800720.jpg)  
+</code></pre><p>  子函数本身的this指向它所在函数<strong>调用</strong>的上下文决定的  </p>
+<pre><code>var name = &quot;The Window&quot;;
+var object = {
+    name : &quot;My Object&quot;,
+    getNameFunc : function(){
+        return function(){
+            return this.name;
+        }
+    }
+}
+alert(object.getNameFunc()());//window.name
+</code></pre><p>  子函数得到了object的this - <strong>著名的that = this</strong>  </p>
+<pre><code>var name = &quot;The Window&quot;;
+var object = {
+    name : &quot;My Object&quot;,
+    getNameFunc : function(){
+        var that = this;
+        return function(){
+            return that.name;
+        };
+    }
+};
+alert(object.getNameFunc()());
+</code></pre><blockquote>
+<p><a href="http://www.ruanyifeng.com/blog/2009/08/learning_javascript_closures.html" title="阮一峰的网络日志" target="_blank" rel="external">更多闭包的资料</a></p>
+</blockquote>
+<h2 id="不同调用方式"><a href="#不同调用方式" class="headerlink" title="不同调用方式"></a>不同调用方式</h2><ul>
+<li>直接调用 foo()  </li>
+<li>对象方法 foo.method()  </li>
+<li>构造器   new foo()  </li>
+<li>call/apply/bind func.call(obj)  </li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;hr&gt;
+&lt;h2 id=&quot;作用域scope&quot;&gt;&lt;a href=&quot;#作用域scope&quot; class=&quot;headerlink&quot; title=&quot;作用域scope&quot;&gt;&lt;/a&gt;作用域scope&lt;/h2&gt;&lt;p&gt;因为JS有全局/局部变量的限制，不能从外部读取局部变量  &lt;/p&gt;
+&lt;h3 id=
     
     </summary>
     
@@ -1005,105 +1104,6 @@ new func()//this指向原来的，a没有值，用this.b
     
       &lt;hr&gt;
 &lt;h1 id=&quot;数组&quot;&gt;&lt;a href=&quot;#数组&quot; class=&quot;headerlink&quot; title=&quot;数组&quot;&gt;&lt;/a&gt;数组&lt;/h1&gt;&lt;h3 id=&quot;创建&quot;&gt;&lt;a href=&quot;#创建&quot; class=&quot;headerlink&quot; title=&quot;创建&quot;&gt;&lt;/a&gt;创建&lt;/h3&gt;&lt;
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>JS闭包</title>
-    <link href="http://lycworks.me/blog/2016/05/18/JS-closure/"/>
-    <id>http://lycworks.me/blog/2016/05/18/JS-closure/</id>
-    <published>2016-05-18T04:00:00.000Z</published>
-    <updated>2017-02-02T21:56:37.000Z</updated>
-    
-    <content type="html"><![CDATA[<hr>
-<h2 id="作用域scope"><a href="#作用域scope" class="headerlink" title="作用域scope"></a>作用域scope</h2><p>因为JS有全局/局部变量的限制，不能从外部读取局部变量  </p>
-<h3 id="Closure闭包-为了从外部读取局部变量而在函数的内部再创建的函数"><a href="#Closure闭包-为了从外部读取局部变量而在函数的内部再创建的函数" class="headerlink" title="Closure闭包 - 为了从外部读取局部变量而在函数的内部再创建的函数"></a>Closure闭包 - 为了从外部读取局部变量而在函数的内部再创建的函数</h3><blockquote>
-<p>同时根据<strong>chain scope</strong>链式作用域的定义,父对象的所有变量，对子对象都是可见的，反之则不成立<br>因此直接call f1() 没有返回值，要在f1里return f2，var result = f1()，再call result()<br>或者f1里直接call f2(), 这样f1()就有返回值了</p>
-</blockquote>
-<pre><code>function f1(){
-    var n = 1
-    function f2(){console.log(n)}
-    f2()                
-}
-f1()//1        
-</code></pre><p>  闭包的第二种用途 - 让局部变量保持在内存中(localval可以连续调用)  </p>
-<pre><code>function f1(){
-    var n=999
-    nAdd=function(){n+=1}
-    function f2(){
-        alert(n);
-    }
-    return f2;
-}
-var result = f1()
-result()//999
-nAdd()
-result()// 1000
-</code></pre><p>好处<br>函数有自己的作用域，定义的变量外部访问不到。封装具体的复杂的函数逻辑<br>弊端  </p>
-<ul>
-<li>内存消耗，解决方法是删除不使用的局部变量  </li>
-<li>父函数的值会受闭包的影响  </li>
-</ul>
-<p>循环的陷阱 - i是全局变量，addEventListener()是一个callback函数，只有等循环结束后才会执行（i=4)。<br>解决方法是使用IEF匿名函数来立即调用闭包环境的i值  </p>
-<pre><code>var i = 1        
-for(;i&lt;4;i++){
-    document.getElementById(&apos;div&apos;+i)
-    .addEventListener(&apos;click&apos;,function(){
-        console.log(i)//闭包内全是4            
-    })        
-}
-
-var i = 1
-for(;i&lt;4;i++){
-    (function(i){//得到闭包环境的i
-        document.get...//返回正常            
-    })(i)        
-}
-</code></pre><p>公用/私用<br>  私用  </p>
-<pre><code>* 封装 - 从外部看不到复杂的计算并实现函数的私有变量的调用
-![&quot;chart&quot;](http://img.mukewang.com/56a8b573000103af12800720.jpg)  
-</code></pre><p>  子函数本身的this指向它所在函数<strong>调用</strong>的上下文决定的  </p>
-<pre><code>var name = &quot;The Window&quot;;
-var object = {
-    name : &quot;My Object&quot;,
-    getNameFunc : function(){
-        return function(){
-            return this.name;
-        }
-    }
-}
-alert(object.getNameFunc()());//window.name
-</code></pre><p>  子函数得到了object的this - <strong>著名的that = this</strong>  </p>
-<pre><code>var name = &quot;The Window&quot;;
-var object = {
-    name : &quot;My Object&quot;,
-    getNameFunc : function(){
-        var that = this;
-        return function(){
-            return that.name;
-        };
-    }
-};
-alert(object.getNameFunc()());
-</code></pre><blockquote>
-<p><a href="http://www.ruanyifeng.com/blog/2009/08/learning_javascript_closures.html" title="阮一峰的网络日志" target="_blank" rel="external">更多闭包的资料</a></p>
-</blockquote>
-<h2 id="不同调用方式"><a href="#不同调用方式" class="headerlink" title="不同调用方式"></a>不同调用方式</h2><ul>
-<li>直接调用 foo()  </li>
-<li>对象方法 foo.method()  </li>
-<li>构造器   new foo()  </li>
-<li>call/apply/bind func.call(obj)  </li>
-</ul>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;hr&gt;
-&lt;h2 id=&quot;作用域scope&quot;&gt;&lt;a href=&quot;#作用域scope&quot; class=&quot;headerlink&quot; title=&quot;作用域scope&quot;&gt;&lt;/a&gt;作用域scope&lt;/h2&gt;&lt;p&gt;因为JS有全局/局部变量的限制，不能从外部读取局部变量  &lt;/p&gt;
-&lt;h3 id=
     
     </summary>
     
