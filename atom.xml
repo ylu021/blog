@@ -5,7 +5,7 @@
   <link href="/blog/atom.xml" rel="self"/>
   
   <link href="http://lycworks.me/blog/"/>
-  <updated>2017-02-02T21:09:09.000Z</updated>
+  <updated>2017-02-03T02:07:19.000Z</updated>
   <id>http://lycworks.me/blog/</id>
   
   <author>
@@ -14,6 +14,38 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>一些网上流传的大牛写的算法</title>
+    <link href="http://lycworks.me/blog/2017/02/02/2017-02-02-tricksalgo-md/"/>
+    <id>http://lycworks.me/blog/2017/02/02/2017-02-02-tricksalgo-md/</id>
+    <published>2017-02-03T01:52:37.000Z</published>
+    <updated>2017-02-03T02:07:19.000Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="大牛1-Moore’s-Voting"><a href="#大牛1-Moore’s-Voting" class="headerlink" title="大牛1 Moore’s Voting"></a>大牛1 Moore’s Voting</h1><p>使用 - 求最优候选人方案  </p>
+<h1 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h1><p>想象一下投票时每个政客试图互相cancel out对手的票，最后还剩一张票的肯定就赢咯~</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">AABBBBB</div><div class="line">++--+++</div></pre></td></tr></table></figure>
+<h1 id="基本套路"><a href="#基本套路" class="headerlink" title="基本套路"></a>基本套路</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">candidate = num</div><div class="line">votes = 0</div><div class="line"></div><div class="line">for num in nums:</div><div class="line">	if num==candidate:</div><div class="line">		votes+=1</div><div class="line">	else:</div><div class="line">		votes-=1</div><div class="line">	if votes==0:</div><div class="line">		#votes got cancelled out, switch candidate</div><div class="line">		candidate = num</div><div class="line">		votes = 1</div><div class="line"></div><div class="line">return candidate</div></pre></td></tr></table></figure>
+<h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1><p>majority element - size n的array求重复度大于n/3的候选们    </p>
+<p>具体思路是size n的array最多可以有&lt; 3*(n/3) 个candidate, 因此只能有2个  </p>
+<blockquote>
+<p>以此类推n/k的话即是最多可以有k-1个candidate  </p>
+</blockquote>
+<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">res = []</div><div class="line">candidate1 = candidate2 = nums[0]</div><div class="line">votes1 = votes2 = 0</div><div class="line"></div><div class="line">for num in nums:</div><div class="line">	if num==candidate1:</div><div class="line">		votes1+=1</div><div class="line">	elif num==candidate2:</div><div class="line">		votes2+=1</div><div class="line">	elif votes1==0:</div><div class="line">		candidate1 = num</div><div class="line">		votes1 = 1</div><div class="line">	elif votes2==0:</div><div class="line">		candidate2 = num</div><div class="line">		votes2 = 1</div><div class="line">	else:</div><div class="line">		votes1-=1</div><div class="line">		votes2-=1</div><div class="line"></div><div class="line">if nums.count(candidate1)&gt;len(nums)//3:</div><div class="line">	res.append(candidate1)</div><div class="line">if nums.count(candidate2)&gt;len(nums)//3:</div><div class="line">	res.append(candidate2)</div><div class="line"></div><div class="line">return res</div></pre></td></tr></table></figure>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;大牛1-Moore’s-Voting&quot;&gt;&lt;a href=&quot;#大牛1-Moore’s-Voting&quot; class=&quot;headerlink&quot; title=&quot;大牛1 Moore’s Voting&quot;&gt;&lt;/a&gt;大牛1 Moore’s Voting&lt;/h1&gt;&lt;p&gt;使用 - 求
+    
+    </summary>
+    
+      <category term="Algo" scheme="http://lycworks.me/blog/categories/Algo/"/>
+    
+    
+      <category term="tricks" scheme="http://lycworks.me/blog/tags/tricks/"/>
+    
+  </entry>
   
   <entry>
     <title>Hello World</title>
@@ -70,37 +102,6 @@
       <category term="dfs" scheme="http://lycworks.me/blog/tags/dfs/"/>
     
       <category term="path" scheme="http://lycworks.me/blog/tags/path/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Divide &amp; Conquer</title>
-    <link href="http://lycworks.me/blog/2017/02/01/dc/"/>
-    <id>http://lycworks.me/blog/2017/02/01/dc/</id>
-    <published>2017-02-01T05:00:00.000Z</published>
-    <updated>2017-02-02T21:56:37.000Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="Divide-amp-Recursion-amp-Conquer"><a href="#Divide-amp-Recursion-amp-Conquer" class="headerlink" title="Divide &amp; Recursion &amp; Conquer"></a>Divide &amp; Recursion &amp; Conquer</h1><h2 id="二分"><a href="#二分" class="headerlink" title="二分"></a>二分</h2><p>算左，算右，算左+右</p>
-<blockquote>
-<blockquote>
-<p>例题 max subtree path, quicksort</p>
-</blockquote>
-</blockquote>
-<p>quicksort basic<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">def quicksort(arr):</div><div class="line">  if not arr or len(arr)&lt;=1: return arr</div><div class="line">  pivot = arr[0]</div><div class="line">  left = []</div><div class="line">  right = []</div><div class="line">  for q in arr[1:]:</div><div class="line">    if q&lt;=pivot:</div><div class="line">      left.append(q)</div><div class="line">    else:</div><div class="line">      right.append(q)</div><div class="line">  return quicksort(left)+[pivot]+quicksort(right)</div></pre></td></tr></table></figure></p>
-<h2 id="exponential"><a href="#exponential" class="headerlink" title="exponential"></a>exponential</h2><p>如果even算两个k的n/2如果odd算n-1的。。类似dp？</p>
-<h2 id="打乱数组"><a href="#打乱数组" class="headerlink" title="打乱数组"></a>打乱数组</h2><p>二分交换a1,a2 and b1,b2<br>使用random算random index然后swap</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;Divide-amp-Recursion-amp-Conquer&quot;&gt;&lt;a href=&quot;#Divide-amp-Recursion-amp-Conquer&quot; class=&quot;headerlink&quot; title=&quot;Divide &amp;amp; Recursion &amp;amp;
-    
-    </summary>
-    
-      <category term="Algo" scheme="http://lycworks.me/blog/categories/Algo/"/>
-    
-    
-      <category term="dc" scheme="http://lycworks.me/blog/tags/dc/"/>
     
   </entry>
   
@@ -181,6 +182,37 @@
     
     
       <category term="dp" scheme="http://lycworks.me/blog/tags/dp/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Divide &amp; Conquer</title>
+    <link href="http://lycworks.me/blog/2017/02/01/dc/"/>
+    <id>http://lycworks.me/blog/2017/02/01/dc/</id>
+    <published>2017-02-01T05:00:00.000Z</published>
+    <updated>2017-02-02T21:56:37.000Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="Divide-amp-Recursion-amp-Conquer"><a href="#Divide-amp-Recursion-amp-Conquer" class="headerlink" title="Divide &amp; Recursion &amp; Conquer"></a>Divide &amp; Recursion &amp; Conquer</h1><h2 id="二分"><a href="#二分" class="headerlink" title="二分"></a>二分</h2><p>算左，算右，算左+右</p>
+<blockquote>
+<blockquote>
+<p>例题 max subtree path, quicksort</p>
+</blockquote>
+</blockquote>
+<p>quicksort basic<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">def quicksort(arr):</div><div class="line">  if not arr or len(arr)&lt;=1: return arr</div><div class="line">  pivot = arr[0]</div><div class="line">  left = []</div><div class="line">  right = []</div><div class="line">  for q in arr[1:]:</div><div class="line">    if q&lt;=pivot:</div><div class="line">      left.append(q)</div><div class="line">    else:</div><div class="line">      right.append(q)</div><div class="line">  return quicksort(left)+[pivot]+quicksort(right)</div></pre></td></tr></table></figure></p>
+<h2 id="exponential"><a href="#exponential" class="headerlink" title="exponential"></a>exponential</h2><p>如果even算两个k的n/2如果odd算n-1的。。类似dp？</p>
+<h2 id="打乱数组"><a href="#打乱数组" class="headerlink" title="打乱数组"></a>打乱数组</h2><p>二分交换a1,a2 and b1,b2<br>使用random算random index然后swap</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;Divide-amp-Recursion-amp-Conquer&quot;&gt;&lt;a href=&quot;#Divide-amp-Recursion-amp-Conquer&quot; class=&quot;headerlink&quot; title=&quot;Divide &amp;amp; Recursion &amp;amp;
+    
+    </summary>
+    
+      <category term="Algo" scheme="http://lycworks.me/blog/categories/Algo/"/>
+    
+    
+      <category term="dc" scheme="http://lycworks.me/blog/tags/dc/"/>
     
   </entry>
   
@@ -634,29 +666,52 @@ cd .. &amp;&amp; git add myfolder &amp;&amp; commit -m &quot;updated myfolder&qu
   </entry>
   
   <entry>
-    <title>JS正则表达式regexexp</title>
-    <link href="http://lycworks.me/blog/2016/05/20/JS-regex/"/>
-    <id>http://lycworks.me/blog/2016/05/20/JS-regex/</id>
+    <title>JS执行上下文</title>
+    <link href="http://lycworks.me/blog/2016/05/20/JS-EC/"/>
+    <id>http://lycworks.me/blog/2016/05/20/JS-EC/</id>
     <published>2016-05-20T04:00:00.000Z</published>
     <updated>2017-02-02T21:56:37.000Z</updated>
     
     <content type="html"><![CDATA[<hr>
-<h1 id="Regex正则"><a href="#Regex正则" class="headerlink" title="Regex正则"></a>Regex正则</h1><h2 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h2><p><code>/</code>起始和结尾<br><code>.</code> - 代表任意，除了换行/n,/r etc<br><code>\d</code>- 0-9<br><code>\D</code>- !(0-9)<br><code>\w</code>- 0-9或a-zA-Z,_<br><code>\W</code>- !(\w)<br><code>\s</code>- 空格，tab，\n\r etc<br><code>\S</code>- !(\s)<br><code>\t\r\n\v\f</code> - tab，回车，换行，垂直|，换页  </p>
-<p>范围<br>[] - 字符范围, eg [a-zA-Z]<br>[^..] - 字符意外<br>^ - 行首<br>$ - 行尾<br><code>\b</code> - 零宽单词边界 eg ‘a no’<br><code>\B</code> - !(\b)  </p>
-<p>符号<br><code>\</code> - escape符号  </p>
-<p>分组<br><code>(x)</code>, <code>\n</code> - e.g. (abc)\n 表示abc再重复n次<br><code>(?:x)</code> - 仅分组，重复没有效果 eg <code>(?:abc)(def)\1.test(&#39;abcdefdef&#39;)</code>  </p>
-<p>重复<br>贪婪算法 x<em> &gt;=0, x+ &gt;=1<br>eg abc</em> 匹配 ab, abc, abccccc<br>   abc+ 匹配 abc,abccccc  </p>
-<p>非贪婪算法 x<em>? == 0, x+? ==1<br>  eg abc</em>? 匹配 ab<br>     abc+? 匹配 abc  </p>
-<p>x? 出现0或1次<br>x|y x或y<br>  eg ab|cd|ef 匹配 ab或cd或ef<br>x{n} - 固定n次<br>x(n,) - &gt;= n次<br>x(n,m) - n-m次  </p>
-<p>标志类flag  gim<br>g - global<br>i - ignoreCase<br>m - multiline - 跨行检索  </p>
-<h2 id="相关方法"><a href="#相关方法" class="headerlink" title="相关方法"></a>相关方法</h2><p>.search(regex) - 返回找到位置index<br>.replace(regex,replacement)<br>.match(regex) - 返回匹配结果数组<br>.split(regex) - 返回数组</p>
-<h2 id="资料"><a href="#资料" class="headerlink" title="资料"></a>资料</h2><p><a href="http://regexone.com/lesson/kleene_operators?" target="_blank" rel="external">http://regexone.com/lesson/kleene_operators?</a> 练习站<br><a href="https://developers.google.com/edu/python/regular-expressions" target="_blank" rel="external">https://developers.google.com/edu/python/regular-expressions</a> 教程<br><a href="http://pythex.org/" target="_blank" rel="external">http://pythex.org/</a> python正则练习站</p>
+<h1 id="抽象概念"><a href="#抽象概念" class="headerlink" title="抽象概念"></a>抽象概念</h1><p>而javascript的函数进入执行上下文,里面的局部变量是保存在堆中的一个对象中(VO)  </p>
+<h2 id="execution-context-上下文-EC"><a href="#execution-context-上下文-EC" class="headerlink" title="execution context - 上下文/EC"></a>execution context - 上下文/EC</h2><p>  站级结构 Ec3-&gt;2-&gt;1-&gt;global<br>  随着函数的重复调用，会创建新的上下文  </p>
+<h2 id="variable-object-变量对象-VO"><a href="#variable-object-变量对象-VO" class="headerlink" title="variable object - 变量对象/VO"></a>variable object - 变量对象/VO</h2><p>  存储EC中的变量<br>  函数声明<br>  函数参数  </p>
+<h2 id="激活对象-Arguments-object-AO"><a href="#激活对象-Arguments-object-AO" class="headerlink" title="激活对象 - Arguments object/AO"></a>激活对象 - Arguments object/AO</h2><p>  初始化  </p>
+<h2 id="VO"><a href="#VO" class="headerlink" title="VO"></a>VO</h2><ol>
+<li>填充顺序/初始化/declare<br>函数参数 - 未传入，初始undefined<br>函数声明 - 命名冲突会覆盖 - 解释它为什么会被前置<br>变量声明 - 初始undefined，命名冲突则忽略，因为都是undefined anyway  </li>
+</ol>
+<blockquote>
+<p>函数表达式不会影响VO的任何填充，thus也不能外部调用<br>var obj = new foo() but foo()-&gt;undefined 科科  </p>
+</blockquote>
+<ol>
+<li><p>代码执行<br>在函数执行前,我们已经知道此函数可以使用哪些变量了，因此直接执行里面的赋值语句<br>当函数执行完后,那么此次在堆中创建的对象就会变成匿名对象  </p>
+</li>
+<li><p>最终例子  </p>
+</li>
+</ol>
+<p><img src="http://img.mukewang.com/564ae5700001338112800720.jpg" alt="&quot;test&quot;">  </p>
+<p>首先，会查看函数声明，如果声明的函数名重复，则覆盖前面声明的函数。<br>接着，查看变量声明，如果变量名重复，则会忽略这次的声明。<br>填充时，不会执行赋值操作。<br>填充完毕后，开始逐行执行。  </p>
+<p>填充阶段，先声明了函数x，然后变量x的声明冲突，所以被忽略；变量a、b会被声明为undefined。<br>第一行，会弹出已被赋了函数的x代码；<br>第二行，会将函数x赋值成10。  </p>
+<p>区别：</p>
+<pre><code>alert(x); //function x(){};
+var x = 10;
+function x(){};
+alert(x); // 10
+————————————————————
+alert(x); //function x(){};
+var x;
+function x(){};
+alert(x); //function x(){};
+</code></pre><blockquote>
+<p>匿名函数Anonymous function<br><code>function(){}</code>加上括号就变成了函数表达式<code>(</code>function(){}<code>)</code><br>再加个括号，就变成了立即执行函数…(function(){})<code>()</code></p>
+</blockquote>
 ]]></content>
     
     <summary type="html">
     
       &lt;hr&gt;
-&lt;h1 id=&quot;Regex正则&quot;&gt;&lt;a href=&quot;#Regex正则&quot; class=&quot;headerlink&quot; title=&quot;Regex正则&quot;&gt;&lt;/a&gt;Regex正则&lt;/h1&gt;&lt;h2 id=&quot;基础&quot;&gt;&lt;a href=&quot;#基础&quot; class=&quot;headerlink&quot; tit
+&lt;h1 id=&quot;抽象概念&quot;&gt;&lt;a href=&quot;#抽象概念&quot; class=&quot;headerlink&quot; title=&quot;抽象概念&quot;&gt;&lt;/a&gt;抽象概念&lt;/h1&gt;&lt;p&gt;而javascript的函数进入执行上下文,里面的局部变量是保存在堆中的一个对象中(VO)  &lt;/p&gt;
+&lt;h2 i
     
     </summary>
     
@@ -741,52 +796,29 @@ Student.prototype = new Person(&apos;mary&apos;,&apos;the only student keke&apos
   </entry>
   
   <entry>
-    <title>JS执行上下文</title>
-    <link href="http://lycworks.me/blog/2016/05/20/JS-EC/"/>
-    <id>http://lycworks.me/blog/2016/05/20/JS-EC/</id>
+    <title>JS正则表达式regexexp</title>
+    <link href="http://lycworks.me/blog/2016/05/20/JS-regex/"/>
+    <id>http://lycworks.me/blog/2016/05/20/JS-regex/</id>
     <published>2016-05-20T04:00:00.000Z</published>
     <updated>2017-02-02T21:56:37.000Z</updated>
     
     <content type="html"><![CDATA[<hr>
-<h1 id="抽象概念"><a href="#抽象概念" class="headerlink" title="抽象概念"></a>抽象概念</h1><p>而javascript的函数进入执行上下文,里面的局部变量是保存在堆中的一个对象中(VO)  </p>
-<h2 id="execution-context-上下文-EC"><a href="#execution-context-上下文-EC" class="headerlink" title="execution context - 上下文/EC"></a>execution context - 上下文/EC</h2><p>  站级结构 Ec3-&gt;2-&gt;1-&gt;global<br>  随着函数的重复调用，会创建新的上下文  </p>
-<h2 id="variable-object-变量对象-VO"><a href="#variable-object-变量对象-VO" class="headerlink" title="variable object - 变量对象/VO"></a>variable object - 变量对象/VO</h2><p>  存储EC中的变量<br>  函数声明<br>  函数参数  </p>
-<h2 id="激活对象-Arguments-object-AO"><a href="#激活对象-Arguments-object-AO" class="headerlink" title="激活对象 - Arguments object/AO"></a>激活对象 - Arguments object/AO</h2><p>  初始化  </p>
-<h2 id="VO"><a href="#VO" class="headerlink" title="VO"></a>VO</h2><ol>
-<li>填充顺序/初始化/declare<br>函数参数 - 未传入，初始undefined<br>函数声明 - 命名冲突会覆盖 - 解释它为什么会被前置<br>变量声明 - 初始undefined，命名冲突则忽略，因为都是undefined anyway  </li>
-</ol>
-<blockquote>
-<p>函数表达式不会影响VO的任何填充，thus也不能外部调用<br>var obj = new foo() but foo()-&gt;undefined 科科  </p>
-</blockquote>
-<ol>
-<li><p>代码执行<br>在函数执行前,我们已经知道此函数可以使用哪些变量了，因此直接执行里面的赋值语句<br>当函数执行完后,那么此次在堆中创建的对象就会变成匿名对象  </p>
-</li>
-<li><p>最终例子  </p>
-</li>
-</ol>
-<p><img src="http://img.mukewang.com/564ae5700001338112800720.jpg" alt="&quot;test&quot;">  </p>
-<p>首先，会查看函数声明，如果声明的函数名重复，则覆盖前面声明的函数。<br>接着，查看变量声明，如果变量名重复，则会忽略这次的声明。<br>填充时，不会执行赋值操作。<br>填充完毕后，开始逐行执行。  </p>
-<p>填充阶段，先声明了函数x，然后变量x的声明冲突，所以被忽略；变量a、b会被声明为undefined。<br>第一行，会弹出已被赋了函数的x代码；<br>第二行，会将函数x赋值成10。  </p>
-<p>区别：</p>
-<pre><code>alert(x); //function x(){};
-var x = 10;
-function x(){};
-alert(x); // 10
-————————————————————
-alert(x); //function x(){};
-var x;
-function x(){};
-alert(x); //function x(){};
-</code></pre><blockquote>
-<p>匿名函数Anonymous function<br><code>function(){}</code>加上括号就变成了函数表达式<code>(</code>function(){}<code>)</code><br>再加个括号，就变成了立即执行函数…(function(){})<code>()</code></p>
-</blockquote>
+<h1 id="Regex正则"><a href="#Regex正则" class="headerlink" title="Regex正则"></a>Regex正则</h1><h2 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h2><p><code>/</code>起始和结尾<br><code>.</code> - 代表任意，除了换行/n,/r etc<br><code>\d</code>- 0-9<br><code>\D</code>- !(0-9)<br><code>\w</code>- 0-9或a-zA-Z,_<br><code>\W</code>- !(\w)<br><code>\s</code>- 空格，tab，\n\r etc<br><code>\S</code>- !(\s)<br><code>\t\r\n\v\f</code> - tab，回车，换行，垂直|，换页  </p>
+<p>范围<br>[] - 字符范围, eg [a-zA-Z]<br>[^..] - 字符意外<br>^ - 行首<br>$ - 行尾<br><code>\b</code> - 零宽单词边界 eg ‘a no’<br><code>\B</code> - !(\b)  </p>
+<p>符号<br><code>\</code> - escape符号  </p>
+<p>分组<br><code>(x)</code>, <code>\n</code> - e.g. (abc)\n 表示abc再重复n次<br><code>(?:x)</code> - 仅分组，重复没有效果 eg <code>(?:abc)(def)\1.test(&#39;abcdefdef&#39;)</code>  </p>
+<p>重复<br>贪婪算法 x<em> &gt;=0, x+ &gt;=1<br>eg abc</em> 匹配 ab, abc, abccccc<br>   abc+ 匹配 abc,abccccc  </p>
+<p>非贪婪算法 x<em>? == 0, x+? ==1<br>  eg abc</em>? 匹配 ab<br>     abc+? 匹配 abc  </p>
+<p>x? 出现0或1次<br>x|y x或y<br>  eg ab|cd|ef 匹配 ab或cd或ef<br>x{n} - 固定n次<br>x(n,) - &gt;= n次<br>x(n,m) - n-m次  </p>
+<p>标志类flag  gim<br>g - global<br>i - ignoreCase<br>m - multiline - 跨行检索  </p>
+<h2 id="相关方法"><a href="#相关方法" class="headerlink" title="相关方法"></a>相关方法</h2><p>.search(regex) - 返回找到位置index<br>.replace(regex,replacement)<br>.match(regex) - 返回匹配结果数组<br>.split(regex) - 返回数组</p>
+<h2 id="资料"><a href="#资料" class="headerlink" title="资料"></a>资料</h2><p><a href="http://regexone.com/lesson/kleene_operators?" target="_blank" rel="external">http://regexone.com/lesson/kleene_operators?</a> 练习站<br><a href="https://developers.google.com/edu/python/regular-expressions" target="_blank" rel="external">https://developers.google.com/edu/python/regular-expressions</a> 教程<br><a href="http://pythex.org/" target="_blank" rel="external">http://pythex.org/</a> python正则练习站</p>
 ]]></content>
     
     <summary type="html">
     
       &lt;hr&gt;
-&lt;h1 id=&quot;抽象概念&quot;&gt;&lt;a href=&quot;#抽象概念&quot; class=&quot;headerlink&quot; title=&quot;抽象概念&quot;&gt;&lt;/a&gt;抽象概念&lt;/h1&gt;&lt;p&gt;而javascript的函数进入执行上下文,里面的局部变量是保存在堆中的一个对象中(VO)  &lt;/p&gt;
-&lt;h2 i
+&lt;h1 id=&quot;Regex正则&quot;&gt;&lt;a href=&quot;#Regex正则&quot; class=&quot;headerlink&quot; title=&quot;Regex正则&quot;&gt;&lt;/a&gt;Regex正则&lt;/h1&gt;&lt;h2 id=&quot;基础&quot;&gt;&lt;a href=&quot;#基础&quot; class=&quot;headerlink&quot; tit
     
     </summary>
     
@@ -1033,74 +1065,6 @@ new func()//this指向原来的，a没有值，用this.b
       &lt;hr&gt;
 &lt;h1 id=&quot;函数-对象&quot;&gt;&lt;a href=&quot;#函数-对象&quot; class=&quot;headerlink&quot; title=&quot;函数(对象)&quot;&gt;&lt;/a&gt;函数(对象)&lt;/h1&gt;&lt;p&gt;return语句或this作为返回值&lt;/p&gt;
 &lt;h2 id=&quot;不同创建方法&quot;&gt;&lt;a href=&quot;#不同
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>JS数组</title>
-    <link href="http://lycworks.me/blog/2016/05/18/JS-array/"/>
-    <id>http://lycworks.me/blog/2016/05/18/JS-array/</id>
-    <published>2016-05-18T04:00:00.000Z</published>
-    <updated>2017-02-02T21:56:37.000Z</updated>
-    
-    <content type="html"><![CDATA[<hr>
-<h1 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h1><h3 id="创建"><a href="#创建" class="headerlink" title="创建"></a>创建</h3><ol>
-<li><code>[]</code></li>
-<li><code>[1,,2]</code>//1,undefined,2</li>
-<li><code>new Array()</code><ul>
-<li>传入一个参数是length</li>
-<li>传入N个参数就是元素</li>
-<li>new可以省略  </li>
-</ul>
-</li>
-</ol>
-<blockquote>
-<p>delete 删除数组指定的元素，实际上将它用undefined代替，length不变</p>
-</blockquote>
-<h3 id="添加-删除"><a href="#添加-删除" class="headerlink" title="添加/删除"></a>添加/删除</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">.push() - add back</div><div class="line">.unshift() - add front</div><div class="line">.pop() - delete back</div><div class="line">.shift() - delete front</div></pre></td></tr></table></figure>
-<h3 id="种类"><a href="#种类" class="headerlink" title="种类"></a>种类</h3><p>二维<br>稀疏 - 不连续<code>[,,]</code><br>  判断用in<br>  arr1 = [undefined]<br>  0 in arr1 //true 因为下标0的key值是undefined<br>  arr2 = new Array(1)<br>0 in arr2 //false 因为下标0的key值不存在</p>
-<h3 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h3><h4 id="原数组不会被修改"><a href="#原数组不会被修改" class="headerlink" title="原数组不会被修改"></a>原数组不会被修改</h4><p>arr.join(); //将数组转换为字符串，不写参数会以逗号分开，有参数就以参数作为分隔符<br><code>new Array(n+1).join(str)</code>的原理是,创建一个n+1大小的数组，若用join()方法会产生含n个“,”的字符串，而str正好代替这些“,”以造成重复n次str参数的字符串<br><code>newArray(2+1).join(&quot;a&quot;)//&quot;aa&quot;</code><br>arr.concat() //合并<br>  如果参数是一个一维数组（没有嵌套[]），则合并的时候会拉平数组，如果是嵌套数组，合并后只会拉平最外一层。  </p>
-<p>arr.slice(a,b) // 左闭右开 a表示开始截取的位置以0开始计算，b为结束位置可以是负数(省略b的话则表示一直到数组末尾)</p>
-<h4 id="原数组会被修改"><a href="#原数组会被修改" class="headerlink" title="原数组会被修改"></a>原数组会被修改</h4><p>arr.reverse() //倒序<br>arr.sort() //排序，默认已字母为优先级<br>  如果需要以数字升序排序，可以如下所示：<br>  arr.sort(<code>function(a,b){ return a-b}</code>)//通过比较两个数据的大小来进行排序<br>arr.splice// 拼接  </p>
-<pre><code>* 返回被删除的元素  
-* arr.splice(index, leng, ...)  
-* 第一个变量为开始坐标，第二个变量为长度，意思是从坐标开始剪掉长度len个数组，而后面的变量为拼接的对象，该操作改变原数组  
-</code></pre><h3 id="ES5-方法"><a href="#ES5-方法" class="headerlink" title="ES5++ 方法"></a>ES5++ 方法</h3><h4 id="循环"><a href="#循环" class="headerlink" title="循环"></a>循环</h4><pre><code>arr.forEach(function(x, index, a){
-    x - 元素值
-    index - index
-    a - 指向数组本身
-})
-</code></pre><p>映射 - 修改后的值可以被返回成新的arr<br>        arr.map(function(x){<br>            return x + 10<br>        })  </p>
-<p>过滤 - 修改后的值可以被返回成新的arr<br>        arr.filter(function(x,index){<br>            return index % 3 ===0<br>        })  </p>
-<h4 id="判断元素"><a href="#判断元素" class="headerlink" title="判断元素"></a>判断元素</h4><p><code>arr.every(function(x){ return x&lt;3 })//false</code> 组内是否每个元素都满足条件<br><code>arr.some(function(x){ return x===3 })//true</code> 组内是否含有至少一个元素满足条件  </p>
-<h4 id="判断数组本身-不是原型链继承"><a href="#判断数组本身-不是原型链继承" class="headerlink" title="判断数组本身(不是原型链继承)"></a>判断数组本身(不是原型链继承)</h4><pre><code>Array.isArray(数组)  
-[] instanceof Array  
-({}).toString.apply(..) === &apos;[object Array]&apos;
-[].constructor === Array //继承数组会失效
-</code></pre><h4 id="运算"><a href="#运算" class="headerlink" title="运算"></a>运算</h4><p>arr.reduce(function(x,y){}, <code>0</code>) - x+0, x+1每两个元素进行逻辑运算, <code>0</code>是最初比较的值</p>
-<blockquote>
-<p>(例如arr=[1,2,3,4,5]和最初比较值0 进行乘法运算，最终是0)</p>
-</blockquote>
-<pre><code>arr.reduce(function(x,y){
-    return x&gt;y? x : y
-})
-</code></pre><p>arr.reduceRight(..) - 从右到左</p>
-<h4 id="检索"><a href="#检索" class="headerlink" title="检索"></a>检索</h4><p>arr.indexOf(元素，[查找点(可以用负数)]) - 从左向右<br>arr.lastIndexOf - 从右向左</p>
-<hr>
-<p>#数组 V 一般对象<br>(不建议)可以继承属性/方法 - Array.prototype, Object.prototype<br>数组是对象，对象不一定是数组 (单身狗就没对象哼╭(╯^╰)╮)<br>数组可以被添加/删除 - push/pop<br>但是<strong>BUT</strong><br>只有数组有length<br>从0-100访问比对象的属性访问快<br>只有数组继承Array.prototype的方法//join etc..  </p>
-<h1 id="字符串是类数组"><a href="#字符串是类数组" class="headerlink" title="字符串是类数组"></a>字符串是类数组</h1><p>str.length<br>str.charAt(index) 或str[0]  </p>
-<blockquote>
-<p>可以通过Array.prototype.方法.call(str,方法本身的参数)</p>
-</blockquote>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;hr&gt;
-&lt;h1 id=&quot;数组&quot;&gt;&lt;a href=&quot;#数组&quot; class=&quot;headerlink&quot; title=&quot;数组&quot;&gt;&lt;/a&gt;数组&lt;/h1&gt;&lt;h3 id=&quot;创建&quot;&gt;&lt;a href=&quot;#创建&quot; class=&quot;headerlink&quot; title=&quot;创建&quot;&gt;&lt;/a&gt;创建&lt;/h3&gt;&lt;
     
     </summary>
     
