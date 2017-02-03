@@ -5,7 +5,7 @@
   <link href="/blog/atom.xml" rel="self"/>
   
   <link href="http://lycworks.me/blog/"/>
-  <updated>2017-02-03T02:07:19.000Z</updated>
+  <updated>2017-02-03T03:38:22.000Z</updated>
   <id>http://lycworks.me/blog/</id>
   
   <author>
@@ -16,11 +16,37 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>stack什么的</title>
+    <link href="http://lycworks.me/blog/2017/02/02/stack-md/"/>
+    <id>http://lycworks.me/blog/2017/02/02/stack-md/</id>
+    <published>2017-02-03T03:27:34.000Z</published>
+    <updated>2017-02-03T03:38:22.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="虽然大部分时间都ok，有的时候会被stack搞到。。"><a href="#虽然大部分时间都ok，有的时候会被stack搞到。。" class="headerlink" title="虽然大部分时间都ok，有的时候会被stack搞到。。"></a>虽然大部分时间都ok，有的时候会被stack搞到。。</h2><h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><p>Simplify Path - 简化directory path</p>
+<p>想复杂了。。一开始首先用/分开每个部分，如果是空的或者.则不计算<br>然后把有用的放进stack里，循环时如遇到<code>..</code>则popout它前面的出来  </p>
+<p>假设 <code>path = &quot;/a/./b/../../c/&quot;</code>, 第一步过后变成<code>a,b,../../c</code>, 然后通过stack就可以算出<code>/c</code>  </p>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">path = path.split(&apos;/&apos;)</div><div class="line">res = []</div><div class="line"></div><div class="line">for p in path:</div><div class="line">	if p and p!=&apos;.&apos;:</div><div class="line">		res.append(p)</div><div class="line">stack = []</div><div class="line">for r in res:</div><div class="line">	if r==&apos;..&apos;:</div><div class="line">		if stack: stack.pop()</div><div class="line">	else:</div><div class="line">		stack.append(r)</div><div class="line"></div><div class="line">return &apos;/&apos;+&apos;/&apos;.join(stack)</div></pre></td></tr></table></figure>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;虽然大部分时间都ok，有的时候会被stack搞到。。&quot;&gt;&lt;a href=&quot;#虽然大部分时间都ok，有的时候会被stack搞到。。&quot; class=&quot;headerlink&quot; title=&quot;虽然大部分时间都ok，有的时候会被stack搞到。。&quot;&gt;&lt;/a&gt;虽然大部分时间都
+    
+    </summary>
+    
+      <category term="Algo" scheme="http://lycworks.me/blog/categories/Algo/"/>
+    
+    
+      <category term="stack" scheme="http://lycworks.me/blog/tags/stack/"/>
+    
+  </entry>
+  
+  <entry>
     <title>一些网上流传的大牛写的算法</title>
-    <link href="http://lycworks.me/blog/2017/02/02/2017-02-02-tricksalgo-md/"/>
-    <id>http://lycworks.me/blog/2017/02/02/2017-02-02-tricksalgo-md/</id>
+    <link href="http://lycworks.me/blog/2017/02/02/tricksalgo/"/>
+    <id>http://lycworks.me/blog/2017/02/02/tricksalgo/</id>
     <published>2017-02-03T01:52:37.000Z</published>
-    <updated>2017-02-03T02:07:19.000Z</updated>
+    <updated>2017-02-03T02:22:58.000Z</updated>
     
     <content type="html"><![CDATA[<h1 id="大牛1-Moore’s-Voting"><a href="#大牛1-Moore’s-Voting" class="headerlink" title="大牛1 Moore’s Voting"></a>大牛1 Moore’s Voting</h1><p>使用 - 求最优候选人方案  </p>
 <h1 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h1><p>想象一下投票时每个政客试图互相cancel out对手的票，最后还剩一张票的肯定就赢咯~</p>
@@ -79,7 +105,7 @@
     <link href="http://lycworks.me/blog/2017/02/02/find-path/"/>
     <id>http://lycworks.me/blog/2017/02/02/find-path/</id>
     <published>2017-02-02T05:00:00.000Z</published>
-    <updated>2017-02-03T01:49:26.000Z</updated>
+    <updated>2017-02-03T04:29:51.000Z</updated>
     
     <content type="html"><![CDATA[<h2 id="the-套路"><a href="#the-套路" class="headerlink" title="the 套路"></a>the 套路</h2><h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><p>Unique path - 一个机器人从左上角走到右下角有多少种方法？  </p>
 <p>具体思路使用dp即可。首先把第0排和第0行全部设置为1因为只有一种方法走到。<br>通过左边和上边即可算出连接到中间点所需path数量  </p>
@@ -88,6 +114,11 @@
 <h3 id="问题-1"><a href="#问题-1" class="headerlink" title="问题"></a>问题</h3><p>Minimum path sum - 算出最少cost的path  </p>
 <p>跟上一道很像，得出了path sum基本上只要是matrix和dp就把边界算出来，<br>然后再乃个加和比较来求出最小  </p>
 <h3 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">dp[0][0] = matrix[0][0]</div><div class="line">for j in range(1,n): #the sum of first row</div><div class="line">	dp[0][j] = dp[0][j-1]+matrix[0][j]</div><div class="line"></div><div class="line">for i in range(1,m): #first col</div><div class="line">	dp[i][0] = dp[i-1][0]+matrix[i][0]</div><div class="line"></div><div class="line">for i in range(1, m):</div><div class="line">	for j in range(1,n):</div><div class="line">		dp[i][j] = min(dp[i-1][j], dp[i][j-1])+matrix[i][j]</div><div class="line"></div><div class="line">return dp[m-1][n-1]</div></pre></td></tr></table></figure>
+<h2 id="the-变形"><a href="#the-变形" class="headerlink" title="the 变形"></a>the 变形</h2><h3 id="障碍物"><a href="#障碍物" class="headerlink" title="障碍物"></a>障碍物</h3><p>Unique path with obstacles - 每次遇到obstacle都归零  </p>
+<h3 id="思路1"><a href="#思路1" class="headerlink" title="思路1"></a>思路1</h3><p>每次遇到obstacle都归零</p>
+<h4 id="代码-2"><a href="#代码-2" class="headerlink" title="代码"></a>代码</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">visited = [[0 for _ in range(n)]for _ in range(m)]</div><div class="line">visited[0][0] = 1 if matrix[0][0]==0 else 0</div><div class="line"></div><div class="line">for j in range(1, n): #value of first row</div><div class="line">	if matrix[0][j] ==1: visited[0][j] = 0 #reset</div><div class="line">	else: visited[0][j] = visited[0][j-1] #obstacle后面的有可能是0</div><div class="line"></div><div class="line">for i in range(1,m): #same thing for col</div><div class="line">	if matrix[..]</div><div class="line">	else: ..</div><div class="line"></div><div class="line">for i in range(1,m):</div><div class="line">	for j in range(1,n):</div><div class="line">		if matrix[i][j] ==1: #reset</div><div class="line">			visited[i][j] = 0</div><div class="line">		else:</div><div class="line">			visited[i][j] = visited[i-1][j]+visited[i][j-1]</div><div class="line"></div><div class="line">return dp[m-1][n-1]</div></pre></td></tr></table></figure>
+<h3 id="思路2"><a href="#思路2" class="headerlink" title="思路2"></a>思路2</h3><p>只记录column来update每个row （如何update？col前一个）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">dp = [0 for _ in range(n)]</div><div class="line"></div><div class="line">for row in matrix:</div><div class="line">	for j in range(n):</div><div class="line">		if row[j]==1:</div><div class="line">			dp[j]=0</div><div class="line">		if j&gt;0:</div><div class="line">			dp[j]+=dp[j-1] </div><div class="line">return dp[n-1]</div></pre></td></tr></table></figure>
 ]]></content>
     
     <summary type="html">
@@ -150,6 +181,37 @@
   </entry>
   
   <entry>
+    <title>Divide &amp; Conquer</title>
+    <link href="http://lycworks.me/blog/2017/02/01/dc/"/>
+    <id>http://lycworks.me/blog/2017/02/01/dc/</id>
+    <published>2017-02-01T05:00:00.000Z</published>
+    <updated>2017-02-02T21:56:37.000Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="Divide-amp-Recursion-amp-Conquer"><a href="#Divide-amp-Recursion-amp-Conquer" class="headerlink" title="Divide &amp; Recursion &amp; Conquer"></a>Divide &amp; Recursion &amp; Conquer</h1><h2 id="二分"><a href="#二分" class="headerlink" title="二分"></a>二分</h2><p>算左，算右，算左+右</p>
+<blockquote>
+<blockquote>
+<p>例题 max subtree path, quicksort</p>
+</blockquote>
+</blockquote>
+<p>quicksort basic<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">def quicksort(arr):</div><div class="line">  if not arr or len(arr)&lt;=1: return arr</div><div class="line">  pivot = arr[0]</div><div class="line">  left = []</div><div class="line">  right = []</div><div class="line">  for q in arr[1:]:</div><div class="line">    if q&lt;=pivot:</div><div class="line">      left.append(q)</div><div class="line">    else:</div><div class="line">      right.append(q)</div><div class="line">  return quicksort(left)+[pivot]+quicksort(right)</div></pre></td></tr></table></figure></p>
+<h2 id="exponential"><a href="#exponential" class="headerlink" title="exponential"></a>exponential</h2><p>如果even算两个k的n/2如果odd算n-1的。。类似dp？</p>
+<h2 id="打乱数组"><a href="#打乱数组" class="headerlink" title="打乱数组"></a>打乱数组</h2><p>二分交换a1,a2 and b1,b2<br>使用random算random index然后swap</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;Divide-amp-Recursion-amp-Conquer&quot;&gt;&lt;a href=&quot;#Divide-amp-Recursion-amp-Conquer&quot; class=&quot;headerlink&quot; title=&quot;Divide &amp;amp; Recursion &amp;amp;
+    
+    </summary>
+    
+      <category term="Algo" scheme="http://lycworks.me/blog/categories/Algo/"/>
+    
+    
+      <category term="dc" scheme="http://lycworks.me/blog/tags/dc/"/>
+    
+  </entry>
+  
+  <entry>
     <title>动态规划</title>
     <link href="http://lycworks.me/blog/2017/02/01/dp/"/>
     <id>http://lycworks.me/blog/2017/02/01/dp/</id>
@@ -182,37 +244,6 @@
     
     
       <category term="dp" scheme="http://lycworks.me/blog/tags/dp/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Divide &amp; Conquer</title>
-    <link href="http://lycworks.me/blog/2017/02/01/dc/"/>
-    <id>http://lycworks.me/blog/2017/02/01/dc/</id>
-    <published>2017-02-01T05:00:00.000Z</published>
-    <updated>2017-02-02T21:56:37.000Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="Divide-amp-Recursion-amp-Conquer"><a href="#Divide-amp-Recursion-amp-Conquer" class="headerlink" title="Divide &amp; Recursion &amp; Conquer"></a>Divide &amp; Recursion &amp; Conquer</h1><h2 id="二分"><a href="#二分" class="headerlink" title="二分"></a>二分</h2><p>算左，算右，算左+右</p>
-<blockquote>
-<blockquote>
-<p>例题 max subtree path, quicksort</p>
-</blockquote>
-</blockquote>
-<p>quicksort basic<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">def quicksort(arr):</div><div class="line">  if not arr or len(arr)&lt;=1: return arr</div><div class="line">  pivot = arr[0]</div><div class="line">  left = []</div><div class="line">  right = []</div><div class="line">  for q in arr[1:]:</div><div class="line">    if q&lt;=pivot:</div><div class="line">      left.append(q)</div><div class="line">    else:</div><div class="line">      right.append(q)</div><div class="line">  return quicksort(left)+[pivot]+quicksort(right)</div></pre></td></tr></table></figure></p>
-<h2 id="exponential"><a href="#exponential" class="headerlink" title="exponential"></a>exponential</h2><p>如果even算两个k的n/2如果odd算n-1的。。类似dp？</p>
-<h2 id="打乱数组"><a href="#打乱数组" class="headerlink" title="打乱数组"></a>打乱数组</h2><p>二分交换a1,a2 and b1,b2<br>使用random算random index然后swap</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;Divide-amp-Recursion-amp-Conquer&quot;&gt;&lt;a href=&quot;#Divide-amp-Recursion-amp-Conquer&quot; class=&quot;headerlink&quot; title=&quot;Divide &amp;amp; Recursion &amp;amp;
-    
-    </summary>
-    
-      <category term="Algo" scheme="http://lycworks.me/blog/categories/Algo/"/>
-    
-    
-      <category term="dc" scheme="http://lycworks.me/blog/tags/dc/"/>
     
   </entry>
   
@@ -666,59 +697,6 @@ cd .. &amp;&amp; git add myfolder &amp;&amp; commit -m &quot;updated myfolder&qu
   </entry>
   
   <entry>
-    <title>JS执行上下文</title>
-    <link href="http://lycworks.me/blog/2016/05/20/JS-EC/"/>
-    <id>http://lycworks.me/blog/2016/05/20/JS-EC/</id>
-    <published>2016-05-20T04:00:00.000Z</published>
-    <updated>2017-02-02T21:56:37.000Z</updated>
-    
-    <content type="html"><![CDATA[<hr>
-<h1 id="抽象概念"><a href="#抽象概念" class="headerlink" title="抽象概念"></a>抽象概念</h1><p>而javascript的函数进入执行上下文,里面的局部变量是保存在堆中的一个对象中(VO)  </p>
-<h2 id="execution-context-上下文-EC"><a href="#execution-context-上下文-EC" class="headerlink" title="execution context - 上下文/EC"></a>execution context - 上下文/EC</h2><p>  站级结构 Ec3-&gt;2-&gt;1-&gt;global<br>  随着函数的重复调用，会创建新的上下文  </p>
-<h2 id="variable-object-变量对象-VO"><a href="#variable-object-变量对象-VO" class="headerlink" title="variable object - 变量对象/VO"></a>variable object - 变量对象/VO</h2><p>  存储EC中的变量<br>  函数声明<br>  函数参数  </p>
-<h2 id="激活对象-Arguments-object-AO"><a href="#激活对象-Arguments-object-AO" class="headerlink" title="激活对象 - Arguments object/AO"></a>激活对象 - Arguments object/AO</h2><p>  初始化  </p>
-<h2 id="VO"><a href="#VO" class="headerlink" title="VO"></a>VO</h2><ol>
-<li>填充顺序/初始化/declare<br>函数参数 - 未传入，初始undefined<br>函数声明 - 命名冲突会覆盖 - 解释它为什么会被前置<br>变量声明 - 初始undefined，命名冲突则忽略，因为都是undefined anyway  </li>
-</ol>
-<blockquote>
-<p>函数表达式不会影响VO的任何填充，thus也不能外部调用<br>var obj = new foo() but foo()-&gt;undefined 科科  </p>
-</blockquote>
-<ol>
-<li><p>代码执行<br>在函数执行前,我们已经知道此函数可以使用哪些变量了，因此直接执行里面的赋值语句<br>当函数执行完后,那么此次在堆中创建的对象就会变成匿名对象  </p>
-</li>
-<li><p>最终例子  </p>
-</li>
-</ol>
-<p><img src="http://img.mukewang.com/564ae5700001338112800720.jpg" alt="&quot;test&quot;">  </p>
-<p>首先，会查看函数声明，如果声明的函数名重复，则覆盖前面声明的函数。<br>接着，查看变量声明，如果变量名重复，则会忽略这次的声明。<br>填充时，不会执行赋值操作。<br>填充完毕后，开始逐行执行。  </p>
-<p>填充阶段，先声明了函数x，然后变量x的声明冲突，所以被忽略；变量a、b会被声明为undefined。<br>第一行，会弹出已被赋了函数的x代码；<br>第二行，会将函数x赋值成10。  </p>
-<p>区别：</p>
-<pre><code>alert(x); //function x(){};
-var x = 10;
-function x(){};
-alert(x); // 10
-————————————————————
-alert(x); //function x(){};
-var x;
-function x(){};
-alert(x); //function x(){};
-</code></pre><blockquote>
-<p>匿名函数Anonymous function<br><code>function(){}</code>加上括号就变成了函数表达式<code>(</code>function(){}<code>)</code><br>再加个括号，就变成了立即执行函数…(function(){})<code>()</code></p>
-</blockquote>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;hr&gt;
-&lt;h1 id=&quot;抽象概念&quot;&gt;&lt;a href=&quot;#抽象概念&quot; class=&quot;headerlink&quot; title=&quot;抽象概念&quot;&gt;&lt;/a&gt;抽象概念&lt;/h1&gt;&lt;p&gt;而javascript的函数进入执行上下文,里面的局部变量是保存在堆中的一个对象中(VO)  &lt;/p&gt;
-&lt;h2 i
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
     <title>JS OOP</title>
     <link href="http://lycworks.me/blog/2016/05/20/JS-OOP/"/>
     <id>http://lycworks.me/blog/2016/05/20/JS-OOP/</id>
@@ -826,98 +804,52 @@ Student.prototype = new Person(&apos;mary&apos;,&apos;the only student keke&apos
   </entry>
   
   <entry>
-    <title>JS闭包</title>
-    <link href="http://lycworks.me/blog/2016/05/18/JS-closure/"/>
-    <id>http://lycworks.me/blog/2016/05/18/JS-closure/</id>
-    <published>2016-05-18T04:00:00.000Z</published>
+    <title>JS执行上下文</title>
+    <link href="http://lycworks.me/blog/2016/05/20/JS-EC/"/>
+    <id>http://lycworks.me/blog/2016/05/20/JS-EC/</id>
+    <published>2016-05-20T04:00:00.000Z</published>
     <updated>2017-02-02T21:56:37.000Z</updated>
     
     <content type="html"><![CDATA[<hr>
-<h2 id="作用域scope"><a href="#作用域scope" class="headerlink" title="作用域scope"></a>作用域scope</h2><p>因为JS有全局/局部变量的限制，不能从外部读取局部变量  </p>
-<h3 id="Closure闭包-为了从外部读取局部变量而在函数的内部再创建的函数"><a href="#Closure闭包-为了从外部读取局部变量而在函数的内部再创建的函数" class="headerlink" title="Closure闭包 - 为了从外部读取局部变量而在函数的内部再创建的函数"></a>Closure闭包 - 为了从外部读取局部变量而在函数的内部再创建的函数</h3><blockquote>
-<p>同时根据<strong>chain scope</strong>链式作用域的定义,父对象的所有变量，对子对象都是可见的，反之则不成立<br>因此直接call f1() 没有返回值，要在f1里return f2，var result = f1()，再call result()<br>或者f1里直接call f2(), 这样f1()就有返回值了</p>
+<h1 id="抽象概念"><a href="#抽象概念" class="headerlink" title="抽象概念"></a>抽象概念</h1><p>而javascript的函数进入执行上下文,里面的局部变量是保存在堆中的一个对象中(VO)  </p>
+<h2 id="execution-context-上下文-EC"><a href="#execution-context-上下文-EC" class="headerlink" title="execution context - 上下文/EC"></a>execution context - 上下文/EC</h2><p>  站级结构 Ec3-&gt;2-&gt;1-&gt;global<br>  随着函数的重复调用，会创建新的上下文  </p>
+<h2 id="variable-object-变量对象-VO"><a href="#variable-object-变量对象-VO" class="headerlink" title="variable object - 变量对象/VO"></a>variable object - 变量对象/VO</h2><p>  存储EC中的变量<br>  函数声明<br>  函数参数  </p>
+<h2 id="激活对象-Arguments-object-AO"><a href="#激活对象-Arguments-object-AO" class="headerlink" title="激活对象 - Arguments object/AO"></a>激活对象 - Arguments object/AO</h2><p>  初始化  </p>
+<h2 id="VO"><a href="#VO" class="headerlink" title="VO"></a>VO</h2><ol>
+<li>填充顺序/初始化/declare<br>函数参数 - 未传入，初始undefined<br>函数声明 - 命名冲突会覆盖 - 解释它为什么会被前置<br>变量声明 - 初始undefined，命名冲突则忽略，因为都是undefined anyway  </li>
+</ol>
+<blockquote>
+<p>函数表达式不会影响VO的任何填充，thus也不能外部调用<br>var obj = new foo() but foo()-&gt;undefined 科科  </p>
 </blockquote>
-<pre><code>function f1(){
-    var n = 1
-    function f2(){console.log(n)}
-    f2()                
-}
-f1()//1        
-</code></pre><p>  闭包的第二种用途 - 让局部变量保持在内存中(localval可以连续调用)  </p>
-<pre><code>function f1(){
-    var n=999
-    nAdd=function(){n+=1}
-    function f2(){
-        alert(n);
-    }
-    return f2;
-}
-var result = f1()
-result()//999
-nAdd()
-result()// 1000
-</code></pre><p>好处<br>函数有自己的作用域，定义的变量外部访问不到。封装具体的复杂的函数逻辑<br>弊端  </p>
-<ul>
-<li>内存消耗，解决方法是删除不使用的局部变量  </li>
-<li>父函数的值会受闭包的影响  </li>
-</ul>
-<p>循环的陷阱 - i是全局变量，addEventListener()是一个callback函数，只有等循环结束后才会执行（i=4)。<br>解决方法是使用IEF匿名函数来立即调用闭包环境的i值  </p>
-<pre><code>var i = 1        
-for(;i&lt;4;i++){
-    document.getElementById(&apos;div&apos;+i)
-    .addEventListener(&apos;click&apos;,function(){
-        console.log(i)//闭包内全是4            
-    })        
-}
-
-var i = 1
-for(;i&lt;4;i++){
-    (function(i){//得到闭包环境的i
-        document.get...//返回正常            
-    })(i)        
-}
-</code></pre><p>公用/私用<br>  私用  </p>
-<pre><code>* 封装 - 从外部看不到复杂的计算并实现函数的私有变量的调用
-![&quot;chart&quot;](http://img.mukewang.com/56a8b573000103af12800720.jpg)  
-</code></pre><p>  子函数本身的this指向它所在函数<strong>调用</strong>的上下文决定的  </p>
-<pre><code>var name = &quot;The Window&quot;;
-var object = {
-    name : &quot;My Object&quot;,
-    getNameFunc : function(){
-        return function(){
-            return this.name;
-        }
-    }
-}
-alert(object.getNameFunc()());//window.name
-</code></pre><p>  子函数得到了object的this - <strong>著名的that = this</strong>  </p>
-<pre><code>var name = &quot;The Window&quot;;
-var object = {
-    name : &quot;My Object&quot;,
-    getNameFunc : function(){
-        var that = this;
-        return function(){
-            return that.name;
-        };
-    }
-};
-alert(object.getNameFunc()());
+<ol>
+<li><p>代码执行<br>在函数执行前,我们已经知道此函数可以使用哪些变量了，因此直接执行里面的赋值语句<br>当函数执行完后,那么此次在堆中创建的对象就会变成匿名对象  </p>
+</li>
+<li><p>最终例子  </p>
+</li>
+</ol>
+<p><img src="http://img.mukewang.com/564ae5700001338112800720.jpg" alt="&quot;test&quot;">  </p>
+<p>首先，会查看函数声明，如果声明的函数名重复，则覆盖前面声明的函数。<br>接着，查看变量声明，如果变量名重复，则会忽略这次的声明。<br>填充时，不会执行赋值操作。<br>填充完毕后，开始逐行执行。  </p>
+<p>填充阶段，先声明了函数x，然后变量x的声明冲突，所以被忽略；变量a、b会被声明为undefined。<br>第一行，会弹出已被赋了函数的x代码；<br>第二行，会将函数x赋值成10。  </p>
+<p>区别：</p>
+<pre><code>alert(x); //function x(){};
+var x = 10;
+function x(){};
+alert(x); // 10
+————————————————————
+alert(x); //function x(){};
+var x;
+function x(){};
+alert(x); //function x(){};
 </code></pre><blockquote>
-<p><a href="http://www.ruanyifeng.com/blog/2009/08/learning_javascript_closures.html" title="阮一峰的网络日志" target="_blank" rel="external">更多闭包的资料</a></p>
+<p>匿名函数Anonymous function<br><code>function(){}</code>加上括号就变成了函数表达式<code>(</code>function(){}<code>)</code><br>再加个括号，就变成了立即执行函数…(function(){})<code>()</code></p>
 </blockquote>
-<h2 id="不同调用方式"><a href="#不同调用方式" class="headerlink" title="不同调用方式"></a>不同调用方式</h2><ul>
-<li>直接调用 foo()  </li>
-<li>对象方法 foo.method()  </li>
-<li>构造器   new foo()  </li>
-<li>call/apply/bind func.call(obj)  </li>
-</ul>
 ]]></content>
     
     <summary type="html">
     
       &lt;hr&gt;
-&lt;h2 id=&quot;作用域scope&quot;&gt;&lt;a href=&quot;#作用域scope&quot; class=&quot;headerlink&quot; title=&quot;作用域scope&quot;&gt;&lt;/a&gt;作用域scope&lt;/h2&gt;&lt;p&gt;因为JS有全局/局部变量的限制，不能从外部读取局部变量  &lt;/p&gt;
-&lt;h3 id=
+&lt;h1 id=&quot;抽象概念&quot;&gt;&lt;a href=&quot;#抽象概念&quot; class=&quot;headerlink&quot; title=&quot;抽象概念&quot;&gt;&lt;/a&gt;抽象概念&lt;/h1&gt;&lt;p&gt;而javascript的函数进入执行上下文,里面的局部变量是保存在堆中的一个对象中(VO)  &lt;/p&gt;
+&lt;h2 i
     
     </summary>
     
