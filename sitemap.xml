@@ -2,9 +2,30 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://lycworks.me/blog/blog/2017/02/03/trees/</loc>
+    
+    <lastmod>2017-02-04T18:54:23.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://lycworks.me/blog/blog/2017/02/03/bits/</loc>
+    
+    <lastmod>2017-02-03T22:39:40.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://lycworks.me/blog/blog/2017/02/01/matrix/</loc>
+    
+    <lastmod>2017-02-03T19:23:10.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://lycworks.me/blog/blog/2017/02/02/find-path/</loc>
     
-    <lastmod>2017-02-03T04:29:51.000Z</lastmod>
+    <lastmod>2017-02-03T04:35:21.000Z</lastmod>
     
   </url>
   
@@ -23,20 +44,6 @@
   </url>
   
   <url>
-    <loc>http://lycworks.me/blog/blog/2016/07/06/git-note/</loc>
-    
-    <lastmod>2017-02-02T21:56:37.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://lycworks.me/blog/blog/2016/05/16/sublime-note/</loc>
-    
-    <lastmod>2017-02-02T21:56:37.000Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://lycworks.me/blog/blog/2016/05/17/tags-json-stringify-concept/</loc>
     
     <lastmod>2017-02-02T21:56:37.000Z</lastmod>
@@ -51,14 +58,14 @@
   </url>
   
   <url>
-    <loc>http://lycworks.me/blog/blog/2016/05/18/JS-function/</loc>
+    <loc>http://lycworks.me/blog/blog/2016/05/20/JS-OOP/</loc>
     
     <lastmod>2017-02-02T21:56:37.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://lycworks.me/blog/blog/2016/05/18/JS-closure/</loc>
+    <loc>http://lycworks.me/blog/blog/2016/05/18/JS-function/</loc>
     
     <lastmod>2017-02-02T21:56:37.000Z</lastmod>
     
@@ -79,7 +86,7 @@
   </url>
   
   <url>
-    <loc>http://lycworks.me/blog/blog/2016/05/20/JS-OOP/</loc>
+    <loc>http://lycworks.me/blog/blog/2016/07/06/git-note/</loc>
     
     <lastmod>2017-02-02T21:56:37.000Z</lastmod>
     
@@ -93,84 +100,7 @@
   </url>
   
   <url>
-    <loc>http://lycworks.me/blog/blog/2016/07/09/html5-tricks/</loc>
-    
-    <lastmod>2017-02-02T21:56:37.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://lycworks.me/blog/blog/2016/05/16/html-note/</loc>
-    
-    <lastmod>2017-02-02T21:56:37.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://lycworks.me/blog/blog/2016/07/09/css-grid/</loc>
-    
-    <lastmod>2017-02-02T21:56:37.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://lycworks.me/blog/blog/2016/07/20/jade/</loc>
-    
-    <lastmod>2017-02-02T21:56:37.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://lycworks.me/blog/blog/2016/08/03/AI-note/</loc>
-    
-    <lastmod>2017-02-02T21:56:37.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://lycworks.me/blog/blog/2016/07/14/svg/</loc>
-    
-    <lastmod>2017-02-02T21:56:37.000Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://lycworks.me/blog/blog/2016/07/11/chart-progressbar/</loc>
-    
-    <lastmod>2017-02-02T21:56:37.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://lycworks.me/blog/blog/2016/08/08/json/</loc>
-    
-    <lastmod>2017-02-02T21:56:37.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://lycworks.me/blog/blog/2017/02/01/dp/</loc>
-    
-    <lastmod>2017-02-02T21:56:37.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://lycworks.me/blog/blog/2017/02/01/dc/</loc>
-    
-    <lastmod>2017-02-02T21:56:37.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://lycworks.me/blog/blog/2017/02/01/matrix/</loc>
-    
-    <lastmod>2017-02-02T21:56:37.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://lycworks.me/blog/blog/2016/05/16/JS-deep-note/</loc>
     
     <lastmod>2017-02-02T21:56:37.000Z</lastmod>
     
@@ -184,7 +114,91 @@
   </url>
   
   <url>
+    <loc>http://lycworks.me/blog/blog/2016/07/09/html5-tricks/</loc>
+    
+    <lastmod>2017-02-02T21:56:37.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://lycworks.me/blog/blog/2016/07/20/jade/</loc>
+    
+    <lastmod>2017-02-02T21:56:37.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://lycworks.me/blog/blog/2016/07/14/svg/</loc>
+    
+    <lastmod>2017-02-02T21:56:37.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://lycworks.me/blog/blog/2016/08/03/AI-note/</loc>
+    
+    <lastmod>2017-02-02T21:56:37.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://lycworks.me/blog/blog/2017/02/01/dp/</loc>
+    
+    <lastmod>2017-02-02T21:56:37.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://lycworks.me/blog/blog/2016/08/08/json/</loc>
+    
+    <lastmod>2017-02-02T21:56:37.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://lycworks.me/blog/blog/2017/02/01/dc/</loc>
+    
+    <lastmod>2017-02-02T21:56:37.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://lycworks.me/blog/blog/2016/05/16/JS-deep-note/</loc>
+    
+    <lastmod>2017-02-02T21:56:37.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://lycworks.me/blog/blog/2016/05/16/html-note/</loc>
+    
+    <lastmod>2017-02-02T21:56:37.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://lycworks.me/blog/blog/2016/05/16/sublime-note/</loc>
+    
+    <lastmod>2017-02-02T21:56:37.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://lycworks.me/blog/blog/2016/05/17/JS-Object/</loc>
+    
+    <lastmod>2017-02-02T21:56:37.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://lycworks.me/blog/blog/2016/05/18/JS-closure/</loc>
+    
+    <lastmod>2017-02-02T21:56:37.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://lycworks.me/blog/blog/2016/07/09/css-grid/</loc>
     
     <lastmod>2017-02-02T21:56:37.000Z</lastmod>
     

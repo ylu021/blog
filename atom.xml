@@ -5,7 +5,7 @@
   <link href="/blog/atom.xml" rel="self"/>
   
   <link href="http://lycworks.me/blog/"/>
-  <updated>2017-02-03T03:38:22.000Z</updated>
+  <updated>2017-02-04T18:54:23.000Z</updated>
   <id>http://lycworks.me/blog/</id>
   
   <author>
@@ -14,6 +14,60 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>trees</title>
+    <link href="http://lycworks.me/blog/2017/02/03/trees/"/>
+    <id>http://lycworks.me/blog/2017/02/03/trees/</id>
+    <published>2017-02-04T01:01:10.000Z</published>
+    <updated>2017-02-04T18:54:23.000Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1><p>算第K大个BST的node - 用reverse inorder，然后在第k个时停掉</p>
+<p>Check for valid BST - 设个min和max来确定每个tree是跟root在比</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">if not root:</div><div class="line">	return True #given case</div><div class="line">if root.val &gt;= max or root.val &lt;= min: #equal means false</div><div class="line">	return False</div><div class="line"></div><div class="line">return dfs(root.left, min, root.val) and dfs(root.right, root.val, max)</div></pre></td></tr></table></figure>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;问题&quot;&gt;&lt;a href=&quot;#问题&quot; class=&quot;headerlink&quot; title=&quot;问题&quot;&gt;&lt;/a&gt;问题&lt;/h1&gt;&lt;p&gt;算第K大个BST的node - 用reverse inorder，然后在第k个时停掉&lt;/p&gt;
+&lt;p&gt;Check for valid BST 
+    
+    </summary>
+    
+    
+      <category term="trees" scheme="http://lycworks.me/blog/tags/trees/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>bits</title>
+    <link href="http://lycworks.me/blog/2017/02/03/bits/"/>
+    <id>http://lycworks.me/blog/2017/02/03/bits/</id>
+    <published>2017-02-03T21:39:46.000Z</published>
+    <updated>2017-02-03T22:39:40.000Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1><blockquote>
+<p>power of 4 - 变态的一道题要求你知道num 只有一个1 表示powerof2 并且之前的bit数量必须是偶数</p>
+</blockquote>
+<h1 id="套路"><a href="#套路" class="headerlink" title="套路"></a>套路</h1><p>power of 2 - <code>x&amp;(x-1)==0</code> where x&gt;0</p>
+<p>查看多少个1</p>
+<p><code>n == (n&amp;-n)</code> - 利用2’s complement, negating的话可以查看原来的数究竟有没有1</p>
+<p>** 前提是n&gt;0 </p>
+<p>let’s do the 套路</p>
+<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">def poweroffour(n):</div><div class="line">	if n==1: return True</div><div class="line"></div><div class="line">	count = 0</div><div class="line">	if (n &amp; (n-1))==0: #if power of 2</div><div class="line">		while n&gt;1:</div><div class="line">			n&gt;&gt;=1 #divided by 2 or shift right</div><div class="line">			count+=1</div><div class="line">		if count%2==0:</div><div class="line">			return True</div><div class="line">	</div><div class="line">	return False</div></pre></td></tr></table></figure>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;问题&quot;&gt;&lt;a href=&quot;#问题&quot; class=&quot;headerlink&quot; title=&quot;问题&quot;&gt;&lt;/a&gt;问题&lt;/h1&gt;&lt;blockquote&gt;
+&lt;p&gt;power of 4 - 变态的一道题要求你知道num 只有一个1 表示powerof2 并且之前的bit数量必须
+    
+    </summary>
+    
+    
+      <category term="bits" scheme="http://lycworks.me/blog/tags/bits/"/>
+    
+  </entry>
   
   <entry>
     <title>stack什么的</title>
@@ -105,7 +159,7 @@
     <link href="http://lycworks.me/blog/2017/02/02/find-path/"/>
     <id>http://lycworks.me/blog/2017/02/02/find-path/</id>
     <published>2017-02-02T05:00:00.000Z</published>
-    <updated>2017-02-03T04:29:51.000Z</updated>
+    <updated>2017-02-03T04:35:21.000Z</updated>
     
     <content type="html"><![CDATA[<h2 id="the-套路"><a href="#the-套路" class="headerlink" title="the 套路"></a>the 套路</h2><h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><p>Unique path - 一个机器人从左上角走到右下角有多少种方法？  </p>
 <p>具体思路使用dp即可。首先把第0排和第0行全部设置为1因为只有一种方法走到。<br>通过左边和上边即可算出连接到中间点所需path数量  </p>
@@ -141,27 +195,29 @@
     <link href="http://lycworks.me/blog/2017/02/01/matrix/"/>
     <id>http://lycworks.me/blog/2017/02/01/matrix/</id>
     <published>2017-02-01T05:00:00.000Z</published>
-    <updated>2017-02-02T21:56:37.000Z</updated>
+    <updated>2017-02-03T19:23:10.000Z</updated>
     
     <content type="html"><![CDATA[<hr>
 <h1 id="matrix-w-o-dfs"><a href="#matrix-w-o-dfs" class="headerlink" title="matrix w/o dfs"></a>matrix w/o dfs</h1><h3 id="只是遍历即可"><a href="#只是遍历即可" class="headerlink" title="只是遍历即可"></a>只是遍历即可</h3><blockquote>
-<blockquote>
 <p><a href="http://pythontutor.com/visualize.html#code=def%20spiralMatrix%28matrix%29%3A%0A%20%20%20%20pos%20%3D%200%0A%20%20%20%20oldpos%20%3D%20pos%0A%20%20%20%20m%20%3D%20len%28matrix%29%0A%20%20%20%20n%20%3D%20len%28matrix%5B0%5D%29%0A%20%20%20%20res%20%3D%20%5Bfloat%28&#39;-inf&#39;%29%5D%0A%20%20%20%20level%20%3D%20min%28m,n%29%20%23how%20many%20spirals%0A%20%20%20%20while%20pos%3Clevel%3A%0A%20%20%20%20%20%20%20%20%23row%20traversal%0A%20%20%20%20%20%20%20%20for%20j%20in%20range%28pos,%20n-pos%29%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20if%20matrix%5Bpos%5D%5Bj%5D!%3Dres%5B-1%5D%3A%0A%20%20%20%20%20%20%20%20%09%20%20%20%20res.append%28matrix%5Bpos%5D%5Bj%5D%29%20%23rowstart%201,2,3%0A%20%20%20%20%20%20%20%20%23col%20traversal%0A%20%20%20%20%20%20%20%20for%20i%20in%20range%28pos,%20m-pos%29%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20if%20matrix%5Bi%5D%5Bn-pos-1%5D!%3Dres%5B-1%5D%3A%0A%20%20%20%20%20%20%20%20%09%20%20%20%20res.append%28matrix%5Bi%5D%5Bn-pos-1%5D%29%20%23colend%203,6,9%0A%20%20%20%20%20%20%20%20%23row%20traversal%0A%20%20%20%20%20%20%20%20for%20j%20in%20range%28n-pos-1,pos,-1%29%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20if%20matrix%5Bm-pos-1%5D%5Bj%5D!%3Dres%5B-1%5D%3A%0A%20%20%20%20%20%20%20%20%09%20%20%20%20res.append%28matrix%5Bm-pos-1%5D%5Bj%5D%29%20%23rowend%2087%0A%20%20%20%20%20%20%20%20%23col%20traversal%0A%20%20%20%20%20%20%20%20for%20i%20in%20range%28m-pos-1,pos,-1%29%3A%20%0A%20%20%20%20%20%20%20%20%20%20%20%20if%20matrix%5Bi%5D%5Bpos%5D!%3Dres%5B-1%5D%3A%0A%20%20%20%20%20%20%20%20%09%20%20%20%20res.append%28matrix%5Bi%5D%5Bpos%5D%29%20%23colstart%204%0A%20%20%20%20%20%20%20%20%23skip%20repeat%0A%20%20%20%20%20%20%20%20pos%2B%3D1%0A%20%20%20%20return%20res%5B1%3A%5D%0A%20%20%20%20%20%20%20%20%0AspiralMatrix%28%5B%5B1,2,3%5D,%5B4,0,-1%5D,%5B7,8,9%5D%5D%29%0A&amp;cumulative=false&amp;curInstr=0&amp;heapPrimitives=false&amp;mode=display&amp;origin=opt-frontend.js&amp;py=2&amp;rawInputLstJSON=%5B%5D&amp;testCasesJSON=%5B%22%5Cn%23%20assert%20%3Ctest%20condition%3E%22%5D&amp;textReferences=false" target="_blank" rel="external">spiral matrix</a>, <a href="https://goo.gl/YkWbv8" target="_blank" rel="external">generate matrix</a>  </p>
-</blockquote>
 </blockquote>
 <p>spiral matrix - 重点找到有多少level。level的算法就是画层，横竖哪个小就是哪个<br>generate matrix - level是n给了，重点是重复的横向row和col number需要各减一次  </p>
 <h3 id="用heap吧-python自带这么好用不用多可惜"><a href="#用heap吧-python自带这么好用不用多可惜" class="headerlink" title="用heap吧 python自带这么好用不用多可惜"></a>用heap吧 python自带这么好用不用多可惜</h3><blockquote>
-<blockquote>
 <p>kth smallest num in matrix -&gt; step1 flatten step2 heapify step3 duh  </p>
-</blockquote>
 </blockquote>
 <p><strong><em>flatten the array</em></strong><br><code>[flatten for sublist in myarray for flatten in sublist]</code> 绕口令。。  </p>
 <h3 id="setzeros"><a href="#setzeros" class="headerlink" title="setzeros"></a>setzeros</h3><blockquote>
-<blockquote>
 <p>bombman, set matrix zeroes  </p>
 </blockquote>
-</blockquote>
 <p>set matrix zeroes - 方法用第一排的横竖记录有没有0，然后第二次loop的时候改</p>
+<h3 id="matrix-transpose"><a href="#matrix-transpose" class="headerlink" title="matrix transpose"></a>matrix transpose</h3><blockquote>
+<p>matrix transpose basic</p>
+</blockquote>
+<h4 id="方法1"><a href="#方法1" class="headerlink" title="方法1"></a>方法1</h4><p><code>map(list, zip(*matrix))</code></p>
+<p>how it works? 首先zip<em>把每个col变成tuple<br>举例 <code>[1,2,3],[4,5,6]</code> -&gt; `zip(</em>arr)<code>-&gt;</code>(1,4), (2,5), (3,6)`, 然后使用map每个form成list  </p>
+<p>然而他的overhead导致O(m*n)  </p>
+<h4 id="方法2"><a href="#方法2" class="headerlink" title="方法2"></a>方法2</h4><p><code>每个col loop 都从i+1 这样最后一个不会被visit到</code>，省时  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">for i in range(m):</div><div class="line">	for j in range(i+1, n):</div><div class="line">		#swap</div></pre></td></tr></table></figure>
 ]]></content>
     
     <summary type="html">
@@ -509,60 +565,6 @@ function drawChart(str,id,val){
   </entry>
   
   <entry>
-    <title>HTML5特性</title>
-    <link href="http://lycworks.me/blog/2016/07/09/html5-tricks/"/>
-    <id>http://lycworks.me/blog/2016/07/09/html5-tricks/</id>
-    <published>2016-07-09T04:00:00.000Z</published>
-    <updated>2017-02-02T21:56:37.000Z</updated>
-    
-    <content type="html"><![CDATA[<hr>
-<h1 id="data-name"><a href="#data-name" class="headerlink" title="data-name"></a>data-name</h1><blockquote>
-<p>‘a great marriage of server side and client side’ -Stephen Calvert, Quora<br>resources: <a href="https://www.quora.com/What-is-the-best-way-to-pass-server-side-variables-to-client-side-JavaScript" target="_blank" rel="external">https://www.quora.com/What-is-the-best-way-to-pass-server-side-variables-to-client-side-JavaScript</a>  </p>
-</blockquote>
-<h3 id="HTML-lt-div-id-quot-mydiv-quot-data-myval-quot-10-quot-gt-lt-div-gt"><a href="#HTML-lt-div-id-quot-mydiv-quot-data-myval-quot-10-quot-gt-lt-div-gt" class="headerlink" title="HTML- &lt;div id=&quot;mydiv&quot;data-myval=&quot;10&quot;&gt;&lt;/div&gt;"></a>HTML- <code>&lt;div id=&quot;mydiv&quot;</code>data-myval<code>=&quot;10&quot;&gt;&lt;/div&gt;</code></h3><h3 id="JS"><a href="#JS" class="headerlink" title="JS"></a>JS</h3><ul>
-<li><code>var a = $(&#39;#mydiv&#39;).data(&#39;myval&#39;);</code> //getter  </li>
-<li><code>$(&#39;#mydiv&#39;).data(&#39;myval&#39;,20);</code> //setter  </li>
-</ul>
-<blockquote>
-<p>For older browser, use  <code>var myval = element.getAttribute(&#39;data-myval&#39;);</code>  </p>
-</blockquote>
-<h3 id="Or-merely-use-config-as-json-object"><a href="#Or-merely-use-config-as-json-object" class="headerlink" title="Or merely use config as json object"></a>Or merely use config as json object</h3><pre><code>config = {
-    userName: &apos;Scott Patten&apos;,
-    userLogin: &apos;spatten&apos;,
-    hasBoughtCurrentBook: true,
-    followers: [&apos;peterarmstrong&apos;, &apos;rolandtanglao&apos;]
-};
-</code></pre><h3 id="Advance-way"><a href="#Advance-way" class="headerlink" title="Advance way"></a>Advance way</h3><p>(<a href="https://teamtreehouse.com/community/how-do-i-make-a-variable-passed-to-a-jade-template-by-an-express-route-accessible-for-use-in-js-on-the-rendered-page" target="_blank" rel="external">https://teamtreehouse.com/community/how-do-i-make-a-variable-passed-to-a-jade-template-by-an-express-route-accessible-for-use-in-js-on-the-rendered-page</a>)  </p>
-<ul>
-<li><p>1)On the server side javascript file you put the object as a JSON string on the request  </p>
-<pre><code>res.render(&apos;index&apos;, { workflowData_server: JSON.stringify(workflowData) });
-</code></pre></li>
-<li><p>2) on the template view file,for example index.jade file you put script<br>var workflowData_client = !{workflowData_server} the ! is needed to unescape it to html  </p>
-</li>
-<li><p>3) now you can use the workflowData_client on your client javascript file,<br>for example a public/angular.js file  </p>
-<pre><code>angular.module(&apos;TestApp&apos;, []); angular.module(&apos;TestApp&apos;) .controller(&apos;MainController&apos;, ctrlFunc);
-
-function ctrlFunc() { this.workflowData = workflowData_client; }
-</code></pre></li>
-</ul>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;hr&gt;
-&lt;h1 id=&quot;data-name&quot;&gt;&lt;a href=&quot;#data-name&quot; class=&quot;headerlink&quot; title=&quot;data-name&quot;&gt;&lt;/a&gt;data-name&lt;/h1&gt;&lt;blockquote&gt;
-&lt;p&gt;‘a great marriage of ser
-    
-    </summary>
-    
-      <category term="HTML" scheme="http://lycworks.me/blog/categories/HTML/"/>
-    
-    
-      <category term="data_passing, view_render" scheme="http://lycworks.me/blog/tags/data-passing-view-render/"/>
-    
-  </entry>
-  
-  <entry>
     <title>CSS grid方法</title>
     <link href="http://lycworks.me/blog/2016/07/09/css-grid/"/>
     <id>http://lycworks.me/blog/2016/07/09/css-grid/</id>
@@ -631,6 +633,60 @@ ul.posts li {
   </entry>
   
   <entry>
+    <title>HTML5特性</title>
+    <link href="http://lycworks.me/blog/2016/07/09/html5-tricks/"/>
+    <id>http://lycworks.me/blog/2016/07/09/html5-tricks/</id>
+    <published>2016-07-09T04:00:00.000Z</published>
+    <updated>2017-02-02T21:56:37.000Z</updated>
+    
+    <content type="html"><![CDATA[<hr>
+<h1 id="data-name"><a href="#data-name" class="headerlink" title="data-name"></a>data-name</h1><blockquote>
+<p>‘a great marriage of server side and client side’ -Stephen Calvert, Quora<br>resources: <a href="https://www.quora.com/What-is-the-best-way-to-pass-server-side-variables-to-client-side-JavaScript" target="_blank" rel="external">https://www.quora.com/What-is-the-best-way-to-pass-server-side-variables-to-client-side-JavaScript</a>  </p>
+</blockquote>
+<h3 id="HTML-lt-div-id-quot-mydiv-quot-data-myval-quot-10-quot-gt-lt-div-gt"><a href="#HTML-lt-div-id-quot-mydiv-quot-data-myval-quot-10-quot-gt-lt-div-gt" class="headerlink" title="HTML- &lt;div id=&quot;mydiv&quot;data-myval=&quot;10&quot;&gt;&lt;/div&gt;"></a>HTML- <code>&lt;div id=&quot;mydiv&quot;</code>data-myval<code>=&quot;10&quot;&gt;&lt;/div&gt;</code></h3><h3 id="JS"><a href="#JS" class="headerlink" title="JS"></a>JS</h3><ul>
+<li><code>var a = $(&#39;#mydiv&#39;).data(&#39;myval&#39;);</code> //getter  </li>
+<li><code>$(&#39;#mydiv&#39;).data(&#39;myval&#39;,20);</code> //setter  </li>
+</ul>
+<blockquote>
+<p>For older browser, use  <code>var myval = element.getAttribute(&#39;data-myval&#39;);</code>  </p>
+</blockquote>
+<h3 id="Or-merely-use-config-as-json-object"><a href="#Or-merely-use-config-as-json-object" class="headerlink" title="Or merely use config as json object"></a>Or merely use config as json object</h3><pre><code>config = {
+    userName: &apos;Scott Patten&apos;,
+    userLogin: &apos;spatten&apos;,
+    hasBoughtCurrentBook: true,
+    followers: [&apos;peterarmstrong&apos;, &apos;rolandtanglao&apos;]
+};
+</code></pre><h3 id="Advance-way"><a href="#Advance-way" class="headerlink" title="Advance way"></a>Advance way</h3><p>(<a href="https://teamtreehouse.com/community/how-do-i-make-a-variable-passed-to-a-jade-template-by-an-express-route-accessible-for-use-in-js-on-the-rendered-page" target="_blank" rel="external">https://teamtreehouse.com/community/how-do-i-make-a-variable-passed-to-a-jade-template-by-an-express-route-accessible-for-use-in-js-on-the-rendered-page</a>)  </p>
+<ul>
+<li><p>1)On the server side javascript file you put the object as a JSON string on the request  </p>
+<pre><code>res.render(&apos;index&apos;, { workflowData_server: JSON.stringify(workflowData) });
+</code></pre></li>
+<li><p>2) on the template view file,for example index.jade file you put script<br>var workflowData_client = !{workflowData_server} the ! is needed to unescape it to html  </p>
+</li>
+<li><p>3) now you can use the workflowData_client on your client javascript file,<br>for example a public/angular.js file  </p>
+<pre><code>angular.module(&apos;TestApp&apos;, []); angular.module(&apos;TestApp&apos;) .controller(&apos;MainController&apos;, ctrlFunc);
+
+function ctrlFunc() { this.workflowData = workflowData_client; }
+</code></pre></li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;hr&gt;
+&lt;h1 id=&quot;data-name&quot;&gt;&lt;a href=&quot;#data-name&quot; class=&quot;headerlink&quot; title=&quot;data-name&quot;&gt;&lt;/a&gt;data-name&lt;/h1&gt;&lt;blockquote&gt;
+&lt;p&gt;‘a great marriage of ser
+    
+    </summary>
+    
+      <category term="HTML" scheme="http://lycworks.me/blog/categories/HTML/"/>
+    
+    
+      <category term="data_passing, view_render" scheme="http://lycworks.me/blog/tags/data-passing-view-render/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Git笔记</title>
     <link href="http://lycworks.me/blog/2016/07/06/git-note/"/>
     <id>http://lycworks.me/blog/2016/07/06/git-note/</id>
@@ -690,83 +746,6 @@ cd .. &amp;&amp; git add myfolder &amp;&amp; commit -m &quot;updated myfolder&qu
     <summary type="html">
     
       &lt;h1 id=&quot;Horizontal-Centering-Span-that-are-absolute&quot;&gt;&lt;a href=&quot;#Horizontal-Centering-Span-that-are-absolute&quot; class=&quot;headerlink&quot; title=&quot;Horizo
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>JS OOP</title>
-    <link href="http://lycworks.me/blog/2016/05/20/JS-OOP/"/>
-    <id>http://lycworks.me/blog/2016/05/20/JS-OOP/</id>
-    <published>2016-05-20T04:00:00.000Z</published>
-    <updated>2017-02-02T21:56:37.000Z</updated>
-    
-    <content type="html"><![CDATA[<hr>
-<h1 id="OOP"><a href="#OOP" class="headerlink" title="OOP"></a>OOP</h1><p>key: 继承，封装，多态，抽象  </p>
-<h2 id="基于原型的继承"><a href="#基于原型的继承" class="headerlink" title="基于原型的继承"></a>基于原型的继承</h2><p><img src="http://img.mukewang.com/56f9f2c9000151f812800720.jpg" alt="&quot;protochain&quot;"></p>
-<p>Prototype - 预设的属性，并可以chain更多的属性<code>Foo.prototype.x = 1</code><br>原型 - 对象上的原型，构造器的prototype属性<code>__proto__</code>指向prototype  </p>
-<blockquote>
-<p><em>proto</em>是实例对象的一个引用<br>而prototype是一个构造器的属性对象<br>每个属性对象里有一个<em>proto</em>引用  </p>
-</blockquote>
-<pre><code>function Person(name,age){
-    this.name = name
-    this.age = age
-}
-
-Person.prototype.hi = function(){
-    console.log(&quot;Hi my name is &quot;+this.name+&quot;,I&apos;m &quot;+this.age+&quot; years old now&quot;)
-}
-
-Person.prototype.legs = 2
-Person.prototype.arms = 2
-Person.prototype.walk = function(){
-    console.log(this.name+&quot;is walking..&quot;)
-}
-
-function Student(name,age,className){
-    Person.call(this,name,age)//create a person this
-    this.className = className
-}
-
-//拿到person的原型来建学生的原型
-Student.prototype = Object.create(Person.prototype)//创建一个空对象并且原型指向参数。
-//如果直接赋值student.prototype = person.prototype
-//student添加自己的方法时person也会添加同样的方法..
-Student.prototype.constructor = Student//如果不设置，constructor指向person
-
-//覆盖person.hi()，因为prototype从下往上查找，找到就不找了科科
-Student.prototype.hi = function(){
-    console.log(&quot;Hi my name is &quot;+this.name+&quot;,I&apos;m &quot;+this.age+&quot; years old now, and from &quot;+this.className+&quot;.&quot;)
-}
-
-Student.prototype.learn = function(subject){
-    console.log(this.name+&quot; is learning &quot;+subject+&quot; at &quot;+this.className)
-}
-
-var bosn = new Student(&apos;Bosn&apos;,27,&apos;Class 3, Grade 2&apos;)
-bosn.hi()
-console.log(bosn.legs)
-bosn.walk()
-bosn.learn(&apos;math&apos;)
-</code></pre><p>查看原型<br>foo.<code>__proto__</code> 或者Object.getPrototypeOf(foo) 是不是 === Object.prototype  </p>
-<blockquote>
-<p>bind返回的变量没有prototype<br>Object.create(null)没有prototype，<code>__proto__</code>  </p>
-</blockquote>
-<p>修改prototype<br>动态修改prototype属性<code>Student.prototype.x</code>会影响已创建和新创建的实例的。<br>修改整个prototype赋值给新的对象对已经创建的实例没有影响，会影响<strong>新</strong>创建的实例。<br><code>Student.prototype = {y:2}, 但是bosn还是有以前继承的x属性，但是新的nanny就不会有x了</code>  </p>
-<h1 id="new构造器vobject-create建造的prototype"><a href="#new构造器vobject-create建造的prototype" class="headerlink" title="new构造器vobject.create建造的prototype"></a>new构造器vobject.create建造的prototype</h1><pre><code>Student.prototype = new Person()的问题 - 在有函数的情况下，会很模糊科科  
-Student.prototype = new Person(&apos;mary&apos;,&apos;the only student keke&apos;)  
-最好的办法就是Object.create创建**空对象**并指向参数Person.prototype  
-图片右边是ES5以下兼容  
-</code></pre><p><img src="http://img.mukewang.com/573d2915000173be12800720.jpg" alt="&quot;img&quot;"></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;hr&gt;
-&lt;h1 id=&quot;OOP&quot;&gt;&lt;a href=&quot;#OOP&quot; class=&quot;headerlink&quot; title=&quot;OOP&quot;&gt;&lt;/a&gt;OOP&lt;/h1&gt;&lt;p&gt;key: 继承，封装，多态，抽象  &lt;/p&gt;
-&lt;h2 id=&quot;基于原型的继承&quot;&gt;&lt;a href=&quot;#基于原型的继承&quot; cl
     
     </summary>
     
@@ -850,153 +829,6 @@ alert(x); //function x(){};
       &lt;hr&gt;
 &lt;h1 id=&quot;抽象概念&quot;&gt;&lt;a href=&quot;#抽象概念&quot; class=&quot;headerlink&quot; title=&quot;抽象概念&quot;&gt;&lt;/a&gt;抽象概念&lt;/h1&gt;&lt;p&gt;而javascript的函数进入执行上下文,里面的局部变量是保存在堆中的一个对象中(VO)  &lt;/p&gt;
 &lt;h2 i
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>JS函数</title>
-    <link href="http://lycworks.me/blog/2016/05/18/JS-function/"/>
-    <id>http://lycworks.me/blog/2016/05/18/JS-function/</id>
-    <published>2016-05-18T04:00:00.000Z</published>
-    <updated>2017-02-02T21:56:37.000Z</updated>
-    
-    <content type="html"><![CDATA[<hr>
-<h1 id="函数-对象"><a href="#函数-对象" class="headerlink" title="函数(对象)"></a>函数(对象)</h1><p>return语句或this作为返回值</p>
-<h2 id="不同创建方法"><a href="#不同创建方法" class="headerlink" title="不同创建方法"></a>不同创建方法</h2><ul>
-<li><p>函数声明 <code>function foo(){}</code><br>声明会被前置 - 函数声明位置之前可以调用(类似于c在最前面建了constructor)</p>
-<pre><code>var sum = add(a,b)
-function add (a,b){
-    return a+b        
-} 
-</code></pre></li>
-</ul>
-<blockquote>
-<p>因此声明也不允许IEF立即调用 <code>function add(a,b){return a+b}()-&gt;NaN</code>  </p>
-</blockquote>
-<ul>
-<li><p>函数表达式  </p>
-<pre><code>var add = function(){}//function variable
-(function(){})()//IEF立即执行
-return function(){}//first-class function-&gt;闭包closure
-var add = function foo(){}//NFE命名式 
-</code></pre></li>
-</ul>
-<blockquote>
-<p>函数表达式不可以通过函数的名字去调用 <code>foo()//报错，add()//正常</code></p>
-</blockquote>
-<ul>
-<li><p><strong>不懂</strong> NFE命名式(不常见)  </p>
-<pre><code>var func = function nfe(){}//出错
-var func = function nfe(){ nfe() }//递归callback调用
-</code></pre></li>
-<li><p>Function构造器(不常见)  </p>
-<pre><code>var func = new Function(&apos;a&apos;,&apos;b&apos;,&apos;console.log(a+b)&apos;)
-</code></pre><blockquote>
-<p>local不可访问（因为被提前声明， localVal 显示为underfined），global变量可以访问  </p>
-</blockquote>
-</li>
-</ul>
-<h2 id="this"><a href="#this" class="headerlink" title="this"></a>this</h2><blockquote>
-<p>this总是指向调用该方法的对象  </p>
-</blockquote>
-<ul>
-<li>全局 this.document === document  </li>
-<li>函数全局 function foo(){return this//window}  </li>
-<li><p>作为对象方法的函数  </p>
-<pre><code>var o = {
-    prop: 37,
-    f: function(){return this.prop}
-}
-console.log(o.f())
-
-var o2 = {prop:37}
-function independent(){ return this.prop }
-o2.f = independent
-console.log(o2.f())
-</code></pre></li>
-<li><p>对象原型链上  </p>
-<pre><code>var yuanxing = {
-    f: function(){
-        return this.a+this.b
-    }
-}        
-var o = Object.create(yuanxing)
-console.log(o.f())//undefined
-o.a = 1
-o.b = 2
-console.log(o.f())//3
-</code></pre></li>
-<li><p>get/set方法与this  </p>
-<pre><code>function product(){ return this.a*this.b }
-var num = { 
-    a:1, 
-    b:-1,
-    get sum(){ return this.a + this.b }
-}
-
-Object.defineProperty(num,&apos;product&apos;,{
-    get: product,
-})//添加新的get
-console.log(num.product)//-1
-console.log(num.sum)//0
-</code></pre></li>
-<li><p>new构造器与this  </p>
-<pre><code>function foo(){ this.a = 37 }
-var obj = new foo()
-console.log(obj.a)//37 
-</code></pre><blockquote>
-<p>当使用new构造器创建函数时没有return，将this作为返回值  </p>
-</blockquote>
-</li>
-<li><p>call/apply方法与this - 改变函数体内部 this 的指向<br>whitedog = {food:”bone”}<br>blackcat.say.call(whitedog)来让this指向whitedog并调用blackcat的say方法  </p>
-<pre><code>function cat(){}
-cat.prototype = {
-    food:&apos;fish&apos;,
-    say: function(){
-        console.log(&quot;i love &quot;+this.food)
-    }
-}
-
-var blackcat = new cat()
-blackcat.say()
-var whitedog = {food:&apos;bone&apos;}
-blackcat.say.call(whitedog)
-</code></pre><blockquote>
-<p>什么时候要用 - 比如说想要调用Object.prototype.toString，但是想指定其中的某一个this时，就可以用Object.prototype.toString.call（）这样的方法去调用没办法直接调用的方法。  </p>
-</blockquote>
-</li>
-<li><p>bind绑定  </p>
-<pre><code>var g = function f(){return this.a}.bind({a:&quot;test&quot;})
-console.log(g())//test
-</code></pre></li>
-</ul>
-<h2 id="arguments实际传入的参数"><a href="#arguments实际传入的参数" class="headerlink" title="arguments实际传入的参数"></a>arguments实际传入的参数</h2><p><img src="http://img.mukewang.com/5608d60d000103e812800720.jpg" alt="&quot;chart&quot;">  </p>
-<p>bind &amp; currying - 可以重复使用类似的函数  </p>
-<pre><code>function abwhatever(a,b,c){ console.log(a,b,c) }
-var Default = abwhatever.bind(undefined/null,&apos;a&apos;,&apos;b&apos;) //没有this传入, a和b被固定住
-Default(&apos;z&apos;)//a,b,z
-Default(&apos;yo&apos;)//a,b,yo
-</code></pre><p>bind &amp; new - bind失效  </p>
-<pre><code>function foo(){ this.b = 100; return this.a}
-var func = foo.bind({a:1})
-func()//1
-new func()//this指向原来的，a没有值，用this.b
-</code></pre><h2 id="作用域scope-link"><a href="#作用域scope-link" class="headerlink" title="作用域scope (link)"></a>作用域scope (link)</h2><h2 id="不同调用方式"><a href="#不同调用方式" class="headerlink" title="不同调用方式"></a>不同调用方式</h2><ul>
-<li>直接调用 foo()  </li>
-<li>对象方法 foo.method()  </li>
-<li>构造器   new foo()  </li>
-<li>call/apply/bind func.call(obj)  </li>
-</ul>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;hr&gt;
-&lt;h1 id=&quot;函数-对象&quot;&gt;&lt;a href=&quot;#函数-对象&quot; class=&quot;headerlink&quot; title=&quot;函数(对象)&quot;&gt;&lt;/a&gt;函数(对象)&lt;/h1&gt;&lt;p&gt;return语句或this作为返回值&lt;/p&gt;
-&lt;h2 id=&quot;不同创建方法&quot;&gt;&lt;a href=&quot;#不同
     
     </summary>
     
