@@ -1,0 +1,35 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><title> chrome-plugins · code and eat and drink and life</title><meta name="description" content="chrome-plugins - YL"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="icon" href="/blog/favicon.png"><link rel="stylesheet" href="/blog/css/apollo.css"><link rel="search" type="application/opensearchdescription+xml" href="http://lycworks.me/blog/atom.xml" title="code and eat and drink and life"></head><body><div class="wrap"><header><a href="/blog/" class="logo-link"><img src="/blog/favicon.png" alt="logo"></a><ul class="nav nav-list"><li class="nav-list-item"><a href="/blog/" target="_self" class="nav-list-link">BLOG</a></li><li class="nav-list-item"><a href="/blog/archives/" target="_self" class="nav-list-link">ARCHIVE</a></li><li class="nav-list-item"><a href="http://weibo.com/sunchongsheng" target="_blank" class="nav-list-link">WEIBO</a></li><li class="nav-list-item"><a href="https://github.com/pinggod" target="_blank" class="nav-list-link">GITHUB</a></li><li class="nav-list-item"><a href="/blog/atom.xml" target="_self" class="nav-list-link">RSS</a></li></ul></header><main class="container"><div class="post"><article class="post-block"><h1 class="post-title">chrome-plugins</h1><div class="post-info">Feb 5, 2017</div><div class="post-content"><h1 id="Steps"><a href="#Steps" class="headerlink" title="Steps"></a>Steps</h1><h2 id="1-manifest-json-declares-the-dependencies"><a href="#1-manifest-json-declares-the-dependencies" class="headerlink" title="1 - manifest.json declares the dependencies"></a>1 - <code>manifest.json</code> declares the dependencies</h2><p>within the <code>manifest.json</code> file, we do two things</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">browser_action - what is the purpose</div><div class="line"></div><div class="line">permissions - host permissions to access external APIs</div></pre></td></tr></table></figure>
+<h2 id="2-understand-what-is-the-extension"><a href="#2-understand-what-is-the-extension" class="headerlink" title="2 - understand what is the extension"></a>2 - understand what is the extension</h2><ul>
+<li>a chrome extension ends in <code>.crx</code>, which is great for distribution   </li>
+<li>essentially web pages, thus can use all the APIs that the browser provides to web pages  </li>
+<li>can nteract with other webpages or servers using content scripts or cross-origin XMLhttpRequests  </li>
+<li>can interact with browser features like bookmarks and tabs  </li>
+</ul>
+<h2 id="3-testing"><a href="#3-testing" class="headerlink" title="3 - testing"></a>3 - testing</h2><p>go to <code>chrome://extensions</code> and check developer mode, then load unpacked-extension</p>
+<h2 id="4-development-process"><a href="#4-development-process" class="headerlink" title="4 - development process"></a>4 - development process</h2><p>using tooltip by add <code>default_title</code> attr in browser-action. When making changes, be sure to use <code>cmd+R</code> to reload the updates</p>
+<h2 id="5-UIs"><a href="#5-UIs" class="headerlink" title="5 - UIs"></a>5 - UIs</h2><p>added through browser_actions or page_actions, thus each extension can only use either.  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">browser_actions - extension relevant to global pages  eg mail</div><div class="line">page_action - extension activate/deactivate depend on page eg get-color</div></pre></td></tr></table></figure>
+<h2 id="6-The-architecture"><a href="#6-The-architecture" class="headerlink" title="6 - The architecture"></a>6 - The architecture</h2><h3 id="the-background-page"><a href="#the-background-page" class="headerlink" title="the background page"></a>the background page</h3><p>usually named <code>background.html</code>, two types, one is persistent, one is event.  </p>
+<h3 id="UI-pages"><a href="#UI-pages" class="headerlink" title="UI pages"></a>UI pages</h3><p>displays for settings and etc stuff. Extras </p>
+<blockquote>
+<p>the important thing is, within the extension, html can invoke one another’s method directly</p>
+</blockquote>
+<h3 id="Content-scripts"><a href="#Content-scripts" class="headerlink" title="Content scripts"></a>Content scripts</h3><p>use this to interact with webpages. They are js that executes in context of a page that’s loaded (think document.ready). This script can then read page details and make changes to the page.  </p>
+<blockquote>
+<p>however it cannot manipulate background page’s DOM which is the parent, but it can send or listen to background.html’s commands eg change appearance; send RSS to parent.  </p>
+</blockquote>
+<h3 id="Chrome-APIs"><a href="#Chrome-APIs" class="headerlink" title="Chrome APIs"></a>Chrome APIs</h3><p><code>window.open()</code> which opens an url, in which window, <code>tabs.create</code>  </p>
+<ul>
+<li>these methods are usually asynchronous, however some are synchronous eg <code>return chhrome.runtime.getURL()</code>  </li>
+</ul>
+<h3 id="Saving-data-and-incognito"><a href="#Saving-data-and-incognito" class="headerlink" title="Saving data and incognito"></a>Saving data and incognito</h3><p><code>storage</code> API </p>
+</div></article></div></main><footer><div class="paginator"><a href="/blog/2017/02/03/trees/" class="next">NEXT</a></div><div id="disqus_thread"></div><script>var disqus_shortname = 'ycluu';
+var disqus_identifier = '2017/02/05/chrome-plugins/';
+var disqus_title = 'chrome-plugins';
+var disqus_url = 'http://lycworks.me/blog/2017/02/05/chrome-plugins/';
+(function() {
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();</script><script id="dsq-count-scr" src="//ycluu.disqus.com/count.js" async></script><div class="copyright"><p>© 2015 - 2017 <a href="http://lycworks.me/blog">YL</a>, powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/pinggod/hexo-theme-apollo" target="_blank">hexo-theme-apollo</a>.</p></div></footer></div><script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" integrity="sha384-crwIf/BuaWM9rM65iM+dWFldgQ1Un8jWZMuh3puxb8TOY9+linwLoI7ZHZT+aekW" crossorigin="anonymous"></script><script>(function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;e=o.createElement(i);r=o.getElementsByTagName(i)[0];e.src='//www.google-analytics.com/analytics.js';r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));ga('create',"UA-65933410-1",'auto');ga('send','pageview');</script></body></html>
