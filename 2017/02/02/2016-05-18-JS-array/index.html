@@ -1,0 +1,58 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><title> JS数组 · code and eat and drink and life</title><meta name="description" content="JS数组 - YL"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="icon" href="/blog/favicon.png"><link rel="stylesheet" href="/blog/css/apollo.css"><link rel="search" type="application/opensearchdescription+xml" href="http://lycworks.me/blog/atom.xml" title="code and eat and drink and life"></head><body><div class="wrap"><header><a href="/blog/" class="logo-link"><img src="/blog/favicon.png" alt="logo"></a><ul class="nav nav-list"><li class="nav-list-item"><a href="/blog/" target="_self" class="nav-list-link">BLOG</a></li><li class="nav-list-item"><a href="/blog/archives/" target="_self" class="nav-list-link">ARCHIVE</a></li><li class="nav-list-item"><a href="http://weibo.com/sunchongsheng" target="_blank" class="nav-list-link">WEIBO</a></li><li class="nav-list-item"><a href="https://github.com/pinggod" target="_blank" class="nav-list-link">GITHUB</a></li><li class="nav-list-item"><a href="/blog/atom.xml" target="_self" class="nav-list-link">RSS</a></li></ul></header><main class="container"><div class="post"><article class="post-block"><h1 class="post-title">JS数组</h1><div class="post-info">Feb 2, 2017</div><div class="post-content"><hr>
+<h1 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h1><h3 id="创建"><a href="#创建" class="headerlink" title="创建"></a>创建</h3><ol>
+<li><code>[]</code></li>
+<li><code>[1,,2]</code>//1,undefined,2</li>
+<li><code>new Array()</code><ul>
+<li>传入一个参数是length</li>
+<li>传入N个参数就是元素</li>
+<li>new可以省略  </li>
+</ul>
+</li>
+</ol>
+<blockquote>
+<p>delete 删除数组指定的元素，实际上将它用undefined代替，length不变</p>
+</blockquote>
+<h3 id="添加-删除"><a href="#添加-删除" class="headerlink" title="添加/删除"></a>添加/删除</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">.push() - add back</div><div class="line">.unshift() - add front</div><div class="line">.pop() - delete back</div><div class="line">.shift() - delete front</div></pre></td></tr></table></figure>
+<h3 id="种类"><a href="#种类" class="headerlink" title="种类"></a>种类</h3><p>二维<br>稀疏 - 不连续<code>[,,]</code><br>  判断用in<br>  arr1 = [undefined]<br>  0 in arr1 //true 因为下标0的key值是undefined<br>  arr2 = new Array(1)<br>0 in arr2 //false 因为下标0的key值不存在</p>
+<h3 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h3><h4 id="原数组不会被修改"><a href="#原数组不会被修改" class="headerlink" title="原数组不会被修改"></a>原数组不会被修改</h4><p>arr.join(); //将数组转换为字符串，不写参数会以逗号分开，有参数就以参数作为分隔符<br><code>new Array(n+1).join(str)</code>的原理是,创建一个n+1大小的数组，若用join()方法会产生含n个“,”的字符串，而str正好代替这些“,”以造成重复n次str参数的字符串<br><code>newArray(2+1).join(&quot;a&quot;)//&quot;aa&quot;</code><br>arr.concat() //合并<br>  如果参数是一个一维数组（没有嵌套[]），则合并的时候会拉平数组，如果是嵌套数组，合并后只会拉平最外一层。  </p>
+<p>arr.slice(a,b) // 左闭右开 a表示开始截取的位置以0开始计算，b为结束位置可以是负数(省略b的话则表示一直到数组末尾)</p>
+<h4 id="原数组会被修改"><a href="#原数组会被修改" class="headerlink" title="原数组会被修改"></a>原数组会被修改</h4><p>arr.reverse() //倒序<br>arr.sort() //排序，默认已字母为优先级<br>  如果需要以数字升序排序，可以如下所示：<br>  arr.sort(<code>function(a,b){ return a-b}</code>)//通过比较两个数据的大小来进行排序<br>arr.splice// 拼接  </p>
+<pre><code>* 返回被删除的元素  
+* arr.splice(index, leng, ...)  
+* 第一个变量为开始坐标，第二个变量为长度，意思是从坐标开始剪掉长度len个数组，而后面的变量为拼接的对象，该操作改变原数组  
+</code></pre><h3 id="ES5-方法"><a href="#ES5-方法" class="headerlink" title="ES5++ 方法"></a>ES5++ 方法</h3><h4 id="循环"><a href="#循环" class="headerlink" title="循环"></a>循环</h4><pre><code>arr.forEach(function(x, index, a){
+    x - 元素值
+    index - index
+    a - 指向数组本身
+})
+</code></pre><p>映射 - 修改后的值可以被返回成新的arr<br>        arr.map(function(x){<br>            return x + 10<br>        })  </p>
+<p>过滤 - 修改后的值可以被返回成新的arr<br>        arr.filter(function(x,index){<br>            return index % 3 ===0<br>        })  </p>
+<h4 id="判断元素"><a href="#判断元素" class="headerlink" title="判断元素"></a>判断元素</h4><p><code>arr.every(function(x){ return x&lt;3 })//false</code> 组内是否每个元素都满足条件<br><code>arr.some(function(x){ return x===3 })//true</code> 组内是否含有至少一个元素满足条件  </p>
+<h4 id="判断数组本身-不是原型链继承"><a href="#判断数组本身-不是原型链继承" class="headerlink" title="判断数组本身(不是原型链继承)"></a>判断数组本身(不是原型链继承)</h4><pre><code>Array.isArray(数组)  
+[] instanceof Array  
+({}).toString.apply(..) === &apos;[object Array]&apos;
+[].constructor === Array //继承数组会失效
+</code></pre><h4 id="运算"><a href="#运算" class="headerlink" title="运算"></a>运算</h4><p>arr.reduce(function(x,y){}, <code>0</code>) - x+0, x+1每两个元素进行逻辑运算, <code>0</code>是最初比较的值</p>
+<blockquote>
+<p>(例如arr=[1,2,3,4,5]和最初比较值0 进行乘法运算，最终是0)</p>
+</blockquote>
+<pre><code>arr.reduce(function(x,y){
+    return x&gt;y? x : y
+})
+</code></pre><p>arr.reduceRight(..) - 从右到左</p>
+<h4 id="检索"><a href="#检索" class="headerlink" title="检索"></a>检索</h4><p>arr.indexOf(元素，[查找点(可以用负数)]) - 从左向右<br>arr.lastIndexOf - 从右向左</p>
+<hr>
+<p>#数组 V 一般对象<br>(不建议)可以继承属性/方法 - Array.prototype, Object.prototype<br>数组是对象，对象不一定是数组 (单身狗就没对象哼╭(╯^╰)╮)<br>数组可以被添加/删除 - push/pop<br>但是<strong>BUT</strong><br>只有数组有length<br>从0-100访问比对象的属性访问快<br>只有数组继承Array.prototype的方法//join etc..  </p>
+<h1 id="字符串是类数组"><a href="#字符串是类数组" class="headerlink" title="字符串是类数组"></a>字符串是类数组</h1><p>str.length<br>str.charAt(index) 或str[0]  </p>
+<blockquote>
+<p>可以通过Array.prototype.方法.call(str,方法本身的参数)</p>
+</blockquote>
+</div></article></div></main><footer><div class="paginator"><a href="/blog/2017/02/02/2016-05-17-tags-json-stringify-concept/" class="prev">PREV</a><a href="/blog/2017/02/02/2016-05-18-JS-closure/" class="next">NEXT</a></div><div id="disqus_thread"></div><script>var disqus_shortname = 'ycluu';
+var disqus_identifier = '2017/02/02/2016-05-18-JS-array/';
+var disqus_title = 'JS数组';
+var disqus_url = 'http://lycworks.me/blog/2017/02/02/2016-05-18-JS-array/';
+(function() {
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();</script><script id="dsq-count-scr" src="//ycluu.disqus.com/count.js" async></script><div class="copyright"><p>© 2015 - 2017 <a href="http://lycworks.me/blog">YL</a>, powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/pinggod/hexo-theme-apollo" target="_blank">hexo-theme-apollo</a>.</p></div></footer></div><script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" integrity="sha384-crwIf/BuaWM9rM65iM+dWFldgQ1Un8jWZMuh3puxb8TOY9+linwLoI7ZHZT+aekW" crossorigin="anonymous"></script><script>(function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;e=o.createElement(i);r=o.getElementsByTagName(i)[0];e.src='//www.google-analytics.com/analytics.js';r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));ga('create',"UA-65933410-1",'auto');ga('send','pageview');</script></body></html>

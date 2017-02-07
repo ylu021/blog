@@ -5,7 +5,7 @@
   <link href="/blog/atom.xml" rel="self"/>
   
   <link href="http://lycworks.me/blog/"/>
-  <updated>2017-02-06T04:13:50.000Z</updated>
+  <updated>2017-02-06T23:51:22.000Z</updated>
   <id>http://lycworks.me/blog/</id>
   
   <author>
@@ -16,9 +16,182 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>动态规划</title>
+    <link href="http://lycworks.me/blog/2017/02/06/2017-02-01-dp/"/>
+    <id>http://lycworks.me/blog/2017/02/06/2017-02-01-dp/</id>
+    <published>2017-02-06T23:51:22.000Z</published>
+    <updated>2017-02-06T23:51:22.000Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="DP类型"><a href="#DP类型" class="headerlink" title="DP类型"></a>DP类型</h1><ul>
+<li><p>状态转移 <code>dp[x+y]+=dp[x]</code><br>转<br>当你遇到第n+1个数x_n+1的时候，前n+1个数中最大值是什么呢，就是拿这个新x去和之前那个max比，然后留下较大的一个，对吧，写下来就是<br><code>Max_n+1 = (x_n+1 &gt; Max_n) ? x_n+1 : Max_n</code> #if choose add to current max else not choose  </p>
+<h1 id="例题"><a href="#例题" class="headerlink" title="例题 ."></a>例题 .</h1><h3 id="combinationsum"><a href="#combinationsum" class="headerlink" title="combinationsum ."></a>combinationsum .</h3><h3 id="max-sum-subarray-Kadane’s"><a href="#max-sum-subarray-Kadane’s" class="headerlink" title="max sum subarray Kadane’s ."></a>max sum subarray Kadane’s .</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">def maxSum(arr):</div><div class="line">  prevSum = nums[0]</div><div class="line">  maxmax = nums[0]</div><div class="line">  del arr[0]</div><div class="line">  for num in nums:</div><div class="line">    prevSum = max(prevSum+num, num) #compare cursum and curnum</div><div class="line">    maxSum = max(maxSum, prevSum)</div><div class="line">  return maxSum</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="follow-up-from-max-subarray"><a href="#follow-up-from-max-subarray" class="headerlink" title="follow up from max subarray ."></a>follow up from max subarray .</h4><ul>
+<li><p>max product subarray - when it is negative, swap max and min continuous product . </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">def maxProduct(arr):</div><div class="line">  prevSum = nums[0]</div><div class="line">  maxProduct = nums[0]</div><div class="line">  minProduct = nums[0]</div><div class="line">  maxmax = nums[0]</div><div class="line">  del arr[0]</div><div class="line">  for num in nums:</div><div class="line">    if num&lt;0:</div><div class="line">      #swap because -*- is happening</div><div class="line">      maxProduct, minProduct = minProduct, maxProduct</div><div class="line">    maxProduct = max(num, maxProduct*num)</div><div class="line">    minProduct = min(num, minProduct*num)</div><div class="line">    maxmax = max(maxmax, maxProduct)</div><div class="line">  return maxmax</div></pre></td></tr></table></figure>
+</li>
+<li><p>Robber</p>
+</li>
+<li>stocks</li>
+</ul>
+<h3 id="两个选择"><a href="#两个选择" class="headerlink" title="两个选择"></a>两个选择</h3><p>例题 栅栏和涂色</p>
+<p>这道题因为栅栏有n，涂色有k个，再加上涂色可以重复最多两次，基本上确定了要算<br>1 - 前一个和后一个是一样颜色 <code>prev = cur</code><br>2 - 前一个和后一个是不同颜色 <code>prev uses k, cur uses k-1 color</code>  </p>
+<h1 id="let’s-写code"><a href="#let’s-写code" class="headerlink" title="let’s 写code"></a>let’s 写code</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">if n&lt;2:</div><div class="line">	return n*k</div><div class="line">same = k</div><div class="line">diff = k*(k-1)</div><div class="line">for i in range(2, n):</div><div class="line">	same, diff = diff, (same+diff)*(k-1)</div><div class="line"></div><div class="line">return same+diff</div></pre></td></tr></table></figure>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;DP类型&quot;&gt;&lt;a href=&quot;#DP类型&quot; class=&quot;headerlink&quot; title=&quot;DP类型&quot;&gt;&lt;/a&gt;DP类型&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;状态转移 &lt;code&gt;dp[x+y]+=dp[x]&lt;/code&gt;&lt;br&gt;转&lt;br&gt;当你遇到第n+1个数x_
+    
+    </summary>
+    
+      <category term="Algo" scheme="http://lycworks.me/blog/categories/Algo/"/>
+    
+    
+      <category term="dp" scheme="http://lycworks.me/blog/tags/dp/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>MATRIX与我的爱恨情仇</title>
+    <link href="http://lycworks.me/blog/2017/02/06/2017-02-01-matrix/"/>
+    <id>http://lycworks.me/blog/2017/02/06/2017-02-01-matrix/</id>
+    <published>2017-02-06T21:40:58.000Z</published>
+    <updated>2017-02-06T21:40:58.000Z</updated>
+    
+    <content type="html"><![CDATA[<hr>
+<h1 id="matrix-w-o-dfs"><a href="#matrix-w-o-dfs" class="headerlink" title="matrix w/o dfs"></a>matrix w/o dfs</h1><h3 id="只是遍历即可"><a href="#只是遍历即可" class="headerlink" title="只是遍历即可"></a>只是遍历即可</h3><blockquote>
+<p><a href="http://pythontutor.com/visualize.html#code=def%20spiralMatrix%28matrix%29%3A%0A%20%20%20%20pos%20%3D%200%0A%20%20%20%20oldpos%20%3D%20pos%0A%20%20%20%20m%20%3D%20len%28matrix%29%0A%20%20%20%20n%20%3D%20len%28matrix%5B0%5D%29%0A%20%20%20%20res%20%3D%20%5Bfloat%28&#39;-inf&#39;%29%5D%0A%20%20%20%20level%20%3D%20min%28m,n%29%20%23how%20many%20spirals%0A%20%20%20%20while%20pos%3Clevel%3A%0A%20%20%20%20%20%20%20%20%23row%20traversal%0A%20%20%20%20%20%20%20%20for%20j%20in%20range%28pos,%20n-pos%29%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20if%20matrix%5Bpos%5D%5Bj%5D!%3Dres%5B-1%5D%3A%0A%20%20%20%20%20%20%20%20%09%20%20%20%20res.append%28matrix%5Bpos%5D%5Bj%5D%29%20%23rowstart%201,2,3%0A%20%20%20%20%20%20%20%20%23col%20traversal%0A%20%20%20%20%20%20%20%20for%20i%20in%20range%28pos,%20m-pos%29%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20if%20matrix%5Bi%5D%5Bn-pos-1%5D!%3Dres%5B-1%5D%3A%0A%20%20%20%20%20%20%20%20%09%20%20%20%20res.append%28matrix%5Bi%5D%5Bn-pos-1%5D%29%20%23colend%203,6,9%0A%20%20%20%20%20%20%20%20%23row%20traversal%0A%20%20%20%20%20%20%20%20for%20j%20in%20range%28n-pos-1,pos,-1%29%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20if%20matrix%5Bm-pos-1%5D%5Bj%5D!%3Dres%5B-1%5D%3A%0A%20%20%20%20%20%20%20%20%09%20%20%20%20res.append%28matrix%5Bm-pos-1%5D%5Bj%5D%29%20%23rowend%2087%0A%20%20%20%20%20%20%20%20%23col%20traversal%0A%20%20%20%20%20%20%20%20for%20i%20in%20range%28m-pos-1,pos,-1%29%3A%20%0A%20%20%20%20%20%20%20%20%20%20%20%20if%20matrix%5Bi%5D%5Bpos%5D!%3Dres%5B-1%5D%3A%0A%20%20%20%20%20%20%20%20%09%20%20%20%20res.append%28matrix%5Bi%5D%5Bpos%5D%29%20%23colstart%204%0A%20%20%20%20%20%20%20%20%23skip%20repeat%0A%20%20%20%20%20%20%20%20pos%2B%3D1%0A%20%20%20%20return%20res%5B1%3A%5D%0A%20%20%20%20%20%20%20%20%0AspiralMatrix%28%5B%5B1,2,3%5D,%5B4,0,-1%5D,%5B7,8,9%5D%5D%29%0A&amp;cumulative=false&amp;curInstr=0&amp;heapPrimitives=false&amp;mode=display&amp;origin=opt-frontend.js&amp;py=2&amp;rawInputLstJSON=%5B%5D&amp;testCasesJSON=%5B%22%5Cn%23%20assert%20%3Ctest%20condition%3E%22%5D&amp;textReferences=false" target="_blank" rel="external">spiral matrix</a>, <a href="https://goo.gl/YkWbv8" target="_blank" rel="external">generate matrix</a>  </p>
+</blockquote>
+<p>spiral matrix - 重点找到有多少level。level的算法就是画层，横竖哪个小就是哪个<br>generate matrix - level是n给了，重点是重复的横向row和col number需要各减一次  </p>
+<h3 id="用heap吧-python自带这么好用不用多可惜"><a href="#用heap吧-python自带这么好用不用多可惜" class="headerlink" title="用heap吧 python自带这么好用不用多可惜"></a>用heap吧 python自带这么好用不用多可惜</h3><blockquote>
+<p>kth smallest num in matrix -&gt; step1 flatten step2 heapify step3 duh  </p>
+</blockquote>
+<p><strong><em>flatten the array</em></strong><br><code>[flatten for sublist in myarray for flatten in sublist]</code> 绕口令。。  </p>
+<h3 id="setzeros"><a href="#setzeros" class="headerlink" title="setzeros"></a>setzeros</h3><blockquote>
+<p>bombman, set matrix zeroes  </p>
+</blockquote>
+<p>set matrix zeroes - 方法用第一排的横竖记录有没有0，然后第二次loop的时候改</p>
+<h3 id="matrix-transpose"><a href="#matrix-transpose" class="headerlink" title="matrix transpose"></a>matrix transpose</h3><blockquote>
+<p>matrix transpose basic</p>
+</blockquote>
+<h4 id="方法1"><a href="#方法1" class="headerlink" title="方法1"></a>方法1</h4><p><code>map(list, zip(*matrix))</code></p>
+<p>how it works? 首先zip<em>把每个col变成tuple<br>举例 <code>[1,2,3],[4,5,6]</code> -&gt; `zip(</em>arr)<code>-&gt;</code>(1,4), (2,5), (3,6)`, 然后使用map每个form成list  </p>
+<p>然而他的overhead导致O(m*n)  </p>
+<h4 id="方法2"><a href="#方法2" class="headerlink" title="方法2"></a>方法2</h4><p><code>每个col loop 都从i+1 这样最后一个不会被visit到</code>，省时  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">for i in range(m):</div><div class="line">	for j in range(i+1, n):</div><div class="line">		#swap</div></pre></td></tr></table></figure>
+<h3 id="islands"><a href="#islands" class="headerlink" title="islands"></a>islands</h3><p>岛类型的题分为很多种</p>
+<h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><p>perimeter - 4<em>num_lands - 2</em>neighbors (row and col)</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;hr&gt;
+&lt;h1 id=&quot;matrix-w-o-dfs&quot;&gt;&lt;a href=&quot;#matrix-w-o-dfs&quot; class=&quot;headerlink&quot; title=&quot;matrix w/o dfs&quot;&gt;&lt;/a&gt;matrix w/o dfs&lt;/h1&gt;&lt;h3 id=&quot;只是遍历即可&quot;&gt;&lt;a h
+    
+    </summary>
+    
+      <category term="Algo" scheme="http://lycworks.me/blog/categories/Algo/"/>
+    
+    
+      <category term="matrix" scheme="http://lycworks.me/blog/tags/matrix/"/>
+    
+      <category term="dfs" scheme="http://lycworks.me/blog/tags/dfs/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>find arrray element</title>
+    <link href="http://lycworks.me/blog/2017/02/06/array-element/"/>
+    <id>http://lycworks.me/blog/2017/02/06/array-element/</id>
+    <published>2017-02-06T19:18:01.000Z</published>
+    <updated>2017-02-06T19:34:17.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>#tricks<br>using negative labeling visited nums  </p>
+<h1 id="representative-question"><a href="#representative-question" class="headerlink" title="representative question"></a>representative question</h1><p>disappeared num - from 1-n filled array find the missing num</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">for num in nums:</div><div class="line">	if nums[abs(num)-1]&gt;0: #not visited</div><div class="line">		nums[abs(num)-1] = -nums[abs(num)-1] #why the -1? because the array starts from 0</div><div class="line">res = []</div><div class="line">for i in range(len(nums)):</div><div class="line">	if nums[i]&gt;0:</div><div class="line">		res.append(i+1) #unvisited num</div><div class="line"></div><div class="line">return res</div></pre></td></tr></table></figure>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;#tricks&lt;br&gt;using negative labeling visited nums  &lt;/p&gt;
+&lt;h1 id=&quot;representative-question&quot;&gt;&lt;a href=&quot;#representative-question&quot; class=&quot;headerli
+    
+    </summary>
+    
+    
+      <category term="array" scheme="http://lycworks.me/blog/tags/array/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Divide &amp; Conquer</title>
+    <link href="http://lycworks.me/blog/2017/02/06/2017-02-01-dc/"/>
+    <id>http://lycworks.me/blog/2017/02/06/2017-02-01-dc/</id>
+    <published>2017-02-06T19:16:48.000Z</published>
+    <updated>2017-02-06T19:16:48.000Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="Divide-amp-Recursion-amp-Conquer"><a href="#Divide-amp-Recursion-amp-Conquer" class="headerlink" title="Divide &amp; Recursion &amp; Conquer"></a>Divide &amp; Recursion &amp; Conquer</h1><h2 id="二分aka-two-pointer"><a href="#二分aka-two-pointer" class="headerlink" title="二分aka two pointer"></a>二分aka two pointer</h2><p>算左，算右，算左+右</p>
+<blockquote>
+<p>例题 max subtree path, quicksort</p>
+</blockquote>
+<p>quicksort basic<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">def quicksort(arr):</div><div class="line">  if not arr or len(arr)&lt;=1: return arr</div><div class="line">  pivot = arr[0]</div><div class="line">  left = []</div><div class="line">  right = []</div><div class="line">  for q in arr[1:]:</div><div class="line">    if q&lt;=pivot:</div><div class="line">      left.append(q)</div><div class="line">    else:</div><div class="line">      right.append(q)</div><div class="line">  return quicksort(left)+[pivot]+quicksort(right)</div></pre></td></tr></table></figure></p>
+<h2 id="two-pointer-string"><a href="#two-pointer-string" class="headerlink" title="two pointer+string"></a>two pointer+string</h2><p>reverse vowels - look at left look at right then swap</p>
+<h2 id="exponential"><a href="#exponential" class="headerlink" title="exponential"></a>exponential</h2><p>如果even算两个k的n/2如果odd算n-1的。。类似dp？</p>
+<h2 id="打乱数组"><a href="#打乱数组" class="headerlink" title="打乱数组"></a>打乱数组</h2><p>二分交换a1,a2 and b1,b2<br>使用random算random index然后swap</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;Divide-amp-Recursion-amp-Conquer&quot;&gt;&lt;a href=&quot;#Divide-amp-Recursion-amp-Conquer&quot; class=&quot;headerlink&quot; title=&quot;Divide &amp;amp; Recursion &amp;amp;
+    
+    </summary>
+    
+      <category term="Algo" scheme="http://lycworks.me/blog/categories/Algo/"/>
+    
+    
+      <category term="dc" scheme="http://lycworks.me/blog/tags/dc/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>string-related</title>
+    <link href="http://lycworks.me/blog/2017/02/06/string-related/"/>
+    <id>http://lycworks.me/blog/2017/02/06/string-related/</id>
+    <published>2017-02-06T17:52:28.000Z</published>
+    <updated>2017-02-06T22:36:47.000Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="Palindrome"><a href="#Palindrome" class="headerlink" title="Palindrome"></a>Palindrome</h1><p>What is palindrome? A string that is the same forward backward.<br>What constitutes a palindrome? A string with only one odd or all odd numbers</p>
+<h1 id="Questions"><a href="#Questions" class="headerlink" title="Questions"></a>Questions</h1><p>Longest Palindrome - step1 using dic for counting, then when repeated occurred (means even count), delete the item from the dictionary. In other words, check whether there is any left overs in dic.  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">dic = &#123;&#125; #or defaultdict which is faster</div><div class="line">for ss in s:</div><div class="line">	if ss not in dic:</div><div class="line">		dic[ss] = 1 #this does not matter</div><div class="line">	else:</div><div class="line">		del dic[ss] </div><div class="line">		count+=2</div><div class="line"></div><div class="line">if len(dic)&gt;0: #leftovers must be odd</div><div class="line">	count+=1</div><div class="line"></div><div class="line">return count</div></pre></td></tr></table></figure>
+<p>Palindrome Permutations - check whether there is no or one item left in the dictionary  </p>
+<h1 id="Repeated-Substring-pattern"><a href="#Repeated-Substring-pattern" class="headerlink" title="Repeated Substring pattern"></a>Repeated Substring pattern</h1><p>CC150’s typical question, solution is to see whether the original string is in double s’s [1:-1].  </p>
+<p>For example, <code>s = &#39;abab&#39;</code>, <code>double_s = &#39;abababab&#39;</code>, remove first and last becomes <code>bababa</code>, which only works if the original string is a pattern</p>
+<h1 id="Find-the-diff"><a href="#Find-the-diff" class="headerlink" title="Find the diff"></a>Find the diff</h1><p>Really easy, just make one string into set, then compare the char count in both string</p>
+<pre><code>for ss in set(t):
+    if s.count(ss)!=t.count(ss):
+        return ss
+</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;Palindrome&quot;&gt;&lt;a href=&quot;#Palindrome&quot; class=&quot;headerlink&quot; title=&quot;Palindrome&quot;&gt;&lt;/a&gt;Palindrome&lt;/h1&gt;&lt;p&gt;What is palindrome? A string that is t
+    
+    </summary>
+    
+    
+      <category term="palindrome" scheme="http://lycworks.me/blog/tags/palindrome/"/>
+    
+      <category term="string" scheme="http://lycworks.me/blog/tags/string/"/>
+    
+  </entry>
+  
+  <entry>
     <title>chrome-plugins</title>
-    <link href="http://lycworks.me/blog/2017/02/05/chrome-plugins/"/>
-    <id>http://lycworks.me/blog/2017/02/05/chrome-plugins/</id>
+    <link href="http://lycworks.me/blog/2017/02/05/2017-02-05-chrome-plugins/"/>
+    <id>http://lycworks.me/blog/2017/02/05/2017-02-05-chrome-plugins/</id>
     <published>2017-02-06T03:29:49.000Z</published>
     <updated>2017-02-06T04:13:50.000Z</updated>
     
@@ -63,23 +236,24 @@
   
   <entry>
     <title>trees</title>
-    <link href="http://lycworks.me/blog/2017/02/03/trees/"/>
-    <id>http://lycworks.me/blog/2017/02/03/trees/</id>
+    <link href="http://lycworks.me/blog/2017/02/03/2017-02-03-trees/"/>
+    <id>http://lycworks.me/blog/2017/02/03/2017-02-03-trees/</id>
     <published>2017-02-04T01:01:10.000Z</published>
-    <updated>2017-02-05T21:56:09.000Z</updated>
+    <updated>2017-02-06T23:52:16.000Z</updated>
     
-    <content type="html"><![CDATA[<h1 id="特别基础的"><a href="#特别基础的" class="headerlink" title="特别基础的"></a>特别基础的</h1><p>same tree - 检查两个是不是一样，如果一个是空的肯定是false</p>
+    <content type="html"><![CDATA[<h1 id="特别基础的"><a href="#特别基础的" class="headerlink" title="特别基础的"></a>特别基础的</h1><p>same tree - 检查两个是不是一样，如果一个是空的肯定是false<br>tree path - 检查root是否有left和right，没有加到paths里</p>
 <h1 id="tricky的"><a href="#tricky的" class="headerlink" title="tricky的"></a>tricky的</h1><p>next largest after p - 当大于或等于p时看右边，else看左边<br>在左边的时候有两种scenario<br>no more left child so return the p’s parent<br>more left return it’s right -&gt; which is ans</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">nextLargest(p):</div><div class="line">	if not root:</div><div class="line">		return None</div><div class="line">	if root.val&lt;p.val: #go to the right</div><div class="line">		return nextLargest(root.right, p)</div><div class="line">	else:</div><div class="line">		ans = nextLargest(root.left, p) </div><div class="line">		return ans if ans or root</div></pre></td></tr></table></figure>
 <h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1><p>算第K大个BST的node - 用reverse inorder，然后在第k个时停掉</p>
 <p>Check for valid BST - 设个min和max来确定每个tree是跟root在比</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">if not root:</div><div class="line">	return True #given case</div><div class="line">if root.val &gt;= max or root.val &lt;= min: #equal means false</div><div class="line">	return False</div><div class="line"></div><div class="line">return dfs(root.left, min, root.val) and dfs(root.right, root.val, max)</div></pre></td></tr></table></figure>
+<h1 id="类似的题"><a href="#类似的题" class="headerlink" title="类似的题"></a>类似的题</h1><p>算closest bst value to target - update一个global mindiff和maxnode</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">self.mindiff = float(&apos;inf&apos;)</div><div class="line">self.maxnode = None</div><div class="line"></div><div class="line">self.dfs(root, target)</div><div class="line">return self.maxnode.val</div><div class="line"></div><div class="line">def dfs(self, root, target):</div><div class="line">	if not root:</div><div class="line">		return None #does not matter</div><div class="line">	if abs(root.val*1.0-target)&lt;mindiff:</div><div class="line">		mindiff = abs(root.val*1.0-target)</div><div class="line">		maxnode = root</div><div class="line">	self.dfs(root.left, target)</div><div class="line">	self.dfs(root.right, target)</div></pre></td></tr></table></figure>
 ]]></content>
     
     <summary type="html">
     
-      &lt;h1 id=&quot;特别基础的&quot;&gt;&lt;a href=&quot;#特别基础的&quot; class=&quot;headerlink&quot; title=&quot;特别基础的&quot;&gt;&lt;/a&gt;特别基础的&lt;/h1&gt;&lt;p&gt;same tree - 检查两个是不是一样，如果一个是空的肯定是false&lt;/p&gt;
-&lt;h1 id=&quot;tricky的&quot;
+      &lt;h1 id=&quot;特别基础的&quot;&gt;&lt;a href=&quot;#特别基础的&quot; class=&quot;headerlink&quot; title=&quot;特别基础的&quot;&gt;&lt;/a&gt;特别基础的&lt;/h1&gt;&lt;p&gt;same tree - 检查两个是不是一样，如果一个是空的肯定是false&lt;br&gt;tree path - 检查roo
     
     </summary>
     
@@ -90,10 +264,10 @@
   
   <entry>
     <title>bits</title>
-    <link href="http://lycworks.me/blog/2017/02/03/bits/"/>
-    <id>http://lycworks.me/blog/2017/02/03/bits/</id>
+    <link href="http://lycworks.me/blog/2017/02/03/2017-02-03-bits/"/>
+    <id>http://lycworks.me/blog/2017/02/03/2017-02-03-bits/</id>
     <published>2017-02-03T21:39:46.000Z</published>
-    <updated>2017-02-03T22:39:40.000Z</updated>
+    <updated>2017-02-06T21:44:18.000Z</updated>
     
     <content type="html"><![CDATA[<h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1><blockquote>
 <p>power of 4 - 变态的一道题要求你知道num 只有一个1 表示powerof2 并且之前的bit数量必须是偶数</p>
@@ -104,6 +278,8 @@
 <p>** 前提是n&gt;0 </p>
 <p>let’s do the 套路</p>
 <h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">def poweroffour(n):</div><div class="line">	if n==1: return True</div><div class="line"></div><div class="line">	count = 0</div><div class="line">	if (n &amp; (n-1))==0: #if power of 2</div><div class="line">		while n&gt;1:</div><div class="line">			n&gt;&gt;=1 #divided by 2 or shift right</div><div class="line">			count+=1</div><div class="line">		if count%2==0:</div><div class="line">			return True</div><div class="line">	</div><div class="line">	return False</div></pre></td></tr></table></figure>
+<p>power of 3 - find max integer of 3’s power and modulo it  </p>
+<p><code>len(bin(3**x))-2 &lt; 32, x==19</code></p>
 ]]></content>
     
     <summary type="html">
@@ -119,16 +295,53 @@
   </entry>
   
   <entry>
+    <title>Path路径查找问题</title>
+    <link href="http://lycworks.me/blog/2017/02/02/2017-02-02-find-path/"/>
+    <id>http://lycworks.me/blog/2017/02/02/2017-02-02-find-path/</id>
+    <published>2017-02-03T04:35:21.000Z</published>
+    <updated>2017-02-03T04:35:21.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="the-套路"><a href="#the-套路" class="headerlink" title="the 套路"></a>the 套路</h2><h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><p>Unique path - 一个机器人从左上角走到右下角有多少种方法？  </p>
+<p>具体思路使用dp即可。首先把第0排和第0行全部设置为1因为只有一种方法走到。<br>通过左边和上边即可算出连接到中间点所需path数量  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">+ + + +</div><div class="line"></div><div class="line">+ X _ _ #能到达X的路只有上和左</div></pre></td></tr></table></figure>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">dp = [[0 for _ in range(n)] for _ in range(m)]</div><div class="line"></div><div class="line">for j in range(n):</div><div class="line">	dp[0][j] = 1</div><div class="line">for i in range(m):</div><div class="line">	dp[i][j] = 1</div><div class="line">for i in range(1,m):</div><div class="line">	for j in range(1,n):</div><div class="line">		dp[i][j]=dp[i-1][j]+dp[i][j-1]</div><div class="line"></div><div class="line">return dp[m-1][n-1]</div></pre></td></tr></table></figure>
+<h3 id="问题-1"><a href="#问题-1" class="headerlink" title="问题"></a>问题</h3><p>Minimum path sum - 算出最少cost的path  </p>
+<p>跟上一道很像，得出了path sum基本上只要是matrix和dp就把边界算出来，<br>然后再乃个加和比较来求出最小  </p>
+<h3 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">dp[0][0] = matrix[0][0]</div><div class="line">for j in range(1,n): #the sum of first row</div><div class="line">	dp[0][j] = dp[0][j-1]+matrix[0][j]</div><div class="line"></div><div class="line">for i in range(1,m): #first col</div><div class="line">	dp[i][0] = dp[i-1][0]+matrix[i][0]</div><div class="line"></div><div class="line">for i in range(1, m):</div><div class="line">	for j in range(1,n):</div><div class="line">		dp[i][j] = min(dp[i-1][j], dp[i][j-1])+matrix[i][j]</div><div class="line"></div><div class="line">return dp[m-1][n-1]</div></pre></td></tr></table></figure>
+<h2 id="the-变形"><a href="#the-变形" class="headerlink" title="the 变形"></a>the 变形</h2><h3 id="障碍物"><a href="#障碍物" class="headerlink" title="障碍物"></a>障碍物</h3><p>Unique path with obstacles - 每次遇到obstacle都归零  </p>
+<h3 id="思路1"><a href="#思路1" class="headerlink" title="思路1"></a>思路1</h3><p>每次遇到obstacle都归零</p>
+<h4 id="代码-2"><a href="#代码-2" class="headerlink" title="代码"></a>代码</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">visited = [[0 for _ in range(n)]for _ in range(m)]</div><div class="line">visited[0][0] = 1 if matrix[0][0]==0 else 0</div><div class="line"></div><div class="line">for j in range(1, n): #value of first row</div><div class="line">	if matrix[0][j] ==1: visited[0][j] = 0 #reset</div><div class="line">	else: visited[0][j] = visited[0][j-1] #obstacle后面的有可能是0</div><div class="line"></div><div class="line">for i in range(1,m): #same thing for col</div><div class="line">	if matrix[..]</div><div class="line">	else: ..</div><div class="line"></div><div class="line">for i in range(1,m):</div><div class="line">	for j in range(1,n):</div><div class="line">		if matrix[i][j] ==1: #reset</div><div class="line">			visited[i][j] = 0</div><div class="line">		else:</div><div class="line">			visited[i][j] = visited[i-1][j]+visited[i][j-1]</div><div class="line"></div><div class="line">return dp[m-1][n-1]</div></pre></td></tr></table></figure>
+<h3 id="思路2"><a href="#思路2" class="headerlink" title="思路2"></a>思路2</h3><p>只记录column来update每个row （如何update？col前一个）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">dp = [0 for _ in range(n)]</div><div class="line"></div><div class="line">for row in matrix:</div><div class="line">	for j in range(n):</div><div class="line">		if row[j]==1:</div><div class="line">			dp[j]=0</div><div class="line">		if j&gt;0:</div><div class="line">			dp[j]+=dp[j-1] </div><div class="line">return dp[n-1]</div></pre></td></tr></table></figure>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;the-套路&quot;&gt;&lt;a href=&quot;#the-套路&quot; class=&quot;headerlink&quot; title=&quot;the 套路&quot;&gt;&lt;/a&gt;the 套路&lt;/h2&gt;&lt;h3 id=&quot;问题&quot;&gt;&lt;a href=&quot;#问题&quot; class=&quot;headerlink&quot; title=&quot;问题&quot;&gt;&lt;
+    
+    </summary>
+    
+      <category term="Algo" scheme="http://lycworks.me/blog/categories/Algo/"/>
+    
+    
+      <category term="dfs" scheme="http://lycworks.me/blog/tags/dfs/"/>
+    
+      <category term="path" scheme="http://lycworks.me/blog/tags/path/"/>
+    
+  </entry>
+  
+  <entry>
     <title>stack什么的</title>
-    <link href="http://lycworks.me/blog/2017/02/02/stack-md/"/>
-    <id>http://lycworks.me/blog/2017/02/02/stack-md/</id>
+    <link href="http://lycworks.me/blog/2017/02/02/2017-02-02-stack-md/"/>
+    <id>http://lycworks.me/blog/2017/02/02/2017-02-02-stack-md/</id>
     <published>2017-02-03T03:27:34.000Z</published>
-    <updated>2017-02-03T03:38:22.000Z</updated>
+    <updated>2017-02-06T20:51:35.000Z</updated>
     
     <content type="html"><![CDATA[<h2 id="虽然大部分时间都ok，有的时候会被stack搞到。。"><a href="#虽然大部分时间都ok，有的时候会被stack搞到。。" class="headerlink" title="虽然大部分时间都ok，有的时候会被stack搞到。。"></a>虽然大部分时间都ok，有的时候会被stack搞到。。</h2><h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><p>Simplify Path - 简化directory path</p>
 <p>想复杂了。。一开始首先用/分开每个部分，如果是空的或者.则不计算<br>然后把有用的放进stack里，循环时如遇到<code>..</code>则popout它前面的出来  </p>
 <p>假设 <code>path = &quot;/a/./b/../../c/&quot;</code>, 第一步过后变成<code>a,b,../../c</code>, 然后通过stack就可以算出<code>/c</code>  </p>
-<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">path = path.split(&apos;/&apos;)</div><div class="line">res = []</div><div class="line"></div><div class="line">for p in path:</div><div class="line">	if p and p!=&apos;.&apos;:</div><div class="line">		res.append(p)</div><div class="line">stack = []</div><div class="line">for r in res:</div><div class="line">	if r==&apos;..&apos;:</div><div class="line">		if stack: stack.pop()</div><div class="line">	else:</div><div class="line">		stack.append(r)</div><div class="line"></div><div class="line">return &apos;/&apos;+&apos;/&apos;.join(stack)</div></pre></td></tr></table></figure>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">path = path.split(&apos;/&apos;)</div><div class="line">res = []</div><div class="line"></div><div class="line">for p in path:</div><div class="line">	if p and p!=&apos;.&apos;:</div><div class="line">		res.append(p)</div><div class="line">stack = []</div><div class="line">for r in res:</div><div class="line">	if r==&apos;..&apos;:</div><div class="line">		if stack: stack.pop() #remove the item after ../</div><div class="line">	else:</div><div class="line">		stack.append(r)</div><div class="line"></div><div class="line">return &apos;/&apos;+&apos;/&apos;.join(stack)</div></pre></td></tr></table></figure>
+<h3 id="问题-1"><a href="#问题-1" class="headerlink" title="问题"></a>问题</h3><p>Valid parentheses - 根据open bracket push end bracket到stack里，如果visit到end bracket pop出来作比较<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">stack = []</div><div class="line">for ss in s:</div><div class="line">	if ss==&apos;(&apos;: stack.append(&apos;)&apos;)</div><div class="line">	elif ss==&apos;[&apos;: ..</div><div class="line">	elif ss==&apos;&#123;&apos;: ..</div><div class="line">	elif not stack or stack.pop()!=ss: #no start bracket or endbracket does not match</div><div class="line">		return False</div><div class="line">return not stack</div></pre></td></tr></table></figure></p>
 ]]></content>
     
     <summary type="html">
@@ -146,8 +359,8 @@
   
   <entry>
     <title>一些网上流传的大牛写的算法</title>
-    <link href="http://lycworks.me/blog/2017/02/02/tricksalgo/"/>
-    <id>http://lycworks.me/blog/2017/02/02/tricksalgo/</id>
+    <link href="http://lycworks.me/blog/2017/02/02/2017-02-02-tricksalgo/"/>
+    <id>http://lycworks.me/blog/2017/02/02/2017-02-02-tricksalgo/</id>
     <published>2017-02-03T01:52:37.000Z</published>
     <updated>2017-02-03T02:22:58.000Z</updated>
     
@@ -177,203 +390,262 @@
   </entry>
   
   <entry>
-    <title>Hello World</title>
-    <link href="http://lycworks.me/blog/2017/02/02/hello-world/"/>
-    <id>http://lycworks.me/blog/2017/02/02/hello-world/</id>
-    <published>2017-02-02T21:09:09.000Z</published>
-    <updated>2017-02-02T21:09:09.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>Path路径查找问题</title>
-    <link href="http://lycworks.me/blog/2017/02/02/find-path/"/>
-    <id>http://lycworks.me/blog/2017/02/02/find-path/</id>
-    <published>2017-02-02T05:00:00.000Z</published>
-    <updated>2017-02-03T04:35:21.000Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="the-套路"><a href="#the-套路" class="headerlink" title="the 套路"></a>the 套路</h2><h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><p>Unique path - 一个机器人从左上角走到右下角有多少种方法？  </p>
-<p>具体思路使用dp即可。首先把第0排和第0行全部设置为1因为只有一种方法走到。<br>通过左边和上边即可算出连接到中间点所需path数量  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">+ + + +</div><div class="line"></div><div class="line">+ X _ _ #能到达X的路只有上和左</div></pre></td></tr></table></figure>
-<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">dp = [[0 for _ in range(n)] for _ in range(m)]</div><div class="line"></div><div class="line">for j in range(n):</div><div class="line">	dp[0][j] = 1</div><div class="line">for i in range(m):</div><div class="line">	dp[i][j] = 1</div><div class="line">for i in range(1,m):</div><div class="line">	for j in range(1,n):</div><div class="line">		dp[i][j]=dp[i-1][j]+dp[i][j-1]</div><div class="line"></div><div class="line">return dp[m-1][n-1]</div></pre></td></tr></table></figure>
-<h3 id="问题-1"><a href="#问题-1" class="headerlink" title="问题"></a>问题</h3><p>Minimum path sum - 算出最少cost的path  </p>
-<p>跟上一道很像，得出了path sum基本上只要是matrix和dp就把边界算出来，<br>然后再乃个加和比较来求出最小  </p>
-<h3 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">dp[0][0] = matrix[0][0]</div><div class="line">for j in range(1,n): #the sum of first row</div><div class="line">	dp[0][j] = dp[0][j-1]+matrix[0][j]</div><div class="line"></div><div class="line">for i in range(1,m): #first col</div><div class="line">	dp[i][0] = dp[i-1][0]+matrix[i][0]</div><div class="line"></div><div class="line">for i in range(1, m):</div><div class="line">	for j in range(1,n):</div><div class="line">		dp[i][j] = min(dp[i-1][j], dp[i][j-1])+matrix[i][j]</div><div class="line"></div><div class="line">return dp[m-1][n-1]</div></pre></td></tr></table></figure>
-<h2 id="the-变形"><a href="#the-变形" class="headerlink" title="the 变形"></a>the 变形</h2><h3 id="障碍物"><a href="#障碍物" class="headerlink" title="障碍物"></a>障碍物</h3><p>Unique path with obstacles - 每次遇到obstacle都归零  </p>
-<h3 id="思路1"><a href="#思路1" class="headerlink" title="思路1"></a>思路1</h3><p>每次遇到obstacle都归零</p>
-<h4 id="代码-2"><a href="#代码-2" class="headerlink" title="代码"></a>代码</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">visited = [[0 for _ in range(n)]for _ in range(m)]</div><div class="line">visited[0][0] = 1 if matrix[0][0]==0 else 0</div><div class="line"></div><div class="line">for j in range(1, n): #value of first row</div><div class="line">	if matrix[0][j] ==1: visited[0][j] = 0 #reset</div><div class="line">	else: visited[0][j] = visited[0][j-1] #obstacle后面的有可能是0</div><div class="line"></div><div class="line">for i in range(1,m): #same thing for col</div><div class="line">	if matrix[..]</div><div class="line">	else: ..</div><div class="line"></div><div class="line">for i in range(1,m):</div><div class="line">	for j in range(1,n):</div><div class="line">		if matrix[i][j] ==1: #reset</div><div class="line">			visited[i][j] = 0</div><div class="line">		else:</div><div class="line">			visited[i][j] = visited[i-1][j]+visited[i][j-1]</div><div class="line"></div><div class="line">return dp[m-1][n-1]</div></pre></td></tr></table></figure>
-<h3 id="思路2"><a href="#思路2" class="headerlink" title="思路2"></a>思路2</h3><p>只记录column来update每个row （如何update？col前一个）</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">dp = [0 for _ in range(n)]</div><div class="line"></div><div class="line">for row in matrix:</div><div class="line">	for j in range(n):</div><div class="line">		if row[j]==1:</div><div class="line">			dp[j]=0</div><div class="line">		if j&gt;0:</div><div class="line">			dp[j]+=dp[j-1] </div><div class="line">return dp[n-1]</div></pre></td></tr></table></figure>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;the-套路&quot;&gt;&lt;a href=&quot;#the-套路&quot; class=&quot;headerlink&quot; title=&quot;the 套路&quot;&gt;&lt;/a&gt;the 套路&lt;/h2&gt;&lt;h3 id=&quot;问题&quot;&gt;&lt;a href=&quot;#问题&quot; class=&quot;headerlink&quot; title=&quot;问题&quot;&gt;&lt;
-    
-    </summary>
-    
-      <category term="Algo" scheme="http://lycworks.me/blog/categories/Algo/"/>
-    
-    
-      <category term="path" scheme="http://lycworks.me/blog/tags/path/"/>
-    
-      <category term="dfs" scheme="http://lycworks.me/blog/tags/dfs/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Divide &amp; Conquer</title>
-    <link href="http://lycworks.me/blog/2017/02/01/dc/"/>
-    <id>http://lycworks.me/blog/2017/02/01/dc/</id>
-    <published>2017-02-01T05:00:00.000Z</published>
+    <title>JS正则表达式regexexp</title>
+    <link href="http://lycworks.me/blog/2017/02/02/2016-05-20-JS-regex/"/>
+    <id>http://lycworks.me/blog/2017/02/02/2016-05-20-JS-regex/</id>
+    <published>2017-02-02T21:56:37.000Z</published>
     <updated>2017-02-02T21:56:37.000Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="Divide-amp-Recursion-amp-Conquer"><a href="#Divide-amp-Recursion-amp-Conquer" class="headerlink" title="Divide &amp; Recursion &amp; Conquer"></a>Divide &amp; Recursion &amp; Conquer</h1><h2 id="二分"><a href="#二分" class="headerlink" title="二分"></a>二分</h2><p>算左，算右，算左+右</p>
-<blockquote>
-<blockquote>
-<p>例题 max subtree path, quicksort</p>
-</blockquote>
-</blockquote>
-<p>quicksort basic<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">def quicksort(arr):</div><div class="line">  if not arr or len(arr)&lt;=1: return arr</div><div class="line">  pivot = arr[0]</div><div class="line">  left = []</div><div class="line">  right = []</div><div class="line">  for q in arr[1:]:</div><div class="line">    if q&lt;=pivot:</div><div class="line">      left.append(q)</div><div class="line">    else:</div><div class="line">      right.append(q)</div><div class="line">  return quicksort(left)+[pivot]+quicksort(right)</div></pre></td></tr></table></figure></p>
-<h2 id="exponential"><a href="#exponential" class="headerlink" title="exponential"></a>exponential</h2><p>如果even算两个k的n/2如果odd算n-1的。。类似dp？</p>
-<h2 id="打乱数组"><a href="#打乱数组" class="headerlink" title="打乱数组"></a>打乱数组</h2><p>二分交换a1,a2 and b1,b2<br>使用random算random index然后swap</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;Divide-amp-Recursion-amp-Conquer&quot;&gt;&lt;a href=&quot;#Divide-amp-Recursion-amp-Conquer&quot; class=&quot;headerlink&quot; title=&quot;Divide &amp;amp; Recursion &amp;amp;
-    
-    </summary>
-    
-      <category term="Algo" scheme="http://lycworks.me/blog/categories/Algo/"/>
-    
-    
-      <category term="dc" scheme="http://lycworks.me/blog/tags/dc/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>动态规划</title>
-    <link href="http://lycworks.me/blog/2017/02/01/dp/"/>
-    <id>http://lycworks.me/blog/2017/02/01/dp/</id>
-    <published>2017-02-01T05:00:00.000Z</published>
-    <updated>2017-02-02T21:56:37.000Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="DP类型"><a href="#DP类型" class="headerlink" title="DP类型"></a>DP类型</h1><ul>
-<li><p>状态转移 <code>dp[x+y]+=dp[x]</code><br>转<br>当你遇到第n+1个数x_n+1的时候，前n+1个数中最大值是什么呢，就是拿这个新x去和之前那个max比，然后留下较大的一个，对吧，写下来就是<br><code>Max_n+1 = (x_n+1 &gt; Max_n) ? x_n+1 : Max_n</code> #if choose add to current max else not choose  </p>
-<h1 id="例题"><a href="#例题" class="headerlink" title="例题 ."></a>例题 .</h1><h3 id="combinationsum"><a href="#combinationsum" class="headerlink" title="combinationsum ."></a>combinationsum .</h3><h3 id="max-sum-subarray-Kadane’s"><a href="#max-sum-subarray-Kadane’s" class="headerlink" title="max sum subarray Kadane’s ."></a>max sum subarray Kadane’s .</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">def maxSum(arr):</div><div class="line">  prevSum = nums[0]</div><div class="line">  maxmax = nums[0]</div><div class="line">  del arr[0]</div><div class="line">  for num in nums:</div><div class="line">    prevSum = max(prevSum+num, num) #compare cursum and curnum</div><div class="line">    maxSum = max(maxSum, prevSum)</div><div class="line">  return maxSum</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<h4 id="follow-up-from-max-subarray"><a href="#follow-up-from-max-subarray" class="headerlink" title="follow up from max subarray ."></a>follow up from max subarray .</h4><ul>
-<li><p>max product subarray - when it is negative, swap max and min continuous product . </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">def maxProduct(arr):</div><div class="line">  prevSum = nums[0]</div><div class="line">  maxProduct = nums[0]</div><div class="line">  minProduct = nums[0]</div><div class="line">  maxmax = nums[0]</div><div class="line">  del arr[0]</div><div class="line">  for num in nums:</div><div class="line">    if num&lt;0:</div><div class="line">      #swap because -*- is happening</div><div class="line">      maxProduct, minProduct = minProduct, maxProduct</div><div class="line">    maxProduct = max(num, maxProduct*num)</div><div class="line">    minProduct = min(num, minProduct*num)</div><div class="line">    maxmax = max(maxmax, maxProduct)</div><div class="line">  return maxmax</div></pre></td></tr></table></figure>
-</li>
-<li><p>Robber</p>
-</li>
-<li>stocks</li>
-</ul>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;DP类型&quot;&gt;&lt;a href=&quot;#DP类型&quot; class=&quot;headerlink&quot; title=&quot;DP类型&quot;&gt;&lt;/a&gt;DP类型&lt;/h1&gt;&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;状态转移 &lt;code&gt;dp[x+y]+=dp[x]&lt;/code&gt;&lt;br&gt;转&lt;br&gt;当你遇到第n+1个数x_
-    
-    </summary>
-    
-      <category term="Algo" scheme="http://lycworks.me/blog/categories/Algo/"/>
-    
-    
-      <category term="dp" scheme="http://lycworks.me/blog/tags/dp/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>MATRIX与我的爱恨情仇</title>
-    <link href="http://lycworks.me/blog/2017/02/01/matrix/"/>
-    <id>http://lycworks.me/blog/2017/02/01/matrix/</id>
-    <published>2017-02-01T05:00:00.000Z</published>
-    <updated>2017-02-03T19:23:10.000Z</updated>
     
     <content type="html"><![CDATA[<hr>
-<h1 id="matrix-w-o-dfs"><a href="#matrix-w-o-dfs" class="headerlink" title="matrix w/o dfs"></a>matrix w/o dfs</h1><h3 id="只是遍历即可"><a href="#只是遍历即可" class="headerlink" title="只是遍历即可"></a>只是遍历即可</h3><blockquote>
-<p><a href="http://pythontutor.com/visualize.html#code=def%20spiralMatrix%28matrix%29%3A%0A%20%20%20%20pos%20%3D%200%0A%20%20%20%20oldpos%20%3D%20pos%0A%20%20%20%20m%20%3D%20len%28matrix%29%0A%20%20%20%20n%20%3D%20len%28matrix%5B0%5D%29%0A%20%20%20%20res%20%3D%20%5Bfloat%28&#39;-inf&#39;%29%5D%0A%20%20%20%20level%20%3D%20min%28m,n%29%20%23how%20many%20spirals%0A%20%20%20%20while%20pos%3Clevel%3A%0A%20%20%20%20%20%20%20%20%23row%20traversal%0A%20%20%20%20%20%20%20%20for%20j%20in%20range%28pos,%20n-pos%29%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20if%20matrix%5Bpos%5D%5Bj%5D!%3Dres%5B-1%5D%3A%0A%20%20%20%20%20%20%20%20%09%20%20%20%20res.append%28matrix%5Bpos%5D%5Bj%5D%29%20%23rowstart%201,2,3%0A%20%20%20%20%20%20%20%20%23col%20traversal%0A%20%20%20%20%20%20%20%20for%20i%20in%20range%28pos,%20m-pos%29%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20if%20matrix%5Bi%5D%5Bn-pos-1%5D!%3Dres%5B-1%5D%3A%0A%20%20%20%20%20%20%20%20%09%20%20%20%20res.append%28matrix%5Bi%5D%5Bn-pos-1%5D%29%20%23colend%203,6,9%0A%20%20%20%20%20%20%20%20%23row%20traversal%0A%20%20%20%20%20%20%20%20for%20j%20in%20range%28n-pos-1,pos,-1%29%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20if%20matrix%5Bm-pos-1%5D%5Bj%5D!%3Dres%5B-1%5D%3A%0A%20%20%20%20%20%20%20%20%09%20%20%20%20res.append%28matrix%5Bm-pos-1%5D%5Bj%5D%29%20%23rowend%2087%0A%20%20%20%20%20%20%20%20%23col%20traversal%0A%20%20%20%20%20%20%20%20for%20i%20in%20range%28m-pos-1,pos,-1%29%3A%20%0A%20%20%20%20%20%20%20%20%20%20%20%20if%20matrix%5Bi%5D%5Bpos%5D!%3Dres%5B-1%5D%3A%0A%20%20%20%20%20%20%20%20%09%20%20%20%20res.append%28matrix%5Bi%5D%5Bpos%5D%29%20%23colstart%204%0A%20%20%20%20%20%20%20%20%23skip%20repeat%0A%20%20%20%20%20%20%20%20pos%2B%3D1%0A%20%20%20%20return%20res%5B1%3A%5D%0A%20%20%20%20%20%20%20%20%0AspiralMatrix%28%5B%5B1,2,3%5D,%5B4,0,-1%5D,%5B7,8,9%5D%5D%29%0A&amp;cumulative=false&amp;curInstr=0&amp;heapPrimitives=false&amp;mode=display&amp;origin=opt-frontend.js&amp;py=2&amp;rawInputLstJSON=%5B%5D&amp;testCasesJSON=%5B%22%5Cn%23%20assert%20%3Ctest%20condition%3E%22%5D&amp;textReferences=false" target="_blank" rel="external">spiral matrix</a>, <a href="https://goo.gl/YkWbv8" target="_blank" rel="external">generate matrix</a>  </p>
-</blockquote>
-<p>spiral matrix - 重点找到有多少level。level的算法就是画层，横竖哪个小就是哪个<br>generate matrix - level是n给了，重点是重复的横向row和col number需要各减一次  </p>
-<h3 id="用heap吧-python自带这么好用不用多可惜"><a href="#用heap吧-python自带这么好用不用多可惜" class="headerlink" title="用heap吧 python自带这么好用不用多可惜"></a>用heap吧 python自带这么好用不用多可惜</h3><blockquote>
-<p>kth smallest num in matrix -&gt; step1 flatten step2 heapify step3 duh  </p>
-</blockquote>
-<p><strong><em>flatten the array</em></strong><br><code>[flatten for sublist in myarray for flatten in sublist]</code> 绕口令。。  </p>
-<h3 id="setzeros"><a href="#setzeros" class="headerlink" title="setzeros"></a>setzeros</h3><blockquote>
-<p>bombman, set matrix zeroes  </p>
-</blockquote>
-<p>set matrix zeroes - 方法用第一排的横竖记录有没有0，然后第二次loop的时候改</p>
-<h3 id="matrix-transpose"><a href="#matrix-transpose" class="headerlink" title="matrix transpose"></a>matrix transpose</h3><blockquote>
-<p>matrix transpose basic</p>
-</blockquote>
-<h4 id="方法1"><a href="#方法1" class="headerlink" title="方法1"></a>方法1</h4><p><code>map(list, zip(*matrix))</code></p>
-<p>how it works? 首先zip<em>把每个col变成tuple<br>举例 <code>[1,2,3],[4,5,6]</code> -&gt; `zip(</em>arr)<code>-&gt;</code>(1,4), (2,5), (3,6)`, 然后使用map每个form成list  </p>
-<p>然而他的overhead导致O(m*n)  </p>
-<h4 id="方法2"><a href="#方法2" class="headerlink" title="方法2"></a>方法2</h4><p><code>每个col loop 都从i+1 这样最后一个不会被visit到</code>，省时  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">for i in range(m):</div><div class="line">	for j in range(i+1, n):</div><div class="line">		#swap</div></pre></td></tr></table></figure>
+<h1 id="Regex正则"><a href="#Regex正则" class="headerlink" title="Regex正则"></a>Regex正则</h1><h2 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h2><p><code>/</code>起始和结尾<br><code>.</code> - 代表任意，除了换行/n,/r etc<br><code>\d</code>- 0-9<br><code>\D</code>- !(0-9)<br><code>\w</code>- 0-9或a-zA-Z,_<br><code>\W</code>- !(\w)<br><code>\s</code>- 空格，tab，\n\r etc<br><code>\S</code>- !(\s)<br><code>\t\r\n\v\f</code> - tab，回车，换行，垂直|，换页  </p>
+<p>范围<br>[] - 字符范围, eg [a-zA-Z]<br>[^..] - 字符意外<br>^ - 行首<br>$ - 行尾<br><code>\b</code> - 零宽单词边界 eg ‘a no’<br><code>\B</code> - !(\b)  </p>
+<p>符号<br><code>\</code> - escape符号  </p>
+<p>分组<br><code>(x)</code>, <code>\n</code> - e.g. (abc)\n 表示abc再重复n次<br><code>(?:x)</code> - 仅分组，重复没有效果 eg <code>(?:abc)(def)\1.test(&#39;abcdefdef&#39;)</code>  </p>
+<p>重复<br>贪婪算法 x<em> &gt;=0, x+ &gt;=1<br>eg abc</em> 匹配 ab, abc, abccccc<br>   abc+ 匹配 abc,abccccc  </p>
+<p>非贪婪算法 x<em>? == 0, x+? ==1<br>  eg abc</em>? 匹配 ab<br>     abc+? 匹配 abc  </p>
+<p>x? 出现0或1次<br>x|y x或y<br>  eg ab|cd|ef 匹配 ab或cd或ef<br>x{n} - 固定n次<br>x(n,) - &gt;= n次<br>x(n,m) - n-m次  </p>
+<p>标志类flag  gim<br>g - global<br>i - ignoreCase<br>m - multiline - 跨行检索  </p>
+<h2 id="相关方法"><a href="#相关方法" class="headerlink" title="相关方法"></a>相关方法</h2><p>.search(regex) - 返回找到位置index<br>.replace(regex,replacement)<br>.match(regex) - 返回匹配结果数组<br>.split(regex) - 返回数组</p>
+<h2 id="资料"><a href="#资料" class="headerlink" title="资料"></a>资料</h2><p><a href="http://regexone.com/lesson/kleene_operators?" target="_blank" rel="external">http://regexone.com/lesson/kleene_operators?</a> 练习站<br><a href="https://developers.google.com/edu/python/regular-expressions" target="_blank" rel="external">https://developers.google.com/edu/python/regular-expressions</a> 教程<br><a href="http://pythex.org/" target="_blank" rel="external">http://pythex.org/</a> python正则练习站</p>
 ]]></content>
     
     <summary type="html">
     
       &lt;hr&gt;
-&lt;h1 id=&quot;matrix-w-o-dfs&quot;&gt;&lt;a href=&quot;#matrix-w-o-dfs&quot; class=&quot;headerlink&quot; title=&quot;matrix w/o dfs&quot;&gt;&lt;/a&gt;matrix w/o dfs&lt;/h1&gt;&lt;h3 id=&quot;只是遍历即可&quot;&gt;&lt;a h
+&lt;h1 id=&quot;Regex正则&quot;&gt;&lt;a href=&quot;#Regex正则&quot; class=&quot;headerlink&quot; title=&quot;Regex正则&quot;&gt;&lt;/a&gt;Regex正则&lt;/h1&gt;&lt;h2 id=&quot;基础&quot;&gt;&lt;a href=&quot;#基础&quot; class=&quot;headerlink&quot; tit
     
     </summary>
     
-      <category term="Algo" scheme="http://lycworks.me/blog/categories/Algo/"/>
-    
-    
-      <category term="dfs" scheme="http://lycworks.me/blog/tags/dfs/"/>
-    
-      <category term="matrix" scheme="http://lycworks.me/blog/tags/matrix/"/>
     
   </entry>
   
   <entry>
-    <title>JSON</title>
-    <link href="http://lycworks.me/blog/2016/08/08/json/"/>
-    <id>http://lycworks.me/blog/2016/08/08/json/</id>
-    <published>2016-08-08T04:00:00.000Z</published>
+    <title>CSS Trick</title>
+    <link href="http://lycworks.me/blog/2017/02/02/2016-06-26-CSS-tricks/"/>
+    <id>http://lycworks.me/blog/2017/02/02/2016-06-26-CSS-tricks/</id>
+    <published>2017-02-02T21:56:37.000Z</published>
+    <updated>2017-02-02T21:56:37.000Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="Horizontal-Centering-Span-that-are-absolute"><a href="#Horizontal-Centering-Span-that-are-absolute" class="headerlink" title="Horizontal Centering Span that are absolute"></a>Horizontal Centering Span that are absolute</h1><p>once absolutely positioned, it no longer follows the document flow. So the text is centered, but only inside the pink span.<br>And since it’s absolutely positioned, even if it were a div, the width would collapse.  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">solution  </div><div class="line">span  </div><div class="line">&#123;  </div><div class="line">    background-color:pink;  </div><div class="line">    left: 0;  /*&lt;-*/</div><div class="line">    width: 100%;  /*&lt;-*/  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>If you don’t want the pink to extend the full width, then you must nest an element (e.g. span) inside the positioned spans and give that element the background color, as seen here.</p>
+</blockquote>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;Horizontal-Centering-Span-that-are-absolute&quot;&gt;&lt;a href=&quot;#Horizontal-Centering-Span-that-are-absolute&quot; class=&quot;headerlink&quot; title=&quot;Horizo
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Git笔记</title>
+    <link href="http://lycworks.me/blog/2017/02/02/2016-07-06-git-note/"/>
+    <id>http://lycworks.me/blog/2017/02/02/2016-07-06-git-note/</id>
+    <published>2017-02-02T21:56:37.000Z</published>
     <updated>2017-02-02T21:56:37.000Z</updated>
     
     <content type="html"><![CDATA[<hr>
-<h1 id="JSON-gt-String"><a href="#JSON-gt-String" class="headerlink" title="JSON -&gt; String"></a>JSON -&gt; String</h1><p>function  </p>
+<h2 id="Basic-Commands"><a href="#Basic-Commands" class="headerlink" title="Basic Commands"></a>Basic Commands</h2><p>source: <a href="http://huangziwei.com/tech/blogging-with-git-github-and-jekyll/" target="_blank" rel="external">http://huangziwei.com/tech/blogging-with-git-github-and-jekyll/</a><br><code>git remote -v</code>, <code>git remote show origin</code> - 检测文件夹是否已绑定远程库(remote repository)<br><code>git remote add origin &lt;remote git repository&gt;</code> - 绑定fork的远程库<br><code>git checkout &lt;file to ignore&gt;</code><br><code>git checkout -b|--orphan &lt;branchname&gt;</code> - normal|disconnected branch  </p>
+<h2 id="branch"><a href="#branch" class="headerlink" title="branch"></a>branch</h2><p>source: <a href="https://www.atlassian.com/git/tutorials/using-branches/git-branch" target="_blank" rel="external">https://www.atlassian.com/git/tutorials/using-branches/git-branch</a>  </p>
+<h2 id="Submodules-使用副项目并随时得到更新"><a href="#Submodules-使用副项目并随时得到更新" class="headerlink" title="Submodules　使用副项目并随时得到更新"></a>Submodules　使用副项目并随时得到更新</h2><p>source: <a href="https://medium.com/@porteneuve/mastering-git-submodules-34c65e940407#.kcyfdl2xi" target="_blank" rel="external">https://medium.com/@porteneuve/mastering-git-submodules-34c65e940407#.kcyfdl2xi</a>, <a href="http://johnleach.co.uk/words/323/git-submodules-in-n-easy-steps" target="_blank" rel="external">http://johnleach.co.uk/words/323/git-submodules-in-n-easy-steps</a>, <a href="https://johnleach.co.uk/words/323" target="_blank" rel="external">https://johnleach.co.uk/words/323</a>,<br><a href="https://blog.jacius.info/git-submodule-cheat-sheet/" target="_blank" rel="external">https://blog.jacius.info/git-submodule-cheat-sheet/</a>, <a href="http://blog.chh.tw/posts/git-submodule/" target="_blank" rel="external">http://blog.chh.tw/posts/git-submodule/</a>, <a href="http://springok-blog.logdown.com/posts/2015/11/06/submodule-on-github-subproject-troubleshooting" target="_blank" rel="external">http://springok-blog.logdown.com/posts/2015/11/06/submodule-on-github-subproject-troubleshooting</a></p>
+<pre><code>git submodule add &lt;others .git repository&gt; &lt;myfolder&gt; 
+-- set up .gitmodules for myfolder      
+git commit .gitmodules &lt;myfolder&gt; -m &quot;a message&quot;  
+git push
+
+# after cloning tree, fetch all submodules  
+git submodule init Submodule &apos;myfolder&apos;  
+git submodule update    
+
+# updating submodule  
+cd myfolder &amp;&amp; git pull [from others] &amp;&amp; git add myfolder &amp;&amp; commit    
+
+# making changes to your submodule  
+cd myfolder &amp;&amp; git checkout master [do changes in that branch]  
+git commit -a -m &quot;fix a bug&quot; &amp;&amp; push  
+cd .. &amp;&amp; git add myfolder &amp;&amp; commit -m &quot;updated myfolder&quot;  
+</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      &lt;hr&gt;
+&lt;h2 id=&quot;Basic-Commands&quot;&gt;&lt;a href=&quot;#Basic-Commands&quot; class=&quot;headerlink&quot; title=&quot;Basic Commands&quot;&gt;&lt;/a&gt;Basic Commands&lt;/h2&gt;&lt;p&gt;source: &lt;a href=&quot;
+    
+    </summary>
+    
+      <category term="CLI stuff" scheme="http://lycworks.me/blog/categories/CLI-stuff/"/>
+    
+    
+      <category term="git" scheme="http://lycworks.me/blog/tags/git/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>CSS grid方法</title>
+    <link href="http://lycworks.me/blog/2017/02/02/2016-07-09-css-grid/"/>
+    <id>http://lycworks.me/blog/2017/02/02/2016-07-09-css-grid/</id>
+    <published>2017-02-02T21:56:37.000Z</published>
+    <updated>2017-02-02T21:56:37.000Z</updated>
+    
+    <content type="html"><![CDATA[<hr>
+<pre><code>/*container*/
+.content{
+    padding: 0;
+}
+
+ul.posts{
+    background: aliceblue;
+    width: 100%;
+}
+ul.posts li {
+    float: left;
+    margin: 0;
+    display: inline-block;
+    width: 33.3%;
+    min-height: 200px;
+    text-align: center;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    vertical-align: top;
+    zoom: 1;
+}
+ul.posts li a{
+    /*     display:block; */
+    margin:0;
+    color: #333;
+    font-weight: 600;
+    font-size: 20pt;
+}
+
+ul.posts li:hover{
+    background: rgba(255,255,255,0.5);
+    border: 10px solid rgba(255,255,255,0.01)
+}
+</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      &lt;hr&gt;
+&lt;pre&gt;&lt;code&gt;/*container*/
+.content{
+    padding: 0;
+}
+
+ul.posts{
+    background: aliceblue;
+    width: 100%;
+}
+ul.posts li {
+    float: 
+    
+    </summary>
+    
+      <category term="CSS" scheme="http://lycworks.me/blog/categories/CSS/"/>
+    
+    
+      <category term="grid" scheme="http://lycworks.me/blog/tags/grid/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>HTML5特性</title>
+    <link href="http://lycworks.me/blog/2017/02/02/2016-07-09-html5-tricks/"/>
+    <id>http://lycworks.me/blog/2017/02/02/2016-07-09-html5-tricks/</id>
+    <published>2017-02-02T21:56:37.000Z</published>
+    <updated>2017-02-02T21:56:37.000Z</updated>
+    
+    <content type="html"><![CDATA[<hr>
+<h1 id="data-name"><a href="#data-name" class="headerlink" title="data-name"></a>data-name</h1><blockquote>
+<p>‘a great marriage of server side and client side’ -Stephen Calvert, Quora<br>resources: <a href="https://www.quora.com/What-is-the-best-way-to-pass-server-side-variables-to-client-side-JavaScript" target="_blank" rel="external">https://www.quora.com/What-is-the-best-way-to-pass-server-side-variables-to-client-side-JavaScript</a>  </p>
+</blockquote>
+<h3 id="HTML-lt-div-id-quot-mydiv-quot-data-myval-quot-10-quot-gt-lt-div-gt"><a href="#HTML-lt-div-id-quot-mydiv-quot-data-myval-quot-10-quot-gt-lt-div-gt" class="headerlink" title="HTML- &lt;div id=&quot;mydiv&quot;data-myval=&quot;10&quot;&gt;&lt;/div&gt;"></a>HTML- <code>&lt;div id=&quot;mydiv&quot;</code>data-myval<code>=&quot;10&quot;&gt;&lt;/div&gt;</code></h3><h3 id="JS"><a href="#JS" class="headerlink" title="JS"></a>JS</h3><ul>
+<li><code>var a = $(&#39;#mydiv&#39;).data(&#39;myval&#39;);</code> //getter  </li>
+<li><code>$(&#39;#mydiv&#39;).data(&#39;myval&#39;,20);</code> //setter  </li>
+</ul>
+<blockquote>
+<p>For older browser, use  <code>var myval = element.getAttribute(&#39;data-myval&#39;);</code>  </p>
+</blockquote>
+<h3 id="Or-merely-use-config-as-json-object"><a href="#Or-merely-use-config-as-json-object" class="headerlink" title="Or merely use config as json object"></a>Or merely use config as json object</h3><pre><code>config = {
+    userName: &apos;Scott Patten&apos;,
+    userLogin: &apos;spatten&apos;,
+    hasBoughtCurrentBook: true,
+    followers: [&apos;peterarmstrong&apos;, &apos;rolandtanglao&apos;]
+};
+</code></pre><h3 id="Advance-way"><a href="#Advance-way" class="headerlink" title="Advance way"></a>Advance way</h3><p>(<a href="https://teamtreehouse.com/community/how-do-i-make-a-variable-passed-to-a-jade-template-by-an-express-route-accessible-for-use-in-js-on-the-rendered-page" target="_blank" rel="external">https://teamtreehouse.com/community/how-do-i-make-a-variable-passed-to-a-jade-template-by-an-express-route-accessible-for-use-in-js-on-the-rendered-page</a>)  </p>
 <ul>
-<li>stringify (parse into string representation, has <code>pretty print</code>)  </li>
-<li>parse (parse string into JSON)  <blockquote>
-<p>convert opposite ways  </p>
-</blockquote>
+<li><p>1)On the server side javascript file you put the object as a JSON string on the request  </p>
+<pre><code>res.render(&apos;index&apos;, { workflowData_server: JSON.stringify(workflowData) });
+</code></pre></li>
+<li><p>2) on the template view file,for example index.jade file you put script<br>var workflowData_client = !{workflowData_server} the ! is needed to unescape it to html  </p>
 </li>
+<li><p>3) now you can use the workflowData_client on your client javascript file,<br>for example a public/angular.js file  </p>
+<pre><code>angular.module(&apos;TestApp&apos;, []); angular.module(&apos;TestApp&apos;) .controller(&apos;MainController&apos;, ctrlFunc);
+
+function ctrlFunc() { this.workflowData = workflowData_client; }
+</code></pre></li>
 </ul>
 ]]></content>
     
     <summary type="html">
     
       &lt;hr&gt;
-&lt;h1 id=&quot;JSON-gt-String&quot;&gt;&lt;a href=&quot;#JSON-gt-String&quot; class=&quot;headerlink&quot; title=&quot;JSON -&amp;gt; String&quot;&gt;&lt;/a&gt;JSON -&amp;gt; String&lt;/h1&gt;&lt;p&gt;function  &lt;
+&lt;h1 id=&quot;data-name&quot;&gt;&lt;a href=&quot;#data-name&quot; class=&quot;headerlink&quot; title=&quot;data-name&quot;&gt;&lt;/a&gt;data-name&lt;/h1&gt;&lt;blockquote&gt;
+&lt;p&gt;‘a great marriage of ser
+    
+    </summary>
+    
+      <category term="HTML" scheme="http://lycworks.me/blog/categories/HTML/"/>
+    
+    
+      <category term="data_passing, view_render" scheme="http://lycworks.me/blog/tags/data-passing-view-render/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>HTML笔记</title>
+    <link href="http://lycworks.me/blog/2017/02/02/2016-05-16-html-note/"/>
+    <id>http://lycworks.me/blog/2017/02/02/2016-05-16-html-note/</id>
+    <published>2017-02-02T21:56:37.000Z</published>
+    <updated>2017-02-02T21:56:37.000Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="HTML"><a href="#HTML" class="headerlink" title="HTML"></a>HTML</h1><h3 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h3><ul>
+<li>语义强调  em, strong</li>
+<li>span不为强调，为了设置单独样式  </li>
+<li><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">*  ```&amp;nbsp; ```为字符实体，显示空格  </div><div class="line">* ```&lt;code&gt;```标签只能插入一行代码，如果要插入多行代码，使用```&lt;pre&gt;```标签  </div><div class="line">* ```&lt;div&gt;```为网页划分独立的版块,通常使用id区分  </div><div class="line">* ```&lt;tbody&gt;..&lt;/tbody&gt;```：要等表格内容全部下载完才会显示  </div><div class="line">* 摘要  </div><div class="line"> ```&lt;table summary=&quot;表格简介文本&quot;&gt;```  </div><div class="line">    &gt; 摘要的内容是不会在浏览器中显示出来的  </div><div class="line">它的作用是增加表格的可读性(语义化)，使搜索引擎更好的读懂表格内容，还可以使屏幕阅读器更好的帮助特殊用户读取表格内容。  </div><div class="line"></div><div class="line">    ```&lt;caption&gt;标题文本&lt;/caption&gt;``` 会显示title  </div><div class="line">    </div><div class="line">* 链接  </div><div class="line">	title属性的作用 - 鼠标滑过链接文字时会显示这个属性的文本内容  </div><div class="line">	href=mailto - 后面同时有多个参数的话，第一个参数必须以“?”开头，后面的参数每一个都以“&amp;”分隔。</div><div class="line"></div><div class="line">* Input  </div><div class="line">&gt; 当 type=&quot;radio&quot; 时，控件为单选框, name 取值一定要一致  </div><div class="line">&gt; 当 type=&quot;checkbox&quot; 时，控件为复选框</div><div class="line"></div><div class="line"># CSS</div><div class="line">```内联式(属性) &gt; 嵌入式(&lt;style&gt;) &gt; 外部式</div></pre></td></tr></table></figure>
+</li>
+<li><p>子选择器 ‘&gt;’<br>用于选择指定标签元素的第一代子元素。如右侧代码编辑器中的代码：  </p>
+<figure class="highlight plain"><figcaption><span>solid red;&#125;```</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">  &gt; 这行代码会使class名为food下的子元素li（水果、蔬菜）加入红色实线边框。</div><div class="line"></div><div class="line">* 包含(后代)选择器 &apos; &apos;  </div><div class="line">作用于元素的第一代后代，空格作用于元素的所有后代</div><div class="line"></div><div class="line">* all选择器 &apos;*&apos;</div><div class="line"></div><div class="line">* 伪类选择符，它允许给html不存在的标签（标签的某种状态）设置样式</div><div class="line"></div><div class="line">* 分组选择符 &apos;,&apos;  </div><div class="line">```h1,span&#123;color:red;&#125;``` 相当于：</div><div class="line">```h1&#123;color:red;&#125; span&#123;color:red;&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>权值<br>标签的权值为1，类选择符的权值为10，ID选择符的权值最高为100。例如下面的代码:  </p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">p&#123;color:red;&#125; /*权值为1*/</div><div class="line">p span&#123;color:green;&#125; /*权值为1+1=2*/</div><div class="line">.warning&#123;color:white;&#125; /*权值为10*/</div><div class="line">p span.warning&#123;color:purple;&#125; /*权值为1+1+10=12*/</div><div class="line">#footer .note p&#123;color:yellow;&#125; /*权值为100+10+1=111*/</div></pre></td></tr></table></figure>
+<blockquote>
+<p>注意：继承权值很低，有的文献提出它只有0.1，所以可以理解为继承的权值最低。</p>
+</blockquote>
+<ul>
+<li>css样式的重要性<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">样式优先级为：浏览器默认的样式 &lt; 网页制作者样式 &lt; 用户自己设置的样式，但记住!important优先级样式是个例外，权值高于用户自己设置的样式。</div><div class="line"></div><div class="line">* absolute：  </div><div class="line">	* 无已定位的祖先元素则以&lt;HTML&gt;为基准偏移  </div><div class="line">	* 有已定位的祖先元素 e.g.relative,则以距离最近的且已定位的祖先元素为基准偏移  </div><div class="line">	* 位置会随滚动条变化。</div><div class="line">* fixed：  </div><div class="line">	* 有、无已定位的祖先元素，都以浏览器可视窗口为基准偏移。    </div><div class="line">	* 位置固定，不会随滚动条变化。（固定浮在上面）</div><div class="line">* z-index 只有设置了相对定位，或者绝对定位的元素才具有的属性</div><div class="line"></div><div class="line">* margin选择器设置的属性会和fixed属性设置重叠，导致&lt;body&gt;层与浏览器可视化窗口产生间距。在标准文档流中，两个元素，上外边距和上外边距，或者上外边距和下外边距相遇时，当两个标签都在标准文档流中时，会选择较大的上外填充</div><div class="line">	&gt; 可用解决方法：把后面的元素body设置margin-top：（fixed定位的元素高度）</div><div class="line">* 顶部固定层  </div><div class="line">	* top----position:fixex;(top:0;left:0;取决于祖先元素是否定位且有偏移量)  </div><div class="line">	* mainbody---margin-top:(#top高度+原有间距)px</div><div class="line">	</div><div class="line"># Paragraph</div></pre></td></tr></table></figure></li>
+</ul>
+<p>letter-spacing<br>word-spacing<br>line-height: 2em;<br>text-align - 为块状元素中的文本、图片设置居中样式<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"># DIV elements</div><div class="line">Block - elements with ```display:block```  </div><div class="line">Inline - ```display: inline```  例如span</div><div class="line">*	内联元素特点：</div><div class="line">		和其他元素都在一行上；  </div><div class="line">		元素的高度、宽度及顶部和底部边距不可设置；  </div><div class="line">		元素的宽度就是它包含的文字或图片的宽度，不可改变。  </div><div class="line">	</div><div class="line">Inline-block - 例如img,input</div><div class="line">* 和其他元素都在一行上；</div><div class="line">	元素的高度、宽度、行高以及顶和底边距都可设置  </div><div class="line"></div><div class="line">总体　　</div><div class="line"></div><div class="line">![alt text](http://img.imooc.com/539fbb3a0001304305570259.jpg &quot;Logo Title Text 1&quot;)</div><div class="line"></div><div class="line">填充- 元素内容与边框之间是可以设置距离的</div><div class="line">边界- 元素与其它元素之间设置距离</div><div class="line">&gt; padding在边框里，margin在边框外。  </div><div class="line"></div><div class="line"># CSS的3种基本布局模型 Flow、Layer 和 Float</div><div class="line"># 相对参照元素进行定位</div><div class="line">e.g. putting text on top of an image div</div><div class="line">* 参照定位的元素必须是相对定位元素的前辈元素</div></pre></td></tr></table></figure></p>
+<pre><code>&lt;div id=&quot;box1&quot;&gt;&lt;!--参照定位的元素--&gt;  
+    &lt;div id=&quot;box2&quot;&gt;相对参照元素进行定位&lt;/div&gt;&lt;!--相对定位元素--&gt;  
+&lt;/div&gt;
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line"># 居中  </div><div class="line">1.行内元素，水平居中是通过给父元素设置 text-align:center 来实现  </div><div class="line">2.定宽块状元素：fixed width,flexible height block element, 设置margin: 0 auto  </div><div class="line">3.不定宽块状元素：</div><div class="line">* 3.1 加入table标签:  </div><div class="line">第一步：为需要设置的居中的元素外面加入一个 table 标签 ( 包括 &lt;tbody&gt;、&lt;tr&gt;、&lt;td&gt; )。  </div><div class="line">第二步：为这个 table 设置“左右 margin 居中”（这个和定宽块状元素的方法一样）。</div><div class="line"></div><div class="line">* 3.2 改变块级元素的 display 为 inline 类型，然后使用 text-align:center 来实现居中效果。   </div><div class="line">这种方法相比第一种方法的优势是不用增加无语义标签，简化了标签的嵌套深度，但也存在着一些问题：它将块状元素的 display 类型改为 inline，变成了行内元素，所以少了一些功能，比如设定长度值。</div><div class="line">* 3.3 通过给父元素设置 float, position:relative 和 left:50%，  </div><div class="line">子元素设置 position:relative 和 left:-50% 来实现水平居中  </div><div class="line"></div><div class="line">&gt; 把父元素浮动到左边,同时向右偏移50%,相当于把父元素的左边缘对齐到整行的中间    </div><div class="line">把子元素向右偏移50%,这个50%是父元素的50%,即是wrap的50%,而此时wrap的宽度刚好就等于子元素的宽度,也是子元素本身的50%,这样刚好就居中了   </div><div class="line">可以在.wrap中添加一行clear：both（作用是清除两侧浮动，独占一行），这样“我们来学习一下这种方法”这句就不会把“1 2 3”这句遮住  </div><div class="line"></div><div class="line">这种方法可以保留块状元素仍以 display:block 的形式显示，优点不添加无语议表标签，不增加嵌套深度，但它的缺点是设置了 position:relative，带来了一定的副作用。  </div><div class="line"></div><div class="line"># 垂直居中：</div><div class="line">1. 单行内容垂直居中：设行高（line-height）与容器高（height）为相同值，如height=100px;line-height=100px;  </div><div class="line">2. 利用vertical-align:middle;属性：  </div><div class="line">	* 2.1 将元素插入到```&lt;table&gt;,&lt;td&gt;```或```&lt;th&gt;```中，利用```&lt;td&gt;```或```&lt;th&gt;```的```vertical-align: middle;```属性（vertical-align: middle;只对&lt;td&gt;或&lt;th&gt;有效）。</div><div class="line">	* 2.2 对元素设置display:table-cell;属性，触发vertical-align属性，可使之在容器内居中，但会使块级元素，变为行内块级元素。</div><div class="line"></div><div class="line"># Vertical Navigation</div><div class="line">* 把a标签定义成行内块</div><div class="line"></div><div class="line">* 文字缩进20px</div><div class="line"></div><div class="line"># Horizontal Nav</div><div class="line">* add float left and delete ul&apos;s width</div><div class="line"></div><div class="line"># Inner Nav</div></pre></td></tr></table></figure>
+
+ul&gt;li ul{transition:height 0.3s;}
+ul&gt;li:hover ul{height: 120px;}
+</code></pre><p>```</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;HTML&quot;&gt;&lt;a href=&quot;#HTML&quot; class=&quot;headerlink&quot; title=&quot;HTML&quot;&gt;&lt;/a&gt;HTML&lt;/h1&gt;&lt;h3 id=&quot;基础&quot;&gt;&lt;a href=&quot;#基础&quot; class=&quot;headerlink&quot; title=&quot;基础&quot;&gt;&lt;/a&gt;基础&lt;/h
     
     </summary>
     
@@ -381,62 +653,46 @@
   </entry>
   
   <entry>
-    <title>AI笔记</title>
-    <link href="http://lycworks.me/blog/2016/08/03/AI-note/"/>
-    <id>http://lycworks.me/blog/2016/08/03/AI-note/</id>
-    <published>2016-08-03T04:00:00.000Z</published>
+    <title>Snap.SVG</title>
+    <link href="http://lycworks.me/blog/2017/02/02/2016-07-14-svg/"/>
+    <id>http://lycworks.me/blog/2017/02/02/2016-07-14-svg/</id>
+    <published>2017-02-02T21:56:37.000Z</published>
     <updated>2017-02-02T21:56:37.000Z</updated>
     
     <content type="html"><![CDATA[<hr>
-<h1 id="AI-V-PS"><a href="#AI-V-PS" class="headerlink" title="AI V PS"></a>AI V PS</h1><ul>
-<li>AI is resolution-independent, meaning its resolution is unaffected with zooming. In AI, images are vectors that are<br>mathematically calculated when zooming.  </li>
-</ul>
-<h1 id="Hotkeys"><a href="#Hotkeys" class="headerlink" title="Hotkeys"></a>Hotkeys</h1><p><code>CTRL + K</code>- preference<br><code>CAPS LOCK</code>- change all to precise cursor ‘+’<br><code>CTRL + R</code>- ruler<br><code>CTRL + 0</code>- fit on screen, <code>CTRL + 1</code>- fit 100%  </p>
-<h1 id="Start-with-An-End-of-Mind"><a href="#Start-with-An-End-of-Mind" class="headerlink" title="Start with An End of Mind"></a>Start with An End of Mind</h1><p><code>what is it for</code></p>
-<h3 id="Type"><a href="#Type" class="headerlink" title="Type"></a>Type</h3><h4 id="Print"><a href="#Print" class="headerlink" title="Print"></a>Print</h4><ul>
-<li>bleed (cut line for printing edge)  </li>
-<li>PPI (300 press-rasterize standard)  </li>
-</ul>
-<h4 id="Web"><a href="#Web" class="headerlink" title="Web"></a>Web</h4><ul>
-<li>Object align to invisible grid  </li>
-<li>PPI 72 for screen standard  </li>
-</ul>
-<h3 id="Preview"><a href="#Preview" class="headerlink" title="Preview"></a>Preview</h3><p><code>CTRL + Y</code>- outline toggle<br><code>SHIFT + CTRL + Y</code>- pixel preview (for the screen)<br><code>View-&gt;proof set up</code>- preview color blend in rgb and cmyk  </p>
-<p><code>ALT + click</code> - to change area of selection (eg in transform)<br><code>CTRL + click</code> - V select underlied item (eg arm under a shirt)  </p>
-<h1 id="Navigation"><a href="#Navigation" class="headerlink" title="Navigation"></a>Navigation</h1><h3 id="Ruler-Manipulation"><a href="#Ruler-Manipulation" class="headerlink" title="Ruler Manipulation"></a>Ruler Manipulation</h3><p>Top left corner drag to set genesis (0) point<br>with ctrl, easier to do the second drag  </p>
-<h3 id="Object-view-selection"><a href="#Object-view-selection" class="headerlink" title="Object view selection"></a>Object view selection</h3><p>views can be created to switch between customized views (often for complicated vectors)  </p>
-<h1 id="Selection"><a href="#Selection" class="headerlink" title="Selection"></a>Selection</h1><p>V select - normal group select (if group exist)<br>A direct select - group item select (if choose group selection tool, each click select one upper nested level)  </p>
-<h3 id="strategy"><a href="#strategy" class="headerlink" title="strategy"></a>strategy</h3><p>use direct select for embedded item or double click in V selection to go to isolation (quit using esc)  </p>
-<h1 id="Rotate-amp-Scale"><a href="#Rotate-amp-Scale" class="headerlink" title="Rotate &amp; Scale"></a>Rotate &amp; Scale</h1><p>simply click to create anchor point and drag to manipulate scale/rotation  </p>
-<blockquote>
-<p>use alt click to edit anchor point setting<br>command + D to repeat the last thing (eg creating 360 flower)  </p>
-</blockquote>
-<h1 id="Transform"><a href="#Transform" class="headerlink" title="Transform"></a>Transform</h1><p>width - change width, warp - finger paint, wrinkle - melt effect  </p>
-<h1 id="Color-Manipulation"><a href="#Color-Manipulation" class="headerlink" title="Color Manipulation"></a>Color Manipulation</h1><h3 id="RGB-V-CMYK"><a href="#RGB-V-CMYK" class="headerlink" title="RGB V CMYK"></a>RGB V CMYK</h3><p><code>RGB</code>- color addictive, ‘world of light’/screen<br><code>CMYK</code>- color subtractive, ‘world of absorption’/print press  </p>
-<p>Color guide - palette inspiration<br>Color Swatches - drag to add or add group. Export as ASE OR AI<br><code>ALT + DEL</code> - to force delete  </p>
-<h3 id="GLOBAL-processing-and-spot-color"><a href="#GLOBAL-processing-and-spot-color" class="headerlink" title="GLOBAL processing and spot color"></a>GLOBAL processing and spot color</h3><p>double click color, if global, color attached to object woho  </p>
+<h1 id="Snap-SVG"><a href="#Snap-SVG" class="headerlink" title="Snap.SVG"></a>Snap.SVG</h1><p>clear<br>        var s = Snap(‘css selector’)<br>        Snap.load(‘whatever.svg’, function(fragment){<br>            s.clear()<br>        })</p>
+<p>get element  </p>
+<pre><code>myRect.attr(&apos;id&apos;);
+</code></pre><p>set element<br>        myRect.attr({<br>            id: ‘newid’<br>        })</p>
+<p>click callback  </p>
+<pre><code>var clickCallback = function(event) {
+    this.attr({ fill: &apos;blue&apos; });
+};
+
+myRect.click(clickCallback);
+</code></pre><p>timer example <a href="https://codepen.io/rachsmith/pen/BqpCd?editors=0010" target="_blank" rel="external">https://codepen.io/rachsmith/pen/BqpCd?editors=0010</a><br>basics <a href="http://webdesign.tutsplus.com/articles/how-to-manipulate-and-animate-svg-with-snapsvg--cms-21323" target="_blank" rel="external">http://webdesign.tutsplus.com/articles/how-to-manipulate-and-animate-svg-with-snapsvg--cms-21323</a><br><a href="http://unicorn-ui.com/blog/intermediate-svg.html" target="_blank" rel="external">http://unicorn-ui.com/blog/intermediate-svg.html</a>, <a href="https://www.sitepoint.com/advanced-snap-svg/" target="_blank" rel="external">https://www.sitepoint.com/advanced-snap-svg/</a>, <a href="http://nocircleno.com/blog/getting-starting-with-svg-and-javascript/" target="_blank" rel="external">http://nocircleno.com/blog/getting-starting-with-svg-and-javascript/</a><br>animation - all <a href="https://codyhouse.co/gem/animate-svg-icons-with-css-and-snap/" target="_blank" rel="external">https://codyhouse.co/gem/animate-svg-icons-with-css-and-snap/</a>, <a href="https://davidwalsh.name/svg-animations-snap" target="_blank" rel="external">https://davidwalsh.name/svg-animations-snap</a><br>animation - path <a href="https://codepen.io/JRGould/pen/dkHhw?editors=0010" target="_blank" rel="external">https://codepen.io/JRGould/pen/dkHhw?editors=0010</a><br>masking exmaple <a href="http://jsfiddle.net/5826ywh7/3/" target="_blank" rel="external">http://jsfiddle.net/5826ywh7/3/</a><br>callback within Snap.load <a href="http://stackoverflow.com/questions/26465119/why-when-i-add-function-into-snap-load-loading-svg-my-method-i-cannot" target="_blank" rel="external">http://stackoverflow.com/questions/26465119/why-when-i-add-function-into-snap-load-loading-svg-my-method-i-cannot</a>  </p>
+<p>more examples <a href="https://www.raymondcamden.com/2013/11/06/Want-help-with-Snapsvg-And-a-few-more-examples/" target="_blank" rel="external">https://www.raymondcamden.com/2013/11/06/Want-help-with-Snapsvg-And-a-few-more-examples/</a>  </p>
 ]]></content>
     
     <summary type="html">
     
       &lt;hr&gt;
-&lt;h1 id=&quot;AI-V-PS&quot;&gt;&lt;a href=&quot;#AI-V-PS&quot; class=&quot;headerlink&quot; title=&quot;AI V PS&quot;&gt;&lt;/a&gt;AI V PS&lt;/h1&gt;&lt;ul&gt;
-&lt;li&gt;AI is resolution-independent, meaning i
+&lt;h1 id=&quot;Snap-SVG&quot;&gt;&lt;a href=&quot;#Snap-SVG&quot; class=&quot;headerlink&quot; title=&quot;Snap.SVG&quot;&gt;&lt;/a&gt;Snap.SVG&lt;/h1&gt;&lt;p&gt;clear&lt;br&gt;        var s = Snap(‘css select
     
     </summary>
     
-      <category term="Media" scheme="http://lycworks.me/blog/categories/Media/"/>
+      <category term="SVG" scheme="http://lycworks.me/blog/categories/SVG/"/>
     
     
-      <category term="illustrator, image_manipulation" scheme="http://lycworks.me/blog/tags/illustrator-image-manipulation/"/>
+      <category term="snap.svg, svg" scheme="http://lycworks.me/blog/tags/snap-svg-svg/"/>
     
   </entry>
   
   <entry>
     <title>Jade笔记</title>
-    <link href="http://lycworks.me/blog/2016/07/20/jade/"/>
-    <id>http://lycworks.me/blog/2016/07/20/jade/</id>
-    <published>2016-07-20T04:00:00.000Z</published>
+    <link href="http://lycworks.me/blog/2017/02/02/2016-07-20-jade/"/>
+    <id>http://lycworks.me/blog/2017/02/02/2016-07-20-jade/</id>
+    <published>2017-02-02T21:56:37.000Z</published>
     <updated>2017-02-02T21:56:37.000Z</updated>
     
     <content type="html"><![CDATA[<hr>
@@ -514,317 +770,27 @@ block content
   </entry>
   
   <entry>
-    <title>Snap.SVG</title>
-    <link href="http://lycworks.me/blog/2016/07/14/svg/"/>
-    <id>http://lycworks.me/blog/2016/07/14/svg/</id>
-    <published>2016-07-14T04:00:00.000Z</published>
+    <title>JSON</title>
+    <link href="http://lycworks.me/blog/2017/02/02/2016-08-08-json/"/>
+    <id>http://lycworks.me/blog/2017/02/02/2016-08-08-json/</id>
+    <published>2017-02-02T21:56:37.000Z</published>
     <updated>2017-02-02T21:56:37.000Z</updated>
     
     <content type="html"><![CDATA[<hr>
-<h1 id="Snap-SVG"><a href="#Snap-SVG" class="headerlink" title="Snap.SVG"></a>Snap.SVG</h1><p>clear<br>        var s = Snap(‘css selector’)<br>        Snap.load(‘whatever.svg’, function(fragment){<br>            s.clear()<br>        })</p>
-<p>get element  </p>
-<pre><code>myRect.attr(&apos;id&apos;);
-</code></pre><p>set element<br>        myRect.attr({<br>            id: ‘newid’<br>        })</p>
-<p>click callback  </p>
-<pre><code>var clickCallback = function(event) {
-    this.attr({ fill: &apos;blue&apos; });
-};
-
-myRect.click(clickCallback);
-</code></pre><p>timer example <a href="https://codepen.io/rachsmith/pen/BqpCd?editors=0010" target="_blank" rel="external">https://codepen.io/rachsmith/pen/BqpCd?editors=0010</a><br>basics <a href="http://webdesign.tutsplus.com/articles/how-to-manipulate-and-animate-svg-with-snapsvg--cms-21323" target="_blank" rel="external">http://webdesign.tutsplus.com/articles/how-to-manipulate-and-animate-svg-with-snapsvg--cms-21323</a><br><a href="http://unicorn-ui.com/blog/intermediate-svg.html" target="_blank" rel="external">http://unicorn-ui.com/blog/intermediate-svg.html</a>, <a href="https://www.sitepoint.com/advanced-snap-svg/" target="_blank" rel="external">https://www.sitepoint.com/advanced-snap-svg/</a>, <a href="http://nocircleno.com/blog/getting-starting-with-svg-and-javascript/" target="_blank" rel="external">http://nocircleno.com/blog/getting-starting-with-svg-and-javascript/</a><br>animation - all <a href="https://codyhouse.co/gem/animate-svg-icons-with-css-and-snap/" target="_blank" rel="external">https://codyhouse.co/gem/animate-svg-icons-with-css-and-snap/</a>, <a href="https://davidwalsh.name/svg-animations-snap" target="_blank" rel="external">https://davidwalsh.name/svg-animations-snap</a><br>animation - path <a href="https://codepen.io/JRGould/pen/dkHhw?editors=0010" target="_blank" rel="external">https://codepen.io/JRGould/pen/dkHhw?editors=0010</a><br>masking exmaple <a href="http://jsfiddle.net/5826ywh7/3/" target="_blank" rel="external">http://jsfiddle.net/5826ywh7/3/</a><br>callback within Snap.load <a href="http://stackoverflow.com/questions/26465119/why-when-i-add-function-into-snap-load-loading-svg-my-method-i-cannot" target="_blank" rel="external">http://stackoverflow.com/questions/26465119/why-when-i-add-function-into-snap-load-loading-svg-my-method-i-cannot</a>  </p>
-<p>more examples <a href="https://www.raymondcamden.com/2013/11/06/Want-help-with-Snapsvg-And-a-few-more-examples/" target="_blank" rel="external">https://www.raymondcamden.com/2013/11/06/Want-help-with-Snapsvg-And-a-few-more-examples/</a>  </p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;hr&gt;
-&lt;h1 id=&quot;Snap-SVG&quot;&gt;&lt;a href=&quot;#Snap-SVG&quot; class=&quot;headerlink&quot; title=&quot;Snap.SVG&quot;&gt;&lt;/a&gt;Snap.SVG&lt;/h1&gt;&lt;p&gt;clear&lt;br&gt;        var s = Snap(‘css select
-    
-    </summary>
-    
-      <category term="SVG" scheme="http://lycworks.me/blog/categories/SVG/"/>
-    
-    
-      <category term="snap.svg, svg" scheme="http://lycworks.me/blog/tags/snap-svg-svg/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>ProgressBar.js Doughnut Chart</title>
-    <link href="http://lycworks.me/blog/2016/07/11/chart-progressbar/"/>
-    <id>http://lycworks.me/blog/2016/07/11/chart-progressbar/</id>
-    <published>2016-07-11T04:00:00.000Z</published>
-    <updated>2017-02-02T21:56:37.000Z</updated>
-    
-    <content type="html"><![CDATA[<hr>
-<h1 id="CODE"><a href="#CODE" class="headerlink" title="CODE"></a>CODE</h1><pre><code>// progressbar.js@1.0.0 version is used
-// Docs: http://progressbarjs.readthedocs.org/en/1.0.0/
-// drawChart(&apos;By You&apos;, chart1, i1);
-// drawChart(&apos;By Others&apos;, chart2, i2);
-
-function drawChart(str,id,val){
-     var bar = new ProgressBar.Circle(id, {
-       color: &apos;#373f51&apos;,
-       // This has to be the same size as the maximum width to
-       // prevent clipping
-       strokeWidth: 4,
-       trailWidth: 4,
-       easing: &apos;easeInOut&apos;,
-       duration: 1400,
-       text: {
-         autoStyleContainer: false
-       },
-       from: { color: &apos;#a9bcd0&apos;, width: 4 },
-       to: { color: &apos;#a9bcd0&apos;, width: 4 },
-       // Set default step function for all animate calls
-       step: function(state, circle) {
-         circle.path.setAttribute(&apos;stroke&apos;, state.color);
-         circle.path.setAttribute(&apos;stroke-width&apos;, state.width);
-
-         var value = Math.round(circle.value() * 100);
-         if (value === 0) {
-           circle.setText(&apos;&apos;);
-         } else {
-           circle.setText(&apos;&lt;center&gt;&apos;+value+&apos;%&lt;/center&gt;\n&apos;+str);
-         }
-
-       }
-     });
-     // bar.text.style.fontFamily = &apos;&quot;Raleway&quot;, Helvetica, sans-serif&apos;;
-     bar.text.style.fontSize = &apos;1rem&apos;;
-     bar.text.style.lineHeight = &apos;30px&apos;;
-     var value = val/total;
-     bar.animate(value);  // Number from 0.0 to 1.0
-} //for progressbar
-</code></pre>]]></content>
-    
-    <summary type="html">
-    
-      &lt;hr&gt;
-&lt;h1 id=&quot;CODE&quot;&gt;&lt;a href=&quot;#CODE&quot; class=&quot;headerlink&quot; title=&quot;CODE&quot;&gt;&lt;/a&gt;CODE&lt;/h1&gt;&lt;pre&gt;&lt;code&gt;// progressbar.js@1.0.0 version is used
-// Docs: 
-    
-    </summary>
-    
-      <category term="JS" scheme="http://lycworks.me/blog/categories/JS/"/>
-    
-    
-      <category term="chart,JS" scheme="http://lycworks.me/blog/tags/chart-JS/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>HTML5特性</title>
-    <link href="http://lycworks.me/blog/2016/07/09/html5-tricks/"/>
-    <id>http://lycworks.me/blog/2016/07/09/html5-tricks/</id>
-    <published>2016-07-09T04:00:00.000Z</published>
-    <updated>2017-02-02T21:56:37.000Z</updated>
-    
-    <content type="html"><![CDATA[<hr>
-<h1 id="data-name"><a href="#data-name" class="headerlink" title="data-name"></a>data-name</h1><blockquote>
-<p>‘a great marriage of server side and client side’ -Stephen Calvert, Quora<br>resources: <a href="https://www.quora.com/What-is-the-best-way-to-pass-server-side-variables-to-client-side-JavaScript" target="_blank" rel="external">https://www.quora.com/What-is-the-best-way-to-pass-server-side-variables-to-client-side-JavaScript</a>  </p>
-</blockquote>
-<h3 id="HTML-lt-div-id-quot-mydiv-quot-data-myval-quot-10-quot-gt-lt-div-gt"><a href="#HTML-lt-div-id-quot-mydiv-quot-data-myval-quot-10-quot-gt-lt-div-gt" class="headerlink" title="HTML- &lt;div id=&quot;mydiv&quot;data-myval=&quot;10&quot;&gt;&lt;/div&gt;"></a>HTML- <code>&lt;div id=&quot;mydiv&quot;</code>data-myval<code>=&quot;10&quot;&gt;&lt;/div&gt;</code></h3><h3 id="JS"><a href="#JS" class="headerlink" title="JS"></a>JS</h3><ul>
-<li><code>var a = $(&#39;#mydiv&#39;).data(&#39;myval&#39;);</code> //getter  </li>
-<li><code>$(&#39;#mydiv&#39;).data(&#39;myval&#39;,20);</code> //setter  </li>
-</ul>
-<blockquote>
-<p>For older browser, use  <code>var myval = element.getAttribute(&#39;data-myval&#39;);</code>  </p>
-</blockquote>
-<h3 id="Or-merely-use-config-as-json-object"><a href="#Or-merely-use-config-as-json-object" class="headerlink" title="Or merely use config as json object"></a>Or merely use config as json object</h3><pre><code>config = {
-    userName: &apos;Scott Patten&apos;,
-    userLogin: &apos;spatten&apos;,
-    hasBoughtCurrentBook: true,
-    followers: [&apos;peterarmstrong&apos;, &apos;rolandtanglao&apos;]
-};
-</code></pre><h3 id="Advance-way"><a href="#Advance-way" class="headerlink" title="Advance way"></a>Advance way</h3><p>(<a href="https://teamtreehouse.com/community/how-do-i-make-a-variable-passed-to-a-jade-template-by-an-express-route-accessible-for-use-in-js-on-the-rendered-page" target="_blank" rel="external">https://teamtreehouse.com/community/how-do-i-make-a-variable-passed-to-a-jade-template-by-an-express-route-accessible-for-use-in-js-on-the-rendered-page</a>)  </p>
+<h1 id="JSON-gt-String"><a href="#JSON-gt-String" class="headerlink" title="JSON -&gt; String"></a>JSON -&gt; String</h1><p>function  </p>
 <ul>
-<li><p>1)On the server side javascript file you put the object as a JSON string on the request  </p>
-<pre><code>res.render(&apos;index&apos;, { workflowData_server: JSON.stringify(workflowData) });
-</code></pre></li>
-<li><p>2) on the template view file,for example index.jade file you put script<br>var workflowData_client = !{workflowData_server} the ! is needed to unescape it to html  </p>
+<li>stringify (parse into string representation, has <code>pretty print</code>)  </li>
+<li>parse (parse string into JSON)  <blockquote>
+<p>convert opposite ways  </p>
+</blockquote>
 </li>
-<li><p>3) now you can use the workflowData_client on your client javascript file,<br>for example a public/angular.js file  </p>
-<pre><code>angular.module(&apos;TestApp&apos;, []); angular.module(&apos;TestApp&apos;) .controller(&apos;MainController&apos;, ctrlFunc);
-
-function ctrlFunc() { this.workflowData = workflowData_client; }
-</code></pre></li>
 </ul>
 ]]></content>
     
     <summary type="html">
     
       &lt;hr&gt;
-&lt;h1 id=&quot;data-name&quot;&gt;&lt;a href=&quot;#data-name&quot; class=&quot;headerlink&quot; title=&quot;data-name&quot;&gt;&lt;/a&gt;data-name&lt;/h1&gt;&lt;blockquote&gt;
-&lt;p&gt;‘a great marriage of ser
-    
-    </summary>
-    
-      <category term="HTML" scheme="http://lycworks.me/blog/categories/HTML/"/>
-    
-    
-      <category term="data_passing, view_render" scheme="http://lycworks.me/blog/tags/data-passing-view-render/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>CSS grid方法</title>
-    <link href="http://lycworks.me/blog/2016/07/09/css-grid/"/>
-    <id>http://lycworks.me/blog/2016/07/09/css-grid/</id>
-    <published>2016-07-09T04:00:00.000Z</published>
-    <updated>2017-02-02T21:56:37.000Z</updated>
-    
-    <content type="html"><![CDATA[<hr>
-<pre><code>/*container*/
-.content{
-    padding: 0;
-}
-
-ul.posts{
-    background: aliceblue;
-    width: 100%;
-}
-ul.posts li {
-    float: left;
-    margin: 0;
-    display: inline-block;
-    width: 33.3%;
-    min-height: 200px;
-    text-align: center;
-    box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-    vertical-align: top;
-    zoom: 1;
-}
-ul.posts li a{
-    /*     display:block; */
-    margin:0;
-    color: #333;
-    font-weight: 600;
-    font-size: 20pt;
-}
-
-ul.posts li:hover{
-    background: rgba(255,255,255,0.5);
-    border: 10px solid rgba(255,255,255,0.01)
-}
-</code></pre>]]></content>
-    
-    <summary type="html">
-    
-      &lt;hr&gt;
-&lt;pre&gt;&lt;code&gt;/*container*/
-.content{
-    padding: 0;
-}
-
-ul.posts{
-    background: aliceblue;
-    width: 100%;
-}
-ul.posts li {
-    float: 
-    
-    </summary>
-    
-      <category term="CSS" scheme="http://lycworks.me/blog/categories/CSS/"/>
-    
-    
-      <category term="grid" scheme="http://lycworks.me/blog/tags/grid/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Git笔记</title>
-    <link href="http://lycworks.me/blog/2016/07/06/git-note/"/>
-    <id>http://lycworks.me/blog/2016/07/06/git-note/</id>
-    <published>2016-07-06T04:00:00.000Z</published>
-    <updated>2017-02-02T21:56:37.000Z</updated>
-    
-    <content type="html"><![CDATA[<hr>
-<h2 id="Basic-Commands"><a href="#Basic-Commands" class="headerlink" title="Basic Commands"></a>Basic Commands</h2><p>source: <a href="http://huangziwei.com/tech/blogging-with-git-github-and-jekyll/" target="_blank" rel="external">http://huangziwei.com/tech/blogging-with-git-github-and-jekyll/</a><br><code>git remote -v</code>, <code>git remote show origin</code> - 检测文件夹是否已绑定远程库(remote repository)<br><code>git remote add origin &lt;remote git repository&gt;</code> - 绑定fork的远程库<br><code>git checkout &lt;file to ignore&gt;</code><br><code>git checkout -b|--orphan &lt;branchname&gt;</code> - normal|disconnected branch  </p>
-<h2 id="branch"><a href="#branch" class="headerlink" title="branch"></a>branch</h2><p>source: <a href="https://www.atlassian.com/git/tutorials/using-branches/git-branch" target="_blank" rel="external">https://www.atlassian.com/git/tutorials/using-branches/git-branch</a>  </p>
-<h2 id="Submodules-使用副项目并随时得到更新"><a href="#Submodules-使用副项目并随时得到更新" class="headerlink" title="Submodules　使用副项目并随时得到更新"></a>Submodules　使用副项目并随时得到更新</h2><p>source: <a href="https://medium.com/@porteneuve/mastering-git-submodules-34c65e940407#.kcyfdl2xi" target="_blank" rel="external">https://medium.com/@porteneuve/mastering-git-submodules-34c65e940407#.kcyfdl2xi</a>, <a href="http://johnleach.co.uk/words/323/git-submodules-in-n-easy-steps" target="_blank" rel="external">http://johnleach.co.uk/words/323/git-submodules-in-n-easy-steps</a>, <a href="https://johnleach.co.uk/words/323" target="_blank" rel="external">https://johnleach.co.uk/words/323</a>,<br><a href="https://blog.jacius.info/git-submodule-cheat-sheet/" target="_blank" rel="external">https://blog.jacius.info/git-submodule-cheat-sheet/</a>, <a href="http://blog.chh.tw/posts/git-submodule/" target="_blank" rel="external">http://blog.chh.tw/posts/git-submodule/</a>, <a href="http://springok-blog.logdown.com/posts/2015/11/06/submodule-on-github-subproject-troubleshooting" target="_blank" rel="external">http://springok-blog.logdown.com/posts/2015/11/06/submodule-on-github-subproject-troubleshooting</a></p>
-<pre><code>git submodule add &lt;others .git repository&gt; &lt;myfolder&gt; 
--- set up .gitmodules for myfolder      
-git commit .gitmodules &lt;myfolder&gt; -m &quot;a message&quot;  
-git push
-
-# after cloning tree, fetch all submodules  
-git submodule init Submodule &apos;myfolder&apos;  
-git submodule update    
-
-# updating submodule  
-cd myfolder &amp;&amp; git pull [from others] &amp;&amp; git add myfolder &amp;&amp; commit    
-
-# making changes to your submodule  
-cd myfolder &amp;&amp; git checkout master [do changes in that branch]  
-git commit -a -m &quot;fix a bug&quot; &amp;&amp; push  
-cd .. &amp;&amp; git add myfolder &amp;&amp; commit -m &quot;updated myfolder&quot;  
-</code></pre>]]></content>
-    
-    <summary type="html">
-    
-      &lt;hr&gt;
-&lt;h2 id=&quot;Basic-Commands&quot;&gt;&lt;a href=&quot;#Basic-Commands&quot; class=&quot;headerlink&quot; title=&quot;Basic Commands&quot;&gt;&lt;/a&gt;Basic Commands&lt;/h2&gt;&lt;p&gt;source: &lt;a href=&quot;
-    
-    </summary>
-    
-      <category term="CLI stuff" scheme="http://lycworks.me/blog/categories/CLI-stuff/"/>
-    
-    
-      <category term="git" scheme="http://lycworks.me/blog/tags/git/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>CSS Trick</title>
-    <link href="http://lycworks.me/blog/2016/06/26/CSS-tricks/"/>
-    <id>http://lycworks.me/blog/2016/06/26/CSS-tricks/</id>
-    <published>2016-06-26T04:00:00.000Z</published>
-    <updated>2017-02-02T21:56:37.000Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="Horizontal-Centering-Span-that-are-absolute"><a href="#Horizontal-Centering-Span-that-are-absolute" class="headerlink" title="Horizontal Centering Span that are absolute"></a>Horizontal Centering Span that are absolute</h1><p>once absolutely positioned, it no longer follows the document flow. So the text is centered, but only inside the pink span.<br>And since it’s absolutely positioned, even if it were a div, the width would collapse.  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">solution  </div><div class="line">span  </div><div class="line">&#123;  </div><div class="line">    background-color:pink;  </div><div class="line">    left: 0;  /*&lt;-*/</div><div class="line">    width: 100%;  /*&lt;-*/  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<blockquote>
-<p>If you don’t want the pink to extend the full width, then you must nest an element (e.g. span) inside the positioned spans and give that element the background color, as seen here.</p>
-</blockquote>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;Horizontal-Centering-Span-that-are-absolute&quot;&gt;&lt;a href=&quot;#Horizontal-Centering-Span-that-are-absolute&quot; class=&quot;headerlink&quot; title=&quot;Horizo
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>JS正则表达式regexexp</title>
-    <link href="http://lycworks.me/blog/2016/05/20/JS-regex/"/>
-    <id>http://lycworks.me/blog/2016/05/20/JS-regex/</id>
-    <published>2016-05-20T04:00:00.000Z</published>
-    <updated>2017-02-02T21:56:37.000Z</updated>
-    
-    <content type="html"><![CDATA[<hr>
-<h1 id="Regex正则"><a href="#Regex正则" class="headerlink" title="Regex正则"></a>Regex正则</h1><h2 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h2><p><code>/</code>起始和结尾<br><code>.</code> - 代表任意，除了换行/n,/r etc<br><code>\d</code>- 0-9<br><code>\D</code>- !(0-9)<br><code>\w</code>- 0-9或a-zA-Z,_<br><code>\W</code>- !(\w)<br><code>\s</code>- 空格，tab，\n\r etc<br><code>\S</code>- !(\s)<br><code>\t\r\n\v\f</code> - tab，回车，换行，垂直|，换页  </p>
-<p>范围<br>[] - 字符范围, eg [a-zA-Z]<br>[^..] - 字符意外<br>^ - 行首<br>$ - 行尾<br><code>\b</code> - 零宽单词边界 eg ‘a no’<br><code>\B</code> - !(\b)  </p>
-<p>符号<br><code>\</code> - escape符号  </p>
-<p>分组<br><code>(x)</code>, <code>\n</code> - e.g. (abc)\n 表示abc再重复n次<br><code>(?:x)</code> - 仅分组，重复没有效果 eg <code>(?:abc)(def)\1.test(&#39;abcdefdef&#39;)</code>  </p>
-<p>重复<br>贪婪算法 x<em> &gt;=0, x+ &gt;=1<br>eg abc</em> 匹配 ab, abc, abccccc<br>   abc+ 匹配 abc,abccccc  </p>
-<p>非贪婪算法 x<em>? == 0, x+? ==1<br>  eg abc</em>? 匹配 ab<br>     abc+? 匹配 abc  </p>
-<p>x? 出现0或1次<br>x|y x或y<br>  eg ab|cd|ef 匹配 ab或cd或ef<br>x{n} - 固定n次<br>x(n,) - &gt;= n次<br>x(n,m) - n-m次  </p>
-<p>标志类flag  gim<br>g - global<br>i - ignoreCase<br>m - multiline - 跨行检索  </p>
-<h2 id="相关方法"><a href="#相关方法" class="headerlink" title="相关方法"></a>相关方法</h2><p>.search(regex) - 返回找到位置index<br>.replace(regex,replacement)<br>.match(regex) - 返回匹配结果数组<br>.split(regex) - 返回数组</p>
-<h2 id="资料"><a href="#资料" class="headerlink" title="资料"></a>资料</h2><p><a href="http://regexone.com/lesson/kleene_operators?" target="_blank" rel="external">http://regexone.com/lesson/kleene_operators?</a> 练习站<br><a href="https://developers.google.com/edu/python/regular-expressions" target="_blank" rel="external">https://developers.google.com/edu/python/regular-expressions</a> 教程<br><a href="http://pythex.org/" target="_blank" rel="external">http://pythex.org/</a> python正则练习站</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;hr&gt;
-&lt;h1 id=&quot;Regex正则&quot;&gt;&lt;a href=&quot;#Regex正则&quot; class=&quot;headerlink&quot; title=&quot;Regex正则&quot;&gt;&lt;/a&gt;Regex正则&lt;/h1&gt;&lt;h2 id=&quot;基础&quot;&gt;&lt;a href=&quot;#基础&quot; class=&quot;headerlink&quot; tit
+&lt;h1 id=&quot;JSON-gt-String&quot;&gt;&lt;a href=&quot;#JSON-gt-String&quot; class=&quot;headerlink&quot; title=&quot;JSON -&amp;gt; String&quot;&gt;&lt;/a&gt;JSON -&amp;gt; String&lt;/h1&gt;&lt;p&gt;function  &lt;
     
     </summary>
     
