@@ -459,113 +459,136 @@
   </entry>
   
   <entry>
-    <title>Git笔记</title>
-    <link href="http://lycworks.me/blog/2017/02/02/2016-07-06-git-note/"/>
-    <id>http://lycworks.me/blog/2017/02/02/2016-07-06-git-note/</id>
+    <title>JSON</title>
+    <link href="http://lycworks.me/blog/2017/02/02/2016-08-08-json/"/>
+    <id>http://lycworks.me/blog/2017/02/02/2016-08-08-json/</id>
     <published>2017-02-02T21:56:37.000Z</published>
     <updated>2017-02-02T21:56:37.000Z</updated>
     
     <content type="html"><![CDATA[<hr>
-<h2 id="Basic-Commands"><a href="#Basic-Commands" class="headerlink" title="Basic Commands"></a>Basic Commands</h2><p>source: <a href="http://huangziwei.com/tech/blogging-with-git-github-and-jekyll/" target="_blank" rel="external">http://huangziwei.com/tech/blogging-with-git-github-and-jekyll/</a><br><code>git remote -v</code>, <code>git remote show origin</code> - 检测文件夹是否已绑定远程库(remote repository)<br><code>git remote add origin &lt;remote git repository&gt;</code> - 绑定fork的远程库<br><code>git checkout &lt;file to ignore&gt;</code><br><code>git checkout -b|--orphan &lt;branchname&gt;</code> - normal|disconnected branch  </p>
-<h2 id="branch"><a href="#branch" class="headerlink" title="branch"></a>branch</h2><p>source: <a href="https://www.atlassian.com/git/tutorials/using-branches/git-branch" target="_blank" rel="external">https://www.atlassian.com/git/tutorials/using-branches/git-branch</a>  </p>
-<h2 id="Submodules-使用副项目并随时得到更新"><a href="#Submodules-使用副项目并随时得到更新" class="headerlink" title="Submodules　使用副项目并随时得到更新"></a>Submodules　使用副项目并随时得到更新</h2><p>source: <a href="https://medium.com/@porteneuve/mastering-git-submodules-34c65e940407#.kcyfdl2xi" target="_blank" rel="external">https://medium.com/@porteneuve/mastering-git-submodules-34c65e940407#.kcyfdl2xi</a>, <a href="http://johnleach.co.uk/words/323/git-submodules-in-n-easy-steps" target="_blank" rel="external">http://johnleach.co.uk/words/323/git-submodules-in-n-easy-steps</a>, <a href="https://johnleach.co.uk/words/323" target="_blank" rel="external">https://johnleach.co.uk/words/323</a>,<br><a href="https://blog.jacius.info/git-submodule-cheat-sheet/" target="_blank" rel="external">https://blog.jacius.info/git-submodule-cheat-sheet/</a>, <a href="http://blog.chh.tw/posts/git-submodule/" target="_blank" rel="external">http://blog.chh.tw/posts/git-submodule/</a>, <a href="http://springok-blog.logdown.com/posts/2015/11/06/submodule-on-github-subproject-troubleshooting" target="_blank" rel="external">http://springok-blog.logdown.com/posts/2015/11/06/submodule-on-github-subproject-troubleshooting</a></p>
-<pre><code>git submodule add &lt;others .git repository&gt; &lt;myfolder&gt; 
--- set up .gitmodules for myfolder      
-git commit .gitmodules &lt;myfolder&gt; -m &quot;a message&quot;  
-git push
-
-# after cloning tree, fetch all submodules  
-git submodule init Submodule &apos;myfolder&apos;  
-git submodule update    
-
-# updating submodule  
-cd myfolder &amp;&amp; git pull [from others] &amp;&amp; git add myfolder &amp;&amp; commit    
-
-# making changes to your submodule  
-cd myfolder &amp;&amp; git checkout master [do changes in that branch]  
-git commit -a -m &quot;fix a bug&quot; &amp;&amp; push  
-cd .. &amp;&amp; git add myfolder &amp;&amp; commit -m &quot;updated myfolder&quot;  
-</code></pre>]]></content>
+<h1 id="JSON-gt-String"><a href="#JSON-gt-String" class="headerlink" title="JSON -&gt; String"></a>JSON -&gt; String</h1><p>function  </p>
+<ul>
+<li>stringify (parse into string representation, has <code>pretty print</code>)  </li>
+<li>parse (parse string into JSON)  <blockquote>
+<p>convert opposite ways  </p>
+</blockquote>
+</li>
+</ul>
+]]></content>
     
     <summary type="html">
     
       &lt;hr&gt;
-&lt;h2 id=&quot;Basic-Commands&quot;&gt;&lt;a href=&quot;#Basic-Commands&quot; class=&quot;headerlink&quot; title=&quot;Basic Commands&quot;&gt;&lt;/a&gt;Basic Commands&lt;/h2&gt;&lt;p&gt;source: &lt;a href=&quot;
+&lt;h1 id=&quot;JSON-gt-String&quot;&gt;&lt;a href=&quot;#JSON-gt-String&quot; class=&quot;headerlink&quot; title=&quot;JSON -&amp;gt; String&quot;&gt;&lt;/a&gt;JSON -&amp;gt; String&lt;/h1&gt;&lt;p&gt;function  &lt;
     
     </summary>
     
-      <category term="CLI stuff" scheme="http://lycworks.me/blog/categories/CLI-stuff/"/>
-    
-    
-      <category term="git" scheme="http://lycworks.me/blog/tags/git/"/>
     
   </entry>
   
   <entry>
-    <title>CSS grid方法</title>
-    <link href="http://lycworks.me/blog/2017/02/02/2016-07-09-css-grid/"/>
-    <id>http://lycworks.me/blog/2017/02/02/2016-07-09-css-grid/</id>
+    <title>HTML5特性</title>
+    <link href="http://lycworks.me/blog/2017/02/02/2016-07-09-html5-tricks/"/>
+    <id>http://lycworks.me/blog/2017/02/02/2016-07-09-html5-tricks/</id>
     <published>2017-02-02T21:56:37.000Z</published>
     <updated>2017-02-02T21:56:37.000Z</updated>
     
     <content type="html"><![CDATA[<hr>
-<pre><code>/*container*/
-.content{
-    padding: 0;
-}
+<h1 id="data-name"><a href="#data-name" class="headerlink" title="data-name"></a>data-name</h1><blockquote>
+<p>‘a great marriage of server side and client side’ -Stephen Calvert, Quora<br>resources: <a href="https://www.quora.com/What-is-the-best-way-to-pass-server-side-variables-to-client-side-JavaScript" target="_blank" rel="external">https://www.quora.com/What-is-the-best-way-to-pass-server-side-variables-to-client-side-JavaScript</a>  </p>
+</blockquote>
+<h3 id="HTML-lt-div-id-quot-mydiv-quot-data-myval-quot-10-quot-gt-lt-div-gt"><a href="#HTML-lt-div-id-quot-mydiv-quot-data-myval-quot-10-quot-gt-lt-div-gt" class="headerlink" title="HTML- &lt;div id=&quot;mydiv&quot;data-myval=&quot;10&quot;&gt;&lt;/div&gt;"></a>HTML- <code>&lt;div id=&quot;mydiv&quot;</code>data-myval<code>=&quot;10&quot;&gt;&lt;/div&gt;</code></h3><h3 id="JS"><a href="#JS" class="headerlink" title="JS"></a>JS</h3><ul>
+<li><code>var a = $(&#39;#mydiv&#39;).data(&#39;myval&#39;);</code> //getter  </li>
+<li><code>$(&#39;#mydiv&#39;).data(&#39;myval&#39;,20);</code> //setter  </li>
+</ul>
+<blockquote>
+<p>For older browser, use  <code>var myval = element.getAttribute(&#39;data-myval&#39;);</code>  </p>
+</blockquote>
+<h3 id="Or-merely-use-config-as-json-object"><a href="#Or-merely-use-config-as-json-object" class="headerlink" title="Or merely use config as json object"></a>Or merely use config as json object</h3><pre><code>config = {
+    userName: &apos;Scott Patten&apos;,
+    userLogin: &apos;spatten&apos;,
+    hasBoughtCurrentBook: true,
+    followers: [&apos;peterarmstrong&apos;, &apos;rolandtanglao&apos;]
+};
+</code></pre><h3 id="Advance-way"><a href="#Advance-way" class="headerlink" title="Advance way"></a>Advance way</h3><p>(<a href="https://teamtreehouse.com/community/how-do-i-make-a-variable-passed-to-a-jade-template-by-an-express-route-accessible-for-use-in-js-on-the-rendered-page" target="_blank" rel="external">https://teamtreehouse.com/community/how-do-i-make-a-variable-passed-to-a-jade-template-by-an-express-route-accessible-for-use-in-js-on-the-rendered-page</a>)  </p>
+<ul>
+<li><p>1)On the server side javascript file you put the object as a JSON string on the request  </p>
+<pre><code>res.render(&apos;index&apos;, { workflowData_server: JSON.stringify(workflowData) });
+</code></pre></li>
+<li><p>2) on the template view file,for example index.jade file you put script<br>var workflowData_client = !{workflowData_server} the ! is needed to unescape it to html  </p>
+</li>
+<li><p>3) now you can use the workflowData_client on your client javascript file,<br>for example a public/angular.js file  </p>
+<pre><code>angular.module(&apos;TestApp&apos;, []); angular.module(&apos;TestApp&apos;) .controller(&apos;MainController&apos;, ctrlFunc);
 
-ul.posts{
-    background: aliceblue;
-    width: 100%;
-}
-ul.posts li {
-    float: left;
-    margin: 0;
-    display: inline-block;
-    width: 33.3%;
-    min-height: 200px;
-    text-align: center;
-    box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-    vertical-align: top;
-    zoom: 1;
-}
-ul.posts li a{
-    /*     display:block; */
-    margin:0;
-    color: #333;
-    font-weight: 600;
-    font-size: 20pt;
-}
-
-ul.posts li:hover{
-    background: rgba(255,255,255,0.5);
-    border: 10px solid rgba(255,255,255,0.01)
-}
-</code></pre>]]></content>
+function ctrlFunc() { this.workflowData = workflowData_client; }
+</code></pre></li>
+</ul>
+]]></content>
     
     <summary type="html">
     
       &lt;hr&gt;
-&lt;pre&gt;&lt;code&gt;/*container*/
-.content{
-    padding: 0;
-}
-
-ul.posts{
-    background: aliceblue;
-    width: 100%;
-}
-ul.posts li {
-    float: 
+&lt;h1 id=&quot;data-name&quot;&gt;&lt;a href=&quot;#data-name&quot; class=&quot;headerlink&quot; title=&quot;data-name&quot;&gt;&lt;/a&gt;data-name&lt;/h1&gt;&lt;blockquote&gt;
+&lt;p&gt;‘a great marriage of ser
     
     </summary>
     
-      <category term="CSS" scheme="http://lycworks.me/blog/categories/CSS/"/>
+      <category term="HTML" scheme="http://lycworks.me/blog/categories/HTML/"/>
     
     
-      <category term="grid" scheme="http://lycworks.me/blog/tags/grid/"/>
+      <category term="data_passing, view_render" scheme="http://lycworks.me/blog/tags/data-passing-view-render/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>AI笔记</title>
+    <link href="http://lycworks.me/blog/2017/02/02/2016-08-03-AI-note/"/>
+    <id>http://lycworks.me/blog/2017/02/02/2016-08-03-AI-note/</id>
+    <published>2017-02-02T21:56:37.000Z</published>
+    <updated>2017-02-02T21:56:37.000Z</updated>
+    
+    <content type="html"><![CDATA[<hr>
+<h1 id="AI-V-PS"><a href="#AI-V-PS" class="headerlink" title="AI V PS"></a>AI V PS</h1><ul>
+<li>AI is resolution-independent, meaning its resolution is unaffected with zooming. In AI, images are vectors that are<br>mathematically calculated when zooming.  </li>
+</ul>
+<h1 id="Hotkeys"><a href="#Hotkeys" class="headerlink" title="Hotkeys"></a>Hotkeys</h1><p><code>CTRL + K</code>- preference<br><code>CAPS LOCK</code>- change all to precise cursor ‘+’<br><code>CTRL + R</code>- ruler<br><code>CTRL + 0</code>- fit on screen, <code>CTRL + 1</code>- fit 100%  </p>
+<h1 id="Start-with-An-End-of-Mind"><a href="#Start-with-An-End-of-Mind" class="headerlink" title="Start with An End of Mind"></a>Start with An End of Mind</h1><p><code>what is it for</code></p>
+<h3 id="Type"><a href="#Type" class="headerlink" title="Type"></a>Type</h3><h4 id="Print"><a href="#Print" class="headerlink" title="Print"></a>Print</h4><ul>
+<li>bleed (cut line for printing edge)  </li>
+<li>PPI (300 press-rasterize standard)  </li>
+</ul>
+<h4 id="Web"><a href="#Web" class="headerlink" title="Web"></a>Web</h4><ul>
+<li>Object align to invisible grid  </li>
+<li>PPI 72 for screen standard  </li>
+</ul>
+<h3 id="Preview"><a href="#Preview" class="headerlink" title="Preview"></a>Preview</h3><p><code>CTRL + Y</code>- outline toggle<br><code>SHIFT + CTRL + Y</code>- pixel preview (for the screen)<br><code>View-&gt;proof set up</code>- preview color blend in rgb and cmyk  </p>
+<p><code>ALT + click</code> - to change area of selection (eg in transform)<br><code>CTRL + click</code> - V select underlied item (eg arm under a shirt)  </p>
+<h1 id="Navigation"><a href="#Navigation" class="headerlink" title="Navigation"></a>Navigation</h1><h3 id="Ruler-Manipulation"><a href="#Ruler-Manipulation" class="headerlink" title="Ruler Manipulation"></a>Ruler Manipulation</h3><p>Top left corner drag to set genesis (0) point<br>with ctrl, easier to do the second drag  </p>
+<h3 id="Object-view-selection"><a href="#Object-view-selection" class="headerlink" title="Object view selection"></a>Object view selection</h3><p>views can be created to switch between customized views (often for complicated vectors)  </p>
+<h1 id="Selection"><a href="#Selection" class="headerlink" title="Selection"></a>Selection</h1><p>V select - normal group select (if group exist)<br>A direct select - group item select (if choose group selection tool, each click select one upper nested level)  </p>
+<h3 id="strategy"><a href="#strategy" class="headerlink" title="strategy"></a>strategy</h3><p>use direct select for embedded item or double click in V selection to go to isolation (quit using esc)  </p>
+<h1 id="Rotate-amp-Scale"><a href="#Rotate-amp-Scale" class="headerlink" title="Rotate &amp; Scale"></a>Rotate &amp; Scale</h1><p>simply click to create anchor point and drag to manipulate scale/rotation  </p>
+<blockquote>
+<p>use alt click to edit anchor point setting<br>command + D to repeat the last thing (eg creating 360 flower)  </p>
+</blockquote>
+<h1 id="Transform"><a href="#Transform" class="headerlink" title="Transform"></a>Transform</h1><p>width - change width, warp - finger paint, wrinkle - melt effect  </p>
+<h1 id="Color-Manipulation"><a href="#Color-Manipulation" class="headerlink" title="Color Manipulation"></a>Color Manipulation</h1><h3 id="RGB-V-CMYK"><a href="#RGB-V-CMYK" class="headerlink" title="RGB V CMYK"></a>RGB V CMYK</h3><p><code>RGB</code>- color addictive, ‘world of light’/screen<br><code>CMYK</code>- color subtractive, ‘world of absorption’/print press  </p>
+<p>Color guide - palette inspiration<br>Color Swatches - drag to add or add group. Export as ASE OR AI<br><code>ALT + DEL</code> - to force delete  </p>
+<h3 id="GLOBAL-processing-and-spot-color"><a href="#GLOBAL-processing-and-spot-color" class="headerlink" title="GLOBAL processing and spot color"></a>GLOBAL processing and spot color</h3><p>double click color, if global, color attached to object woho  </p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;hr&gt;
+&lt;h1 id=&quot;AI-V-PS&quot;&gt;&lt;a href=&quot;#AI-V-PS&quot; class=&quot;headerlink&quot; title=&quot;AI V PS&quot;&gt;&lt;/a&gt;AI V PS&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;AI is resolution-independent, meaning i
+    
+    </summary>
+    
+      <category term="Media" scheme="http://lycworks.me/blog/categories/Media/"/>
+    
+    
+      <category term="illustrator, image_manipulation" scheme="http://lycworks.me/blog/tags/illustrator-image-manipulation/"/>
     
   </entry>
   
@@ -634,60 +657,6 @@ function drawChart(str,id,val){
   </entry>
   
   <entry>
-    <title>HTML5特性</title>
-    <link href="http://lycworks.me/blog/2017/02/02/2016-07-09-html5-tricks/"/>
-    <id>http://lycworks.me/blog/2017/02/02/2016-07-09-html5-tricks/</id>
-    <published>2017-02-02T21:56:37.000Z</published>
-    <updated>2017-02-02T21:56:37.000Z</updated>
-    
-    <content type="html"><![CDATA[<hr>
-<h1 id="data-name"><a href="#data-name" class="headerlink" title="data-name"></a>data-name</h1><blockquote>
-<p>‘a great marriage of server side and client side’ -Stephen Calvert, Quora<br>resources: <a href="https://www.quora.com/What-is-the-best-way-to-pass-server-side-variables-to-client-side-JavaScript" target="_blank" rel="external">https://www.quora.com/What-is-the-best-way-to-pass-server-side-variables-to-client-side-JavaScript</a>  </p>
-</blockquote>
-<h3 id="HTML-lt-div-id-quot-mydiv-quot-data-myval-quot-10-quot-gt-lt-div-gt"><a href="#HTML-lt-div-id-quot-mydiv-quot-data-myval-quot-10-quot-gt-lt-div-gt" class="headerlink" title="HTML- &lt;div id=&quot;mydiv&quot;data-myval=&quot;10&quot;&gt;&lt;/div&gt;"></a>HTML- <code>&lt;div id=&quot;mydiv&quot;</code>data-myval<code>=&quot;10&quot;&gt;&lt;/div&gt;</code></h3><h3 id="JS"><a href="#JS" class="headerlink" title="JS"></a>JS</h3><ul>
-<li><code>var a = $(&#39;#mydiv&#39;).data(&#39;myval&#39;);</code> //getter  </li>
-<li><code>$(&#39;#mydiv&#39;).data(&#39;myval&#39;,20);</code> //setter  </li>
-</ul>
-<blockquote>
-<p>For older browser, use  <code>var myval = element.getAttribute(&#39;data-myval&#39;);</code>  </p>
-</blockquote>
-<h3 id="Or-merely-use-config-as-json-object"><a href="#Or-merely-use-config-as-json-object" class="headerlink" title="Or merely use config as json object"></a>Or merely use config as json object</h3><pre><code>config = {
-    userName: &apos;Scott Patten&apos;,
-    userLogin: &apos;spatten&apos;,
-    hasBoughtCurrentBook: true,
-    followers: [&apos;peterarmstrong&apos;, &apos;rolandtanglao&apos;]
-};
-</code></pre><h3 id="Advance-way"><a href="#Advance-way" class="headerlink" title="Advance way"></a>Advance way</h3><p>(<a href="https://teamtreehouse.com/community/how-do-i-make-a-variable-passed-to-a-jade-template-by-an-express-route-accessible-for-use-in-js-on-the-rendered-page" target="_blank" rel="external">https://teamtreehouse.com/community/how-do-i-make-a-variable-passed-to-a-jade-template-by-an-express-route-accessible-for-use-in-js-on-the-rendered-page</a>)  </p>
-<ul>
-<li><p>1)On the server side javascript file you put the object as a JSON string on the request  </p>
-<pre><code>res.render(&apos;index&apos;, { workflowData_server: JSON.stringify(workflowData) });
-</code></pre></li>
-<li><p>2) on the template view file,for example index.jade file you put script<br>var workflowData_client = !{workflowData_server} the ! is needed to unescape it to html  </p>
-</li>
-<li><p>3) now you can use the workflowData_client on your client javascript file,<br>for example a public/angular.js file  </p>
-<pre><code>angular.module(&apos;TestApp&apos;, []); angular.module(&apos;TestApp&apos;) .controller(&apos;MainController&apos;, ctrlFunc);
-
-function ctrlFunc() { this.workflowData = workflowData_client; }
-</code></pre></li>
-</ul>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;hr&gt;
-&lt;h1 id=&quot;data-name&quot;&gt;&lt;a href=&quot;#data-name&quot; class=&quot;headerlink&quot; title=&quot;data-name&quot;&gt;&lt;/a&gt;data-name&lt;/h1&gt;&lt;blockquote&gt;
-&lt;p&gt;‘a great marriage of ser
-    
-    </summary>
-    
-      <category term="HTML" scheme="http://lycworks.me/blog/categories/HTML/"/>
-    
-    
-      <category term="data_passing, view_render" scheme="http://lycworks.me/blog/tags/data-passing-view-render/"/>
-    
-  </entry>
-  
-  <entry>
     <title>JS基础笔记(DOM)</title>
     <link href="http://lycworks.me/blog/2017/02/02/2016-05-16-JS-note/"/>
     <id>http://lycworks.me/blog/2017/02/02/2016-05-16-JS-note/</id>
@@ -745,79 +714,116 @@ myStr[0] = &quot;J&quot;;
   </entry>
   
   <entry>
-    <title>AI笔记</title>
-    <link href="http://lycworks.me/blog/2017/02/02/2016-08-03-AI-note/"/>
-    <id>http://lycworks.me/blog/2017/02/02/2016-08-03-AI-note/</id>
+    <title>Snap.SVG</title>
+    <link href="http://lycworks.me/blog/2017/02/02/2016-07-14-svg/"/>
+    <id>http://lycworks.me/blog/2017/02/02/2016-07-14-svg/</id>
     <published>2017-02-02T21:56:37.000Z</published>
     <updated>2017-02-02T21:56:37.000Z</updated>
     
     <content type="html"><![CDATA[<hr>
-<h1 id="AI-V-PS"><a href="#AI-V-PS" class="headerlink" title="AI V PS"></a>AI V PS</h1><ul>
-<li>AI is resolution-independent, meaning its resolution is unaffected with zooming. In AI, images are vectors that are<br>mathematically calculated when zooming.  </li>
-</ul>
-<h1 id="Hotkeys"><a href="#Hotkeys" class="headerlink" title="Hotkeys"></a>Hotkeys</h1><p><code>CTRL + K</code>- preference<br><code>CAPS LOCK</code>- change all to precise cursor ‘+’<br><code>CTRL + R</code>- ruler<br><code>CTRL + 0</code>- fit on screen, <code>CTRL + 1</code>- fit 100%  </p>
-<h1 id="Start-with-An-End-of-Mind"><a href="#Start-with-An-End-of-Mind" class="headerlink" title="Start with An End of Mind"></a>Start with An End of Mind</h1><p><code>what is it for</code></p>
-<h3 id="Type"><a href="#Type" class="headerlink" title="Type"></a>Type</h3><h4 id="Print"><a href="#Print" class="headerlink" title="Print"></a>Print</h4><ul>
-<li>bleed (cut line for printing edge)  </li>
-<li>PPI (300 press-rasterize standard)  </li>
-</ul>
-<h4 id="Web"><a href="#Web" class="headerlink" title="Web"></a>Web</h4><ul>
-<li>Object align to invisible grid  </li>
-<li>PPI 72 for screen standard  </li>
-</ul>
-<h3 id="Preview"><a href="#Preview" class="headerlink" title="Preview"></a>Preview</h3><p><code>CTRL + Y</code>- outline toggle<br><code>SHIFT + CTRL + Y</code>- pixel preview (for the screen)<br><code>View-&gt;proof set up</code>- preview color blend in rgb and cmyk  </p>
-<p><code>ALT + click</code> - to change area of selection (eg in transform)<br><code>CTRL + click</code> - V select underlied item (eg arm under a shirt)  </p>
-<h1 id="Navigation"><a href="#Navigation" class="headerlink" title="Navigation"></a>Navigation</h1><h3 id="Ruler-Manipulation"><a href="#Ruler-Manipulation" class="headerlink" title="Ruler Manipulation"></a>Ruler Manipulation</h3><p>Top left corner drag to set genesis (0) point<br>with ctrl, easier to do the second drag  </p>
-<h3 id="Object-view-selection"><a href="#Object-view-selection" class="headerlink" title="Object view selection"></a>Object view selection</h3><p>views can be created to switch between customized views (often for complicated vectors)  </p>
-<h1 id="Selection"><a href="#Selection" class="headerlink" title="Selection"></a>Selection</h1><p>V select - normal group select (if group exist)<br>A direct select - group item select (if choose group selection tool, each click select one upper nested level)  </p>
-<h3 id="strategy"><a href="#strategy" class="headerlink" title="strategy"></a>strategy</h3><p>use direct select for embedded item or double click in V selection to go to isolation (quit using esc)  </p>
-<h1 id="Rotate-amp-Scale"><a href="#Rotate-amp-Scale" class="headerlink" title="Rotate &amp; Scale"></a>Rotate &amp; Scale</h1><p>simply click to create anchor point and drag to manipulate scale/rotation  </p>
-<blockquote>
-<p>use alt click to edit anchor point setting<br>command + D to repeat the last thing (eg creating 360 flower)  </p>
-</blockquote>
-<h1 id="Transform"><a href="#Transform" class="headerlink" title="Transform"></a>Transform</h1><p>width - change width, warp - finger paint, wrinkle - melt effect  </p>
-<h1 id="Color-Manipulation"><a href="#Color-Manipulation" class="headerlink" title="Color Manipulation"></a>Color Manipulation</h1><h3 id="RGB-V-CMYK"><a href="#RGB-V-CMYK" class="headerlink" title="RGB V CMYK"></a>RGB V CMYK</h3><p><code>RGB</code>- color addictive, ‘world of light’/screen<br><code>CMYK</code>- color subtractive, ‘world of absorption’/print press  </p>
-<p>Color guide - palette inspiration<br>Color Swatches - drag to add or add group. Export as ASE OR AI<br><code>ALT + DEL</code> - to force delete  </p>
-<h3 id="GLOBAL-processing-and-spot-color"><a href="#GLOBAL-processing-and-spot-color" class="headerlink" title="GLOBAL processing and spot color"></a>GLOBAL processing and spot color</h3><p>double click color, if global, color attached to object woho  </p>
+<h1 id="Snap-SVG"><a href="#Snap-SVG" class="headerlink" title="Snap.SVG"></a>Snap.SVG</h1><p>clear<br>        var s = Snap(‘css selector’)<br>        Snap.load(‘whatever.svg’, function(fragment){<br>            s.clear()<br>        })</p>
+<p>get element  </p>
+<pre><code>myRect.attr(&apos;id&apos;);
+</code></pre><p>set element<br>        myRect.attr({<br>            id: ‘newid’<br>        })</p>
+<p>click callback  </p>
+<pre><code>var clickCallback = function(event) {
+    this.attr({ fill: &apos;blue&apos; });
+};
+
+myRect.click(clickCallback);
+</code></pre><p>timer example <a href="https://codepen.io/rachsmith/pen/BqpCd?editors=0010" target="_blank" rel="external">https://codepen.io/rachsmith/pen/BqpCd?editors=0010</a><br>basics <a href="http://webdesign.tutsplus.com/articles/how-to-manipulate-and-animate-svg-with-snapsvg--cms-21323" target="_blank" rel="external">http://webdesign.tutsplus.com/articles/how-to-manipulate-and-animate-svg-with-snapsvg--cms-21323</a><br><a href="http://unicorn-ui.com/blog/intermediate-svg.html" target="_blank" rel="external">http://unicorn-ui.com/blog/intermediate-svg.html</a>, <a href="https://www.sitepoint.com/advanced-snap-svg/" target="_blank" rel="external">https://www.sitepoint.com/advanced-snap-svg/</a>, <a href="http://nocircleno.com/blog/getting-starting-with-svg-and-javascript/" target="_blank" rel="external">http://nocircleno.com/blog/getting-starting-with-svg-and-javascript/</a><br>animation - all <a href="https://codyhouse.co/gem/animate-svg-icons-with-css-and-snap/" target="_blank" rel="external">https://codyhouse.co/gem/animate-svg-icons-with-css-and-snap/</a>, <a href="https://davidwalsh.name/svg-animations-snap" target="_blank" rel="external">https://davidwalsh.name/svg-animations-snap</a><br>animation - path <a href="https://codepen.io/JRGould/pen/dkHhw?editors=0010" target="_blank" rel="external">https://codepen.io/JRGould/pen/dkHhw?editors=0010</a><br>masking exmaple <a href="http://jsfiddle.net/5826ywh7/3/" target="_blank" rel="external">http://jsfiddle.net/5826ywh7/3/</a><br>callback within Snap.load <a href="http://stackoverflow.com/questions/26465119/why-when-i-add-function-into-snap-load-loading-svg-my-method-i-cannot" target="_blank" rel="external">http://stackoverflow.com/questions/26465119/why-when-i-add-function-into-snap-load-loading-svg-my-method-i-cannot</a>  </p>
+<p>more examples <a href="https://www.raymondcamden.com/2013/11/06/Want-help-with-Snapsvg-And-a-few-more-examples/" target="_blank" rel="external">https://www.raymondcamden.com/2013/11/06/Want-help-with-Snapsvg-And-a-few-more-examples/</a>  </p>
 ]]></content>
     
     <summary type="html">
     
       &lt;hr&gt;
-&lt;h1 id=&quot;AI-V-PS&quot;&gt;&lt;a href=&quot;#AI-V-PS&quot; class=&quot;headerlink&quot; title=&quot;AI V PS&quot;&gt;&lt;/a&gt;AI V PS&lt;/h1&gt;&lt;ul&gt;
-&lt;li&gt;AI is resolution-independent, meaning i
+&lt;h1 id=&quot;Snap-SVG&quot;&gt;&lt;a href=&quot;#Snap-SVG&quot; class=&quot;headerlink&quot; title=&quot;Snap.SVG&quot;&gt;&lt;/a&gt;Snap.SVG&lt;/h1&gt;&lt;p&gt;clear&lt;br&gt;        var s = Snap(‘css select
     
     </summary>
     
-      <category term="Media" scheme="http://lycworks.me/blog/categories/Media/"/>
+      <category term="SVG" scheme="http://lycworks.me/blog/categories/SVG/"/>
     
     
-      <category term="illustrator, image_manipulation" scheme="http://lycworks.me/blog/tags/illustrator-image-manipulation/"/>
+      <category term="snap.svg, svg" scheme="http://lycworks.me/blog/tags/snap-svg-svg/"/>
     
   </entry>
   
   <entry>
-    <title>JSON</title>
-    <link href="http://lycworks.me/blog/2017/02/02/2016-08-08-json/"/>
-    <id>http://lycworks.me/blog/2017/02/02/2016-08-08-json/</id>
+    <title>Jade笔记</title>
+    <link href="http://lycworks.me/blog/2017/02/02/2016-07-20-jade/"/>
+    <id>http://lycworks.me/blog/2017/02/02/2016-07-20-jade/</id>
     <published>2017-02-02T21:56:37.000Z</published>
     <updated>2017-02-02T21:56:37.000Z</updated>
     
     <content type="html"><![CDATA[<hr>
-<h1 id="JSON-gt-String"><a href="#JSON-gt-String" class="headerlink" title="JSON -&gt; String"></a>JSON -&gt; String</h1><p>function  </p>
-<ul>
-<li>stringify (parse into string representation, has <code>pretty print</code>)  </li>
-<li>parse (parse string into JSON)  <blockquote>
-<p>convert opposite ways  </p>
-</blockquote>
-</li>
+<h4 id="resource-http-naltatis-github-io-jade-syntax-docs"><a href="#resource-http-naltatis-github-io-jade-syntax-docs" class="headerlink" title="resource http://naltatis.github.io/jade-syntax-docs/"></a>resource <code>http://naltatis.github.io/jade-syntax-docs/</code></h4><h1 id="Prerequisite"><a href="#Prerequisite" class="headerlink" title="Prerequisite"></a>Prerequisite</h1><p>npm install pug -g<br>pug index.jade 编译文件 render to html<br>pug -P index.jade 编译成带格式的html文件 render to pretty html<br>pug -P -w index.jade 实时编译 watch jade and render html  </p>
+<h1 id="Jade-Basic"><a href="#Jade-Basic" class="headerlink" title="Jade Basic"></a>Jade Basic</h1><ul>
+<li>tags标签<br>直接在元素名称后加.类名和#ID名 e.g. p#id.class<br>放在(属性名=‘属性值’)小括号中 <code>p(class=&#39;text-center&#39; data-value=&#39;lala&#39;)</code><br>div标签可以省略 .im-a-div(data-type=’div’)  </li>
+<li><p>多行文本<br><code>.</code>  </p>
+<pre><code>p.
+    im first line
+    im second line
+</code></pre></li>
 </ul>
+<p><code>|</code>  </p>
+<pre><code>p  
+    |im first 
+    |im second
+</code></pre><ul>
+<li><p>注释comment<br>//单行注释： 解析为<code>&lt;!--单行注释--&gt;</code><br>//- 非缓冲,多行: 不显示在编译后的rendered html  </p>
+</li>
+<li><p>变量variable<br>inline变量声明 <code>- var name = Bob</code><br>引用变量 <code>#{name}</code><br>变量优先级- 文档中变量比外面传进来的变量优先级高<br>普遍用法  </p>
+<blockquote>
+<p>cmd传递数据加载json文件 <code>jade index.jade -P -w -O data.json</code><br>express render  </p>
+</blockquote>
+<pre><code>express.set(&apos;view-engine&apos;,&apos;jade&apos;);
+express.render(&apos;jadefile&apos;,&apos;{whatever json obj}&apos; 
+</code></pre></li>
+<li><p>转译Escaping  </p>
+<pre><code>- var data = &apos;&lt;script&gt;..&lt;/script&gt;&apos;  
+p #{data} or p= data =&gt; &apos;&lt;script&gt;..&apos; 
+p !{data} or p!= data =&gt; &lt;script&gt;..&lt;/script&gt;  
+p \#{data} =&gt; &apos;#{data}&apos; 
+</code></pre></li>
+</ul>
+<blockquote>
+<p>如果没有值，则返回undefined  </p>
+</blockquote>
+<h1 id="Jade-Mixin"><a href="#Jade-Mixin" class="headerlink" title="Jade Mixin"></a>Jade Mixin</h1><p><img src="http://img.mukewang.com/57037ccb0001a47412800720.jpg" alt="mixin examples">  </p>
+<h1 id="Jade-Inheritance-amp-include"><a href="#Jade-Inheritance-amp-include" class="headerlink" title="Jade Inheritance &amp; include"></a>Jade Inheritance &amp; include</h1><p>-模板继承<br>layout.jade中定义了多个bock<br>index.jade中，extends继承layout.jade，填充相应的block  </p>
+<pre><code>-- layout.jade --
+doctype html
+&lt;!--[if IE 8]&gt;&lt;html class=&apos;ie8&apos;&gt;&lt;![endif]--&gt;
+&lt;!--[if IE 9]&gt;&lt;html class=&apos;ie9&apos;&gt;&lt;![endif]--&gt;
+&lt;!--[if !IE]&gt;&lt;!--&gt;&lt;html&gt;&lt;!--&lt;![endif]--&gt;
+head
+    include head //-包含head.jade
+body
+    block desc //-可被覆盖
+        p desc from layout
+    block content
+&lt;/html&gt;
+
+-- index.jade --
+extends layout
+
+block content
+    h3 im a block 
+    block desc
+        p desc from index
+</code></pre><ul>
+<li>模板包含  </li>
+</ul>
+<blockquote>
+<p>include 也可引入原生的html页面  </p>
+</blockquote>
 ]]></content>
     
     <summary type="html">
     
       &lt;hr&gt;
-&lt;h1 id=&quot;JSON-gt-String&quot;&gt;&lt;a href=&quot;#JSON-gt-String&quot; class=&quot;headerlink&quot; title=&quot;JSON -&amp;gt; String&quot;&gt;&lt;/a&gt;JSON -&amp;gt; String&lt;/h1&gt;&lt;p&gt;function  &lt;
+&lt;h4 id=&quot;resource-http-naltatis-github-io-jade-syntax-docs&quot;&gt;&lt;a href=&quot;#resource-http-naltatis-github-io-jade-syntax-docs&quot; class=&quot;headerli
     
     </summary>
     
