@@ -5,7 +5,7 @@
   <link href="/blog/atom.xml" rel="self"/>
   
   <link href="http://lycworks.me/blog/"/>
-  <updated>2017-02-06T23:51:22.000Z</updated>
+  <updated>2017-02-09T01:41:10.000Z</updated>
   <id>http://lycworks.me/blog/</id>
   
   <author>
@@ -16,50 +16,11 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>动态规划</title>
-    <link href="http://lycworks.me/blog/2017/02/06/2017-02-01-dp/"/>
-    <id>http://lycworks.me/blog/2017/02/06/2017-02-01-dp/</id>
-    <published>2017-02-06T23:51:22.000Z</published>
-    <updated>2017-02-06T23:51:22.000Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="DP类型"><a href="#DP类型" class="headerlink" title="DP类型"></a>DP类型</h1><ul>
-<li><p>状态转移 <code>dp[x+y]+=dp[x]</code><br>转<br>当你遇到第n+1个数x_n+1的时候，前n+1个数中最大值是什么呢，就是拿这个新x去和之前那个max比，然后留下较大的一个，对吧，写下来就是<br><code>Max_n+1 = (x_n+1 &gt; Max_n) ? x_n+1 : Max_n</code> #if choose add to current max else not choose  </p>
-<h1 id="例题"><a href="#例题" class="headerlink" title="例题 ."></a>例题 .</h1><h3 id="combinationsum"><a href="#combinationsum" class="headerlink" title="combinationsum ."></a>combinationsum .</h3><h3 id="max-sum-subarray-Kadane’s"><a href="#max-sum-subarray-Kadane’s" class="headerlink" title="max sum subarray Kadane’s ."></a>max sum subarray Kadane’s .</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">def maxSum(arr):</div><div class="line">  prevSum = nums[0]</div><div class="line">  maxmax = nums[0]</div><div class="line">  del arr[0]</div><div class="line">  for num in nums:</div><div class="line">    prevSum = max(prevSum+num, num) #compare cursum and curnum</div><div class="line">    maxSum = max(maxSum, prevSum)</div><div class="line">  return maxSum</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<h4 id="follow-up-from-max-subarray"><a href="#follow-up-from-max-subarray" class="headerlink" title="follow up from max subarray ."></a>follow up from max subarray .</h4><ul>
-<li><p>max product subarray - when it is negative, swap max and min continuous product . </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">def maxProduct(arr):</div><div class="line">  prevSum = nums[0]</div><div class="line">  maxProduct = nums[0]</div><div class="line">  minProduct = nums[0]</div><div class="line">  maxmax = nums[0]</div><div class="line">  del arr[0]</div><div class="line">  for num in nums:</div><div class="line">    if num&lt;0:</div><div class="line">      #swap because -*- is happening</div><div class="line">      maxProduct, minProduct = minProduct, maxProduct</div><div class="line">    maxProduct = max(num, maxProduct*num)</div><div class="line">    minProduct = min(num, minProduct*num)</div><div class="line">    maxmax = max(maxmax, maxProduct)</div><div class="line">  return maxmax</div></pre></td></tr></table></figure>
-</li>
-<li><p>Robber</p>
-</li>
-<li>stocks</li>
-</ul>
-<h3 id="两个选择"><a href="#两个选择" class="headerlink" title="两个选择"></a>两个选择</h3><p>例题 栅栏和涂色</p>
-<p>这道题因为栅栏有n，涂色有k个，再加上涂色可以重复最多两次，基本上确定了要算<br>1 - 前一个和后一个是一样颜色 <code>prev = cur</code><br>2 - 前一个和后一个是不同颜色 <code>prev uses k, cur uses k-1 color</code>  </p>
-<h1 id="let’s-写code"><a href="#let’s-写code" class="headerlink" title="let’s 写code"></a>let’s 写code</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">if n&lt;2:</div><div class="line">	return n*k</div><div class="line">same = k</div><div class="line">diff = k*(k-1)</div><div class="line">for i in range(2, n):</div><div class="line">	same, diff = diff, (same+diff)*(k-1)</div><div class="line"></div><div class="line">return same+diff</div></pre></td></tr></table></figure>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;DP类型&quot;&gt;&lt;a href=&quot;#DP类型&quot; class=&quot;headerlink&quot; title=&quot;DP类型&quot;&gt;&lt;/a&gt;DP类型&lt;/h1&gt;&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;状态转移 &lt;code&gt;dp[x+y]+=dp[x]&lt;/code&gt;&lt;br&gt;转&lt;br&gt;当你遇到第n+1个数x_
-    
-    </summary>
-    
-      <category term="Algo" scheme="http://lycworks.me/blog/categories/Algo/"/>
-    
-    
-      <category term="dp" scheme="http://lycworks.me/blog/tags/dp/"/>
-    
-  </entry>
-  
-  <entry>
     <title>MATRIX与我的爱恨情仇</title>
-    <link href="http://lycworks.me/blog/2017/02/06/2017-02-01-matrix/"/>
-    <id>http://lycworks.me/blog/2017/02/06/2017-02-01-matrix/</id>
-    <published>2017-02-06T21:40:58.000Z</published>
-    <updated>2017-02-06T21:40:58.000Z</updated>
+    <link href="http://lycworks.me/blog/2017/02/08/2017-02-01-matrix/"/>
+    <id>http://lycworks.me/blog/2017/02/08/2017-02-01-matrix/</id>
+    <published>2017-02-09T01:41:10.000Z</published>
+    <updated>2017-02-09T01:41:10.000Z</updated>
     
     <content type="html"><![CDATA[<hr>
 <h1 id="matrix-w-o-dfs"><a href="#matrix-w-o-dfs" class="headerlink" title="matrix w/o dfs"></a>matrix w/o dfs</h1><h3 id="只是遍历即可"><a href="#只是遍历即可" class="headerlink" title="只是遍历即可"></a>只是遍历即可</h3><blockquote>
@@ -84,6 +45,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">for i in range(m):</div><div class="line">	for j in range(i+1, n):</div><div class="line">		#swap</div></pre></td></tr></table></figure>
 <h3 id="islands"><a href="#islands" class="headerlink" title="islands"></a>islands</h3><p>岛类型的题分为很多种</p>
 <h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><p>perimeter - 4<em>num_lands - 2</em>neighbors (row and col)</p>
+<h3 id="matrix-traverse-Howmany-path"><a href="#matrix-traverse-Howmany-path" class="headerlink" title="matrix traverse Howmany path?"></a>matrix traverse Howmany path?</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">def traverse(matrix):</div><div class="line">    m = len(matrix)</div><div class="line">    n = len(matrix[0])</div><div class="line">    </div><div class="line">    </div><div class="line">    def dfs(matrix, x, y):</div><div class="line">        if x==len(matrix)-1 and y==len(matrix[0])-1 and matrix[x][y]!=1:</div><div class="line">            return 1</div><div class="line">        if x&gt;=len(matrix) or y&gt;=len(matrix[0]) or matrix[x][y]==1:</div><div class="line">            return 0</div><div class="line">        return  dfs(matrix,x+1,y)+dfs(matrix,x,y+1)</div><div class="line">    </div><div class="line">    return dfs(matrix, 0, 0)</div></pre></td></tr></table></figure>
 ]]></content>
     
     <summary type="html">
@@ -96,9 +58,116 @@
       <category term="Algo" scheme="http://lycworks.me/blog/categories/Algo/"/>
     
     
+      <category term="dfs" scheme="http://lycworks.me/blog/tags/dfs/"/>
+    
       <category term="matrix" scheme="http://lycworks.me/blog/tags/matrix/"/>
     
-      <category term="dfs" scheme="http://lycworks.me/blog/tags/dfs/"/>
+  </entry>
+  
+  <entry>
+    <title>makefile</title>
+    <link href="http://lycworks.me/blog/2017/02/08/makefile/"/>
+    <id>http://lycworks.me/blog/2017/02/08/makefile/</id>
+    <published>2017-02-09T01:40:26.000Z</published>
+    <updated>2017-02-09T02:10:04.000Z</updated>
+    
+    <content type="html"><![CDATA[<p><a href="https://kitoslab.blogspot.tw/2011/12/makefile.html" target="_blank" rel="external">reference</a></p>
+<h1 id="why-we-need-makefile"><a href="#why-we-need-makefile" class="headerlink" title="why we need makefile"></a>why we need makefile</h1><ul>
+<li>replace repetition of linking</li>
+<li><code>gcc *.c -o prog</code></li>
+<li>quick compiling time (prev way is 1 for everytime so that’s O(n))</li>
+</ul>
+<h1 id="Functions-of-makefile"><a href="#Functions-of-makefile" class="headerlink" title="Functions of makefile"></a>Functions of makefile</h1><ul>
+<li>build</li>
+<li>link</li>
+</ul>
+<h3 id="build"><a href="#build" class="headerlink" title="build"></a>build</h3><p>write inside makefile<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">prog:</div><div class="line">\t gcc a.o b.o c.o -o prog</div></pre></td></tr></table></figure></p>
+<p>terminal <code>make</code> reports no change when changes occur</p>
+<h3 id="update-rebuild"><a href="#update-rebuild" class="headerlink" title="update/rebuild"></a>update/rebuild</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">prog: a.o b.o c.o</div><div class="line">\t gcc a.o b.o c.o -o prog</div><div class="line">a.o: a.c #adding filename after specified output file</div><div class="line">\t gcc a.c -o a.o -c</div><div class="line"></div><div class="line">b.o: b.c</div><div class="line">\t gcc b.c -o b.o -c</div></pre></td></tr></table></figure>
+<h3 id="parallel-option"><a href="#parallel-option" class="headerlink" title="parallel option"></a>parallel option</h3><p>adding <code>-jn</code> n=num of buildtasks<br>eg <code>make -j4</code> #means compile 4 tasks</p>
+<blockquote>
+<p>makefile can be used as parallel execution as well</p>
+</blockquote>
+<h1 id="Common-error"><a href="#Common-error" class="headerlink" title="Common error"></a>Common error</h1><p><code>Makefile:2: *** missing separator.  Stop.</code><br>solution is to check for tabs</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;a href=&quot;https://kitoslab.blogspot.tw/2011/12/makefile.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;reference&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id=&quot;why-we-need-makefil
+    
+    </summary>
+    
+    
+      <category term="compiler" scheme="http://lycworks.me/blog/tags/compiler/"/>
+    
+      <category term="gcc" scheme="http://lycworks.me/blog/tags/gcc/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>动态规划</title>
+    <link href="http://lycworks.me/blog/2017/02/07/2017-02-01-dp/"/>
+    <id>http://lycworks.me/blog/2017/02/07/2017-02-01-dp/</id>
+    <published>2017-02-08T04:53:26.000Z</published>
+    <updated>2017-02-08T04:53:26.000Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="DP类型"><a href="#DP类型" class="headerlink" title="DP类型"></a>DP类型</h1><ul>
+<li><p>状态转移 <code>dp[x+y]+=dp[x]</code><br>转<br>当你遇到第n+1个数x_n+1的时候，前n+1个数中最大值是什么呢，就是拿这个新x去和之前那个max比，然后留下较大的一个，对吧，写下来就是<br><code>Max_n+1 = (x_n+1 &gt; Max_n) ? x_n+1 : Max_n</code> #if choose add to current max else not choose  </p>
+<h1 id="例题"><a href="#例题" class="headerlink" title="例题 ."></a>例题 .</h1><h3 id="combinationsum"><a href="#combinationsum" class="headerlink" title="combinationsum ."></a>combinationsum .</h3><h3 id="max-sum-subarray-Kadane’s"><a href="#max-sum-subarray-Kadane’s" class="headerlink" title="max sum subarray Kadane’s ."></a>max sum subarray Kadane’s .</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">def maxSum(arr):</div><div class="line">  prevSum = nums[0]</div><div class="line">  maxmax = nums[0]</div><div class="line">  del arr[0]</div><div class="line">  for num in nums:</div><div class="line">    prevSum = max(prevSum+num, num) #compare cursum and curnum</div><div class="line">    maxSum = max(maxSum, prevSum)</div><div class="line">  return maxSum</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="follow-up-from-max-subarray"><a href="#follow-up-from-max-subarray" class="headerlink" title="follow up from max subarray ."></a>follow up from max subarray .</h4><ul>
+<li><p>max product subarray - when it is negative, swap max and min continuous product . </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">def maxProduct(arr):</div><div class="line">  prevSum = nums[0]</div><div class="line">  maxProduct = nums[0]</div><div class="line">  minProduct = nums[0]</div><div class="line">  maxmax = nums[0]</div><div class="line">  del arr[0]</div><div class="line">  for num in nums:</div><div class="line">    if num&lt;0:</div><div class="line">      #swap because -*- is happening</div><div class="line">      maxProduct, minProduct = minProduct, maxProduct</div><div class="line">    maxProduct = max(num, maxProduct*num)</div><div class="line">    minProduct = min(num, minProduct*num)</div><div class="line">    maxmax = max(maxmax, maxProduct)</div><div class="line">  return maxmax</div></pre></td></tr></table></figure>
+</li>
+<li><p>Robber</p>
+</li>
+<li>stocks</li>
+</ul>
+<h3 id="两个选择"><a href="#两个选择" class="headerlink" title="两个选择"></a>两个选择</h3><p>例题 栅栏和涂色</p>
+<p>这道题因为栅栏有n，涂色有k个，再加上涂色可以重复最多两次，基本上确定了要算<br>1 - 前一个和后一个是一样颜色 <code>prev = cur</code><br>2 - 前一个和后一个是不同颜色 <code>prev uses k, cur uses k-1 color</code>  </p>
+<h1 id="let’s-写code"><a href="#let’s-写code" class="headerlink" title="let’s 写code"></a>let’s 写code</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">if n&lt;2:</div><div class="line">	return n*k</div><div class="line">same = k</div><div class="line">diff = k*(k-1)</div><div class="line">for i in range(2, n):</div><div class="line">	same, diff = diff, (same+diff)*(k-1)</div><div class="line"></div><div class="line">return same+diff</div></pre></td></tr></table></figure>
+<h3 id="permutation"><a href="#permutation" class="headerlink" title="permutation"></a>permutation</h3><p>例题 count numbers with unique digits  </p>
+<p>digits [0,10)<br>1 for 0<br>10 for 1 - 0~9<br>9<em>9 for 2 - 1-9 +0,5 -&gt; 9个<br>然后就是9</em>8*7..</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">curans = 10</div><div class="line">base = 9</div><div class="line">for i in range(n-2+1) #&gt;2</div><div class="line">	base*= 9-i</div><div class="line">	curans+=base</div></pre></td></tr></table></figure>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;DP类型&quot;&gt;&lt;a href=&quot;#DP类型&quot; class=&quot;headerlink&quot; title=&quot;DP类型&quot;&gt;&lt;/a&gt;DP类型&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;状态转移 &lt;code&gt;dp[x+y]+=dp[x]&lt;/code&gt;&lt;br&gt;转&lt;br&gt;当你遇到第n+1个数x_
+    
+    </summary>
+    
+      <category term="Algo" scheme="http://lycworks.me/blog/categories/Algo/"/>
+    
+    
+      <category term="dp" scheme="http://lycworks.me/blog/tags/dp/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>permutation</title>
+    <link href="http://lycworks.me/blog/2017/02/07/permutation/"/>
+    <id>http://lycworks.me/blog/2017/02/07/permutation/</id>
+    <published>2017-02-08T00:11:07.000Z</published>
+    <updated>2017-02-08T00:40:10.000Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="nPr-N-N-r"><a href="#nPr-N-N-r" class="headerlink" title="nPr N!/(N-r)!"></a>nPr N!/(N-r)!</h1><p>5P3 - 5!/(5-3)!</p>
+<p>boomerang - three points same distance<br>loop through each point and count the number of pairs of same distanced, then add their permutations as well</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">res = 0</div><div class="line">for i in range(m):</div><div class="line">	for j in range(m):</div><div class="line">		if i==j: continue</div><div class="line">		distance = calcDistance(points[i],points[j])</div><div class="line">		dic[distance]+=1</div><div class="line">	for v in dic.values():</div><div class="line">		res += v * (v-1) #the permutation of selecting 2 elements</div><div class="line">	dic = &#123;&#125;</div><div class="line"></div><div class="line">return res</div></pre></td></tr></table></figure>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;nPr-N-N-r&quot;&gt;&lt;a href=&quot;#nPr-N-N-r&quot; class=&quot;headerlink&quot; title=&quot;nPr N!/(N-r)!&quot;&gt;&lt;/a&gt;nPr N!/(N-r)!&lt;/h1&gt;&lt;p&gt;5P3 - 5!/(5-3)!&lt;/p&gt;
+&lt;p&gt;boomerang -
+    
+    </summary>
+    
+    
+      <category term="permutation" scheme="http://lycworks.me/blog/tags/permutation/"/>
     
   </entry>
   
@@ -161,7 +230,7 @@
     <link href="http://lycworks.me/blog/2017/02/06/string-related/"/>
     <id>http://lycworks.me/blog/2017/02/06/string-related/</id>
     <published>2017-02-06T17:52:28.000Z</published>
-    <updated>2017-02-06T22:36:47.000Z</updated>
+    <updated>2017-02-08T00:41:51.000Z</updated>
     
     <content type="html"><![CDATA[<h1 id="Palindrome"><a href="#Palindrome" class="headerlink" title="Palindrome"></a>Palindrome</h1><p>What is palindrome? A string that is the same forward backward.<br>What constitutes a palindrome? A string with only one odd or all odd numbers</p>
 <h1 id="Questions"><a href="#Questions" class="headerlink" title="Questions"></a>Questions</h1><p>Longest Palindrome - step1 using dic for counting, then when repeated occurred (means even count), delete the item from the dictionary. In other words, check whether there is any left overs in dic.  </p>
@@ -170,10 +239,10 @@
 <h1 id="Repeated-Substring-pattern"><a href="#Repeated-Substring-pattern" class="headerlink" title="Repeated Substring pattern"></a>Repeated Substring pattern</h1><p>CC150’s typical question, solution is to see whether the original string is in double s’s [1:-1].  </p>
 <p>For example, <code>s = &#39;abab&#39;</code>, <code>double_s = &#39;abababab&#39;</code>, remove first and last becomes <code>bababa</code>, which only works if the original string is a pattern</p>
 <h1 id="Find-the-diff"><a href="#Find-the-diff" class="headerlink" title="Find the diff"></a>Find the diff</h1><p>Really easy, just make one string into set, then compare the char count in both string</p>
-<pre><code>for ss in set(t):
-    if s.count(ss)!=t.count(ss):
-        return ss
-</code></pre>]]></content>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">for ss in set(t):</div><div class="line">	if s.count(ss)!=t.count(ss):</div><div class="line">		return ss</div></pre></td></tr></table></figure>
+<h1 id="calculate-number"><a href="#calculate-number" class="headerlink" title="calculate number"></a>calculate number</h1><p>reverse the number so it can do the calculation properly</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">sum = carry+f1+f2</div><div class="line">carry = sum//10 -&gt;bring to next stage</div><div class="line">digit = sum%10 -&gt;digit place</div></pre></td></tr></table></figure>
+]]></content>
     
     <summary type="html">
     
@@ -324,9 +393,9 @@
       <category term="Algo" scheme="http://lycworks.me/blog/categories/Algo/"/>
     
     
-      <category term="dfs" scheme="http://lycworks.me/blog/tags/dfs/"/>
-    
       <category term="path" scheme="http://lycworks.me/blog/tags/path/"/>
+    
+      <category term="dfs" scheme="http://lycworks.me/blog/tags/dfs/"/>
     
   </entry>
   
@@ -390,59 +459,6 @@
   </entry>
   
   <entry>
-    <title>JS正则表达式regexexp</title>
-    <link href="http://lycworks.me/blog/2017/02/02/2016-05-20-JS-regex/"/>
-    <id>http://lycworks.me/blog/2017/02/02/2016-05-20-JS-regex/</id>
-    <published>2017-02-02T21:56:37.000Z</published>
-    <updated>2017-02-02T21:56:37.000Z</updated>
-    
-    <content type="html"><![CDATA[<hr>
-<h1 id="Regex正则"><a href="#Regex正则" class="headerlink" title="Regex正则"></a>Regex正则</h1><h2 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h2><p><code>/</code>起始和结尾<br><code>.</code> - 代表任意，除了换行/n,/r etc<br><code>\d</code>- 0-9<br><code>\D</code>- !(0-9)<br><code>\w</code>- 0-9或a-zA-Z,_<br><code>\W</code>- !(\w)<br><code>\s</code>- 空格，tab，\n\r etc<br><code>\S</code>- !(\s)<br><code>\t\r\n\v\f</code> - tab，回车，换行，垂直|，换页  </p>
-<p>范围<br>[] - 字符范围, eg [a-zA-Z]<br>[^..] - 字符意外<br>^ - 行首<br>$ - 行尾<br><code>\b</code> - 零宽单词边界 eg ‘a no’<br><code>\B</code> - !(\b)  </p>
-<p>符号<br><code>\</code> - escape符号  </p>
-<p>分组<br><code>(x)</code>, <code>\n</code> - e.g. (abc)\n 表示abc再重复n次<br><code>(?:x)</code> - 仅分组，重复没有效果 eg <code>(?:abc)(def)\1.test(&#39;abcdefdef&#39;)</code>  </p>
-<p>重复<br>贪婪算法 x<em> &gt;=0, x+ &gt;=1<br>eg abc</em> 匹配 ab, abc, abccccc<br>   abc+ 匹配 abc,abccccc  </p>
-<p>非贪婪算法 x<em>? == 0, x+? ==1<br>  eg abc</em>? 匹配 ab<br>     abc+? 匹配 abc  </p>
-<p>x? 出现0或1次<br>x|y x或y<br>  eg ab|cd|ef 匹配 ab或cd或ef<br>x{n} - 固定n次<br>x(n,) - &gt;= n次<br>x(n,m) - n-m次  </p>
-<p>标志类flag  gim<br>g - global<br>i - ignoreCase<br>m - multiline - 跨行检索  </p>
-<h2 id="相关方法"><a href="#相关方法" class="headerlink" title="相关方法"></a>相关方法</h2><p>.search(regex) - 返回找到位置index<br>.replace(regex,replacement)<br>.match(regex) - 返回匹配结果数组<br>.split(regex) - 返回数组</p>
-<h2 id="资料"><a href="#资料" class="headerlink" title="资料"></a>资料</h2><p><a href="http://regexone.com/lesson/kleene_operators?" target="_blank" rel="external">http://regexone.com/lesson/kleene_operators?</a> 练习站<br><a href="https://developers.google.com/edu/python/regular-expressions" target="_blank" rel="external">https://developers.google.com/edu/python/regular-expressions</a> 教程<br><a href="http://pythex.org/" target="_blank" rel="external">http://pythex.org/</a> python正则练习站</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;hr&gt;
-&lt;h1 id=&quot;Regex正则&quot;&gt;&lt;a href=&quot;#Regex正则&quot; class=&quot;headerlink&quot; title=&quot;Regex正则&quot;&gt;&lt;/a&gt;Regex正则&lt;/h1&gt;&lt;h2 id=&quot;基础&quot;&gt;&lt;a href=&quot;#基础&quot; class=&quot;headerlink&quot; tit
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>CSS Trick</title>
-    <link href="http://lycworks.me/blog/2017/02/02/2016-06-26-CSS-tricks/"/>
-    <id>http://lycworks.me/blog/2017/02/02/2016-06-26-CSS-tricks/</id>
-    <published>2017-02-02T21:56:37.000Z</published>
-    <updated>2017-02-02T21:56:37.000Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="Horizontal-Centering-Span-that-are-absolute"><a href="#Horizontal-Centering-Span-that-are-absolute" class="headerlink" title="Horizontal Centering Span that are absolute"></a>Horizontal Centering Span that are absolute</h1><p>once absolutely positioned, it no longer follows the document flow. So the text is centered, but only inside the pink span.<br>And since it’s absolutely positioned, even if it were a div, the width would collapse.  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">solution  </div><div class="line">span  </div><div class="line">&#123;  </div><div class="line">    background-color:pink;  </div><div class="line">    left: 0;  /*&lt;-*/</div><div class="line">    width: 100%;  /*&lt;-*/  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<blockquote>
-<p>If you don’t want the pink to extend the full width, then you must nest an element (e.g. span) inside the positioned spans and give that element the background color, as seen here.</p>
-</blockquote>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;Horizontal-Centering-Span-that-are-absolute&quot;&gt;&lt;a href=&quot;#Horizontal-Centering-Span-that-are-absolute&quot; class=&quot;headerlink&quot; title=&quot;Horizo
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
     <title>Git笔记</title>
     <link href="http://lycworks.me/blog/2017/02/02/2016-07-06-git-note/"/>
     <id>http://lycworks.me/blog/2017/02/02/2016-07-06-git-note/</id>
@@ -482,6 +498,70 @@ cd .. &amp;&amp; git add myfolder &amp;&amp; commit -m &quot;updated myfolder&qu
     
     
       <category term="git" scheme="http://lycworks.me/blog/tags/git/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>ProgressBar.js Doughnut Chart</title>
+    <link href="http://lycworks.me/blog/2017/02/02/2016-07-11-chart-progressbar/"/>
+    <id>http://lycworks.me/blog/2017/02/02/2016-07-11-chart-progressbar/</id>
+    <published>2017-02-02T21:56:37.000Z</published>
+    <updated>2017-02-02T21:56:37.000Z</updated>
+    
+    <content type="html"><![CDATA[<hr>
+<h1 id="CODE"><a href="#CODE" class="headerlink" title="CODE"></a>CODE</h1><pre><code>// progressbar.js@1.0.0 version is used
+// Docs: http://progressbarjs.readthedocs.org/en/1.0.0/
+// drawChart(&apos;By You&apos;, chart1, i1);
+// drawChart(&apos;By Others&apos;, chart2, i2);
+
+function drawChart(str,id,val){
+     var bar = new ProgressBar.Circle(id, {
+       color: &apos;#373f51&apos;,
+       // This has to be the same size as the maximum width to
+       // prevent clipping
+       strokeWidth: 4,
+       trailWidth: 4,
+       easing: &apos;easeInOut&apos;,
+       duration: 1400,
+       text: {
+         autoStyleContainer: false
+       },
+       from: { color: &apos;#a9bcd0&apos;, width: 4 },
+       to: { color: &apos;#a9bcd0&apos;, width: 4 },
+       // Set default step function for all animate calls
+       step: function(state, circle) {
+         circle.path.setAttribute(&apos;stroke&apos;, state.color);
+         circle.path.setAttribute(&apos;stroke-width&apos;, state.width);
+
+         var value = Math.round(circle.value() * 100);
+         if (value === 0) {
+           circle.setText(&apos;&apos;);
+         } else {
+           circle.setText(&apos;&lt;center&gt;&apos;+value+&apos;%&lt;/center&gt;\n&apos;+str);
+         }
+
+       }
+     });
+     // bar.text.style.fontFamily = &apos;&quot;Raleway&quot;, Helvetica, sans-serif&apos;;
+     bar.text.style.fontSize = &apos;1rem&apos;;
+     bar.text.style.lineHeight = &apos;30px&apos;;
+     var value = val/total;
+     bar.animate(value);  // Number from 0.0 to 1.0
+} //for progressbar
+</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      &lt;hr&gt;
+&lt;h1 id=&quot;CODE&quot;&gt;&lt;a href=&quot;#CODE&quot; class=&quot;headerlink&quot; title=&quot;CODE&quot;&gt;&lt;/a&gt;CODE&lt;/h1&gt;&lt;pre&gt;&lt;code&gt;// progressbar.js@1.0.0 version is used
+// Docs: 
+    
+    </summary>
+    
+      <category term="JS" scheme="http://lycworks.me/blog/categories/JS/"/>
+    
+    
+      <category term="chart,JS" scheme="http://lycworks.me/blog/tags/chart-JS/"/>
     
   </entry>
   
@@ -608,83 +688,59 @@ function ctrlFunc() { this.workflowData = workflowData_client; }
   </entry>
   
   <entry>
-    <title>HTML笔记</title>
-    <link href="http://lycworks.me/blog/2017/02/02/2016-05-16-html-note/"/>
-    <id>http://lycworks.me/blog/2017/02/02/2016-05-16-html-note/</id>
+    <title>JS基础笔记(DOM)</title>
+    <link href="http://lycworks.me/blog/2017/02/02/2016-05-16-JS-note/"/>
+    <id>http://lycworks.me/blog/2017/02/02/2016-05-16-JS-note/</id>
     <published>2017-02-02T21:56:37.000Z</published>
     <updated>2017-02-02T21:56:37.000Z</updated>
     
-    <content type="html"><![CDATA[<h1 id="HTML"><a href="#HTML" class="headerlink" title="HTML"></a>HTML</h1><h3 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h3><ul>
-<li>语义强调  em, strong</li>
-<li>span不为强调，为了设置单独样式  </li>
-<li><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">*  ```&amp;nbsp; ```为字符实体，显示空格  </div><div class="line">* ```&lt;code&gt;```标签只能插入一行代码，如果要插入多行代码，使用```&lt;pre&gt;```标签  </div><div class="line">* ```&lt;div&gt;```为网页划分独立的版块,通常使用id区分  </div><div class="line">* ```&lt;tbody&gt;..&lt;/tbody&gt;```：要等表格内容全部下载完才会显示  </div><div class="line">* 摘要  </div><div class="line"> ```&lt;table summary=&quot;表格简介文本&quot;&gt;```  </div><div class="line">    &gt; 摘要的内容是不会在浏览器中显示出来的  </div><div class="line">它的作用是增加表格的可读性(语义化)，使搜索引擎更好的读懂表格内容，还可以使屏幕阅读器更好的帮助特殊用户读取表格内容。  </div><div class="line"></div><div class="line">    ```&lt;caption&gt;标题文本&lt;/caption&gt;``` 会显示title  </div><div class="line">    </div><div class="line">* 链接  </div><div class="line">	title属性的作用 - 鼠标滑过链接文字时会显示这个属性的文本内容  </div><div class="line">	href=mailto - 后面同时有多个参数的话，第一个参数必须以“?”开头，后面的参数每一个都以“&amp;”分隔。</div><div class="line"></div><div class="line">* Input  </div><div class="line">&gt; 当 type=&quot;radio&quot; 时，控件为单选框, name 取值一定要一致  </div><div class="line">&gt; 当 type=&quot;checkbox&quot; 时，控件为复选框</div><div class="line"></div><div class="line"># CSS</div><div class="line">```内联式(属性) &gt; 嵌入式(&lt;style&gt;) &gt; 外部式</div></pre></td></tr></table></figure>
-</li>
-<li><p>子选择器 ‘&gt;’<br>用于选择指定标签元素的第一代子元素。如右侧代码编辑器中的代码：  </p>
-<figure class="highlight plain"><figcaption><span>solid red;&#125;```</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">  &gt; 这行代码会使class名为food下的子元素li（水果、蔬菜）加入红色实线边框。</div><div class="line"></div><div class="line">* 包含(后代)选择器 &apos; &apos;  </div><div class="line">作用于元素的第一代后代，空格作用于元素的所有后代</div><div class="line"></div><div class="line">* all选择器 &apos;*&apos;</div><div class="line"></div><div class="line">* 伪类选择符，它允许给html不存在的标签（标签的某种状态）设置样式</div><div class="line"></div><div class="line">* 分组选择符 &apos;,&apos;  </div><div class="line">```h1,span&#123;color:red;&#125;``` 相当于：</div><div class="line">```h1&#123;color:red;&#125; span&#123;color:red;&#125;</div></pre></td></tr></table></figure>
-</li>
-<li><p>权值<br>标签的权值为1，类选择符的权值为10，ID选择符的权值最高为100。例如下面的代码:  </p>
-</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">p&#123;color:red;&#125; /*权值为1*/</div><div class="line">p span&#123;color:green;&#125; /*权值为1+1=2*/</div><div class="line">.warning&#123;color:white;&#125; /*权值为10*/</div><div class="line">p span.warning&#123;color:purple;&#125; /*权值为1+1+10=12*/</div><div class="line">#footer .note p&#123;color:yellow;&#125; /*权值为100+10+1=111*/</div></pre></td></tr></table></figure>
+    <content type="html"><![CDATA[<h1 id="变量Var"><a href="#变量Var" class="headerlink" title="变量Var"></a>变量Var</h1><h2 id="Assign初始值的重要性"><a href="#Assign初始值的重要性" class="headerlink" title="Assign初始值的重要性"></a>Assign初始值的重要性</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">var a;  </div><div class="line">var b;  </div><div class="line">var c;</div><div class="line">a = a + 1;  </div><div class="line">b = b + 5;  </div><div class="line">c = c + &quot; String!&quot;;</div></pre></td></tr></table></figure>
 <blockquote>
-<p>注意：继承权值很低，有的文献提出它只有0.1，所以可以理解为继承的权值最低。</p>
+<p>result a = NaN, b=NaN, c = “undefined String!”</p>
+</blockquote>
+<h1 id="字符串数组"><a href="#字符串数组" class="headerlink" title="字符串数组"></a>字符串数组</h1><pre><code>var myStr = &quot;Bob&quot;;
+myStr[0] = &quot;J&quot;;
+</code></pre><blockquote>
+<p>cannot change the value of myStr to “Job”,<br>because the contents of myStr cannot be altered.<br>Note that this does not mean that myStr cannot be changed,<br>just that the individual characters of a string literal cannot be changed. </p>
 </blockquote>
 <ul>
-<li>css样式的重要性<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">样式优先级为：浏览器默认的样式 &lt; 网页制作者样式 &lt; 用户自己设置的样式，但记住!important优先级样式是个例外，权值高于用户自己设置的样式。</div><div class="line"></div><div class="line">* absolute：  </div><div class="line">	* 无已定位的祖先元素则以&lt;HTML&gt;为基准偏移  </div><div class="line">	* 有已定位的祖先元素 e.g.relative,则以距离最近的且已定位的祖先元素为基准偏移  </div><div class="line">	* 位置会随滚动条变化。</div><div class="line">* fixed：  </div><div class="line">	* 有、无已定位的祖先元素，都以浏览器可视窗口为基准偏移。    </div><div class="line">	* 位置固定，不会随滚动条变化。（固定浮在上面）</div><div class="line">* z-index 只有设置了相对定位，或者绝对定位的元素才具有的属性</div><div class="line"></div><div class="line">* margin选择器设置的属性会和fixed属性设置重叠，导致&lt;body&gt;层与浏览器可视化窗口产生间距。在标准文档流中，两个元素，上外边距和上外边距，或者上外边距和下外边距相遇时，当两个标签都在标准文档流中时，会选择较大的上外填充</div><div class="line">	&gt; 可用解决方法：把后面的元素body设置margin-top：（fixed定位的元素高度）</div><div class="line">* 顶部固定层  </div><div class="line">	* top----position:fixex;(top:0;left:0;取决于祖先元素是否定位且有偏移量)  </div><div class="line">	* mainbody---margin-top:(#top高度+原有间距)px</div><div class="line">	</div><div class="line"># Paragraph</div></pre></td></tr></table></figure></li>
+<li>methods<br>  .charAt(index) is another use<br>  .indexOf<br>  .split(delimiter,limit)<br>  .substring( 起点 ， 终点 )<br>  .substr( 起点 ，长度 )  </li>
 </ul>
-<p>letter-spacing<br>word-spacing<br>line-height: 2em;<br>text-align - 为块状元素中的文本、图片设置居中样式<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"># DIV elements</div><div class="line">Block - elements with ```display:block```  </div><div class="line">Inline - ```display: inline```  例如span</div><div class="line">*	内联元素特点：</div><div class="line">		和其他元素都在一行上；  </div><div class="line">		元素的高度、宽度及顶部和底部边距不可设置；  </div><div class="line">		元素的宽度就是它包含的文字或图片的宽度，不可改变。  </div><div class="line">	</div><div class="line">Inline-block - 例如img,input</div><div class="line">* 和其他元素都在一行上；</div><div class="line">	元素的高度、宽度、行高以及顶和底边距都可设置  </div><div class="line"></div><div class="line">总体　　</div><div class="line"></div><div class="line">![alt text](http://img.imooc.com/539fbb3a0001304305570259.jpg &quot;Logo Title Text 1&quot;)</div><div class="line"></div><div class="line">填充- 元素内容与边框之间是可以设置距离的</div><div class="line">边界- 元素与其它元素之间设置距离</div><div class="line">&gt; padding在边框里，margin在边框外。  </div><div class="line"></div><div class="line"># CSS的3种基本布局模型 Flow、Layer 和 Float</div><div class="line"># 相对参照元素进行定位</div><div class="line">e.g. putting text on top of an image div</div><div class="line">* 参照定位的元素必须是相对定位元素的前辈元素</div></pre></td></tr></table></figure></p>
-<pre><code>&lt;div id=&quot;box1&quot;&gt;&lt;!--参照定位的元素--&gt;  
-    &lt;div id=&quot;box2&quot;&gt;相对参照元素进行定位&lt;/div&gt;&lt;!--相对定位元素--&gt;  
-&lt;/div&gt;
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line"># 居中  </div><div class="line">1.行内元素，水平居中是通过给父元素设置 text-align:center 来实现  </div><div class="line">2.定宽块状元素：fixed width,flexible height block element, 设置margin: 0 auto  </div><div class="line">3.不定宽块状元素：</div><div class="line">* 3.1 加入table标签:  </div><div class="line">第一步：为需要设置的居中的元素外面加入一个 table 标签 ( 包括 &lt;tbody&gt;、&lt;tr&gt;、&lt;td&gt; )。  </div><div class="line">第二步：为这个 table 设置“左右 margin 居中”（这个和定宽块状元素的方法一样）。</div><div class="line"></div><div class="line">* 3.2 改变块级元素的 display 为 inline 类型，然后使用 text-align:center 来实现居中效果。   </div><div class="line">这种方法相比第一种方法的优势是不用增加无语义标签，简化了标签的嵌套深度，但也存在着一些问题：它将块状元素的 display 类型改为 inline，变成了行内元素，所以少了一些功能，比如设定长度值。</div><div class="line">* 3.3 通过给父元素设置 float, position:relative 和 left:50%，  </div><div class="line">子元素设置 position:relative 和 left:-50% 来实现水平居中  </div><div class="line"></div><div class="line">&gt; 把父元素浮动到左边,同时向右偏移50%,相当于把父元素的左边缘对齐到整行的中间    </div><div class="line">把子元素向右偏移50%,这个50%是父元素的50%,即是wrap的50%,而此时wrap的宽度刚好就等于子元素的宽度,也是子元素本身的50%,这样刚好就居中了   </div><div class="line">可以在.wrap中添加一行clear：both（作用是清除两侧浮动，独占一行），这样“我们来学习一下这种方法”这句就不会把“1 2 3”这句遮住  </div><div class="line"></div><div class="line">这种方法可以保留块状元素仍以 display:block 的形式显示，优点不添加无语议表标签，不增加嵌套深度，但它的缺点是设置了 position:relative，带来了一定的副作用。  </div><div class="line"></div><div class="line"># 垂直居中：</div><div class="line">1. 单行内容垂直居中：设行高（line-height）与容器高（height）为相同值，如height=100px;line-height=100px;  </div><div class="line">2. 利用vertical-align:middle;属性：  </div><div class="line">	* 2.1 将元素插入到```&lt;table&gt;,&lt;td&gt;```或```&lt;th&gt;```中，利用```&lt;td&gt;```或```&lt;th&gt;```的```vertical-align: middle;```属性（vertical-align: middle;只对&lt;td&gt;或&lt;th&gt;有效）。</div><div class="line">	* 2.2 对元素设置display:table-cell;属性，触发vertical-align属性，可使之在容器内居中，但会使块级元素，变为行内块级元素。</div><div class="line"></div><div class="line"># Vertical Navigation</div><div class="line">* 把a标签定义成行内块</div><div class="line"></div><div class="line">* 文字缩进20px</div><div class="line"></div><div class="line"># Horizontal Nav</div><div class="line">* add float left and delete ul&apos;s width</div><div class="line"></div><div class="line"># Inner Nav</div></pre></td></tr></table></figure>
-
-ul&gt;li ul{transition:height 0.3s;}
-ul&gt;li:hover ul{height: 120px;}
-</code></pre><p>```</p>
+<h1 id="Create-global-variables"><a href="#Create-global-variables" class="headerlink" title="Create global variables"></a>Create global variables</h1><ul>
+<li>outside of function - var globalvar</li>
+<li>inside function - declare without var </li>
+</ul>
+<h1 id="break"><a href="#break" class="headerlink" title="break"></a>break</h1><p>break是退出循环，不是跳出if语句</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">for(初始条件;判断条件;循环后条件值更新)  </div><div class="line">&#123;  </div><div class="line">  if(特殊情况)  </div><div class="line">  &#123;break;&#125;  </div><div class="line">  循环代码  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h1 id="event"><a href="#event" class="headerlink" title="event"></a>event</h1><p><img src="http://img.imooc.com/53e198540001b66404860353.jpg" alt="mouse event chart" title="chart">  </p>
+<p>将光标移到文本框内时，即焦点在文本框内，触发onfocus 事件</p>
+<ul>
+<li><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">* ```window.onload=message;```这种写法是在网页加载完成后，调用message()方法。  </div><div class="line"></div><div class="line">&gt; 建议使用window.onload=函数名;这种写法，不容易出错。window.onload=函数名();有些浏览器不买单滴~~</div><div class="line"></div><div class="line"># array</div><div class="line">![chart](http://img.imooc.com/533295ab0001dead05190599.jpg &quot;chart&quot;)  </div><div class="line"></div><div class="line">* .concat()</div></pre></td></tr></table></figure>
+<p>  arr.concat(array1,array2,…,arrayN)<br>  e.g.<br>  arr = [1,2,3]<br>  arr.concat(4,5);//[1,2,3,4,5]</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&gt; 注意: 该方法不会改变现有的数组，而仅仅会返回被连接数组的一个副本。</div><div class="line"></div><div class="line">* .join() - 把数组中的所有元素放入一个字符串。元素是通过指定的分隔符进行分隔的</div></pre></td></tr></table></figure>
+<p>  myarr.join(“.”)<br>  I.Love.JS</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">&gt; 使用.join(&quot;&quot;)可以进行紧密连接。</div><div class="line"></div><div class="line">* .reverse()</div><div class="line"></div><div class="line">* substring() 左开右闭 开始位置不能为负数;  </div><div class="line">* slice() 左闭右开 开始位置可以为负数.</div><div class="line"></div><div class="line">* sort([function])</div><div class="line">	* 若返回值&lt;=-1，则表示 A 在排序后的序列中出现在 B 之前。  </div><div class="line">若返回值&gt;-1 &amp;&amp; &lt;1，则表示 A 和 B 具有相同的排序顺序。    </div><div class="line">若返回值&gt;=1，则表示 A 在排序后的序列中出现在 B 之后。</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>function sortNum(a,b) {<br>return a - b;<br>//升序，如降序，把“a - b”该成“b - a”<br>}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">#BOM</div><div class="line">## Interval/Timeout</div><div class="line">![chartInterval](http://img.imooc.com/56976e1700014fc504090143.jpg &quot;interval&quot;)  </div><div class="line"></div><div class="line">* setInterval(function,ms)  function可以是&quot;clock()&quot; or clock  </div><div class="line">1s = 1000 ms  </div><div class="line"></div><div class="line">* clearInterval(id_of_seInterval)  计时器：每隔1000毫秒执行clock()函数，并将值返回给t</div><div class="line">`var t= setInterval(&quot;clock()&quot;,1000);`</div><div class="line"></div><div class="line">&gt; 执行clearInterval(t);停止计时</div><div class="line"></div><div class="line">* setTimeout(function,time)</div><div class="line">	* 函数体外的是启动函数，执行一次后就交给函数体内代码执行，函数体内是代码执行的循环体</div><div class="line">	* thus can be use recursively</div><div class="line">	* setTimeout仅仅是延迟执行一次，只一次，但可以通过递归调用实现与setInterval相同的效果</div><div class="line"></div><div class="line">## History (window可以省略)</div><div class="line">![history](http://img.imooc.com/53548c200001228206210123.jpg &quot;history&quot;)  </div><div class="line"></div><div class="line">* .length - num of visited urls  </div><div class="line">* .back() - previous url; = go(-1)  </div><div class="line">* .forward() - next url  </div><div class="line">* .go(..) - specific url  </div><div class="line"></div><div class="line">## Location </div><div class="line">* Properties</div><div class="line">![url](http://img.imooc.com/53605c5a0001b26909900216.jpg &quot;url&quot;)</div><div class="line">* Methods</div><div class="line">    * assign()</div><div class="line">    * reload()</div><div class="line">    * replace()</div><div class="line"></div><div class="line"># DOM</div><div class="line">## Node</div><div class="line">个体 - `document.getElementById(id)`  </div><div class="line">数组 - `document.getElementsByName(name)`, `document.getElementsByTagName(Tagname)`  </div><div class="line"></div><div class="line">* Tagname是标签的名称，如p、a、img  </div><div class="line">* 属性可能不唯一, 返回的是元素的数组       </div><div class="line">* 有length属性</div><div class="line"></div><div class="line">#### Node Attribute </div><div class="line">    getAttribute(attr)  </div><div class="line">    setAttribute(name,val)</div><div class="line">#### Node properties</div><div class="line">        nodeName, nodeType, nodeValue  </div><div class="line">&gt; 1. 元素节点的 nodeValue 是 undefined 或 null  </div><div class="line">&gt; 2. 文本节点的 nodeValue 是文本自身</div><div class="line">&gt; 3. 属性节点的 nodeValue 是属性的值</div><div class="line"></div><div class="line">## Node&apos;s Tree Structure</div><div class="line">![dom](http://img.imooc.com/53f17a6400017d2905230219.jpg)  </div><div class="line"></div><div class="line">#### 访问子结点.childNodes  </div><div class="line">访问选定元素节点下的所有子节点的列表，返回的值可以看作是一个数组，具有length属性。  </div><div class="line">注意：</div><div class="line">如果选定的节点没有子节点，则该属性返回不包含节点的 NodeList。</div><div class="line">&gt; 注意代码中的[0]，很关键！！！  </div><div class="line">&gt; 节点之间的空白符，在firefox、chrome、opera、safari浏览器是文本节点，所以IE是3，其它浏览器是7 </div><div class="line"></div><div class="line">Fix: 都写在一行 ```&lt;ul&gt;&lt;li&gt;javascript&lt;/li&gt;&lt;li&gt;jQuery&lt;/li&gt;&lt;li&gt;PHP&lt;/li&gt;&lt;/ul&gt;</div></pre></td></tr></table></figure></p>
+<h4 id="node-firstChild"><a href="#node-firstChild" class="headerlink" title="node.firstChild"></a>node.firstChild</h4><p>说明：与elementNode.childNodes[0]是同样的效果。</p>
+<h4 id="node-parentNode"><a href="#node-parentNode" class="headerlink" title="node.parentNode"></a>node.parentNode</h4><p>注意:父节点只能有一个,祖节点elementNode.parentNode.parentNode</p>
+<h4 id="nextSibling-previousSibling"><a href="#nextSibling-previousSibling" class="headerlink" title="nextSibling/previousSibling"></a>nextSibling/previousSibling</h4><p>同一树层级中</p>
+<h4 id="appendChild-newNode-insertBefore-newNode-node"><a href="#appendChild-newNode-insertBefore-newNode-node" class="headerlink" title="appendChild(newNode)/insertBefore(newNode,node)"></a>appendChild(newNode)/insertBefore(newNode,node)</h4><p>document.createElement()是在对象中创建一个对象  </p>
+<h4 id="removeChild-the-removed-node"><a href="#removeChild-the-removed-node" class="headerlink" title=".removeChild(the removed node)"></a>.removeChild(the removed node)</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">while(content.firstChild)&#123;</div><div class="line">      content.removeChild(content.firstChild)</div><div class="line">  &#125;</div></pre></td></tr></table></figure>
+<h4 id="replaceChild-newnode-oldnode"><a href="#replaceChild-newnode-oldnode" class="headerlink" title=".replaceChild (newnode,oldnode)"></a>.replaceChild (newnode,oldnode)</h4><h2 id="document-create"><a href="#document-create" class="headerlink" title="document.create"></a>document.create</h2><ul>
+<li>TextNode(data) and paragraph.appendChild(textnode)</li>
+<li>ELement(tagid)</li>
+<li>Method<br><img src="http://img.imooc.com/538d29da000152db05360278.jpg" alt="dom"></li>
+</ul>
 ]]></content>
     
     <summary type="html">
     
-      &lt;h1 id=&quot;HTML&quot;&gt;&lt;a href=&quot;#HTML&quot; class=&quot;headerlink&quot; title=&quot;HTML&quot;&gt;&lt;/a&gt;HTML&lt;/h1&gt;&lt;h3 id=&quot;基础&quot;&gt;&lt;a href=&quot;#基础&quot; class=&quot;headerlink&quot; title=&quot;基础&quot;&gt;&lt;/a&gt;基础&lt;/h
+      &lt;h1 id=&quot;变量Var&quot;&gt;&lt;a href=&quot;#变量Var&quot; class=&quot;headerlink&quot; title=&quot;变量Var&quot;&gt;&lt;/a&gt;变量Var&lt;/h1&gt;&lt;h2 id=&quot;Assign初始值的重要性&quot;&gt;&lt;a href=&quot;#Assign初始值的重要性&quot; class=&quot;header
     
     </summary>
     
-    
-  </entry>
-  
-  <entry>
-    <title>Snap.SVG</title>
-    <link href="http://lycworks.me/blog/2017/02/02/2016-07-14-svg/"/>
-    <id>http://lycworks.me/blog/2017/02/02/2016-07-14-svg/</id>
-    <published>2017-02-02T21:56:37.000Z</published>
-    <updated>2017-02-02T21:56:37.000Z</updated>
-    
-    <content type="html"><![CDATA[<hr>
-<h1 id="Snap-SVG"><a href="#Snap-SVG" class="headerlink" title="Snap.SVG"></a>Snap.SVG</h1><p>clear<br>        var s = Snap(‘css selector’)<br>        Snap.load(‘whatever.svg’, function(fragment){<br>            s.clear()<br>        })</p>
-<p>get element  </p>
-<pre><code>myRect.attr(&apos;id&apos;);
-</code></pre><p>set element<br>        myRect.attr({<br>            id: ‘newid’<br>        })</p>
-<p>click callback  </p>
-<pre><code>var clickCallback = function(event) {
-    this.attr({ fill: &apos;blue&apos; });
-};
-
-myRect.click(clickCallback);
-</code></pre><p>timer example <a href="https://codepen.io/rachsmith/pen/BqpCd?editors=0010" target="_blank" rel="external">https://codepen.io/rachsmith/pen/BqpCd?editors=0010</a><br>basics <a href="http://webdesign.tutsplus.com/articles/how-to-manipulate-and-animate-svg-with-snapsvg--cms-21323" target="_blank" rel="external">http://webdesign.tutsplus.com/articles/how-to-manipulate-and-animate-svg-with-snapsvg--cms-21323</a><br><a href="http://unicorn-ui.com/blog/intermediate-svg.html" target="_blank" rel="external">http://unicorn-ui.com/blog/intermediate-svg.html</a>, <a href="https://www.sitepoint.com/advanced-snap-svg/" target="_blank" rel="external">https://www.sitepoint.com/advanced-snap-svg/</a>, <a href="http://nocircleno.com/blog/getting-starting-with-svg-and-javascript/" target="_blank" rel="external">http://nocircleno.com/blog/getting-starting-with-svg-and-javascript/</a><br>animation - all <a href="https://codyhouse.co/gem/animate-svg-icons-with-css-and-snap/" target="_blank" rel="external">https://codyhouse.co/gem/animate-svg-icons-with-css-and-snap/</a>, <a href="https://davidwalsh.name/svg-animations-snap" target="_blank" rel="external">https://davidwalsh.name/svg-animations-snap</a><br>animation - path <a href="https://codepen.io/JRGould/pen/dkHhw?editors=0010" target="_blank" rel="external">https://codepen.io/JRGould/pen/dkHhw?editors=0010</a><br>masking exmaple <a href="http://jsfiddle.net/5826ywh7/3/" target="_blank" rel="external">http://jsfiddle.net/5826ywh7/3/</a><br>callback within Snap.load <a href="http://stackoverflow.com/questions/26465119/why-when-i-add-function-into-snap-load-loading-svg-my-method-i-cannot" target="_blank" rel="external">http://stackoverflow.com/questions/26465119/why-when-i-add-function-into-snap-load-loading-svg-my-method-i-cannot</a>  </p>
-<p>more examples <a href="https://www.raymondcamden.com/2013/11/06/Want-help-with-Snapsvg-And-a-few-more-examples/" target="_blank" rel="external">https://www.raymondcamden.com/2013/11/06/Want-help-with-Snapsvg-And-a-few-more-examples/</a>  </p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;hr&gt;
-&lt;h1 id=&quot;Snap-SVG&quot;&gt;&lt;a href=&quot;#Snap-SVG&quot; class=&quot;headerlink&quot; title=&quot;Snap.SVG&quot;&gt;&lt;/a&gt;Snap.SVG&lt;/h1&gt;&lt;p&gt;clear&lt;br&gt;        var s = Snap(‘css select
-    
-    </summary>
-    
-      <category term="SVG" scheme="http://lycworks.me/blog/categories/SVG/"/>
-    
-    
-      <category term="snap.svg, svg" scheme="http://lycworks.me/blog/tags/snap-svg-svg/"/>
     
   </entry>
   
