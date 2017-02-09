@@ -4,7 +4,7 @@
   <url>
     <loc>http://lycworks.me/blog/tags/index.html</loc>
     
-    <lastmod>2017-02-09T03:10:43.000Z</lastmod>
+    <lastmod>2017-02-09T03:21:54.000Z</lastmod>
     
   </url>
   
@@ -100,6 +100,13 @@
   </url>
   
   <url>
+    <loc>http://lycworks.me/blog/blog/2017/02/02/2016-07-09-css-grid/</loc>
+    
+    <lastmod>2017-02-02T21:56:37.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://lycworks.me/blog/blog/2017/02/02/2016-07-11-chart-progressbar/</loc>
     
     <lastmod>2017-02-02T21:56:37.000Z</lastmod>
@@ -121,7 +128,28 @@
   </url>
   
   <url>
+    <loc>http://lycworks.me/blog/blog/2017/02/02/2016-05-16-JS-note/</loc>
+    
+    <lastmod>2017-02-02T21:56:37.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://lycworks.me/blog/blog/2017/02/02/2016-08-08-json/</loc>
+    
+    <lastmod>2017-02-02T21:56:37.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://lycworks.me/blog/blog/2017/02/02/2016-07-20-jade/</loc>
+    
+    <lastmod>2017-02-02T21:56:37.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://lycworks.me/blog/blog/2017/02/02/2016-05-16-JS-deep-note/</loc>
     
     <lastmod>2017-02-02T21:56:37.000Z</lastmod>
     
@@ -135,21 +163,14 @@
   </url>
   
   <url>
-    <loc>http://lycworks.me/blog/blog/2017/02/02/2016-08-03-AI-note/</loc>
-    
-    <lastmod>2017-02-02T21:56:37.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://lycworks.me/blog/blog/2017/02/02/2016-05-16-JS-note/</loc>
-    
-    <lastmod>2017-02-02T21:56:37.000Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://lycworks.me/blog/blog/2017/02/02/2016-05-16-sublime-note/</loc>
+    
+    <lastmod>2017-02-02T21:56:37.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://lycworks.me/blog/blog/2017/02/02/2016-05-18-JS-array/</loc>
     
     <lastmod>2017-02-02T21:56:37.000Z</lastmod>
     
@@ -170,21 +191,7 @@
   </url>
   
   <url>
-    <loc>http://lycworks.me/blog/blog/2017/02/02/2016-05-18-JS-array/</loc>
-    
-    <lastmod>2017-02-02T21:56:37.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://lycworks.me/blog/blog/2017/02/02/2016-05-16-JS-deep-note/</loc>
-    
-    <lastmod>2017-02-02T21:56:37.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://lycworks.me/blog/blog/2017/02/02/2016-05-18-JS-function/</loc>
+    <loc>http://lycworks.me/blog/blog/2017/02/02/2016-05-18-JS-closure/</loc>
     
     <lastmod>2017-02-02T21:56:37.000Z</lastmod>
     
@@ -198,7 +205,7 @@
   </url>
   
   <url>
-    <loc>http://lycworks.me/blog/blog/2017/02/02/2016-05-18-JS-closure/</loc>
+    <loc>http://lycworks.me/blog/blog/2017/02/02/2016-05-18-JS-function/</loc>
     
     <lastmod>2017-02-02T21:56:37.000Z</lastmod>
     
@@ -233,14 +240,7 @@
   </url>
   
   <url>
-    <loc>http://lycworks.me/blog/blog/2017/02/02/2016-07-09-css-grid/</loc>
-    
-    <lastmod>2017-02-02T21:56:37.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://lycworks.me/blog/blog/2017/02/02/2016-08-08-json/</loc>
+    <loc>http://lycworks.me/blog/blog/2017/02/02/2016-08-03-AI-note/</loc>
     
     <lastmod>2017-02-02T21:56:37.000Z</lastmod>
     
