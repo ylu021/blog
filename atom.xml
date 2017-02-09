@@ -459,32 +459,45 @@
   </entry>
   
   <entry>
-    <title>JS正则表达式regexexp</title>
-    <link href="http://lycworks.me/blog/2017/02/02/2016-05-20-JS-regex/"/>
-    <id>http://lycworks.me/blog/2017/02/02/2016-05-20-JS-regex/</id>
+    <title>Git笔记</title>
+    <link href="http://lycworks.me/blog/2017/02/02/2016-07-06-git-note/"/>
+    <id>http://lycworks.me/blog/2017/02/02/2016-07-06-git-note/</id>
     <published>2017-02-02T21:56:37.000Z</published>
     <updated>2017-02-02T21:56:37.000Z</updated>
     
     <content type="html"><![CDATA[<hr>
-<h1 id="Regex正则"><a href="#Regex正则" class="headerlink" title="Regex正则"></a>Regex正则</h1><h2 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h2><p><code>/</code>起始和结尾<br><code>.</code> - 代表任意，除了换行/n,/r etc<br><code>\d</code>- 0-9<br><code>\D</code>- !(0-9)<br><code>\w</code>- 0-9或a-zA-Z,_<br><code>\W</code>- !(\w)<br><code>\s</code>- 空格，tab，\n\r etc<br><code>\S</code>- !(\s)<br><code>\t\r\n\v\f</code> - tab，回车，换行，垂直|，换页  </p>
-<p>范围<br>[] - 字符范围, eg [a-zA-Z]<br>[^..] - 字符意外<br>^ - 行首<br>$ - 行尾<br><code>\b</code> - 零宽单词边界 eg ‘a no’<br><code>\B</code> - !(\b)  </p>
-<p>符号<br><code>\</code> - escape符号  </p>
-<p>分组<br><code>(x)</code>, <code>\n</code> - e.g. (abc)\n 表示abc再重复n次<br><code>(?:x)</code> - 仅分组，重复没有效果 eg <code>(?:abc)(def)\1.test(&#39;abcdefdef&#39;)</code>  </p>
-<p>重复<br>贪婪算法 x<em> &gt;=0, x+ &gt;=1<br>eg abc</em> 匹配 ab, abc, abccccc<br>   abc+ 匹配 abc,abccccc  </p>
-<p>非贪婪算法 x<em>? == 0, x+? ==1<br>  eg abc</em>? 匹配 ab<br>     abc+? 匹配 abc  </p>
-<p>x? 出现0或1次<br>x|y x或y<br>  eg ab|cd|ef 匹配 ab或cd或ef<br>x{n} - 固定n次<br>x(n,) - &gt;= n次<br>x(n,m) - n-m次  </p>
-<p>标志类flag  gim<br>g - global<br>i - ignoreCase<br>m - multiline - 跨行检索  </p>
-<h2 id="相关方法"><a href="#相关方法" class="headerlink" title="相关方法"></a>相关方法</h2><p>.search(regex) - 返回找到位置index<br>.replace(regex,replacement)<br>.match(regex) - 返回匹配结果数组<br>.split(regex) - 返回数组</p>
-<h2 id="资料"><a href="#资料" class="headerlink" title="资料"></a>资料</h2><p><a href="http://regexone.com/lesson/kleene_operators?" target="_blank" rel="external">http://regexone.com/lesson/kleene_operators?</a> 练习站<br><a href="https://developers.google.com/edu/python/regular-expressions" target="_blank" rel="external">https://developers.google.com/edu/python/regular-expressions</a> 教程<br><a href="http://pythex.org/" target="_blank" rel="external">http://pythex.org/</a> python正则练习站</p>
-]]></content>
+<h2 id="Basic-Commands"><a href="#Basic-Commands" class="headerlink" title="Basic Commands"></a>Basic Commands</h2><p>source: <a href="http://huangziwei.com/tech/blogging-with-git-github-and-jekyll/" target="_blank" rel="external">http://huangziwei.com/tech/blogging-with-git-github-and-jekyll/</a><br><code>git remote -v</code>, <code>git remote show origin</code> - 检测文件夹是否已绑定远程库(remote repository)<br><code>git remote add origin &lt;remote git repository&gt;</code> - 绑定fork的远程库<br><code>git checkout &lt;file to ignore&gt;</code><br><code>git checkout -b|--orphan &lt;branchname&gt;</code> - normal|disconnected branch  </p>
+<h2 id="branch"><a href="#branch" class="headerlink" title="branch"></a>branch</h2><p>source: <a href="https://www.atlassian.com/git/tutorials/using-branches/git-branch" target="_blank" rel="external">https://www.atlassian.com/git/tutorials/using-branches/git-branch</a>  </p>
+<h2 id="Submodules-使用副项目并随时得到更新"><a href="#Submodules-使用副项目并随时得到更新" class="headerlink" title="Submodules　使用副项目并随时得到更新"></a>Submodules　使用副项目并随时得到更新</h2><p>source: <a href="https://medium.com/@porteneuve/mastering-git-submodules-34c65e940407#.kcyfdl2xi" target="_blank" rel="external">https://medium.com/@porteneuve/mastering-git-submodules-34c65e940407#.kcyfdl2xi</a>, <a href="http://johnleach.co.uk/words/323/git-submodules-in-n-easy-steps" target="_blank" rel="external">http://johnleach.co.uk/words/323/git-submodules-in-n-easy-steps</a>, <a href="https://johnleach.co.uk/words/323" target="_blank" rel="external">https://johnleach.co.uk/words/323</a>,<br><a href="https://blog.jacius.info/git-submodule-cheat-sheet/" target="_blank" rel="external">https://blog.jacius.info/git-submodule-cheat-sheet/</a>, <a href="http://blog.chh.tw/posts/git-submodule/" target="_blank" rel="external">http://blog.chh.tw/posts/git-submodule/</a>, <a href="http://springok-blog.logdown.com/posts/2015/11/06/submodule-on-github-subproject-troubleshooting" target="_blank" rel="external">http://springok-blog.logdown.com/posts/2015/11/06/submodule-on-github-subproject-troubleshooting</a></p>
+<pre><code>git submodule add &lt;others .git repository&gt; &lt;myfolder&gt; 
+-- set up .gitmodules for myfolder      
+git commit .gitmodules &lt;myfolder&gt; -m &quot;a message&quot;  
+git push
+
+# after cloning tree, fetch all submodules  
+git submodule init Submodule &apos;myfolder&apos;  
+git submodule update    
+
+# updating submodule  
+cd myfolder &amp;&amp; git pull [from others] &amp;&amp; git add myfolder &amp;&amp; commit    
+
+# making changes to your submodule  
+cd myfolder &amp;&amp; git checkout master [do changes in that branch]  
+git commit -a -m &quot;fix a bug&quot; &amp;&amp; push  
+cd .. &amp;&amp; git add myfolder &amp;&amp; commit -m &quot;updated myfolder&quot;  
+</code></pre>]]></content>
     
     <summary type="html">
     
       &lt;hr&gt;
-&lt;h1 id=&quot;Regex正则&quot;&gt;&lt;a href=&quot;#Regex正则&quot; class=&quot;headerlink&quot; title=&quot;Regex正则&quot;&gt;&lt;/a&gt;Regex正则&lt;/h1&gt;&lt;h2 id=&quot;基础&quot;&gt;&lt;a href=&quot;#基础&quot; class=&quot;headerlink&quot; tit
+&lt;h2 id=&quot;Basic-Commands&quot;&gt;&lt;a href=&quot;#Basic-Commands&quot; class=&quot;headerlink&quot; title=&quot;Basic Commands&quot;&gt;&lt;/a&gt;Basic Commands&lt;/h2&gt;&lt;p&gt;source: &lt;a href=&quot;
     
     </summary>
     
+      <category term="CLI stuff" scheme="http://lycworks.me/blog/categories/CLI-stuff/"/>
+    
+    
+      <category term="git" scheme="http://lycworks.me/blog/tags/git/"/>
     
   </entry>
   
@@ -557,6 +570,60 @@ ul.posts li {
   </entry>
   
   <entry>
+    <title>HTML5特性</title>
+    <link href="http://lycworks.me/blog/2017/02/02/2016-07-09-html5-tricks/"/>
+    <id>http://lycworks.me/blog/2017/02/02/2016-07-09-html5-tricks/</id>
+    <published>2017-02-02T21:56:37.000Z</published>
+    <updated>2017-02-02T21:56:37.000Z</updated>
+    
+    <content type="html"><![CDATA[<hr>
+<h1 id="data-name"><a href="#data-name" class="headerlink" title="data-name"></a>data-name</h1><blockquote>
+<p>‘a great marriage of server side and client side’ -Stephen Calvert, Quora<br>resources: <a href="https://www.quora.com/What-is-the-best-way-to-pass-server-side-variables-to-client-side-JavaScript" target="_blank" rel="external">https://www.quora.com/What-is-the-best-way-to-pass-server-side-variables-to-client-side-JavaScript</a>  </p>
+</blockquote>
+<h3 id="HTML-lt-div-id-quot-mydiv-quot-data-myval-quot-10-quot-gt-lt-div-gt"><a href="#HTML-lt-div-id-quot-mydiv-quot-data-myval-quot-10-quot-gt-lt-div-gt" class="headerlink" title="HTML- &lt;div id=&quot;mydiv&quot;data-myval=&quot;10&quot;&gt;&lt;/div&gt;"></a>HTML- <code>&lt;div id=&quot;mydiv&quot;</code>data-myval<code>=&quot;10&quot;&gt;&lt;/div&gt;</code></h3><h3 id="JS"><a href="#JS" class="headerlink" title="JS"></a>JS</h3><ul>
+<li><code>var a = $(&#39;#mydiv&#39;).data(&#39;myval&#39;);</code> //getter  </li>
+<li><code>$(&#39;#mydiv&#39;).data(&#39;myval&#39;,20);</code> //setter  </li>
+</ul>
+<blockquote>
+<p>For older browser, use  <code>var myval = element.getAttribute(&#39;data-myval&#39;);</code>  </p>
+</blockquote>
+<h3 id="Or-merely-use-config-as-json-object"><a href="#Or-merely-use-config-as-json-object" class="headerlink" title="Or merely use config as json object"></a>Or merely use config as json object</h3><pre><code>config = {
+    userName: &apos;Scott Patten&apos;,
+    userLogin: &apos;spatten&apos;,
+    hasBoughtCurrentBook: true,
+    followers: [&apos;peterarmstrong&apos;, &apos;rolandtanglao&apos;]
+};
+</code></pre><h3 id="Advance-way"><a href="#Advance-way" class="headerlink" title="Advance way"></a>Advance way</h3><p>(<a href="https://teamtreehouse.com/community/how-do-i-make-a-variable-passed-to-a-jade-template-by-an-express-route-accessible-for-use-in-js-on-the-rendered-page" target="_blank" rel="external">https://teamtreehouse.com/community/how-do-i-make-a-variable-passed-to-a-jade-template-by-an-express-route-accessible-for-use-in-js-on-the-rendered-page</a>)  </p>
+<ul>
+<li><p>1)On the server side javascript file you put the object as a JSON string on the request  </p>
+<pre><code>res.render(&apos;index&apos;, { workflowData_server: JSON.stringify(workflowData) });
+</code></pre></li>
+<li><p>2) on the template view file,for example index.jade file you put script<br>var workflowData_client = !{workflowData_server} the ! is needed to unescape it to html  </p>
+</li>
+<li><p>3) now you can use the workflowData_client on your client javascript file,<br>for example a public/angular.js file  </p>
+<pre><code>angular.module(&apos;TestApp&apos;, []); angular.module(&apos;TestApp&apos;) .controller(&apos;MainController&apos;, ctrlFunc);
+
+function ctrlFunc() { this.workflowData = workflowData_client; }
+</code></pre></li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;hr&gt;
+&lt;h1 id=&quot;data-name&quot;&gt;&lt;a href=&quot;#data-name&quot; class=&quot;headerlink&quot; title=&quot;data-name&quot;&gt;&lt;/a&gt;data-name&lt;/h1&gt;&lt;blockquote&gt;
+&lt;p&gt;‘a great marriage of ser
+    
+    </summary>
+    
+      <category term="HTML" scheme="http://lycworks.me/blog/categories/HTML/"/>
+    
+    
+      <category term="data_passing, view_render" scheme="http://lycworks.me/blog/tags/data-passing-view-render/"/>
+    
+  </entry>
+  
+  <entry>
     <title>ProgressBar.js Doughnut Chart</title>
     <link href="http://lycworks.me/blog/2017/02/02/2016-07-11-chart-progressbar/"/>
     <id>http://lycworks.me/blog/2017/02/02/2016-07-11-chart-progressbar/</id>
@@ -621,138 +688,44 @@ function drawChart(str,id,val){
   </entry>
   
   <entry>
-    <title>HTML5特性</title>
-    <link href="http://lycworks.me/blog/2017/02/02/2016-07-09-html5-tricks/"/>
-    <id>http://lycworks.me/blog/2017/02/02/2016-07-09-html5-tricks/</id>
+    <title>HTML笔记</title>
+    <link href="http://lycworks.me/blog/2017/02/02/2016-05-16-html-note/"/>
+    <id>http://lycworks.me/blog/2017/02/02/2016-05-16-html-note/</id>
     <published>2017-02-02T21:56:37.000Z</published>
     <updated>2017-02-02T21:56:37.000Z</updated>
     
-    <content type="html"><![CDATA[<hr>
-<h1 id="data-name"><a href="#data-name" class="headerlink" title="data-name"></a>data-name</h1><blockquote>
-<p>‘a great marriage of server side and client side’ -Stephen Calvert, Quora<br>resources: <a href="https://www.quora.com/What-is-the-best-way-to-pass-server-side-variables-to-client-side-JavaScript" target="_blank" rel="external">https://www.quora.com/What-is-the-best-way-to-pass-server-side-variables-to-client-side-JavaScript</a>  </p>
-</blockquote>
-<h3 id="HTML-lt-div-id-quot-mydiv-quot-data-myval-quot-10-quot-gt-lt-div-gt"><a href="#HTML-lt-div-id-quot-mydiv-quot-data-myval-quot-10-quot-gt-lt-div-gt" class="headerlink" title="HTML- &lt;div id=&quot;mydiv&quot;data-myval=&quot;10&quot;&gt;&lt;/div&gt;"></a>HTML- <code>&lt;div id=&quot;mydiv&quot;</code>data-myval<code>=&quot;10&quot;&gt;&lt;/div&gt;</code></h3><h3 id="JS"><a href="#JS" class="headerlink" title="JS"></a>JS</h3><ul>
-<li><code>var a = $(&#39;#mydiv&#39;).data(&#39;myval&#39;);</code> //getter  </li>
-<li><code>$(&#39;#mydiv&#39;).data(&#39;myval&#39;,20);</code> //setter  </li>
-</ul>
-<blockquote>
-<p>For older browser, use  <code>var myval = element.getAttribute(&#39;data-myval&#39;);</code>  </p>
-</blockquote>
-<h3 id="Or-merely-use-config-as-json-object"><a href="#Or-merely-use-config-as-json-object" class="headerlink" title="Or merely use config as json object"></a>Or merely use config as json object</h3><pre><code>config = {
-    userName: &apos;Scott Patten&apos;,
-    userLogin: &apos;spatten&apos;,
-    hasBoughtCurrentBook: true,
-    followers: [&apos;peterarmstrong&apos;, &apos;rolandtanglao&apos;]
-};
-</code></pre><h3 id="Advance-way"><a href="#Advance-way" class="headerlink" title="Advance way"></a>Advance way</h3><p>(<a href="https://teamtreehouse.com/community/how-do-i-make-a-variable-passed-to-a-jade-template-by-an-express-route-accessible-for-use-in-js-on-the-rendered-page" target="_blank" rel="external">https://teamtreehouse.com/community/how-do-i-make-a-variable-passed-to-a-jade-template-by-an-express-route-accessible-for-use-in-js-on-the-rendered-page</a>)  </p>
-<ul>
-<li><p>1)On the server side javascript file you put the object as a JSON string on the request  </p>
-<pre><code>res.render(&apos;index&apos;, { workflowData_server: JSON.stringify(workflowData) });
-</code></pre></li>
-<li><p>2) on the template view file,for example index.jade file you put script<br>var workflowData_client = !{workflowData_server} the ! is needed to unescape it to html  </p>
+    <content type="html"><![CDATA[<h1 id="HTML"><a href="#HTML" class="headerlink" title="HTML"></a>HTML</h1><h3 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h3><ul>
+<li>语义强调  em, strong</li>
+<li>span不为强调，为了设置单独样式  </li>
+<li><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">*  ```&amp;nbsp; ```为字符实体，显示空格  </div><div class="line">* ```&lt;code&gt;```标签只能插入一行代码，如果要插入多行代码，使用```&lt;pre&gt;```标签  </div><div class="line">* ```&lt;div&gt;```为网页划分独立的版块,通常使用id区分  </div><div class="line">* ```&lt;tbody&gt;..&lt;/tbody&gt;```：要等表格内容全部下载完才会显示  </div><div class="line">* 摘要  </div><div class="line"> ```&lt;table summary=&quot;表格简介文本&quot;&gt;```  </div><div class="line">    &gt; 摘要的内容是不会在浏览器中显示出来的  </div><div class="line">它的作用是增加表格的可读性(语义化)，使搜索引擎更好的读懂表格内容，还可以使屏幕阅读器更好的帮助特殊用户读取表格内容。  </div><div class="line"></div><div class="line">    ```&lt;caption&gt;标题文本&lt;/caption&gt;``` 会显示title  </div><div class="line">    </div><div class="line">* 链接  </div><div class="line">	title属性的作用 - 鼠标滑过链接文字时会显示这个属性的文本内容  </div><div class="line">	href=mailto - 后面同时有多个参数的话，第一个参数必须以“?”开头，后面的参数每一个都以“&amp;”分隔。</div><div class="line"></div><div class="line">* Input  </div><div class="line">&gt; 当 type=&quot;radio&quot; 时，控件为单选框, name 取值一定要一致  </div><div class="line">&gt; 当 type=&quot;checkbox&quot; 时，控件为复选框</div><div class="line"></div><div class="line"># CSS</div><div class="line">```内联式(属性) &gt; 嵌入式(&lt;style&gt;) &gt; 外部式</div></pre></td></tr></table></figure>
 </li>
-<li><p>3) now you can use the workflowData_client on your client javascript file,<br>for example a public/angular.js file  </p>
-<pre><code>angular.module(&apos;TestApp&apos;, []); angular.module(&apos;TestApp&apos;) .controller(&apos;MainController&apos;, ctrlFunc);
+<li><p>子选择器 ‘&gt;’<br>用于选择指定标签元素的第一代子元素。如右侧代码编辑器中的代码：  </p>
+<figure class="highlight plain"><figcaption><span>solid red;&#125;```</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">  &gt; 这行代码会使class名为food下的子元素li（水果、蔬菜）加入红色实线边框。</div><div class="line"></div><div class="line">* 包含(后代)选择器 &apos; &apos;  </div><div class="line">作用于元素的第一代后代，空格作用于元素的所有后代</div><div class="line"></div><div class="line">* all选择器 &apos;*&apos;</div><div class="line"></div><div class="line">* 伪类选择符，它允许给html不存在的标签（标签的某种状态）设置样式</div><div class="line"></div><div class="line">* 分组选择符 &apos;,&apos;  </div><div class="line">```h1,span&#123;color:red;&#125;``` 相当于：</div><div class="line">```h1&#123;color:red;&#125; span&#123;color:red;&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>权值<br>标签的权值为1，类选择符的权值为10，ID选择符的权值最高为100。例如下面的代码:  </p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">p&#123;color:red;&#125; /*权值为1*/</div><div class="line">p span&#123;color:green;&#125; /*权值为1+1=2*/</div><div class="line">.warning&#123;color:white;&#125; /*权值为10*/</div><div class="line">p span.warning&#123;color:purple;&#125; /*权值为1+1+10=12*/</div><div class="line">#footer .note p&#123;color:yellow;&#125; /*权值为100+10+1=111*/</div></pre></td></tr></table></figure>
+<blockquote>
+<p>注意：继承权值很低，有的文献提出它只有0.1，所以可以理解为继承的权值最低。</p>
+</blockquote>
+<ul>
+<li>css样式的重要性<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">样式优先级为：浏览器默认的样式 &lt; 网页制作者样式 &lt; 用户自己设置的样式，但记住!important优先级样式是个例外，权值高于用户自己设置的样式。</div><div class="line"></div><div class="line">* absolute：  </div><div class="line">	* 无已定位的祖先元素则以&lt;HTML&gt;为基准偏移  </div><div class="line">	* 有已定位的祖先元素 e.g.relative,则以距离最近的且已定位的祖先元素为基准偏移  </div><div class="line">	* 位置会随滚动条变化。</div><div class="line">* fixed：  </div><div class="line">	* 有、无已定位的祖先元素，都以浏览器可视窗口为基准偏移。    </div><div class="line">	* 位置固定，不会随滚动条变化。（固定浮在上面）</div><div class="line">* z-index 只有设置了相对定位，或者绝对定位的元素才具有的属性</div><div class="line"></div><div class="line">* margin选择器设置的属性会和fixed属性设置重叠，导致&lt;body&gt;层与浏览器可视化窗口产生间距。在标准文档流中，两个元素，上外边距和上外边距，或者上外边距和下外边距相遇时，当两个标签都在标准文档流中时，会选择较大的上外填充</div><div class="line">	&gt; 可用解决方法：把后面的元素body设置margin-top：（fixed定位的元素高度）</div><div class="line">* 顶部固定层  </div><div class="line">	* top----position:fixex;(top:0;left:0;取决于祖先元素是否定位且有偏移量)  </div><div class="line">	* mainbody---margin-top:(#top高度+原有间距)px</div><div class="line">	</div><div class="line"># Paragraph</div></pre></td></tr></table></figure></li>
+</ul>
+<p>letter-spacing<br>word-spacing<br>line-height: 2em;<br>text-align - 为块状元素中的文本、图片设置居中样式<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"># DIV elements</div><div class="line">Block - elements with ```display:block```  </div><div class="line">Inline - ```display: inline```  例如span</div><div class="line">*	内联元素特点：</div><div class="line">		和其他元素都在一行上；  </div><div class="line">		元素的高度、宽度及顶部和底部边距不可设置；  </div><div class="line">		元素的宽度就是它包含的文字或图片的宽度，不可改变。  </div><div class="line">	</div><div class="line">Inline-block - 例如img,input</div><div class="line">* 和其他元素都在一行上；</div><div class="line">	元素的高度、宽度、行高以及顶和底边距都可设置  </div><div class="line"></div><div class="line">总体　　</div><div class="line"></div><div class="line">![alt text](http://img.imooc.com/539fbb3a0001304305570259.jpg &quot;Logo Title Text 1&quot;)</div><div class="line"></div><div class="line">填充- 元素内容与边框之间是可以设置距离的</div><div class="line">边界- 元素与其它元素之间设置距离</div><div class="line">&gt; padding在边框里，margin在边框外。  </div><div class="line"></div><div class="line"># CSS的3种基本布局模型 Flow、Layer 和 Float</div><div class="line"># 相对参照元素进行定位</div><div class="line">e.g. putting text on top of an image div</div><div class="line">* 参照定位的元素必须是相对定位元素的前辈元素</div></pre></td></tr></table></figure></p>
+<pre><code>&lt;div id=&quot;box1&quot;&gt;&lt;!--参照定位的元素--&gt;  
+    &lt;div id=&quot;box2&quot;&gt;相对参照元素进行定位&lt;/div&gt;&lt;!--相对定位元素--&gt;  
+&lt;/div&gt;
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line"># 居中  </div><div class="line">1.行内元素，水平居中是通过给父元素设置 text-align:center 来实现  </div><div class="line">2.定宽块状元素：fixed width,flexible height block element, 设置margin: 0 auto  </div><div class="line">3.不定宽块状元素：</div><div class="line">* 3.1 加入table标签:  </div><div class="line">第一步：为需要设置的居中的元素外面加入一个 table 标签 ( 包括 &lt;tbody&gt;、&lt;tr&gt;、&lt;td&gt; )。  </div><div class="line">第二步：为这个 table 设置“左右 margin 居中”（这个和定宽块状元素的方法一样）。</div><div class="line"></div><div class="line">* 3.2 改变块级元素的 display 为 inline 类型，然后使用 text-align:center 来实现居中效果。   </div><div class="line">这种方法相比第一种方法的优势是不用增加无语义标签，简化了标签的嵌套深度，但也存在着一些问题：它将块状元素的 display 类型改为 inline，变成了行内元素，所以少了一些功能，比如设定长度值。</div><div class="line">* 3.3 通过给父元素设置 float, position:relative 和 left:50%，  </div><div class="line">子元素设置 position:relative 和 left:-50% 来实现水平居中  </div><div class="line"></div><div class="line">&gt; 把父元素浮动到左边,同时向右偏移50%,相当于把父元素的左边缘对齐到整行的中间    </div><div class="line">把子元素向右偏移50%,这个50%是父元素的50%,即是wrap的50%,而此时wrap的宽度刚好就等于子元素的宽度,也是子元素本身的50%,这样刚好就居中了   </div><div class="line">可以在.wrap中添加一行clear：both（作用是清除两侧浮动，独占一行），这样“我们来学习一下这种方法”这句就不会把“1 2 3”这句遮住  </div><div class="line"></div><div class="line">这种方法可以保留块状元素仍以 display:block 的形式显示，优点不添加无语议表标签，不增加嵌套深度，但它的缺点是设置了 position:relative，带来了一定的副作用。  </div><div class="line"></div><div class="line"># 垂直居中：</div><div class="line">1. 单行内容垂直居中：设行高（line-height）与容器高（height）为相同值，如height=100px;line-height=100px;  </div><div class="line">2. 利用vertical-align:middle;属性：  </div><div class="line">	* 2.1 将元素插入到```&lt;table&gt;,&lt;td&gt;```或```&lt;th&gt;```中，利用```&lt;td&gt;```或```&lt;th&gt;```的```vertical-align: middle;```属性（vertical-align: middle;只对&lt;td&gt;或&lt;th&gt;有效）。</div><div class="line">	* 2.2 对元素设置display:table-cell;属性，触发vertical-align属性，可使之在容器内居中，但会使块级元素，变为行内块级元素。</div><div class="line"></div><div class="line"># Vertical Navigation</div><div class="line">* 把a标签定义成行内块</div><div class="line"></div><div class="line">* 文字缩进20px</div><div class="line"></div><div class="line"># Horizontal Nav</div><div class="line">* add float left and delete ul&apos;s width</div><div class="line"></div><div class="line"># Inner Nav</div></pre></td></tr></table></figure>
 
-function ctrlFunc() { this.workflowData = workflowData_client; }
-</code></pre></li>
-</ul>
+ul&gt;li ul{transition:height 0.3s;}
+ul&gt;li:hover ul{height: 120px;}
+</code></pre><p>```</p>
 ]]></content>
     
     <summary type="html">
     
-      &lt;hr&gt;
-&lt;h1 id=&quot;data-name&quot;&gt;&lt;a href=&quot;#data-name&quot; class=&quot;headerlink&quot; title=&quot;data-name&quot;&gt;&lt;/a&gt;data-name&lt;/h1&gt;&lt;blockquote&gt;
-&lt;p&gt;‘a great marriage of ser
-    
-    </summary>
-    
-      <category term="HTML" scheme="http://lycworks.me/blog/categories/HTML/"/>
-    
-    
-      <category term="data_passing, view_render" scheme="http://lycworks.me/blog/tags/data-passing-view-render/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>JS基础笔记(DOM)</title>
-    <link href="http://lycworks.me/blog/2017/02/02/2016-05-16-JS-note/"/>
-    <id>http://lycworks.me/blog/2017/02/02/2016-05-16-JS-note/</id>
-    <published>2017-02-02T21:56:37.000Z</published>
-    <updated>2017-02-02T21:56:37.000Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="变量Var"><a href="#变量Var" class="headerlink" title="变量Var"></a>变量Var</h1><h2 id="Assign初始值的重要性"><a href="#Assign初始值的重要性" class="headerlink" title="Assign初始值的重要性"></a>Assign初始值的重要性</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">var a;  </div><div class="line">var b;  </div><div class="line">var c;</div><div class="line">a = a + 1;  </div><div class="line">b = b + 5;  </div><div class="line">c = c + &quot; String!&quot;;</div></pre></td></tr></table></figure>
-<blockquote>
-<p>result a = NaN, b=NaN, c = “undefined String!”</p>
-</blockquote>
-<h1 id="字符串数组"><a href="#字符串数组" class="headerlink" title="字符串数组"></a>字符串数组</h1><pre><code>var myStr = &quot;Bob&quot;;
-myStr[0] = &quot;J&quot;;
-</code></pre><blockquote>
-<p>cannot change the value of myStr to “Job”,<br>because the contents of myStr cannot be altered.<br>Note that this does not mean that myStr cannot be changed,<br>just that the individual characters of a string literal cannot be changed. </p>
-</blockquote>
-<ul>
-<li>methods<br>  .charAt(index) is another use<br>  .indexOf<br>  .split(delimiter,limit)<br>  .substring( 起点 ， 终点 )<br>  .substr( 起点 ，长度 )  </li>
-</ul>
-<h1 id="Create-global-variables"><a href="#Create-global-variables" class="headerlink" title="Create global variables"></a>Create global variables</h1><ul>
-<li>outside of function - var globalvar</li>
-<li>inside function - declare without var </li>
-</ul>
-<h1 id="break"><a href="#break" class="headerlink" title="break"></a>break</h1><p>break是退出循环，不是跳出if语句</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">for(初始条件;判断条件;循环后条件值更新)  </div><div class="line">&#123;  </div><div class="line">  if(特殊情况)  </div><div class="line">  &#123;break;&#125;  </div><div class="line">  循环代码  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h1 id="event"><a href="#event" class="headerlink" title="event"></a>event</h1><p><img src="http://img.imooc.com/53e198540001b66404860353.jpg" alt="mouse event chart" title="chart">  </p>
-<p>将光标移到文本框内时，即焦点在文本框内，触发onfocus 事件</p>
-<ul>
-<li><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">* ```window.onload=message;```这种写法是在网页加载完成后，调用message()方法。  </div><div class="line"></div><div class="line">&gt; 建议使用window.onload=函数名;这种写法，不容易出错。window.onload=函数名();有些浏览器不买单滴~~</div><div class="line"></div><div class="line"># array</div><div class="line">![chart](http://img.imooc.com/533295ab0001dead05190599.jpg &quot;chart&quot;)  </div><div class="line"></div><div class="line">* .concat()</div></pre></td></tr></table></figure>
-<p>  arr.concat(array1,array2,…,arrayN)<br>  e.g.<br>  arr = [1,2,3]<br>  arr.concat(4,5);//[1,2,3,4,5]</p>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&gt; 注意: 该方法不会改变现有的数组，而仅仅会返回被连接数组的一个副本。</div><div class="line"></div><div class="line">* .join() - 把数组中的所有元素放入一个字符串。元素是通过指定的分隔符进行分隔的</div></pre></td></tr></table></figure>
-<p>  myarr.join(“.”)<br>  I.Love.JS</p>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">&gt; 使用.join(&quot;&quot;)可以进行紧密连接。</div><div class="line"></div><div class="line">* .reverse()</div><div class="line"></div><div class="line">* substring() 左开右闭 开始位置不能为负数;  </div><div class="line">* slice() 左闭右开 开始位置可以为负数.</div><div class="line"></div><div class="line">* sort([function])</div><div class="line">	* 若返回值&lt;=-1，则表示 A 在排序后的序列中出现在 B 之前。  </div><div class="line">若返回值&gt;-1 &amp;&amp; &lt;1，则表示 A 和 B 具有相同的排序顺序。    </div><div class="line">若返回值&gt;=1，则表示 A 在排序后的序列中出现在 B 之后。</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>function sortNum(a,b) {<br>return a - b;<br>//升序，如降序，把“a - b”该成“b - a”<br>}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">#BOM</div><div class="line">## Interval/Timeout</div><div class="line">![chartInterval](http://img.imooc.com/56976e1700014fc504090143.jpg &quot;interval&quot;)  </div><div class="line"></div><div class="line">* setInterval(function,ms)  function可以是&quot;clock()&quot; or clock  </div><div class="line">1s = 1000 ms  </div><div class="line"></div><div class="line">* clearInterval(id_of_seInterval)  计时器：每隔1000毫秒执行clock()函数，并将值返回给t</div><div class="line">`var t= setInterval(&quot;clock()&quot;,1000);`</div><div class="line"></div><div class="line">&gt; 执行clearInterval(t);停止计时</div><div class="line"></div><div class="line">* setTimeout(function,time)</div><div class="line">	* 函数体外的是启动函数，执行一次后就交给函数体内代码执行，函数体内是代码执行的循环体</div><div class="line">	* thus can be use recursively</div><div class="line">	* setTimeout仅仅是延迟执行一次，只一次，但可以通过递归调用实现与setInterval相同的效果</div><div class="line"></div><div class="line">## History (window可以省略)</div><div class="line">![history](http://img.imooc.com/53548c200001228206210123.jpg &quot;history&quot;)  </div><div class="line"></div><div class="line">* .length - num of visited urls  </div><div class="line">* .back() - previous url; = go(-1)  </div><div class="line">* .forward() - next url  </div><div class="line">* .go(..) - specific url  </div><div class="line"></div><div class="line">## Location </div><div class="line">* Properties</div><div class="line">![url](http://img.imooc.com/53605c5a0001b26909900216.jpg &quot;url&quot;)</div><div class="line">* Methods</div><div class="line">    * assign()</div><div class="line">    * reload()</div><div class="line">    * replace()</div><div class="line"></div><div class="line"># DOM</div><div class="line">## Node</div><div class="line">个体 - `document.getElementById(id)`  </div><div class="line">数组 - `document.getElementsByName(name)`, `document.getElementsByTagName(Tagname)`  </div><div class="line"></div><div class="line">* Tagname是标签的名称，如p、a、img  </div><div class="line">* 属性可能不唯一, 返回的是元素的数组       </div><div class="line">* 有length属性</div><div class="line"></div><div class="line">#### Node Attribute </div><div class="line">    getAttribute(attr)  </div><div class="line">    setAttribute(name,val)</div><div class="line">#### Node properties</div><div class="line">        nodeName, nodeType, nodeValue  </div><div class="line">&gt; 1. 元素节点的 nodeValue 是 undefined 或 null  </div><div class="line">&gt; 2. 文本节点的 nodeValue 是文本自身</div><div class="line">&gt; 3. 属性节点的 nodeValue 是属性的值</div><div class="line"></div><div class="line">## Node&apos;s Tree Structure</div><div class="line">![dom](http://img.imooc.com/53f17a6400017d2905230219.jpg)  </div><div class="line"></div><div class="line">#### 访问子结点.childNodes  </div><div class="line">访问选定元素节点下的所有子节点的列表，返回的值可以看作是一个数组，具有length属性。  </div><div class="line">注意：</div><div class="line">如果选定的节点没有子节点，则该属性返回不包含节点的 NodeList。</div><div class="line">&gt; 注意代码中的[0]，很关键！！！  </div><div class="line">&gt; 节点之间的空白符，在firefox、chrome、opera、safari浏览器是文本节点，所以IE是3，其它浏览器是7 </div><div class="line"></div><div class="line">Fix: 都写在一行 ```&lt;ul&gt;&lt;li&gt;javascript&lt;/li&gt;&lt;li&gt;jQuery&lt;/li&gt;&lt;li&gt;PHP&lt;/li&gt;&lt;/ul&gt;</div></pre></td></tr></table></figure></p>
-<h4 id="node-firstChild"><a href="#node-firstChild" class="headerlink" title="node.firstChild"></a>node.firstChild</h4><p>说明：与elementNode.childNodes[0]是同样的效果。</p>
-<h4 id="node-parentNode"><a href="#node-parentNode" class="headerlink" title="node.parentNode"></a>node.parentNode</h4><p>注意:父节点只能有一个,祖节点elementNode.parentNode.parentNode</p>
-<h4 id="nextSibling-previousSibling"><a href="#nextSibling-previousSibling" class="headerlink" title="nextSibling/previousSibling"></a>nextSibling/previousSibling</h4><p>同一树层级中</p>
-<h4 id="appendChild-newNode-insertBefore-newNode-node"><a href="#appendChild-newNode-insertBefore-newNode-node" class="headerlink" title="appendChild(newNode)/insertBefore(newNode,node)"></a>appendChild(newNode)/insertBefore(newNode,node)</h4><p>document.createElement()是在对象中创建一个对象  </p>
-<h4 id="removeChild-the-removed-node"><a href="#removeChild-the-removed-node" class="headerlink" title=".removeChild(the removed node)"></a>.removeChild(the removed node)</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">while(content.firstChild)&#123;</div><div class="line">      content.removeChild(content.firstChild)</div><div class="line">  &#125;</div></pre></td></tr></table></figure>
-<h4 id="replaceChild-newnode-oldnode"><a href="#replaceChild-newnode-oldnode" class="headerlink" title=".replaceChild (newnode,oldnode)"></a>.replaceChild (newnode,oldnode)</h4><h2 id="document-create"><a href="#document-create" class="headerlink" title="document.create"></a>document.create</h2><ul>
-<li>TextNode(data) and paragraph.appendChild(textnode)</li>
-<li>ELement(tagid)</li>
-<li>Method<br><img src="http://img.imooc.com/538d29da000152db05360278.jpg" alt="dom"></li>
-</ul>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;变量Var&quot;&gt;&lt;a href=&quot;#变量Var&quot; class=&quot;headerlink&quot; title=&quot;变量Var&quot;&gt;&lt;/a&gt;变量Var&lt;/h1&gt;&lt;h2 id=&quot;Assign初始值的重要性&quot;&gt;&lt;a href=&quot;#Assign初始值的重要性&quot; class=&quot;header
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>JSON</title>
-    <link href="http://lycworks.me/blog/2017/02/02/2016-08-08-json/"/>
-    <id>http://lycworks.me/blog/2017/02/02/2016-08-08-json/</id>
-    <published>2017-02-02T21:56:37.000Z</published>
-    <updated>2017-02-02T21:56:37.000Z</updated>
-    
-    <content type="html"><![CDATA[<hr>
-<h1 id="JSON-gt-String"><a href="#JSON-gt-String" class="headerlink" title="JSON -&gt; String"></a>JSON -&gt; String</h1><p>function  </p>
-<ul>
-<li>stringify (parse into string representation, has <code>pretty print</code>)  </li>
-<li>parse (parse string into JSON)  <blockquote>
-<p>convert opposite ways  </p>
-</blockquote>
-</li>
-</ul>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;hr&gt;
-&lt;h1 id=&quot;JSON-gt-String&quot;&gt;&lt;a href=&quot;#JSON-gt-String&quot; class=&quot;headerlink&quot; title=&quot;JSON -&amp;gt; String&quot;&gt;&lt;/a&gt;JSON -&amp;gt; String&lt;/h1&gt;&lt;p&gt;function  &lt;
+      &lt;h1 id=&quot;HTML&quot;&gt;&lt;a href=&quot;#HTML&quot; class=&quot;headerlink&quot; title=&quot;HTML&quot;&gt;&lt;/a&gt;HTML&lt;/h1&gt;&lt;h3 id=&quot;基础&quot;&gt;&lt;a href=&quot;#基础&quot; class=&quot;headerlink&quot; title=&quot;基础&quot;&gt;&lt;/a&gt;基础&lt;/h
     
     </summary>
     
@@ -834,6 +807,34 @@ block content
     
       &lt;hr&gt;
 &lt;h4 id=&quot;resource-http-naltatis-github-io-jade-syntax-docs&quot;&gt;&lt;a href=&quot;#resource-http-naltatis-github-io-jade-syntax-docs&quot; class=&quot;headerli
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>JSON</title>
+    <link href="http://lycworks.me/blog/2017/02/02/2016-08-08-json/"/>
+    <id>http://lycworks.me/blog/2017/02/02/2016-08-08-json/</id>
+    <published>2017-02-02T21:56:37.000Z</published>
+    <updated>2017-02-02T21:56:37.000Z</updated>
+    
+    <content type="html"><![CDATA[<hr>
+<h1 id="JSON-gt-String"><a href="#JSON-gt-String" class="headerlink" title="JSON -&gt; String"></a>JSON -&gt; String</h1><p>function  </p>
+<ul>
+<li>stringify (parse into string representation, has <code>pretty print</code>)  </li>
+<li>parse (parse string into JSON)  <blockquote>
+<p>convert opposite ways  </p>
+</blockquote>
+</li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;hr&gt;
+&lt;h1 id=&quot;JSON-gt-String&quot;&gt;&lt;a href=&quot;#JSON-gt-String&quot; class=&quot;headerlink&quot; title=&quot;JSON -&amp;gt; String&quot;&gt;&lt;/a&gt;JSON -&amp;gt; String&lt;/h1&gt;&lt;p&gt;function  &lt;
     
     </summary>
     
