@@ -58,9 +58,9 @@
       <category term="Algo" scheme="http://lycworks.me/blog/categories/Algo/"/>
     
     
-      <category term="dfs" scheme="http://lycworks.me/blog/tags/dfs/"/>
-    
       <category term="matrix" scheme="http://lycworks.me/blog/tags/matrix/"/>
+    
+      <category term="dfs" scheme="http://lycworks.me/blog/tags/dfs/"/>
     
   </entry>
   
@@ -69,7 +69,7 @@
     <link href="http://lycworks.me/blog/2017/02/08/makefile/"/>
     <id>http://lycworks.me/blog/2017/02/08/makefile/</id>
     <published>2017-02-09T01:40:26.000Z</published>
-    <updated>2017-02-09T02:10:04.000Z</updated>
+    <updated>2017-02-09T02:32:30.000Z</updated>
     
     <content type="html"><![CDATA[<p><a href="https://kitoslab.blogspot.tw/2011/12/makefile.html" target="_blank" rel="external">reference</a></p>
 <h1 id="why-we-need-makefile"><a href="#why-we-need-makefile" class="headerlink" title="why we need makefile"></a>why we need makefile</h1><ul>
@@ -393,9 +393,9 @@
       <category term="Algo" scheme="http://lycworks.me/blog/categories/Algo/"/>
     
     
-      <category term="path" scheme="http://lycworks.me/blog/tags/path/"/>
-    
       <category term="dfs" scheme="http://lycworks.me/blog/tags/dfs/"/>
+    
+      <category term="path" scheme="http://lycworks.me/blog/tags/path/"/>
     
   </entry>
   
@@ -455,113 +455,6 @@
     
     
       <category term="tricks" scheme="http://lycworks.me/blog/tags/tricks/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Git笔记</title>
-    <link href="http://lycworks.me/blog/2017/02/02/2016-07-06-git-note/"/>
-    <id>http://lycworks.me/blog/2017/02/02/2016-07-06-git-note/</id>
-    <published>2017-02-02T21:56:37.000Z</published>
-    <updated>2017-02-02T21:56:37.000Z</updated>
-    
-    <content type="html"><![CDATA[<hr>
-<h2 id="Basic-Commands"><a href="#Basic-Commands" class="headerlink" title="Basic Commands"></a>Basic Commands</h2><p>source: <a href="http://huangziwei.com/tech/blogging-with-git-github-and-jekyll/" target="_blank" rel="external">http://huangziwei.com/tech/blogging-with-git-github-and-jekyll/</a><br><code>git remote -v</code>, <code>git remote show origin</code> - 检测文件夹是否已绑定远程库(remote repository)<br><code>git remote add origin &lt;remote git repository&gt;</code> - 绑定fork的远程库<br><code>git checkout &lt;file to ignore&gt;</code><br><code>git checkout -b|--orphan &lt;branchname&gt;</code> - normal|disconnected branch  </p>
-<h2 id="branch"><a href="#branch" class="headerlink" title="branch"></a>branch</h2><p>source: <a href="https://www.atlassian.com/git/tutorials/using-branches/git-branch" target="_blank" rel="external">https://www.atlassian.com/git/tutorials/using-branches/git-branch</a>  </p>
-<h2 id="Submodules-使用副项目并随时得到更新"><a href="#Submodules-使用副项目并随时得到更新" class="headerlink" title="Submodules　使用副项目并随时得到更新"></a>Submodules　使用副项目并随时得到更新</h2><p>source: <a href="https://medium.com/@porteneuve/mastering-git-submodules-34c65e940407#.kcyfdl2xi" target="_blank" rel="external">https://medium.com/@porteneuve/mastering-git-submodules-34c65e940407#.kcyfdl2xi</a>, <a href="http://johnleach.co.uk/words/323/git-submodules-in-n-easy-steps" target="_blank" rel="external">http://johnleach.co.uk/words/323/git-submodules-in-n-easy-steps</a>, <a href="https://johnleach.co.uk/words/323" target="_blank" rel="external">https://johnleach.co.uk/words/323</a>,<br><a href="https://blog.jacius.info/git-submodule-cheat-sheet/" target="_blank" rel="external">https://blog.jacius.info/git-submodule-cheat-sheet/</a>, <a href="http://blog.chh.tw/posts/git-submodule/" target="_blank" rel="external">http://blog.chh.tw/posts/git-submodule/</a>, <a href="http://springok-blog.logdown.com/posts/2015/11/06/submodule-on-github-subproject-troubleshooting" target="_blank" rel="external">http://springok-blog.logdown.com/posts/2015/11/06/submodule-on-github-subproject-troubleshooting</a></p>
-<pre><code>git submodule add &lt;others .git repository&gt; &lt;myfolder&gt; 
--- set up .gitmodules for myfolder      
-git commit .gitmodules &lt;myfolder&gt; -m &quot;a message&quot;  
-git push
-
-# after cloning tree, fetch all submodules  
-git submodule init Submodule &apos;myfolder&apos;  
-git submodule update    
-
-# updating submodule  
-cd myfolder &amp;&amp; git pull [from others] &amp;&amp; git add myfolder &amp;&amp; commit    
-
-# making changes to your submodule  
-cd myfolder &amp;&amp; git checkout master [do changes in that branch]  
-git commit -a -m &quot;fix a bug&quot; &amp;&amp; push  
-cd .. &amp;&amp; git add myfolder &amp;&amp; commit -m &quot;updated myfolder&quot;  
-</code></pre>]]></content>
-    
-    <summary type="html">
-    
-      &lt;hr&gt;
-&lt;h2 id=&quot;Basic-Commands&quot;&gt;&lt;a href=&quot;#Basic-Commands&quot; class=&quot;headerlink&quot; title=&quot;Basic Commands&quot;&gt;&lt;/a&gt;Basic Commands&lt;/h2&gt;&lt;p&gt;source: &lt;a href=&quot;
-    
-    </summary>
-    
-      <category term="CLI stuff" scheme="http://lycworks.me/blog/categories/CLI-stuff/"/>
-    
-    
-      <category term="git" scheme="http://lycworks.me/blog/tags/git/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>ProgressBar.js Doughnut Chart</title>
-    <link href="http://lycworks.me/blog/2017/02/02/2016-07-11-chart-progressbar/"/>
-    <id>http://lycworks.me/blog/2017/02/02/2016-07-11-chart-progressbar/</id>
-    <published>2017-02-02T21:56:37.000Z</published>
-    <updated>2017-02-02T21:56:37.000Z</updated>
-    
-    <content type="html"><![CDATA[<hr>
-<h1 id="CODE"><a href="#CODE" class="headerlink" title="CODE"></a>CODE</h1><pre><code>// progressbar.js@1.0.0 version is used
-// Docs: http://progressbarjs.readthedocs.org/en/1.0.0/
-// drawChart(&apos;By You&apos;, chart1, i1);
-// drawChart(&apos;By Others&apos;, chart2, i2);
-
-function drawChart(str,id,val){
-     var bar = new ProgressBar.Circle(id, {
-       color: &apos;#373f51&apos;,
-       // This has to be the same size as the maximum width to
-       // prevent clipping
-       strokeWidth: 4,
-       trailWidth: 4,
-       easing: &apos;easeInOut&apos;,
-       duration: 1400,
-       text: {
-         autoStyleContainer: false
-       },
-       from: { color: &apos;#a9bcd0&apos;, width: 4 },
-       to: { color: &apos;#a9bcd0&apos;, width: 4 },
-       // Set default step function for all animate calls
-       step: function(state, circle) {
-         circle.path.setAttribute(&apos;stroke&apos;, state.color);
-         circle.path.setAttribute(&apos;stroke-width&apos;, state.width);
-
-         var value = Math.round(circle.value() * 100);
-         if (value === 0) {
-           circle.setText(&apos;&apos;);
-         } else {
-           circle.setText(&apos;&lt;center&gt;&apos;+value+&apos;%&lt;/center&gt;\n&apos;+str);
-         }
-
-       }
-     });
-     // bar.text.style.fontFamily = &apos;&quot;Raleway&quot;, Helvetica, sans-serif&apos;;
-     bar.text.style.fontSize = &apos;1rem&apos;;
-     bar.text.style.lineHeight = &apos;30px&apos;;
-     var value = val/total;
-     bar.animate(value);  // Number from 0.0 to 1.0
-} //for progressbar
-</code></pre>]]></content>
-    
-    <summary type="html">
-    
-      &lt;hr&gt;
-&lt;h1 id=&quot;CODE&quot;&gt;&lt;a href=&quot;#CODE&quot; class=&quot;headerlink&quot; title=&quot;CODE&quot;&gt;&lt;/a&gt;CODE&lt;/h1&gt;&lt;pre&gt;&lt;code&gt;// progressbar.js@1.0.0 version is used
-// Docs: 
-    
-    </summary>
-    
-      <category term="JS" scheme="http://lycworks.me/blog/categories/JS/"/>
-    
-    
-      <category term="chart,JS" scheme="http://lycworks.me/blog/tags/chart-JS/"/>
     
   </entry>
   
@@ -634,6 +527,100 @@ ul.posts li {
   </entry>
   
   <entry>
+    <title>JS正则表达式regexexp</title>
+    <link href="http://lycworks.me/blog/2017/02/02/2016-05-20-JS-regex/"/>
+    <id>http://lycworks.me/blog/2017/02/02/2016-05-20-JS-regex/</id>
+    <published>2017-02-02T21:56:37.000Z</published>
+    <updated>2017-02-02T21:56:37.000Z</updated>
+    
+    <content type="html"><![CDATA[<hr>
+<h1 id="Regex正则"><a href="#Regex正则" class="headerlink" title="Regex正则"></a>Regex正则</h1><h2 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h2><p><code>/</code>起始和结尾<br><code>.</code> - 代表任意，除了换行/n,/r etc<br><code>\d</code>- 0-9<br><code>\D</code>- !(0-9)<br><code>\w</code>- 0-9或a-zA-Z,_<br><code>\W</code>- !(\w)<br><code>\s</code>- 空格，tab，\n\r etc<br><code>\S</code>- !(\s)<br><code>\t\r\n\v\f</code> - tab，回车，换行，垂直|，换页  </p>
+<p>范围<br>[] - 字符范围, eg [a-zA-Z]<br>[^..] - 字符意外<br>^ - 行首<br>$ - 行尾<br><code>\b</code> - 零宽单词边界 eg ‘a no’<br><code>\B</code> - !(\b)  </p>
+<p>符号<br><code>\</code> - escape符号  </p>
+<p>分组<br><code>(x)</code>, <code>\n</code> - e.g. (abc)\n 表示abc再重复n次<br><code>(?:x)</code> - 仅分组，重复没有效果 eg <code>(?:abc)(def)\1.test(&#39;abcdefdef&#39;)</code>  </p>
+<p>重复<br>贪婪算法 x<em> &gt;=0, x+ &gt;=1<br>eg abc</em> 匹配 ab, abc, abccccc<br>   abc+ 匹配 abc,abccccc  </p>
+<p>非贪婪算法 x<em>? == 0, x+? ==1<br>  eg abc</em>? 匹配 ab<br>     abc+? 匹配 abc  </p>
+<p>x? 出现0或1次<br>x|y x或y<br>  eg ab|cd|ef 匹配 ab或cd或ef<br>x{n} - 固定n次<br>x(n,) - &gt;= n次<br>x(n,m) - n-m次  </p>
+<p>标志类flag  gim<br>g - global<br>i - ignoreCase<br>m - multiline - 跨行检索  </p>
+<h2 id="相关方法"><a href="#相关方法" class="headerlink" title="相关方法"></a>相关方法</h2><p>.search(regex) - 返回找到位置index<br>.replace(regex,replacement)<br>.match(regex) - 返回匹配结果数组<br>.split(regex) - 返回数组</p>
+<h2 id="资料"><a href="#资料" class="headerlink" title="资料"></a>资料</h2><p><a href="http://regexone.com/lesson/kleene_operators?" target="_blank" rel="external">http://regexone.com/lesson/kleene_operators?</a> 练习站<br><a href="https://developers.google.com/edu/python/regular-expressions" target="_blank" rel="external">https://developers.google.com/edu/python/regular-expressions</a> 教程<br><a href="http://pythex.org/" target="_blank" rel="external">http://pythex.org/</a> python正则练习站</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;hr&gt;
+&lt;h1 id=&quot;Regex正则&quot;&gt;&lt;a href=&quot;#Regex正则&quot; class=&quot;headerlink&quot; title=&quot;Regex正则&quot;&gt;&lt;/a&gt;Regex正则&lt;/h1&gt;&lt;h2 id=&quot;基础&quot;&gt;&lt;a href=&quot;#基础&quot; class=&quot;headerlink&quot; tit
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>ProgressBar.js Doughnut Chart</title>
+    <link href="http://lycworks.me/blog/2017/02/02/2016-07-11-chart-progressbar/"/>
+    <id>http://lycworks.me/blog/2017/02/02/2016-07-11-chart-progressbar/</id>
+    <published>2017-02-02T21:56:37.000Z</published>
+    <updated>2017-02-02T21:56:37.000Z</updated>
+    
+    <content type="html"><![CDATA[<hr>
+<h1 id="CODE"><a href="#CODE" class="headerlink" title="CODE"></a>CODE</h1><pre><code>// progressbar.js@1.0.0 version is used
+// Docs: http://progressbarjs.readthedocs.org/en/1.0.0/
+// drawChart(&apos;By You&apos;, chart1, i1);
+// drawChart(&apos;By Others&apos;, chart2, i2);
+
+function drawChart(str,id,val){
+     var bar = new ProgressBar.Circle(id, {
+       color: &apos;#373f51&apos;,
+       // This has to be the same size as the maximum width to
+       // prevent clipping
+       strokeWidth: 4,
+       trailWidth: 4,
+       easing: &apos;easeInOut&apos;,
+       duration: 1400,
+       text: {
+         autoStyleContainer: false
+       },
+       from: { color: &apos;#a9bcd0&apos;, width: 4 },
+       to: { color: &apos;#a9bcd0&apos;, width: 4 },
+       // Set default step function for all animate calls
+       step: function(state, circle) {
+         circle.path.setAttribute(&apos;stroke&apos;, state.color);
+         circle.path.setAttribute(&apos;stroke-width&apos;, state.width);
+
+         var value = Math.round(circle.value() * 100);
+         if (value === 0) {
+           circle.setText(&apos;&apos;);
+         } else {
+           circle.setText(&apos;&lt;center&gt;&apos;+value+&apos;%&lt;/center&gt;\n&apos;+str);
+         }
+
+       }
+     });
+     // bar.text.style.fontFamily = &apos;&quot;Raleway&quot;, Helvetica, sans-serif&apos;;
+     bar.text.style.fontSize = &apos;1rem&apos;;
+     bar.text.style.lineHeight = &apos;30px&apos;;
+     var value = val/total;
+     bar.animate(value);  // Number from 0.0 to 1.0
+} //for progressbar
+</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      &lt;hr&gt;
+&lt;h1 id=&quot;CODE&quot;&gt;&lt;a href=&quot;#CODE&quot; class=&quot;headerlink&quot; title=&quot;CODE&quot;&gt;&lt;/a&gt;CODE&lt;/h1&gt;&lt;pre&gt;&lt;code&gt;// progressbar.js@1.0.0 version is used
+// Docs: 
+    
+    </summary>
+    
+      <category term="JS" scheme="http://lycworks.me/blog/categories/JS/"/>
+    
+    
+      <category term="chart,JS" scheme="http://lycworks.me/blog/tags/chart-JS/"/>
+    
+  </entry>
+  
+  <entry>
     <title>HTML5特性</title>
     <link href="http://lycworks.me/blog/2017/02/02/2016-07-09-html5-tricks/"/>
     <id>http://lycworks.me/blog/2017/02/02/2016-07-09-html5-tricks/</id>
@@ -688,59 +675,77 @@ function ctrlFunc() { this.workflowData = workflowData_client; }
   </entry>
   
   <entry>
-    <title>JS基础笔记(DOM)</title>
-    <link href="http://lycworks.me/blog/2017/02/02/2016-05-16-JS-note/"/>
-    <id>http://lycworks.me/blog/2017/02/02/2016-05-16-JS-note/</id>
+    <title>JS进阶笔记</title>
+    <link href="http://lycworks.me/blog/2017/02/02/2016-05-16-JS-deep-note/"/>
+    <id>http://lycworks.me/blog/2017/02/02/2016-05-16-JS-deep-note/</id>
     <published>2017-02-02T21:56:37.000Z</published>
     <updated>2017-02-02T21:56:37.000Z</updated>
     
-    <content type="html"><![CDATA[<h1 id="变量Var"><a href="#变量Var" class="headerlink" title="变量Var"></a>变量Var</h1><h2 id="Assign初始值的重要性"><a href="#Assign初始值的重要性" class="headerlink" title="Assign初始值的重要性"></a>Assign初始值的重要性</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">var a;  </div><div class="line">var b;  </div><div class="line">var c;</div><div class="line">a = a + 1;  </div><div class="line">b = b + 5;  </div><div class="line">c = c + &quot; String!&quot;;</div></pre></td></tr></table></figure>
+    <content type="html"><![CDATA[<h1 id="JS类型"><a href="#JS类型" class="headerlink" title="JS类型"></a>JS类型</h1><p>五大原始类型–number,string,boolean,null,undefined<br>Object对象类型，对象类型又包括–array,date,function</p>
+<h1 id="巧用-规则转换类型"><a href="#巧用-规则转换类型" class="headerlink" title="巧用+/-规则转换类型"></a>巧用+/-规则转换类型</h1><p>把字符串变量转换成数字：num-0<br>把数字变量转化成字符串型：num+’’　　</p>
+<h1 id="比较"><a href="#比较" class="headerlink" title="比较"></a>比较</h1><h3 id="类型相同"><a href="#类型相同" class="headerlink" title="类型相同"></a>类型相同</h3><p><code>null===null</code>, <code>undefined===undefined</code>  </p>
+<p>NaN和任何东西都不相等，包括它本身  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">Object同类型不相等，除非和它本身作比较 ``` new object() ≠ new object()```, ```x===x```  </div><div class="line">### 类型不同</div><div class="line">a === b 类型不同直接返回false  </div><div class="line">a  == b 类型不同会尝试隐式转换(尝试类型转换和比较)  </div><div class="line">    number== string // 把字符串转化为数字比较  </div><div class="line">    boolean== ？(任何) // bool值转化为数字1或0  </div><div class="line">    object == number|string // 尝试对象转为基本类型 </div><div class="line">```new String(&apos;hi&apos;)==&apos;hi&apos; //true```  </div><div class="line"></div><div class="line"># 包装类型</div><div class="line">number string boolean 三种原始数据类型是有各自对应的对象包装类型的  </div><div class="line">如果对一个原始的数据类型比如说var string = &quot;xiaoyu&quot; 进行对象的操作js会智能地将原始数据类型转换为一个对应的包装类型  ```string.length```  </div><div class="line">等到你的操作结束之后这个临时产生的包装类型就会自动销毁。```string.tempobj</div></pre></td></tr></table></figure></p>
+<h1 id="类型检测"><a href="#类型检测" class="headerlink" title="类型检测"></a>类型检测</h1><p>5种方法  </p>
+<ol>
+<li><p>typeof 最简单的方法，以字符串的方式返回类型 <code>typeof &quot;bob&quot; === &quot;string&quot;</code>  </p>
 <blockquote>
-<p>result a = NaN, b=NaN, c = “undefined String!”</p>
+<p>弊端是null的失效(typeof返回的是”object”，因此不可以用来检测)  </p>
 </blockquote>
-<h1 id="字符串数组"><a href="#字符串数组" class="headerlink" title="字符串数组"></a>字符串数组</h1><pre><code>var myStr = &quot;Bob&quot;;
-myStr[0] = &quot;J&quot;;
-</code></pre><blockquote>
-<p>cannot change the value of myStr to “Job”,<br>because the contents of myStr cannot be altered.<br>Note that this does not mean that myStr cannot be changed,<br>just that the individual characters of a string literal cannot be changed. </p>
+</li>
+<li><p>对象 instanceof 函数 原形链  - 判断右边的原型链上有没有这个函数对象</p>
+<blockquote>
+<p>弊端原生对象在不同iframe和window检测失效  </p>
 </blockquote>
+</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">function Student()&#123;&#125;</div><div class="line">function Person()&#123;&#125;</div><div class="line">Student.prototype = new Person() //student指向person</div><div class="line">var bob = new Student()</div><div class="line">//bob instanceof student -&gt; true</div><div class="line">//bob instanceof person -&gt; true</div><div class="line">var bob_mom = new Person()</div><div class="line">//mom instanceof student -&gt; false</div><div class="line">//mom instanceof person -&gt; true</div></pre></td></tr></table></figure>
+<ol>
+<li>Object.prototype.toString.apply(函数)<blockquote>
+<p>弊端null和undefined失效(IE返回object)</p>
+</blockquote>
+</li>
+</ol>
+<p>比较小窍门<br>× <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">× 比较类型保险款```Object.prototype.toString.apply(null)-&gt; [Object Null]</div></pre></td></tr></table></figure></p>
+<h1 id="表达式expression"><a href="#表达式expression" class="headerlink" title="表达式expression"></a>表达式expression</h1><ol>
+<li>原始表达式 // 常量、直接量、关键字、变量 3.14、”test”、this、null、i、k、j</li>
+<li>初始化表达式 //[1,2]、{x:1, y:2}</li>
+<li>函数表达式 //  var fe = function(){}、(function(){})()</li>
+<li>属性访问表达式 //  var o = {x:1} 可以用 o.x、o[‘x’]来访问</li>
+<li>调用表达式 // func()；</li>
+<li>对象创建表达式 // new Func(1,2)、new Object</li>
+</ol>
+<h1 id="运算符operator"><a href="#运算符operator" class="headerlink" title="运算符operator"></a>运算符operator</h1><p>1、条件运算符 c?a:b c为true 则取a,否则取b<br>2、逗号运算符 a,b 例如 var s = (1,2,3),则s依次赋值，最后输出为3<br>3、delete运算符 delete obj.x 删除对象obj中的x属性     </p>
+<blockquote>
+<p>在IE9下，obj中必须configurable:true 才可以删除，否则无效 </p>
+</blockquote>
+<p>4、in运算符 判断obj是否有值或window里是否有变量，返回bool值<br>    例如 attr in json 或 ‘document’ in window<br>5、instanceof 判断对象类型 {} instanceof Object // true<br>6、new运算符 创建一个新对象 new obj / new array …   </p>
 <ul>
-<li>methods<br>  .charAt(index) is another use<br>  .indexOf<br>  .split(delimiter,limit)<br>  .substring( 起点 ， 终点 )<br>  .substr( 起点 ，长度 )  </li>
-</ul>
-<h1 id="Create-global-variables"><a href="#Create-global-variables" class="headerlink" title="Create global variables"></a>Create global variables</h1><ul>
-<li>outside of function - var globalvar</li>
-<li>inside function - declare without var </li>
-</ul>
-<h1 id="break"><a href="#break" class="headerlink" title="break"></a>break</h1><p>break是退出循环，不是跳出if语句</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">for(初始条件;判断条件;循环后条件值更新)  </div><div class="line">&#123;  </div><div class="line">  if(特殊情况)  </div><div class="line">  &#123;break;&#125;  </div><div class="line">  循环代码  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h1 id="event"><a href="#event" class="headerlink" title="event"></a>event</h1><p><img src="http://img.imooc.com/53e198540001b66404860353.jpg" alt="mouse event chart" title="chart">  </p>
-<p>将光标移到文本框内时，即焦点在文本框内，触发onfocus 事件</p>
-<ul>
-<li><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">* ```window.onload=message;```这种写法是在网页加载完成后，调用message()方法。  </div><div class="line"></div><div class="line">&gt; 建议使用window.onload=函数名;这种写法，不容易出错。window.onload=函数名();有些浏览器不买单滴~~</div><div class="line"></div><div class="line"># array</div><div class="line">![chart](http://img.imooc.com/533295ab0001dead05190599.jpg &quot;chart&quot;)  </div><div class="line"></div><div class="line">* .concat()</div></pre></td></tr></table></figure>
-<p>  arr.concat(array1,array2,…,arrayN)<br>  e.g.<br>  arr = [1,2,3]<br>  arr.concat(4,5);//[1,2,3,4,5]</p>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&gt; 注意: 该方法不会改变现有的数组，而仅仅会返回被连接数组的一个副本。</div><div class="line"></div><div class="line">* .join() - 把数组中的所有元素放入一个字符串。元素是通过指定的分隔符进行分隔的</div></pre></td></tr></table></figure>
-<p>  myarr.join(“.”)<br>  I.Love.JS</p>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">&gt; 使用.join(&quot;&quot;)可以进行紧密连接。</div><div class="line"></div><div class="line">* .reverse()</div><div class="line"></div><div class="line">* substring() 左开右闭 开始位置不能为负数;  </div><div class="line">* slice() 左闭右开 开始位置可以为负数.</div><div class="line"></div><div class="line">* sort([function])</div><div class="line">	* 若返回值&lt;=-1，则表示 A 在排序后的序列中出现在 B 之前。  </div><div class="line">若返回值&gt;-1 &amp;&amp; &lt;1，则表示 A 和 B 具有相同的排序顺序。    </div><div class="line">若返回值&gt;=1，则表示 A 在排序后的序列中出现在 B 之后。</div></pre></td></tr></table></figure>
+<li><p>可以通过<figure class="highlight plain"><figcaption><span>(```in```判断obj是否有值,因此只要赋值就会返回true)</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"> </div></pre></td></tr></table></figure></p>
+<p>  function foo(){}<br>  foo.prototype.x = 1 //原形链赋值<br>  var obj = new foo() //obj.x = 1<br>  obj.hasOwnProperty(‘x’) -&gt; false<br>  obj.<strong>proto</strong>.hasOwnProperty(‘x’) -&gt; true<br>  obj.y = 1 //obj.hasOwnProperty(‘y’) -&gt; true</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">7、this对象 全局用指向window，函数内指向函数本身，浮动指针  </div><div class="line">8、typeof 判断对象，返回对象类型 例如 typeof 100 === &apos;number&apos; // true  </div><div class="line">9、void 一元的，判断所有值，返回均为undefined</div><div class="line"></div><div class="line"># block v. var语句</div><div class="line">### block - ```&#123;..&#125;```定义  </div><div class="line">在ES6之前，forloop中的var i ```for(var i=0;i&lt;arr.length;i++)```是可以在之后取值的```console.log(i)```  </div><div class="line">从ES6开始，let的出现-有了块级作用域的概念(local variable)</div></pre></td></tr></table></figure>
 </li>
 </ul>
-<p>function sortNum(a,b) {<br>return a - b;<br>//升序，如降序，把“a - b”该成“b - a”<br>}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">#BOM</div><div class="line">## Interval/Timeout</div><div class="line">![chartInterval](http://img.imooc.com/56976e1700014fc504090143.jpg &quot;interval&quot;)  </div><div class="line"></div><div class="line">* setInterval(function,ms)  function可以是&quot;clock()&quot; or clock  </div><div class="line">1s = 1000 ms  </div><div class="line"></div><div class="line">* clearInterval(id_of_seInterval)  计时器：每隔1000毫秒执行clock()函数，并将值返回给t</div><div class="line">`var t= setInterval(&quot;clock()&quot;,1000);`</div><div class="line"></div><div class="line">&gt; 执行clearInterval(t);停止计时</div><div class="line"></div><div class="line">* setTimeout(function,time)</div><div class="line">	* 函数体外的是启动函数，执行一次后就交给函数体内代码执行，函数体内是代码执行的循环体</div><div class="line">	* thus can be use recursively</div><div class="line">	* setTimeout仅仅是延迟执行一次，只一次，但可以通过递归调用实现与setInterval相同的效果</div><div class="line"></div><div class="line">## History (window可以省略)</div><div class="line">![history](http://img.imooc.com/53548c200001228206210123.jpg &quot;history&quot;)  </div><div class="line"></div><div class="line">* .length - num of visited urls  </div><div class="line">* .back() - previous url; = go(-1)  </div><div class="line">* .forward() - next url  </div><div class="line">* .go(..) - specific url  </div><div class="line"></div><div class="line">## Location </div><div class="line">* Properties</div><div class="line">![url](http://img.imooc.com/53605c5a0001b26909900216.jpg &quot;url&quot;)</div><div class="line">* Methods</div><div class="line">    * assign()</div><div class="line">    * reload()</div><div class="line">    * replace()</div><div class="line"></div><div class="line"># DOM</div><div class="line">## Node</div><div class="line">个体 - `document.getElementById(id)`  </div><div class="line">数组 - `document.getElementsByName(name)`, `document.getElementsByTagName(Tagname)`  </div><div class="line"></div><div class="line">* Tagname是标签的名称，如p、a、img  </div><div class="line">* 属性可能不唯一, 返回的是元素的数组       </div><div class="line">* 有length属性</div><div class="line"></div><div class="line">#### Node Attribute </div><div class="line">    getAttribute(attr)  </div><div class="line">    setAttribute(name,val)</div><div class="line">#### Node properties</div><div class="line">        nodeName, nodeType, nodeValue  </div><div class="line">&gt; 1. 元素节点的 nodeValue 是 undefined 或 null  </div><div class="line">&gt; 2. 文本节点的 nodeValue 是文本自身</div><div class="line">&gt; 3. 属性节点的 nodeValue 是属性的值</div><div class="line"></div><div class="line">## Node&apos;s Tree Structure</div><div class="line">![dom](http://img.imooc.com/53f17a6400017d2905230219.jpg)  </div><div class="line"></div><div class="line">#### 访问子结点.childNodes  </div><div class="line">访问选定元素节点下的所有子节点的列表，返回的值可以看作是一个数组，具有length属性。  </div><div class="line">注意：</div><div class="line">如果选定的节点没有子节点，则该属性返回不包含节点的 NodeList。</div><div class="line">&gt; 注意代码中的[0]，很关键！！！  </div><div class="line">&gt; 节点之间的空白符，在firefox、chrome、opera、safari浏览器是文本节点，所以IE是3，其它浏览器是7 </div><div class="line"></div><div class="line">Fix: 都写在一行 ```&lt;ul&gt;&lt;li&gt;javascript&lt;/li&gt;&lt;li&gt;jQuery&lt;/li&gt;&lt;li&gt;PHP&lt;/li&gt;&lt;/ul&gt;</div></pre></td></tr></table></figure></p>
-<h4 id="node-firstChild"><a href="#node-firstChild" class="headerlink" title="node.firstChild"></a>node.firstChild</h4><p>说明：与elementNode.childNodes[0]是同样的效果。</p>
-<h4 id="node-parentNode"><a href="#node-parentNode" class="headerlink" title="node.parentNode"></a>node.parentNode</h4><p>注意:父节点只能有一个,祖节点elementNode.parentNode.parentNode</p>
-<h4 id="nextSibling-previousSibling"><a href="#nextSibling-previousSibling" class="headerlink" title="nextSibling/previousSibling"></a>nextSibling/previousSibling</h4><p>同一树层级中</p>
-<h4 id="appendChild-newNode-insertBefore-newNode-node"><a href="#appendChild-newNode-insertBefore-newNode-node" class="headerlink" title="appendChild(newNode)/insertBefore(newNode,node)"></a>appendChild(newNode)/insertBefore(newNode,node)</h4><p>document.createElement()是在对象中创建一个对象  </p>
-<h4 id="removeChild-the-removed-node"><a href="#removeChild-the-removed-node" class="headerlink" title=".removeChild(the removed node)"></a>.removeChild(the removed node)</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">while(content.firstChild)&#123;</div><div class="line">      content.removeChild(content.firstChild)</div><div class="line">  &#125;</div></pre></td></tr></table></figure>
-<h4 id="replaceChild-newnode-oldnode"><a href="#replaceChild-newnode-oldnode" class="headerlink" title=".replaceChild (newnode,oldnode)"></a>.replaceChild (newnode,oldnode)</h4><h2 id="document-create"><a href="#document-create" class="headerlink" title="document.create"></a>document.create</h2><ul>
-<li>TextNode(data) and paragraph.appendChild(textnode)</li>
-<li>ELement(tagid)</li>
-<li>Method<br><img src="http://img.imooc.com/538d29da000152db05360278.jpg" alt="dom"></li>
-</ul>
+<p>function letTest() {<br>  let x = 31;<br>  if (true) {<br>    let x = 71;  // different variable<br>    console.log(x);  // 71<br>  }<br>  console.log(x);  // 31<br>}<br>```</p>
+<h3 id="var-var-a-1-变量定义"><a href="#var-var-a-1-变量定义" class="headerlink" title="var - var a =1 变量定义"></a>var - <code>var a =1</code> 变量定义</h3><p>误区：在函数里创建 <code>var a = b = 1</code>是有local scope的<br>解答：b相当于隐式创建的全局变量，因此即使是在函数内定义，在函数外b依旧可以被访问到，而a是不可以的  </p>
+<blockquote>
+<p>解决办法是利用逗号 <code>var a, b = 1</code> a和b都变成了local variable</p>
+</blockquote>
+<h1 id="函数对象Create-Object"><a href="#函数对象Create-Object" class="headerlink" title="函数对象Create Object"></a>函数对象Create Object</h1><p>函数声明:<code>function fd(){}</code>在声明之前可以调用fd()<br>函数表达式： <code>var fd=function(){}</code>，不可以在函数表达式之前调用fd(),因为还未创建</p>
+<h1 id="for-in"><a href="#for-in" class="headerlink" title="for in"></a>for in</h1><p>短处是不按顺序，enumerable设定为false后失效</p>
 ]]></content>
     
     <summary type="html">
     
-      &lt;h1 id=&quot;变量Var&quot;&gt;&lt;a href=&quot;#变量Var&quot; class=&quot;headerlink&quot; title=&quot;变量Var&quot;&gt;&lt;/a&gt;变量Var&lt;/h1&gt;&lt;h2 id=&quot;Assign初始值的重要性&quot;&gt;&lt;a href=&quot;#Assign初始值的重要性&quot; class=&quot;header
+      &lt;h1 id=&quot;JS类型&quot;&gt;&lt;a href=&quot;#JS类型&quot; class=&quot;headerlink&quot; title=&quot;JS类型&quot;&gt;&lt;/a&gt;JS类型&lt;/h1&gt;&lt;p&gt;五大原始类型–number,string,boolean,null,undefined&lt;br&gt;Object对象类型，对象类型
     
     </summary>
     
+      <category term="JS" scheme="http://lycworks.me/blog/categories/JS/"/>
+    
+    
+      <category term="web" scheme="http://lycworks.me/blog/tags/web/"/>
+    
+      <category term="note" scheme="http://lycworks.me/blog/tags/note/"/>
     
   </entry>
   
@@ -826,30 +831,54 @@ block content
   </entry>
   
   <entry>
-    <title>JSON</title>
-    <link href="http://lycworks.me/blog/2017/02/02/2016-08-08-json/"/>
-    <id>http://lycworks.me/blog/2017/02/02/2016-08-08-json/</id>
+    <title>AI笔记</title>
+    <link href="http://lycworks.me/blog/2017/02/02/2016-08-03-AI-note/"/>
+    <id>http://lycworks.me/blog/2017/02/02/2016-08-03-AI-note/</id>
     <published>2017-02-02T21:56:37.000Z</published>
     <updated>2017-02-02T21:56:37.000Z</updated>
     
     <content type="html"><![CDATA[<hr>
-<h1 id="JSON-gt-String"><a href="#JSON-gt-String" class="headerlink" title="JSON -&gt; String"></a>JSON -&gt; String</h1><p>function  </p>
-<ul>
-<li>stringify (parse into string representation, has <code>pretty print</code>)  </li>
-<li>parse (parse string into JSON)  <blockquote>
-<p>convert opposite ways  </p>
-</blockquote>
-</li>
+<h1 id="AI-V-PS"><a href="#AI-V-PS" class="headerlink" title="AI V PS"></a>AI V PS</h1><ul>
+<li>AI is resolution-independent, meaning its resolution is unaffected with zooming. In AI, images are vectors that are<br>mathematically calculated when zooming.  </li>
 </ul>
+<h1 id="Hotkeys"><a href="#Hotkeys" class="headerlink" title="Hotkeys"></a>Hotkeys</h1><p><code>CTRL + K</code>- preference<br><code>CAPS LOCK</code>- change all to precise cursor ‘+’<br><code>CTRL + R</code>- ruler<br><code>CTRL + 0</code>- fit on screen, <code>CTRL + 1</code>- fit 100%  </p>
+<h1 id="Start-with-An-End-of-Mind"><a href="#Start-with-An-End-of-Mind" class="headerlink" title="Start with An End of Mind"></a>Start with An End of Mind</h1><p><code>what is it for</code></p>
+<h3 id="Type"><a href="#Type" class="headerlink" title="Type"></a>Type</h3><h4 id="Print"><a href="#Print" class="headerlink" title="Print"></a>Print</h4><ul>
+<li>bleed (cut line for printing edge)  </li>
+<li>PPI (300 press-rasterize standard)  </li>
+</ul>
+<h4 id="Web"><a href="#Web" class="headerlink" title="Web"></a>Web</h4><ul>
+<li>Object align to invisible grid  </li>
+<li>PPI 72 for screen standard  </li>
+</ul>
+<h3 id="Preview"><a href="#Preview" class="headerlink" title="Preview"></a>Preview</h3><p><code>CTRL + Y</code>- outline toggle<br><code>SHIFT + CTRL + Y</code>- pixel preview (for the screen)<br><code>View-&gt;proof set up</code>- preview color blend in rgb and cmyk  </p>
+<p><code>ALT + click</code> - to change area of selection (eg in transform)<br><code>CTRL + click</code> - V select underlied item (eg arm under a shirt)  </p>
+<h1 id="Navigation"><a href="#Navigation" class="headerlink" title="Navigation"></a>Navigation</h1><h3 id="Ruler-Manipulation"><a href="#Ruler-Manipulation" class="headerlink" title="Ruler Manipulation"></a>Ruler Manipulation</h3><p>Top left corner drag to set genesis (0) point<br>with ctrl, easier to do the second drag  </p>
+<h3 id="Object-view-selection"><a href="#Object-view-selection" class="headerlink" title="Object view selection"></a>Object view selection</h3><p>views can be created to switch between customized views (often for complicated vectors)  </p>
+<h1 id="Selection"><a href="#Selection" class="headerlink" title="Selection"></a>Selection</h1><p>V select - normal group select (if group exist)<br>A direct select - group item select (if choose group selection tool, each click select one upper nested level)  </p>
+<h3 id="strategy"><a href="#strategy" class="headerlink" title="strategy"></a>strategy</h3><p>use direct select for embedded item or double click in V selection to go to isolation (quit using esc)  </p>
+<h1 id="Rotate-amp-Scale"><a href="#Rotate-amp-Scale" class="headerlink" title="Rotate &amp; Scale"></a>Rotate &amp; Scale</h1><p>simply click to create anchor point and drag to manipulate scale/rotation  </p>
+<blockquote>
+<p>use alt click to edit anchor point setting<br>command + D to repeat the last thing (eg creating 360 flower)  </p>
+</blockquote>
+<h1 id="Transform"><a href="#Transform" class="headerlink" title="Transform"></a>Transform</h1><p>width - change width, warp - finger paint, wrinkle - melt effect  </p>
+<h1 id="Color-Manipulation"><a href="#Color-Manipulation" class="headerlink" title="Color Manipulation"></a>Color Manipulation</h1><h3 id="RGB-V-CMYK"><a href="#RGB-V-CMYK" class="headerlink" title="RGB V CMYK"></a>RGB V CMYK</h3><p><code>RGB</code>- color addictive, ‘world of light’/screen<br><code>CMYK</code>- color subtractive, ‘world of absorption’/print press  </p>
+<p>Color guide - palette inspiration<br>Color Swatches - drag to add or add group. Export as ASE OR AI<br><code>ALT + DEL</code> - to force delete  </p>
+<h3 id="GLOBAL-processing-and-spot-color"><a href="#GLOBAL-processing-and-spot-color" class="headerlink" title="GLOBAL processing and spot color"></a>GLOBAL processing and spot color</h3><p>double click color, if global, color attached to object woho  </p>
 ]]></content>
     
     <summary type="html">
     
       &lt;hr&gt;
-&lt;h1 id=&quot;JSON-gt-String&quot;&gt;&lt;a href=&quot;#JSON-gt-String&quot; class=&quot;headerlink&quot; title=&quot;JSON -&amp;gt; String&quot;&gt;&lt;/a&gt;JSON -&amp;gt; String&lt;/h1&gt;&lt;p&gt;function  &lt;
+&lt;h1 id=&quot;AI-V-PS&quot;&gt;&lt;a href=&quot;#AI-V-PS&quot; class=&quot;headerlink&quot; title=&quot;AI V PS&quot;&gt;&lt;/a&gt;AI V PS&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;AI is resolution-independent, meaning i
     
     </summary>
     
+      <category term="Media" scheme="http://lycworks.me/blog/categories/Media/"/>
+    
+    
+      <category term="illustrator, image_manipulation" scheme="http://lycworks.me/blog/tags/illustrator-image-manipulation/"/>
     
   </entry>
   
