@@ -5,7 +5,7 @@
   <link href="/blog/atom.xml" rel="self"/>
   
   <link href="http://lycworks.me/blog/"/>
-  <updated>2017-02-09T01:41:10.000Z</updated>
+  <updated>2017-02-10T21:16:45.000Z</updated>
   <id>http://lycworks.me/blog/</id>
   
   <author>
@@ -14,6 +14,82 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>chrome plugin message passing</title>
+    <link href="http://lycworks.me/blog/2017/02/10/chrome-plugin-message/"/>
+    <id>http://lycworks.me/blog/2017/02/10/chrome-plugin-message/</id>
+    <published>2017-02-10T20:19:54.000Z</published>
+    <updated>2017-02-10T21:16:45.000Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="notice-For-self-learning-purpose"><a href="#notice-For-self-learning-purpose" class="headerlink" title="notice: For self learning purpose"></a>notice: For self learning purpose</h1><p>what this does not talk about is the general setup, in this article, only brief messaging method is mentioned</p>
+<blockquote>
+<p>please note i’m using page action for this example</p>
+</blockquote>
+<h3 id="first-of-all-the-structure"><a href="#first-of-all-the-structure" class="headerlink" title="first of all the structure"></a>first of all the structure</h3><p><code>manifest.json</code> settings</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">&quot;background&quot; : &#123;</div><div class="line">    &quot;scripts&quot;: [&quot;background.js&quot;],</div><div class="line">    &quot;persistent&quot;: false</div><div class="line">  &#125;,</div><div class="line"></div><div class="line">&quot;page_action&quot; :</div><div class="line">&#123;</div><div class="line">  &quot;default_icon&quot; : &quot;video-19.png&quot;,</div><div class="line">  &quot;default_title&quot; : &quot;There&apos;s a &lt;video&gt; in this page!&quot;,</div><div class="line">  &quot;default_popup&quot;: &quot;popup.html&quot;</div><div class="line">&#125;,</div><div class="line"></div><div class="line">&quot;permissions&quot;: [</div><div class="line">  &quot;declarativeContent&quot;,</div><div class="line">  &quot;tabs&quot;,</div><div class="line">  &quot;http://*/&quot;,</div><div class="line">  &quot;https://*/&quot;</div><div class="line">],</div><div class="line"></div><div class="line">&quot;content_scripts&quot;: [</div><div class="line">  &#123;</div><div class="line">    &quot;matches&quot;: [&quot;http://*/*&quot;],</div><div class="line">    &quot;js&quot;: [</div><div class="line">      &quot;contentscript.js&quot;</div><div class="line">    ]</div><div class="line">  &#125;</div><div class="line">],</div></pre></td></tr></table></figure>
+<p><code>background.js</code> settings</p>
+<p>what is background? the file that exist even after refreshing pages, purpose is to talk to page dom and contentscript, act as the MVC’s controller</p>
+<p><code>popup.js</code> the extension’s javascript page, to illustrate the purpose, popup.html is also created which looks like this</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&lt;div id=&quot;mainPopup&quot;&gt;</div><div class="line">&lt;h1&gt;Hello extensionizr!&lt;/h1&gt;</div><div class="line">&lt;p&gt;I can add stuff here i suppose, and I can retrive content from the page&lt;/p&gt;</div><div class="line">&lt;div id=&quot;message&quot;&gt;&lt;/div&gt;</div><div class="line">&lt;/div&gt;</div><div class="line">&lt;script src=&apos;popup.js&apos;&gt;&lt;/script&gt;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>the only important thing to know is the last line <code>script</code></p>
+</blockquote>
+<p><code>contentscript.js</code> how one can obtain the chrome current tab’s page’s DOM and its elements</p>
+<p>for example, one can do <code>document.querySelector(&#39;video&#39;)</code></p>
+<h3 id="Some-page-setup-for-specific-usage"><a href="#Some-page-setup-for-specific-usage" class="headerlink" title="Some page setup for specific usage"></a>Some page setup for specific usage</h3><p>before moving on to messaging, let me rephrase the definition of browser_action and page_action.</p>
+<p><code>browser_action</code> is when the extension is visible on every page.<br><code>page_action</code> is when the extension is only activated at current page.</p>
+<p>Ok, so our goal is to only show the extension when the page has a video. How to achieve that is through <code>declarativeContent</code>. For more details visit <a href="https://developer.chrome.com/extensions/declarativeContent" target="_blank" rel="external">url</a>.</p>
+<blockquote>
+<p>The best part about <code>declarativeContent</code> is “one can read the page’s content without requiring permission to do so”</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">chrome.runtime.onInstalled.addListener(function() &#123;</div><div class="line">  chrome.declarativeContent.onPageChanged.removeRules(undefined, function() &#123;</div><div class="line">    chrome.declarativeContent.onPageChanged.addRules([&#123;</div><div class="line">      conditions: [</div><div class="line">        // When a page contains a &lt;video&gt; tag...</div><div class="line">        new chrome.declarativeContent.PageStateMatcher(&#123;</div><div class="line">          css: [&quot;video&quot;]</div><div class="line">        &#125;)</div><div class="line">      ],</div><div class="line">      // ... show the page action.</div><div class="line">      actions: [new chrome.declarativeContent.ShowPageAction() ] //cause page action button to be shown</div><div class="line">    &#125;]);</div><div class="line">  &#125;);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>up to here our extension pretty much looks like <a href="https://developer.chrome.com/extensions/samples#search:page%20action%20by%20content" target="_blank" rel="external">page action by content</a> provided by Google’s api.</p>
+<h3 id="Now-let’s-try-One-time-messaging"><a href="#Now-let’s-try-One-time-messaging" class="headerlink" title="Now let’s try One time messaging"></a>Now let’s try One time messaging</h3><p>Our goal is to get continuous communication which uses a <code>port</code>, however, to understand the logic first, I propose trying out this example.</p>
+<p>So in this example, our goal is to retrieve the video’s information from the current page. That involves two steps for our page_action (and obviously for browser and storage purpose, we would want to pass to background first, but this is just a simple example so)</p>
+<ol>
+<li>sending a request from extension to contentscript</li>
+<li>in contentscript, send the video content back to extension</li>
+</ol>
+<blockquote>
+<p>extension here means <code>popup.js</code>, which contains our extension setups and methods</p>
+</blockquote>
+<p>Let’s do this!</p>
+<p>First, in <code>popup.js</code>, we use current tab’s callback to do the messaging</p>
+<blockquote>
+<p>how to get current tab? <a href="https://developer.chrome.com/extensions/tabs" target="_blank" rel="external">documentation</a> or check out the code below</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">chrome.tabs.query(&#123; currentWindow: true, active: true &#125;, function(tabs) &#123;</div><div class="line">  console.log(&apos;current tab is&apos;+ tabs[0].id)</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<p>Within this callback function, we use executeScript to communicate to <code>contentscript.js</code>.</p>
+<blockquote>
+<p>After doing a lot of research, I discovered this step is often not explained in the documentations and others example, if anyone has any idea why this line is necessary please leave a comment and share your understanding</p>
+</blockquote>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"> chrome.tabs.executeScript(null,&#123; //null defaults to current tab</div><div class="line">          file: &apos;contentscript.js&apos;</div><div class="line">        &#125;, function() &#123;</div><div class="line"></div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<p>Within the executeScript’s callabck function, we use <code>chrome.tabs.sendMessage</code> to request</p>
+<blockquote>
+<p>in background and contentscript, we use chrome.runtime.sendMessage, to understand the diff, I recommending reading this <a href="http://stackoverflow.com/questions/41420528/communicate-between-scripts-in-the-background-context-background-script-browse" target="_blank" rel="external">stackoverflow</a></p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">chrome.tabs.sendMessage( tabs[0].id, &#123; greeting: &apos;hello from the page action~&apos; &#125;, function(res) &#123;</div><div class="line">  if(res)&#123; //blabla&#125;</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<blockquote>
+<p>res here is whatever received from contentscript, which will be explained next</p>
+</blockquote>
+<p>In <code>contentscript.js</code>, listens using <code>onMessage</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">chrome.runtime.onMessage.addListener(function(msg, sender, sendResponse) &#123;</div><div class="line">  if(msg.greeting)</div><div class="line">    console.log(&apos;i got the messge&apos;, msg.greeting)</div><div class="line">    //sendResponse</div><div class="line">    sendResponse(&#123;</div><div class="line">      reply: &apos;yehyeh&apos;,</div><div class="line">      ispaused: document.querySelector（&apos;video&apos;).paused //boolean</div><div class="line">    &#125;)</div><div class="line">    return true</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<p><code>sendResponse</code> is a callback works like <code>sendMessage</code>, which sends the dom element attribute as a json object to extension.</p>
+<p>Now back to extension, use <code>ctrl+f</code> search for <code>blabla</code>, this is where you can check response by console log <code>res.reply, res.ispaused</code>.</p>
+<h1 id="Foreword"><a href="#Foreword" class="headerlink" title="Foreword"></a>Foreword</h1><p>That’s it! You should now able to get the video info from the extension. Check popup inspector and page inspector for console. If you have any question or suggestion, please leave a comment below.</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;notice-For-self-learning-purpose&quot;&gt;&lt;a href=&quot;#notice-For-self-learning-purpose&quot; class=&quot;headerlink&quot; title=&quot;notice: For self learning pu
+    
+    </summary>
+    
+    
+      <category term="chrome" scheme="http://lycworks.me/blog/tags/chrome/"/>
+    
+  </entry>
   
   <entry>
     <title>MATRIX与我的爱恨情仇</title>
@@ -459,93 +535,135 @@
   </entry>
   
   <entry>
-    <title>CSS Trick</title>
-    <link href="http://lycworks.me/blog/2017/02/02/2016-06-26-CSS-tricks/"/>
-    <id>http://lycworks.me/blog/2017/02/02/2016-06-26-CSS-tricks/</id>
-    <published>2017-02-02T21:56:37.000Z</published>
-    <updated>2017-02-02T21:56:37.000Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="Horizontal-Centering-Span-that-are-absolute"><a href="#Horizontal-Centering-Span-that-are-absolute" class="headerlink" title="Horizontal Centering Span that are absolute"></a>Horizontal Centering Span that are absolute</h1><p>once absolutely positioned, it no longer follows the document flow. So the text is centered, but only inside the pink span.<br>And since it’s absolutely positioned, even if it were a div, the width would collapse.  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">solution  </div><div class="line">span  </div><div class="line">&#123;  </div><div class="line">    background-color:pink;  </div><div class="line">    left: 0;  /*&lt;-*/</div><div class="line">    width: 100%;  /*&lt;-*/  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<blockquote>
-<p>If you don’t want the pink to extend the full width, then you must nest an element (e.g. span) inside the positioned spans and give that element the background color, as seen here.</p>
-</blockquote>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;Horizontal-Centering-Span-that-are-absolute&quot;&gt;&lt;a href=&quot;#Horizontal-Centering-Span-that-are-absolute&quot; class=&quot;headerlink&quot; title=&quot;Horizo
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>CSS grid方法</title>
-    <link href="http://lycworks.me/blog/2017/02/02/2016-07-09-css-grid/"/>
-    <id>http://lycworks.me/blog/2017/02/02/2016-07-09-css-grid/</id>
+    <title>Git笔记</title>
+    <link href="http://lycworks.me/blog/2017/02/02/2016-07-06-git-note/"/>
+    <id>http://lycworks.me/blog/2017/02/02/2016-07-06-git-note/</id>
     <published>2017-02-02T21:56:37.000Z</published>
     <updated>2017-02-02T21:56:37.000Z</updated>
     
     <content type="html"><![CDATA[<hr>
-<pre><code>/*container*/
-.content{
-    padding: 0;
-}
+<h2 id="Basic-Commands"><a href="#Basic-Commands" class="headerlink" title="Basic Commands"></a>Basic Commands</h2><p>source: <a href="http://huangziwei.com/tech/blogging-with-git-github-and-jekyll/" target="_blank" rel="external">http://huangziwei.com/tech/blogging-with-git-github-and-jekyll/</a><br><code>git remote -v</code>, <code>git remote show origin</code> - 检测文件夹是否已绑定远程库(remote repository)<br><code>git remote add origin &lt;remote git repository&gt;</code> - 绑定fork的远程库<br><code>git checkout &lt;file to ignore&gt;</code><br><code>git checkout -b|--orphan &lt;branchname&gt;</code> - normal|disconnected branch  </p>
+<h2 id="branch"><a href="#branch" class="headerlink" title="branch"></a>branch</h2><p>source: <a href="https://www.atlassian.com/git/tutorials/using-branches/git-branch" target="_blank" rel="external">https://www.atlassian.com/git/tutorials/using-branches/git-branch</a>  </p>
+<h2 id="Submodules-使用副项目并随时得到更新"><a href="#Submodules-使用副项目并随时得到更新" class="headerlink" title="Submodules　使用副项目并随时得到更新"></a>Submodules　使用副项目并随时得到更新</h2><p>source: <a href="https://medium.com/@porteneuve/mastering-git-submodules-34c65e940407#.kcyfdl2xi" target="_blank" rel="external">https://medium.com/@porteneuve/mastering-git-submodules-34c65e940407#.kcyfdl2xi</a>, <a href="http://johnleach.co.uk/words/323/git-submodules-in-n-easy-steps" target="_blank" rel="external">http://johnleach.co.uk/words/323/git-submodules-in-n-easy-steps</a>, <a href="https://johnleach.co.uk/words/323" target="_blank" rel="external">https://johnleach.co.uk/words/323</a>,<br><a href="https://blog.jacius.info/git-submodule-cheat-sheet/" target="_blank" rel="external">https://blog.jacius.info/git-submodule-cheat-sheet/</a>, <a href="http://blog.chh.tw/posts/git-submodule/" target="_blank" rel="external">http://blog.chh.tw/posts/git-submodule/</a>, <a href="http://springok-blog.logdown.com/posts/2015/11/06/submodule-on-github-subproject-troubleshooting" target="_blank" rel="external">http://springok-blog.logdown.com/posts/2015/11/06/submodule-on-github-subproject-troubleshooting</a></p>
+<pre><code>git submodule add &lt;others .git repository&gt; &lt;myfolder&gt; 
+-- set up .gitmodules for myfolder      
+git commit .gitmodules &lt;myfolder&gt; -m &quot;a message&quot;  
+git push
 
-ul.posts{
-    background: aliceblue;
-    width: 100%;
-}
-ul.posts li {
-    float: left;
-    margin: 0;
-    display: inline-block;
-    width: 33.3%;
-    min-height: 200px;
-    text-align: center;
-    box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-    vertical-align: top;
-    zoom: 1;
-}
-ul.posts li a{
-    /*     display:block; */
-    margin:0;
-    color: #333;
-    font-weight: 600;
-    font-size: 20pt;
-}
+# after cloning tree, fetch all submodules  
+git submodule init Submodule &apos;myfolder&apos;  
+git submodule update    
 
-ul.posts li:hover{
-    background: rgba(255,255,255,0.5);
-    border: 10px solid rgba(255,255,255,0.01)
-}
+# updating submodule  
+cd myfolder &amp;&amp; git pull [from others] &amp;&amp; git add myfolder &amp;&amp; commit    
+
+# making changes to your submodule  
+cd myfolder &amp;&amp; git checkout master [do changes in that branch]  
+git commit -a -m &quot;fix a bug&quot; &amp;&amp; push  
+cd .. &amp;&amp; git add myfolder &amp;&amp; commit -m &quot;updated myfolder&quot;  
 </code></pre>]]></content>
     
     <summary type="html">
     
       &lt;hr&gt;
-&lt;pre&gt;&lt;code&gt;/*container*/
-.content{
-    padding: 0;
-}
-
-ul.posts{
-    background: aliceblue;
-    width: 100%;
-}
-ul.posts li {
-    float: 
+&lt;h2 id=&quot;Basic-Commands&quot;&gt;&lt;a href=&quot;#Basic-Commands&quot; class=&quot;headerlink&quot; title=&quot;Basic Commands&quot;&gt;&lt;/a&gt;Basic Commands&lt;/h2&gt;&lt;p&gt;source: &lt;a href=&quot;
     
     </summary>
     
-      <category term="CSS" scheme="http://lycworks.me/blog/categories/CSS/"/>
+      <category term="CLI stuff" scheme="http://lycworks.me/blog/categories/CLI-stuff/"/>
     
     
-      <category term="grid" scheme="http://lycworks.me/blog/tags/grid/"/>
+      <category term="git" scheme="http://lycworks.me/blog/tags/git/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>HTML5特性</title>
+    <link href="http://lycworks.me/blog/2017/02/02/2016-07-09-html5-tricks/"/>
+    <id>http://lycworks.me/blog/2017/02/02/2016-07-09-html5-tricks/</id>
+    <published>2017-02-02T21:56:37.000Z</published>
+    <updated>2017-02-02T21:56:37.000Z</updated>
+    
+    <content type="html"><![CDATA[<hr>
+<h1 id="data-name"><a href="#data-name" class="headerlink" title="data-name"></a>data-name</h1><blockquote>
+<p>‘a great marriage of server side and client side’ -Stephen Calvert, Quora<br>resources: <a href="https://www.quora.com/What-is-the-best-way-to-pass-server-side-variables-to-client-side-JavaScript" target="_blank" rel="external">https://www.quora.com/What-is-the-best-way-to-pass-server-side-variables-to-client-side-JavaScript</a>  </p>
+</blockquote>
+<h3 id="HTML-lt-div-id-quot-mydiv-quot-data-myval-quot-10-quot-gt-lt-div-gt"><a href="#HTML-lt-div-id-quot-mydiv-quot-data-myval-quot-10-quot-gt-lt-div-gt" class="headerlink" title="HTML- &lt;div id=&quot;mydiv&quot;data-myval=&quot;10&quot;&gt;&lt;/div&gt;"></a>HTML- <code>&lt;div id=&quot;mydiv&quot;</code>data-myval<code>=&quot;10&quot;&gt;&lt;/div&gt;</code></h3><h3 id="JS"><a href="#JS" class="headerlink" title="JS"></a>JS</h3><ul>
+<li><code>var a = $(&#39;#mydiv&#39;).data(&#39;myval&#39;);</code> //getter  </li>
+<li><code>$(&#39;#mydiv&#39;).data(&#39;myval&#39;,20);</code> //setter  </li>
+</ul>
+<blockquote>
+<p>For older browser, use  <code>var myval = element.getAttribute(&#39;data-myval&#39;);</code>  </p>
+</blockquote>
+<h3 id="Or-merely-use-config-as-json-object"><a href="#Or-merely-use-config-as-json-object" class="headerlink" title="Or merely use config as json object"></a>Or merely use config as json object</h3><pre><code>config = {
+    userName: &apos;Scott Patten&apos;,
+    userLogin: &apos;spatten&apos;,
+    hasBoughtCurrentBook: true,
+    followers: [&apos;peterarmstrong&apos;, &apos;rolandtanglao&apos;]
+};
+</code></pre><h3 id="Advance-way"><a href="#Advance-way" class="headerlink" title="Advance way"></a>Advance way</h3><p>(<a href="https://teamtreehouse.com/community/how-do-i-make-a-variable-passed-to-a-jade-template-by-an-express-route-accessible-for-use-in-js-on-the-rendered-page" target="_blank" rel="external">https://teamtreehouse.com/community/how-do-i-make-a-variable-passed-to-a-jade-template-by-an-express-route-accessible-for-use-in-js-on-the-rendered-page</a>)  </p>
+<ul>
+<li><p>1)On the server side javascript file you put the object as a JSON string on the request  </p>
+<pre><code>res.render(&apos;index&apos;, { workflowData_server: JSON.stringify(workflowData) });
+</code></pre></li>
+<li><p>2) on the template view file,for example index.jade file you put script<br>var workflowData_client = !{workflowData_server} the ! is needed to unescape it to html  </p>
+</li>
+<li><p>3) now you can use the workflowData_client on your client javascript file,<br>for example a public/angular.js file  </p>
+<pre><code>angular.module(&apos;TestApp&apos;, []); angular.module(&apos;TestApp&apos;) .controller(&apos;MainController&apos;, ctrlFunc);
+
+function ctrlFunc() { this.workflowData = workflowData_client; }
+</code></pre></li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;hr&gt;
+&lt;h1 id=&quot;data-name&quot;&gt;&lt;a href=&quot;#data-name&quot; class=&quot;headerlink&quot; title=&quot;data-name&quot;&gt;&lt;/a&gt;data-name&lt;/h1&gt;&lt;blockquote&gt;
+&lt;p&gt;‘a great marriage of ser
+    
+    </summary>
+    
+      <category term="HTML" scheme="http://lycworks.me/blog/categories/HTML/"/>
+    
+    
+      <category term="data_passing, view_render" scheme="http://lycworks.me/blog/tags/data-passing-view-render/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Snap.SVG</title>
+    <link href="http://lycworks.me/blog/2017/02/02/2016-07-14-svg/"/>
+    <id>http://lycworks.me/blog/2017/02/02/2016-07-14-svg/</id>
+    <published>2017-02-02T21:56:37.000Z</published>
+    <updated>2017-02-02T21:56:37.000Z</updated>
+    
+    <content type="html"><![CDATA[<hr>
+<h1 id="Snap-SVG"><a href="#Snap-SVG" class="headerlink" title="Snap.SVG"></a>Snap.SVG</h1><p>clear<br>        var s = Snap(‘css selector’)<br>        Snap.load(‘whatever.svg’, function(fragment){<br>            s.clear()<br>        })</p>
+<p>get element  </p>
+<pre><code>myRect.attr(&apos;id&apos;);
+</code></pre><p>set element<br>        myRect.attr({<br>            id: ‘newid’<br>        })</p>
+<p>click callback  </p>
+<pre><code>var clickCallback = function(event) {
+    this.attr({ fill: &apos;blue&apos; });
+};
+
+myRect.click(clickCallback);
+</code></pre><p>timer example <a href="https://codepen.io/rachsmith/pen/BqpCd?editors=0010" target="_blank" rel="external">https://codepen.io/rachsmith/pen/BqpCd?editors=0010</a><br>basics <a href="http://webdesign.tutsplus.com/articles/how-to-manipulate-and-animate-svg-with-snapsvg--cms-21323" target="_blank" rel="external">http://webdesign.tutsplus.com/articles/how-to-manipulate-and-animate-svg-with-snapsvg--cms-21323</a><br><a href="http://unicorn-ui.com/blog/intermediate-svg.html" target="_blank" rel="external">http://unicorn-ui.com/blog/intermediate-svg.html</a>, <a href="https://www.sitepoint.com/advanced-snap-svg/" target="_blank" rel="external">https://www.sitepoint.com/advanced-snap-svg/</a>, <a href="http://nocircleno.com/blog/getting-starting-with-svg-and-javascript/" target="_blank" rel="external">http://nocircleno.com/blog/getting-starting-with-svg-and-javascript/</a><br>animation - all <a href="https://codyhouse.co/gem/animate-svg-icons-with-css-and-snap/" target="_blank" rel="external">https://codyhouse.co/gem/animate-svg-icons-with-css-and-snap/</a>, <a href="https://davidwalsh.name/svg-animations-snap" target="_blank" rel="external">https://davidwalsh.name/svg-animations-snap</a><br>animation - path <a href="https://codepen.io/JRGould/pen/dkHhw?editors=0010" target="_blank" rel="external">https://codepen.io/JRGould/pen/dkHhw?editors=0010</a><br>masking exmaple <a href="http://jsfiddle.net/5826ywh7/3/" target="_blank" rel="external">http://jsfiddle.net/5826ywh7/3/</a><br>callback within Snap.load <a href="http://stackoverflow.com/questions/26465119/why-when-i-add-function-into-snap-load-loading-svg-my-method-i-cannot" target="_blank" rel="external">http://stackoverflow.com/questions/26465119/why-when-i-add-function-into-snap-load-loading-svg-my-method-i-cannot</a>  </p>
+<p>more examples <a href="https://www.raymondcamden.com/2013/11/06/Want-help-with-Snapsvg-And-a-few-more-examples/" target="_blank" rel="external">https://www.raymondcamden.com/2013/11/06/Want-help-with-Snapsvg-And-a-few-more-examples/</a>  </p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;hr&gt;
+&lt;h1 id=&quot;Snap-SVG&quot;&gt;&lt;a href=&quot;#Snap-SVG&quot; class=&quot;headerlink&quot; title=&quot;Snap.SVG&quot;&gt;&lt;/a&gt;Snap.SVG&lt;/h1&gt;&lt;p&gt;clear&lt;br&gt;        var s = Snap(‘css select
+    
+    </summary>
+    
+      <category term="SVG" scheme="http://lycworks.me/blog/categories/SVG/"/>
+    
+    
+      <category term="snap.svg, svg" scheme="http://lycworks.me/blog/tags/snap-svg-svg/"/>
     
   </entry>
   
@@ -614,80 +732,28 @@ function drawChart(str,id,val){
   </entry>
   
   <entry>
-    <title>Snap.SVG</title>
-    <link href="http://lycworks.me/blog/2017/02/02/2016-07-14-svg/"/>
-    <id>http://lycworks.me/blog/2017/02/02/2016-07-14-svg/</id>
+    <title>Sublime应用笔记</title>
+    <link href="http://lycworks.me/blog/2017/02/02/2016-05-16-sublime-note/"/>
+    <id>http://lycworks.me/blog/2017/02/02/2016-05-16-sublime-note/</id>
     <published>2017-02-02T21:56:37.000Z</published>
     <updated>2017-02-02T21:56:37.000Z</updated>
     
-    <content type="html"><![CDATA[<hr>
-<h1 id="Snap-SVG"><a href="#Snap-SVG" class="headerlink" title="Snap.SVG"></a>Snap.SVG</h1><p>clear<br>        var s = Snap(‘css selector’)<br>        Snap.load(‘whatever.svg’, function(fragment){<br>            s.clear()<br>        })</p>
-<p>get element  </p>
-<pre><code>myRect.attr(&apos;id&apos;);
-</code></pre><p>set element<br>        myRect.attr({<br>            id: ‘newid’<br>        })</p>
-<p>click callback  </p>
-<pre><code>var clickCallback = function(event) {
-    this.attr({ fill: &apos;blue&apos; });
-};
-
-myRect.click(clickCallback);
-</code></pre><p>timer example <a href="https://codepen.io/rachsmith/pen/BqpCd?editors=0010" target="_blank" rel="external">https://codepen.io/rachsmith/pen/BqpCd?editors=0010</a><br>basics <a href="http://webdesign.tutsplus.com/articles/how-to-manipulate-and-animate-svg-with-snapsvg--cms-21323" target="_blank" rel="external">http://webdesign.tutsplus.com/articles/how-to-manipulate-and-animate-svg-with-snapsvg--cms-21323</a><br><a href="http://unicorn-ui.com/blog/intermediate-svg.html" target="_blank" rel="external">http://unicorn-ui.com/blog/intermediate-svg.html</a>, <a href="https://www.sitepoint.com/advanced-snap-svg/" target="_blank" rel="external">https://www.sitepoint.com/advanced-snap-svg/</a>, <a href="http://nocircleno.com/blog/getting-starting-with-svg-and-javascript/" target="_blank" rel="external">http://nocircleno.com/blog/getting-starting-with-svg-and-javascript/</a><br>animation - all <a href="https://codyhouse.co/gem/animate-svg-icons-with-css-and-snap/" target="_blank" rel="external">https://codyhouse.co/gem/animate-svg-icons-with-css-and-snap/</a>, <a href="https://davidwalsh.name/svg-animations-snap" target="_blank" rel="external">https://davidwalsh.name/svg-animations-snap</a><br>animation - path <a href="https://codepen.io/JRGould/pen/dkHhw?editors=0010" target="_blank" rel="external">https://codepen.io/JRGould/pen/dkHhw?editors=0010</a><br>masking exmaple <a href="http://jsfiddle.net/5826ywh7/3/" target="_blank" rel="external">http://jsfiddle.net/5826ywh7/3/</a><br>callback within Snap.load <a href="http://stackoverflow.com/questions/26465119/why-when-i-add-function-into-snap-load-loading-svg-my-method-i-cannot" target="_blank" rel="external">http://stackoverflow.com/questions/26465119/why-when-i-add-function-into-snap-load-loading-svg-my-method-i-cannot</a>  </p>
-<p>more examples <a href="https://www.raymondcamden.com/2013/11/06/Want-help-with-Snapsvg-And-a-few-more-examples/" target="_blank" rel="external">https://www.raymondcamden.com/2013/11/06/Want-help-with-Snapsvg-And-a-few-more-examples/</a>  </p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;hr&gt;
-&lt;h1 id=&quot;Snap-SVG&quot;&gt;&lt;a href=&quot;#Snap-SVG&quot; class=&quot;headerlink&quot; title=&quot;Snap.SVG&quot;&gt;&lt;/a&gt;Snap.SVG&lt;/h1&gt;&lt;p&gt;clear&lt;br&gt;        var s = Snap(‘css select
-    
-    </summary>
-    
-      <category term="SVG" scheme="http://lycworks.me/blog/categories/SVG/"/>
-    
-    
-      <category term="snap.svg, svg" scheme="http://lycworks.me/blog/tags/snap-svg-svg/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>HTML笔记</title>
-    <link href="http://lycworks.me/blog/2017/02/02/2016-05-16-html-note/"/>
-    <id>http://lycworks.me/blog/2017/02/02/2016-05-16-html-note/</id>
-    <published>2017-02-02T21:56:37.000Z</published>
-    <updated>2017-02-02T21:56:37.000Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="HTML"><a href="#HTML" class="headerlink" title="HTML"></a>HTML</h1><h3 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h3><ul>
-<li>语义强调  em, strong</li>
-<li>span不为强调，为了设置单独样式  </li>
-<li><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">*  ```&amp;nbsp; ```为字符实体，显示空格  </div><div class="line">* ```&lt;code&gt;```标签只能插入一行代码，如果要插入多行代码，使用```&lt;pre&gt;```标签  </div><div class="line">* ```&lt;div&gt;```为网页划分独立的版块,通常使用id区分  </div><div class="line">* ```&lt;tbody&gt;..&lt;/tbody&gt;```：要等表格内容全部下载完才会显示  </div><div class="line">* 摘要  </div><div class="line"> ```&lt;table summary=&quot;表格简介文本&quot;&gt;```  </div><div class="line">    &gt; 摘要的内容是不会在浏览器中显示出来的  </div><div class="line">它的作用是增加表格的可读性(语义化)，使搜索引擎更好的读懂表格内容，还可以使屏幕阅读器更好的帮助特殊用户读取表格内容。  </div><div class="line"></div><div class="line">    ```&lt;caption&gt;标题文本&lt;/caption&gt;``` 会显示title  </div><div class="line">    </div><div class="line">* 链接  </div><div class="line">	title属性的作用 - 鼠标滑过链接文字时会显示这个属性的文本内容  </div><div class="line">	href=mailto - 后面同时有多个参数的话，第一个参数必须以“?”开头，后面的参数每一个都以“&amp;”分隔。</div><div class="line"></div><div class="line">* Input  </div><div class="line">&gt; 当 type=&quot;radio&quot; 时，控件为单选框, name 取值一定要一致  </div><div class="line">&gt; 当 type=&quot;checkbox&quot; 时，控件为复选框</div><div class="line"></div><div class="line"># CSS</div><div class="line">```内联式(属性) &gt; 嵌入式(&lt;style&gt;) &gt; 外部式</div></pre></td></tr></table></figure>
-</li>
-<li><p>子选择器 ‘&gt;’<br>用于选择指定标签元素的第一代子元素。如右侧代码编辑器中的代码：  </p>
-<figure class="highlight plain"><figcaption><span>solid red;&#125;```</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">  &gt; 这行代码会使class名为food下的子元素li（水果、蔬菜）加入红色实线边框。</div><div class="line"></div><div class="line">* 包含(后代)选择器 &apos; &apos;  </div><div class="line">作用于元素的第一代后代，空格作用于元素的所有后代</div><div class="line"></div><div class="line">* all选择器 &apos;*&apos;</div><div class="line"></div><div class="line">* 伪类选择符，它允许给html不存在的标签（标签的某种状态）设置样式</div><div class="line"></div><div class="line">* 分组选择符 &apos;,&apos;  </div><div class="line">```h1,span&#123;color:red;&#125;``` 相当于：</div><div class="line">```h1&#123;color:red;&#125; span&#123;color:red;&#125;</div></pre></td></tr></table></figure>
-</li>
-<li><p>权值<br>标签的权值为1，类选择符的权值为10，ID选择符的权值最高为100。例如下面的代码:  </p>
-</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">p&#123;color:red;&#125; /*权值为1*/</div><div class="line">p span&#123;color:green;&#125; /*权值为1+1=2*/</div><div class="line">.warning&#123;color:white;&#125; /*权值为10*/</div><div class="line">p span.warning&#123;color:purple;&#125; /*权值为1+1+10=12*/</div><div class="line">#footer .note p&#123;color:yellow;&#125; /*权值为100+10+1=111*/</div></pre></td></tr></table></figure>
+    <content type="html"><![CDATA[<h1 id="Sublime-hotkeys"><a href="#Sublime-hotkeys" class="headerlink" title="Sublime hotkeys"></a>Sublime hotkeys</h1><p>Copy paste duplicate lines - CTRL + SHIFT + D</p>
+<h2 id="多行游标"><a href="#多行游标" class="headerlink" title="多行游标"></a>多行游标</h2><p>1、Ctrl+H 查找替换<br>2、Ctrl+D 选中内容<br>3、Ctrl+K–&gt;Ctrl+D 跳过选取<br>4、Ctrl+D–&gt;Atl+F3 全选匹配内容<br>5、Ctrl+A –&gt; Ctrl+Shift+L 拆分行<br>6、鼠标放在单词上，按 Shift+鼠标右键下拉  </p>
 <blockquote>
-<p>注意：继承权值很低，有的文献提出它只有0.1，所以可以理解为继承的权值最低。</p>
+<p>使用 Escape 可以退出多行游标模式。</p>
 </blockquote>
-<ul>
-<li>css样式的重要性<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">样式优先级为：浏览器默认的样式 &lt; 网页制作者样式 &lt; 用户自己设置的样式，但记住!important优先级样式是个例外，权值高于用户自己设置的样式。</div><div class="line"></div><div class="line">* absolute：  </div><div class="line">	* 无已定位的祖先元素则以&lt;HTML&gt;为基准偏移  </div><div class="line">	* 有已定位的祖先元素 e.g.relative,则以距离最近的且已定位的祖先元素为基准偏移  </div><div class="line">	* 位置会随滚动条变化。</div><div class="line">* fixed：  </div><div class="line">	* 有、无已定位的祖先元素，都以浏览器可视窗口为基准偏移。    </div><div class="line">	* 位置固定，不会随滚动条变化。（固定浮在上面）</div><div class="line">* z-index 只有设置了相对定位，或者绝对定位的元素才具有的属性</div><div class="line"></div><div class="line">* margin选择器设置的属性会和fixed属性设置重叠，导致&lt;body&gt;层与浏览器可视化窗口产生间距。在标准文档流中，两个元素，上外边距和上外边距，或者上外边距和下外边距相遇时，当两个标签都在标准文档流中时，会选择较大的上外填充</div><div class="line">	&gt; 可用解决方法：把后面的元素body设置margin-top：（fixed定位的元素高度）</div><div class="line">* 顶部固定层  </div><div class="line">	* top----position:fixex;(top:0;left:0;取决于祖先元素是否定位且有偏移量)  </div><div class="line">	* mainbody---margin-top:(#top高度+原有间距)px</div><div class="line">	</div><div class="line"># Paragraph</div></pre></td></tr></table></figure></li>
-</ul>
-<p>letter-spacing<br>word-spacing<br>line-height: 2em;<br>text-align - 为块状元素中的文本、图片设置居中样式<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"># DIV elements</div><div class="line">Block - elements with ```display:block```  </div><div class="line">Inline - ```display: inline```  例如span</div><div class="line">*	内联元素特点：</div><div class="line">		和其他元素都在一行上；  </div><div class="line">		元素的高度、宽度及顶部和底部边距不可设置；  </div><div class="line">		元素的宽度就是它包含的文字或图片的宽度，不可改变。  </div><div class="line">	</div><div class="line">Inline-block - 例如img,input</div><div class="line">* 和其他元素都在一行上；</div><div class="line">	元素的高度、宽度、行高以及顶和底边距都可设置  </div><div class="line"></div><div class="line">总体　　</div><div class="line"></div><div class="line">![alt text](http://img.imooc.com/539fbb3a0001304305570259.jpg &quot;Logo Title Text 1&quot;)</div><div class="line"></div><div class="line">填充- 元素内容与边框之间是可以设置距离的</div><div class="line">边界- 元素与其它元素之间设置距离</div><div class="line">&gt; padding在边框里，margin在边框外。  </div><div class="line"></div><div class="line"># CSS的3种基本布局模型 Flow、Layer 和 Float</div><div class="line"># 相对参照元素进行定位</div><div class="line">e.g. putting text on top of an image div</div><div class="line">* 参照定位的元素必须是相对定位元素的前辈元素</div></pre></td></tr></table></figure></p>
-<pre><code>&lt;div id=&quot;box1&quot;&gt;&lt;!--参照定位的元素--&gt;  
-    &lt;div id=&quot;box2&quot;&gt;相对参照元素进行定位&lt;/div&gt;&lt;!--相对定位元素--&gt;  
-&lt;/div&gt;
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line"># 居中  </div><div class="line">1.行内元素，水平居中是通过给父元素设置 text-align:center 来实现  </div><div class="line">2.定宽块状元素：fixed width,flexible height block element, 设置margin: 0 auto  </div><div class="line">3.不定宽块状元素：</div><div class="line">* 3.1 加入table标签:  </div><div class="line">第一步：为需要设置的居中的元素外面加入一个 table 标签 ( 包括 &lt;tbody&gt;、&lt;tr&gt;、&lt;td&gt; )。  </div><div class="line">第二步：为这个 table 设置“左右 margin 居中”（这个和定宽块状元素的方法一样）。</div><div class="line"></div><div class="line">* 3.2 改变块级元素的 display 为 inline 类型，然后使用 text-align:center 来实现居中效果。   </div><div class="line">这种方法相比第一种方法的优势是不用增加无语义标签，简化了标签的嵌套深度，但也存在着一些问题：它将块状元素的 display 类型改为 inline，变成了行内元素，所以少了一些功能，比如设定长度值。</div><div class="line">* 3.3 通过给父元素设置 float, position:relative 和 left:50%，  </div><div class="line">子元素设置 position:relative 和 left:-50% 来实现水平居中  </div><div class="line"></div><div class="line">&gt; 把父元素浮动到左边,同时向右偏移50%,相当于把父元素的左边缘对齐到整行的中间    </div><div class="line">把子元素向右偏移50%,这个50%是父元素的50%,即是wrap的50%,而此时wrap的宽度刚好就等于子元素的宽度,也是子元素本身的50%,这样刚好就居中了   </div><div class="line">可以在.wrap中添加一行clear：both（作用是清除两侧浮动，独占一行），这样“我们来学习一下这种方法”这句就不会把“1 2 3”这句遮住  </div><div class="line"></div><div class="line">这种方法可以保留块状元素仍以 display:block 的形式显示，优点不添加无语议表标签，不增加嵌套深度，但它的缺点是设置了 position:relative，带来了一定的副作用。  </div><div class="line"></div><div class="line"># 垂直居中：</div><div class="line">1. 单行内容垂直居中：设行高（line-height）与容器高（height）为相同值，如height=100px;line-height=100px;  </div><div class="line">2. 利用vertical-align:middle;属性：  </div><div class="line">	* 2.1 将元素插入到```&lt;table&gt;,&lt;td&gt;```或```&lt;th&gt;```中，利用```&lt;td&gt;```或```&lt;th&gt;```的```vertical-align: middle;```属性（vertical-align: middle;只对&lt;td&gt;或&lt;th&gt;有效）。</div><div class="line">	* 2.2 对元素设置display:table-cell;属性，触发vertical-align属性，可使之在容器内居中，但会使块级元素，变为行内块级元素。</div><div class="line"></div><div class="line"># Vertical Navigation</div><div class="line">* 把a标签定义成行内块</div><div class="line"></div><div class="line">* 文字缩进20px</div><div class="line"></div><div class="line"># Horizontal Nav</div><div class="line">* add float left and delete ul&apos;s width</div><div class="line"></div><div class="line"># Inner Nav</div></pre></td></tr></table></figure>
-
-ul&gt;li ul{transition:height 0.3s;}
-ul&gt;li:hover ul{height: 120px;}
-</code></pre><p>```</p>
+<h2 id="命令模式"><a href="#命令模式" class="headerlink" title="命令模式"></a>命令模式</h2><p>对当前工程修改语法模式:Ctrl+shift+P -&gt; 输入set syntax + 语言名称(如JavaScript)</p>
+<h3 id="HTML"><a href="#HTML" class="headerlink" title="HTML"></a>HTML</h3><p>1、Alt+“.”：当前标签自动加行结尾标签。<br>2、!+Ctrl+E：初始化模版。<br>3、#和@：页面内查询。<br>4、Ctrl+Enter：当前行代码下一换行。<br>5、Ctrl+Shift+Enter：当前行代码上一换行。<br>6、ul&gt;.item$*3+Ctrl+E（注意：把光标放在当前行的末尾）  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;ul&gt;</div><div class="line">	&lt;li class=&quot;item1&quot;&gt;&lt;/li&gt;</div><div class="line">	&lt;li class=&quot;item2&quot;&gt;&lt;/li&gt;</div><div class="line">	&lt;li class=&quot;item3&quot;&gt;&lt;/li&gt;</div><div class="line">&lt;/ul&gt;</div></pre></td></tr></table></figure>
+<p>7、Ctrl+}/]等同于tab：增加缩进；<br>8、Ctrl+{/[等同于Shift+tab：减少缩进。<br>9、标签名+{…}+Ctrl+E：自动排版，如：<code>h1{title} -&gt; &lt;h1&gt;title&lt;/h1&gt;</code><br>10、h1+Ctrl+E –&gt; <code>&lt;h1&gt;&lt;/h1&gt;</code><br>11、Ctrl+E：html自动排版<br>12、Ctrl+Shift+  </p>
+<h2 id="Snippet及相关插件"><a href="#Snippet及相关插件" class="headerlink" title="Snippet及相关插件"></a>Snippet及相关插件</h2><p>1、ctrl+shift+p 输入 snippet：function 自动生成function的基本结构<br>2、应用自动补全功能, 输入”fun”,见提示后按Tab键或Enter键<br>3、Tab键能快速定位下一个name位置<br>4、安装 Javascript&amp; NodeJS Snippets插件,jQuery插件(get,post),和insert callback插件(alt+C)<br>5、具体的snippet在插件官网查看<br>6、cl + tab - console.log</p>
+<p>##目录创建新文件<br>使用Advance new file 插件来创建新文件 ctrl+Alt+N<br>列子：public/css/test.css</p>
 ]]></content>
     
     <summary type="html">
     
-      &lt;h1 id=&quot;HTML&quot;&gt;&lt;a href=&quot;#HTML&quot; class=&quot;headerlink&quot; title=&quot;HTML&quot;&gt;&lt;/a&gt;HTML&lt;/h1&gt;&lt;h3 id=&quot;基础&quot;&gt;&lt;a href=&quot;#基础&quot; class=&quot;headerlink&quot; title=&quot;基础&quot;&gt;&lt;/a&gt;基础&lt;/h
+      &lt;h1 id=&quot;Sublime-hotkeys&quot;&gt;&lt;a href=&quot;#Sublime-hotkeys&quot; class=&quot;headerlink&quot; title=&quot;Sublime hotkeys&quot;&gt;&lt;/a&gt;Sublime hotkeys&lt;/h1&gt;&lt;p&gt;Copy paste duplica
     
     </summary>
     
@@ -769,34 +835,6 @@ block content
     
       &lt;hr&gt;
 &lt;h4 id=&quot;resource-http-naltatis-github-io-jade-syntax-docs&quot;&gt;&lt;a href=&quot;#resource-http-naltatis-github-io-jade-syntax-docs&quot; class=&quot;headerli
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>JSON</title>
-    <link href="http://lycworks.me/blog/2017/02/02/2016-08-08-json/"/>
-    <id>http://lycworks.me/blog/2017/02/02/2016-08-08-json/</id>
-    <published>2017-02-02T21:56:37.000Z</published>
-    <updated>2017-02-02T21:56:37.000Z</updated>
-    
-    <content type="html"><![CDATA[<hr>
-<h1 id="JSON-gt-String"><a href="#JSON-gt-String" class="headerlink" title="JSON -&gt; String"></a>JSON -&gt; String</h1><p>function  </p>
-<ul>
-<li>stringify (parse into string representation, has <code>pretty print</code>)  </li>
-<li>parse (parse string into JSON)  <blockquote>
-<p>convert opposite ways  </p>
-</blockquote>
-</li>
-</ul>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;hr&gt;
-&lt;h1 id=&quot;JSON-gt-String&quot;&gt;&lt;a href=&quot;#JSON-gt-String&quot; class=&quot;headerlink&quot; title=&quot;JSON -&amp;gt; String&quot;&gt;&lt;/a&gt;JSON -&amp;gt; String&lt;/h1&gt;&lt;p&gt;function  &lt;
     
     </summary>
     
