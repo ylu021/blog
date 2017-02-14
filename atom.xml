@@ -5,7 +5,7 @@
   <link href="/blog/atom.xml" rel="self"/>
   
   <link href="http://lycworks.me/blog/"/>
-  <updated>2017-02-10T21:16:45.000Z</updated>
+  <updated>2017-02-14T05:49:20.000Z</updated>
   <id>http://lycworks.me/blog/</id>
   
   <author>
@@ -14,6 +14,57 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>jquery_and_react</title>
+    <link href="http://lycworks.me/blog/2017/02/14/jquery-and-react/"/>
+    <id>http://lycworks.me/blog/2017/02/14/jquery-and-react/</id>
+    <published>2017-02-14T05:03:47.000Z</published>
+    <updated>2017-02-14T05:49:20.000Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="Foreword"><a href="#Foreword" class="headerlink" title="Foreword"></a>Foreword</h1><p>assume one has previous understanding of react. If you want to understand more about the component’s lifecycle and its methods, click here for <a href="https://facebook.github.io/react/docs/react-component.html" target="_blank" rel="external">documentation</a>.</p>
+<h1 id="Why-the-hassle"><a href="#Why-the-hassle" class="headerlink" title="Why the hassle"></a>Why the hassle</h1><p>Even though the trend has become react, there are still a lot of plugins written for jquery. Converting them to pure javascript is painful, so we often prefer to use them directly. How do we embed them in react?</p>
+<h3 id="Create-a-react-component"><a href="#Create-a-react-component" class="headerlink" title="Create a react component"></a>Create a react component</h3><p>in our example, we are trying to display a map element inside a div. therefore, we must first create a <code>Map</code> component (customized name), and inside the <code>render</code> function return a <code>div</code> with <code>ref=</code> for easy accessing (like a tag)</p>
+<h3 id="componentDidMount"><a href="#componentDidMount" class="headerlink" title="componentDidMount()"></a><code>componentDidMount()</code></h3><p>this is where one puts the jquery activation in here. This method belongs to the <code>Map</code> component. When the map component is rendered, we can access the component through <code>this.refs</code>. we can then use this to pass DOM to jQuery and initialize the plugin. After doing a bunch of research, here is my way of doing it.</p>
+<blockquote>
+<p>note jquery should only be load once, else error occurs</p>
+</blockquote>
+<p>First of all, in order for the plugin js file being run after the jQuery module is loaded (<code>npm install jquery</code>), we must declare it after index.html’s <code>&lt;/body&gt;</code> tag.</p>
+<p>Then, according to the loading rule, we assign the imported jQuery to <code>window.jQuery</code> at somewhere for global accessing (personally recommend to do this inside <code>componentDidMount()</code>, which is where the jquery plugin is being called).</p>
+<blockquote>
+<p>what is window.jQuery? It is a global window var that can be accessed by all js files</p>
+</blockquote>
+<p>Sample code<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">//within a react component&apos;s js file</div><div class="line">import jQuery from &apos;jquery&apos; //npm intall jquery --save</div><div class="line"></div><div class="line">componentDidMount() &#123;</div><div class="line">  window.jQuery = jQuery</div><div class="line">  var jq = window.jQuery</div><div class="line"></div><div class="line">  var _this = this //to be used in below closure</div><div class="line">  const &#123;...config&#125; = this.props</div><div class="line">  jq(document).ready(function() &#123;</div><div class="line">    var map = _this.refs.map</div><div class="line"></div><div class="line">    console.log(jq(_this.refs.map).vectorMap(config));</div><div class="line">  &#125;);</div><div class="line">&#125;</div><div class="line"></div><div class="line">render() &#123;</div><div class="line">  return (&lt;div id=&quot;map&quot; ref=&quot;map&quot;&gt;&lt;/div&gt;)</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<ul>
+<li><code>_this.refs.map</code> refers to the <code>&lt;div&gt;</code> with <code>ref=&quot;map&quot;</code></li>
+<li><p><code>the document.ready</code> must be called if we want to create the map, but this creates a <a href="http://www.w3schools.com/js/js_function_closures.asp" target="_blank" rel="external">closure</a>, so we need to create a local variable to access the outer <code>this</code> environment</p>
+<blockquote>
+<p>another short way to do this is simply declaring <code>const { map } = this.refs</code>, which can then be accessed as <code>_this.refs.map</code></p>
+</blockquote>
+</li>
+<li><p>I’m only using a console.log to print out informations related to this method for debug purposes</p>
+</li>
+<li><code>const {...config} = this.props</code> this line extracts all the properties of this component, individually assign them, similar to <code>map(arr)</code>.<blockquote>
+<p>The properties are  declared at app.js, where the component is rendered <code>&lt;Map map=&quot;continents_mill&quot; regionStyle={region} onRegionClick={this.handleClick} /&gt;</code></p>
+</blockquote>
+</li>
+</ul>
+<h3 id="componentWillUnmount"><a href="#componentWillUnmount" class="headerlink" title="componentWillUnmount()"></a><code>componentWillUnmount()</code></h3><p>This is where one cleans up the jquery element. Most of the times, for data reset. This is pretty clear, if you are still confused, visit <a href="https://facebook.github.io/react/docs/react-component.html" target="_blank" rel="external">documentation</a>.</p>
+<h3 id="Afterword"><a href="#Afterword" class="headerlink" title="Afterword"></a>Afterword</h3><p>I hope this tutorial is clear and useful, if you have any question or suggestion, feel free to leave a comment below.</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;Foreword&quot;&gt;&lt;a href=&quot;#Foreword&quot; class=&quot;headerlink&quot; title=&quot;Foreword&quot;&gt;&lt;/a&gt;Foreword&lt;/h1&gt;&lt;p&gt;assume one has previous understanding of react
+    
+    </summary>
+    
+    
+      <category term="react" scheme="http://lycworks.me/blog/tags/react/"/>
+    
+      <category term="javascript" scheme="http://lycworks.me/blog/tags/javascript/"/>
+    
+  </entry>
   
   <entry>
     <title>chrome plugin message passing</title>
@@ -535,49 +586,6 @@
   </entry>
   
   <entry>
-    <title>Git笔记</title>
-    <link href="http://lycworks.me/blog/2017/02/02/2016-07-06-git-note/"/>
-    <id>http://lycworks.me/blog/2017/02/02/2016-07-06-git-note/</id>
-    <published>2017-02-02T21:56:37.000Z</published>
-    <updated>2017-02-02T21:56:37.000Z</updated>
-    
-    <content type="html"><![CDATA[<hr>
-<h2 id="Basic-Commands"><a href="#Basic-Commands" class="headerlink" title="Basic Commands"></a>Basic Commands</h2><p>source: <a href="http://huangziwei.com/tech/blogging-with-git-github-and-jekyll/" target="_blank" rel="external">http://huangziwei.com/tech/blogging-with-git-github-and-jekyll/</a><br><code>git remote -v</code>, <code>git remote show origin</code> - 检测文件夹是否已绑定远程库(remote repository)<br><code>git remote add origin &lt;remote git repository&gt;</code> - 绑定fork的远程库<br><code>git checkout &lt;file to ignore&gt;</code><br><code>git checkout -b|--orphan &lt;branchname&gt;</code> - normal|disconnected branch  </p>
-<h2 id="branch"><a href="#branch" class="headerlink" title="branch"></a>branch</h2><p>source: <a href="https://www.atlassian.com/git/tutorials/using-branches/git-branch" target="_blank" rel="external">https://www.atlassian.com/git/tutorials/using-branches/git-branch</a>  </p>
-<h2 id="Submodules-使用副项目并随时得到更新"><a href="#Submodules-使用副项目并随时得到更新" class="headerlink" title="Submodules　使用副项目并随时得到更新"></a>Submodules　使用副项目并随时得到更新</h2><p>source: <a href="https://medium.com/@porteneuve/mastering-git-submodules-34c65e940407#.kcyfdl2xi" target="_blank" rel="external">https://medium.com/@porteneuve/mastering-git-submodules-34c65e940407#.kcyfdl2xi</a>, <a href="http://johnleach.co.uk/words/323/git-submodules-in-n-easy-steps" target="_blank" rel="external">http://johnleach.co.uk/words/323/git-submodules-in-n-easy-steps</a>, <a href="https://johnleach.co.uk/words/323" target="_blank" rel="external">https://johnleach.co.uk/words/323</a>,<br><a href="https://blog.jacius.info/git-submodule-cheat-sheet/" target="_blank" rel="external">https://blog.jacius.info/git-submodule-cheat-sheet/</a>, <a href="http://blog.chh.tw/posts/git-submodule/" target="_blank" rel="external">http://blog.chh.tw/posts/git-submodule/</a>, <a href="http://springok-blog.logdown.com/posts/2015/11/06/submodule-on-github-subproject-troubleshooting" target="_blank" rel="external">http://springok-blog.logdown.com/posts/2015/11/06/submodule-on-github-subproject-troubleshooting</a></p>
-<pre><code>git submodule add &lt;others .git repository&gt; &lt;myfolder&gt; 
--- set up .gitmodules for myfolder      
-git commit .gitmodules &lt;myfolder&gt; -m &quot;a message&quot;  
-git push
-
-# after cloning tree, fetch all submodules  
-git submodule init Submodule &apos;myfolder&apos;  
-git submodule update    
-
-# updating submodule  
-cd myfolder &amp;&amp; git pull [from others] &amp;&amp; git add myfolder &amp;&amp; commit    
-
-# making changes to your submodule  
-cd myfolder &amp;&amp; git checkout master [do changes in that branch]  
-git commit -a -m &quot;fix a bug&quot; &amp;&amp; push  
-cd .. &amp;&amp; git add myfolder &amp;&amp; commit -m &quot;updated myfolder&quot;  
-</code></pre>]]></content>
-    
-    <summary type="html">
-    
-      &lt;hr&gt;
-&lt;h2 id=&quot;Basic-Commands&quot;&gt;&lt;a href=&quot;#Basic-Commands&quot; class=&quot;headerlink&quot; title=&quot;Basic Commands&quot;&gt;&lt;/a&gt;Basic Commands&lt;/h2&gt;&lt;p&gt;source: &lt;a href=&quot;
-    
-    </summary>
-    
-      <category term="CLI stuff" scheme="http://lycworks.me/blog/categories/CLI-stuff/"/>
-    
-    
-      <category term="git" scheme="http://lycworks.me/blog/tags/git/"/>
-    
-  </entry>
-  
-  <entry>
     <title>HTML5特性</title>
     <link href="http://lycworks.me/blog/2017/02/02/2016-07-09-html5-tricks/"/>
     <id>http://lycworks.me/blog/2017/02/02/2016-07-09-html5-tricks/</id>
@@ -628,42 +636,6 @@ function ctrlFunc() { this.workflowData = workflowData_client; }
     
     
       <category term="data_passing, view_render" scheme="http://lycworks.me/blog/tags/data-passing-view-render/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Snap.SVG</title>
-    <link href="http://lycworks.me/blog/2017/02/02/2016-07-14-svg/"/>
-    <id>http://lycworks.me/blog/2017/02/02/2016-07-14-svg/</id>
-    <published>2017-02-02T21:56:37.000Z</published>
-    <updated>2017-02-02T21:56:37.000Z</updated>
-    
-    <content type="html"><![CDATA[<hr>
-<h1 id="Snap-SVG"><a href="#Snap-SVG" class="headerlink" title="Snap.SVG"></a>Snap.SVG</h1><p>clear<br>        var s = Snap(‘css selector’)<br>        Snap.load(‘whatever.svg’, function(fragment){<br>            s.clear()<br>        })</p>
-<p>get element  </p>
-<pre><code>myRect.attr(&apos;id&apos;);
-</code></pre><p>set element<br>        myRect.attr({<br>            id: ‘newid’<br>        })</p>
-<p>click callback  </p>
-<pre><code>var clickCallback = function(event) {
-    this.attr({ fill: &apos;blue&apos; });
-};
-
-myRect.click(clickCallback);
-</code></pre><p>timer example <a href="https://codepen.io/rachsmith/pen/BqpCd?editors=0010" target="_blank" rel="external">https://codepen.io/rachsmith/pen/BqpCd?editors=0010</a><br>basics <a href="http://webdesign.tutsplus.com/articles/how-to-manipulate-and-animate-svg-with-snapsvg--cms-21323" target="_blank" rel="external">http://webdesign.tutsplus.com/articles/how-to-manipulate-and-animate-svg-with-snapsvg--cms-21323</a><br><a href="http://unicorn-ui.com/blog/intermediate-svg.html" target="_blank" rel="external">http://unicorn-ui.com/blog/intermediate-svg.html</a>, <a href="https://www.sitepoint.com/advanced-snap-svg/" target="_blank" rel="external">https://www.sitepoint.com/advanced-snap-svg/</a>, <a href="http://nocircleno.com/blog/getting-starting-with-svg-and-javascript/" target="_blank" rel="external">http://nocircleno.com/blog/getting-starting-with-svg-and-javascript/</a><br>animation - all <a href="https://codyhouse.co/gem/animate-svg-icons-with-css-and-snap/" target="_blank" rel="external">https://codyhouse.co/gem/animate-svg-icons-with-css-and-snap/</a>, <a href="https://davidwalsh.name/svg-animations-snap" target="_blank" rel="external">https://davidwalsh.name/svg-animations-snap</a><br>animation - path <a href="https://codepen.io/JRGould/pen/dkHhw?editors=0010" target="_blank" rel="external">https://codepen.io/JRGould/pen/dkHhw?editors=0010</a><br>masking exmaple <a href="http://jsfiddle.net/5826ywh7/3/" target="_blank" rel="external">http://jsfiddle.net/5826ywh7/3/</a><br>callback within Snap.load <a href="http://stackoverflow.com/questions/26465119/why-when-i-add-function-into-snap-load-loading-svg-my-method-i-cannot" target="_blank" rel="external">http://stackoverflow.com/questions/26465119/why-when-i-add-function-into-snap-load-loading-svg-my-method-i-cannot</a>  </p>
-<p>more examples <a href="https://www.raymondcamden.com/2013/11/06/Want-help-with-Snapsvg-And-a-few-more-examples/" target="_blank" rel="external">https://www.raymondcamden.com/2013/11/06/Want-help-with-Snapsvg-And-a-few-more-examples/</a>  </p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;hr&gt;
-&lt;h1 id=&quot;Snap-SVG&quot;&gt;&lt;a href=&quot;#Snap-SVG&quot; class=&quot;headerlink&quot; title=&quot;Snap.SVG&quot;&gt;&lt;/a&gt;Snap.SVG&lt;/h1&gt;&lt;p&gt;clear&lt;br&gt;        var s = Snap(‘css select
-    
-    </summary>
-    
-      <category term="SVG" scheme="http://lycworks.me/blog/categories/SVG/"/>
-    
-    
-      <category term="snap.svg, svg" scheme="http://lycworks.me/blog/tags/snap-svg-svg/"/>
     
   </entry>
   
@@ -728,35 +700,6 @@ function drawChart(str,id,val){
     
     
       <category term="chart,JS" scheme="http://lycworks.me/blog/tags/chart-JS/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Sublime应用笔记</title>
-    <link href="http://lycworks.me/blog/2017/02/02/2016-05-16-sublime-note/"/>
-    <id>http://lycworks.me/blog/2017/02/02/2016-05-16-sublime-note/</id>
-    <published>2017-02-02T21:56:37.000Z</published>
-    <updated>2017-02-02T21:56:37.000Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="Sublime-hotkeys"><a href="#Sublime-hotkeys" class="headerlink" title="Sublime hotkeys"></a>Sublime hotkeys</h1><p>Copy paste duplicate lines - CTRL + SHIFT + D</p>
-<h2 id="多行游标"><a href="#多行游标" class="headerlink" title="多行游标"></a>多行游标</h2><p>1、Ctrl+H 查找替换<br>2、Ctrl+D 选中内容<br>3、Ctrl+K–&gt;Ctrl+D 跳过选取<br>4、Ctrl+D–&gt;Atl+F3 全选匹配内容<br>5、Ctrl+A –&gt; Ctrl+Shift+L 拆分行<br>6、鼠标放在单词上，按 Shift+鼠标右键下拉  </p>
-<blockquote>
-<p>使用 Escape 可以退出多行游标模式。</p>
-</blockquote>
-<h2 id="命令模式"><a href="#命令模式" class="headerlink" title="命令模式"></a>命令模式</h2><p>对当前工程修改语法模式:Ctrl+shift+P -&gt; 输入set syntax + 语言名称(如JavaScript)</p>
-<h3 id="HTML"><a href="#HTML" class="headerlink" title="HTML"></a>HTML</h3><p>1、Alt+“.”：当前标签自动加行结尾标签。<br>2、!+Ctrl+E：初始化模版。<br>3、#和@：页面内查询。<br>4、Ctrl+Enter：当前行代码下一换行。<br>5、Ctrl+Shift+Enter：当前行代码上一换行。<br>6、ul&gt;.item$*3+Ctrl+E（注意：把光标放在当前行的末尾）  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;ul&gt;</div><div class="line">	&lt;li class=&quot;item1&quot;&gt;&lt;/li&gt;</div><div class="line">	&lt;li class=&quot;item2&quot;&gt;&lt;/li&gt;</div><div class="line">	&lt;li class=&quot;item3&quot;&gt;&lt;/li&gt;</div><div class="line">&lt;/ul&gt;</div></pre></td></tr></table></figure>
-<p>7、Ctrl+}/]等同于tab：增加缩进；<br>8、Ctrl+{/[等同于Shift+tab：减少缩进。<br>9、标签名+{…}+Ctrl+E：自动排版，如：<code>h1{title} -&gt; &lt;h1&gt;title&lt;/h1&gt;</code><br>10、h1+Ctrl+E –&gt; <code>&lt;h1&gt;&lt;/h1&gt;</code><br>11、Ctrl+E：html自动排版<br>12、Ctrl+Shift+  </p>
-<h2 id="Snippet及相关插件"><a href="#Snippet及相关插件" class="headerlink" title="Snippet及相关插件"></a>Snippet及相关插件</h2><p>1、ctrl+shift+p 输入 snippet：function 自动生成function的基本结构<br>2、应用自动补全功能, 输入”fun”,见提示后按Tab键或Enter键<br>3、Tab键能快速定位下一个name位置<br>4、安装 Javascript&amp; NodeJS Snippets插件,jQuery插件(get,post),和insert callback插件(alt+C)<br>5、具体的snippet在插件官网查看<br>6、cl + tab - console.log</p>
-<p>##目录创建新文件<br>使用Advance new file 插件来创建新文件 ctrl+Alt+N<br>列子：public/css/test.css</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;Sublime-hotkeys&quot;&gt;&lt;a href=&quot;#Sublime-hotkeys&quot; class=&quot;headerlink&quot; title=&quot;Sublime hotkeys&quot;&gt;&lt;/a&gt;Sublime hotkeys&lt;/h1&gt;&lt;p&gt;Copy paste duplica
-    
-    </summary>
-    
     
   </entry>
   
@@ -835,6 +778,79 @@ block content
     
       &lt;hr&gt;
 &lt;h4 id=&quot;resource-http-naltatis-github-io-jade-syntax-docs&quot;&gt;&lt;a href=&quot;#resource-http-naltatis-github-io-jade-syntax-docs&quot; class=&quot;headerli
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>HTML笔记</title>
+    <link href="http://lycworks.me/blog/2017/02/02/2016-05-16-html-note/"/>
+    <id>http://lycworks.me/blog/2017/02/02/2016-05-16-html-note/</id>
+    <published>2017-02-02T21:56:37.000Z</published>
+    <updated>2017-02-02T21:56:37.000Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="HTML"><a href="#HTML" class="headerlink" title="HTML"></a>HTML</h1><h3 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h3><ul>
+<li>语义强调  em, strong</li>
+<li>span不为强调，为了设置单独样式  </li>
+<li><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">*  ```&amp;nbsp; ```为字符实体，显示空格  </div><div class="line">* ```&lt;code&gt;```标签只能插入一行代码，如果要插入多行代码，使用```&lt;pre&gt;```标签  </div><div class="line">* ```&lt;div&gt;```为网页划分独立的版块,通常使用id区分  </div><div class="line">* ```&lt;tbody&gt;..&lt;/tbody&gt;```：要等表格内容全部下载完才会显示  </div><div class="line">* 摘要  </div><div class="line"> ```&lt;table summary=&quot;表格简介文本&quot;&gt;```  </div><div class="line">    &gt; 摘要的内容是不会在浏览器中显示出来的  </div><div class="line">它的作用是增加表格的可读性(语义化)，使搜索引擎更好的读懂表格内容，还可以使屏幕阅读器更好的帮助特殊用户读取表格内容。  </div><div class="line"></div><div class="line">    ```&lt;caption&gt;标题文本&lt;/caption&gt;``` 会显示title  </div><div class="line">    </div><div class="line">* 链接  </div><div class="line">	title属性的作用 - 鼠标滑过链接文字时会显示这个属性的文本内容  </div><div class="line">	href=mailto - 后面同时有多个参数的话，第一个参数必须以“?”开头，后面的参数每一个都以“&amp;”分隔。</div><div class="line"></div><div class="line">* Input  </div><div class="line">&gt; 当 type=&quot;radio&quot; 时，控件为单选框, name 取值一定要一致  </div><div class="line">&gt; 当 type=&quot;checkbox&quot; 时，控件为复选框</div><div class="line"></div><div class="line"># CSS</div><div class="line">```内联式(属性) &gt; 嵌入式(&lt;style&gt;) &gt; 外部式</div></pre></td></tr></table></figure>
+</li>
+<li><p>子选择器 ‘&gt;’<br>用于选择指定标签元素的第一代子元素。如右侧代码编辑器中的代码：  </p>
+<figure class="highlight plain"><figcaption><span>solid red;&#125;```</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">  &gt; 这行代码会使class名为food下的子元素li（水果、蔬菜）加入红色实线边框。</div><div class="line"></div><div class="line">* 包含(后代)选择器 &apos; &apos;  </div><div class="line">作用于元素的第一代后代，空格作用于元素的所有后代</div><div class="line"></div><div class="line">* all选择器 &apos;*&apos;</div><div class="line"></div><div class="line">* 伪类选择符，它允许给html不存在的标签（标签的某种状态）设置样式</div><div class="line"></div><div class="line">* 分组选择符 &apos;,&apos;  </div><div class="line">```h1,span&#123;color:red;&#125;``` 相当于：</div><div class="line">```h1&#123;color:red;&#125; span&#123;color:red;&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>权值<br>标签的权值为1，类选择符的权值为10，ID选择符的权值最高为100。例如下面的代码:  </p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">p&#123;color:red;&#125; /*权值为1*/</div><div class="line">p span&#123;color:green;&#125; /*权值为1+1=2*/</div><div class="line">.warning&#123;color:white;&#125; /*权值为10*/</div><div class="line">p span.warning&#123;color:purple;&#125; /*权值为1+1+10=12*/</div><div class="line">#footer .note p&#123;color:yellow;&#125; /*权值为100+10+1=111*/</div></pre></td></tr></table></figure>
+<blockquote>
+<p>注意：继承权值很低，有的文献提出它只有0.1，所以可以理解为继承的权值最低。</p>
+</blockquote>
+<ul>
+<li>css样式的重要性<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">样式优先级为：浏览器默认的样式 &lt; 网页制作者样式 &lt; 用户自己设置的样式，但记住!important优先级样式是个例外，权值高于用户自己设置的样式。</div><div class="line"></div><div class="line">* absolute：  </div><div class="line">	* 无已定位的祖先元素则以&lt;HTML&gt;为基准偏移  </div><div class="line">	* 有已定位的祖先元素 e.g.relative,则以距离最近的且已定位的祖先元素为基准偏移  </div><div class="line">	* 位置会随滚动条变化。</div><div class="line">* fixed：  </div><div class="line">	* 有、无已定位的祖先元素，都以浏览器可视窗口为基准偏移。    </div><div class="line">	* 位置固定，不会随滚动条变化。（固定浮在上面）</div><div class="line">* z-index 只有设置了相对定位，或者绝对定位的元素才具有的属性</div><div class="line"></div><div class="line">* margin选择器设置的属性会和fixed属性设置重叠，导致&lt;body&gt;层与浏览器可视化窗口产生间距。在标准文档流中，两个元素，上外边距和上外边距，或者上外边距和下外边距相遇时，当两个标签都在标准文档流中时，会选择较大的上外填充</div><div class="line">	&gt; 可用解决方法：把后面的元素body设置margin-top：（fixed定位的元素高度）</div><div class="line">* 顶部固定层  </div><div class="line">	* top----position:fixex;(top:0;left:0;取决于祖先元素是否定位且有偏移量)  </div><div class="line">	* mainbody---margin-top:(#top高度+原有间距)px</div><div class="line">	</div><div class="line"># Paragraph</div></pre></td></tr></table></figure></li>
+</ul>
+<p>letter-spacing<br>word-spacing<br>line-height: 2em;<br>text-align - 为块状元素中的文本、图片设置居中样式<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"># DIV elements</div><div class="line">Block - elements with ```display:block```  </div><div class="line">Inline - ```display: inline```  例如span</div><div class="line">*	内联元素特点：</div><div class="line">		和其他元素都在一行上；  </div><div class="line">		元素的高度、宽度及顶部和底部边距不可设置；  </div><div class="line">		元素的宽度就是它包含的文字或图片的宽度，不可改变。  </div><div class="line">	</div><div class="line">Inline-block - 例如img,input</div><div class="line">* 和其他元素都在一行上；</div><div class="line">	元素的高度、宽度、行高以及顶和底边距都可设置  </div><div class="line"></div><div class="line">总体　　</div><div class="line"></div><div class="line">![alt text](http://img.imooc.com/539fbb3a0001304305570259.jpg &quot;Logo Title Text 1&quot;)</div><div class="line"></div><div class="line">填充- 元素内容与边框之间是可以设置距离的</div><div class="line">边界- 元素与其它元素之间设置距离</div><div class="line">&gt; padding在边框里，margin在边框外。  </div><div class="line"></div><div class="line"># CSS的3种基本布局模型 Flow、Layer 和 Float</div><div class="line"># 相对参照元素进行定位</div><div class="line">e.g. putting text on top of an image div</div><div class="line">* 参照定位的元素必须是相对定位元素的前辈元素</div></pre></td></tr></table></figure></p>
+<pre><code>&lt;div id=&quot;box1&quot;&gt;&lt;!--参照定位的元素--&gt;  
+    &lt;div id=&quot;box2&quot;&gt;相对参照元素进行定位&lt;/div&gt;&lt;!--相对定位元素--&gt;  
+&lt;/div&gt;
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line"># 居中  </div><div class="line">1.行内元素，水平居中是通过给父元素设置 text-align:center 来实现  </div><div class="line">2.定宽块状元素：fixed width,flexible height block element, 设置margin: 0 auto  </div><div class="line">3.不定宽块状元素：</div><div class="line">* 3.1 加入table标签:  </div><div class="line">第一步：为需要设置的居中的元素外面加入一个 table 标签 ( 包括 &lt;tbody&gt;、&lt;tr&gt;、&lt;td&gt; )。  </div><div class="line">第二步：为这个 table 设置“左右 margin 居中”（这个和定宽块状元素的方法一样）。</div><div class="line"></div><div class="line">* 3.2 改变块级元素的 display 为 inline 类型，然后使用 text-align:center 来实现居中效果。   </div><div class="line">这种方法相比第一种方法的优势是不用增加无语义标签，简化了标签的嵌套深度，但也存在着一些问题：它将块状元素的 display 类型改为 inline，变成了行内元素，所以少了一些功能，比如设定长度值。</div><div class="line">* 3.3 通过给父元素设置 float, position:relative 和 left:50%，  </div><div class="line">子元素设置 position:relative 和 left:-50% 来实现水平居中  </div><div class="line"></div><div class="line">&gt; 把父元素浮动到左边,同时向右偏移50%,相当于把父元素的左边缘对齐到整行的中间    </div><div class="line">把子元素向右偏移50%,这个50%是父元素的50%,即是wrap的50%,而此时wrap的宽度刚好就等于子元素的宽度,也是子元素本身的50%,这样刚好就居中了   </div><div class="line">可以在.wrap中添加一行clear：both（作用是清除两侧浮动，独占一行），这样“我们来学习一下这种方法”这句就不会把“1 2 3”这句遮住  </div><div class="line"></div><div class="line">这种方法可以保留块状元素仍以 display:block 的形式显示，优点不添加无语议表标签，不增加嵌套深度，但它的缺点是设置了 position:relative，带来了一定的副作用。  </div><div class="line"></div><div class="line"># 垂直居中：</div><div class="line">1. 单行内容垂直居中：设行高（line-height）与容器高（height）为相同值，如height=100px;line-height=100px;  </div><div class="line">2. 利用vertical-align:middle;属性：  </div><div class="line">	* 2.1 将元素插入到```&lt;table&gt;,&lt;td&gt;```或```&lt;th&gt;```中，利用```&lt;td&gt;```或```&lt;th&gt;```的```vertical-align: middle;```属性（vertical-align: middle;只对&lt;td&gt;或&lt;th&gt;有效）。</div><div class="line">	* 2.2 对元素设置display:table-cell;属性，触发vertical-align属性，可使之在容器内居中，但会使块级元素，变为行内块级元素。</div><div class="line"></div><div class="line"># Vertical Navigation</div><div class="line">* 把a标签定义成行内块</div><div class="line"></div><div class="line">* 文字缩进20px</div><div class="line"></div><div class="line"># Horizontal Nav</div><div class="line">* add float left and delete ul&apos;s width</div><div class="line"></div><div class="line"># Inner Nav</div></pre></td></tr></table></figure>
+
+ul&gt;li ul{transition:height 0.3s;}
+ul&gt;li:hover ul{height: 120px;}
+</code></pre><p>```</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;HTML&quot;&gt;&lt;a href=&quot;#HTML&quot; class=&quot;headerlink&quot; title=&quot;HTML&quot;&gt;&lt;/a&gt;HTML&lt;/h1&gt;&lt;h3 id=&quot;基础&quot;&gt;&lt;a href=&quot;#基础&quot; class=&quot;headerlink&quot; title=&quot;基础&quot;&gt;&lt;/a&gt;基础&lt;/h
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>JSON</title>
+    <link href="http://lycworks.me/blog/2017/02/02/2016-08-08-json/"/>
+    <id>http://lycworks.me/blog/2017/02/02/2016-08-08-json/</id>
+    <published>2017-02-02T21:56:37.000Z</published>
+    <updated>2017-02-02T21:56:37.000Z</updated>
+    
+    <content type="html"><![CDATA[<hr>
+<h1 id="JSON-gt-String"><a href="#JSON-gt-String" class="headerlink" title="JSON -&gt; String"></a>JSON -&gt; String</h1><p>function  </p>
+<ul>
+<li>stringify (parse into string representation, has <code>pretty print</code>)  </li>
+<li>parse (parse string into JSON)  <blockquote>
+<p>convert opposite ways  </p>
+</blockquote>
+</li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;hr&gt;
+&lt;h1 id=&quot;JSON-gt-String&quot;&gt;&lt;a href=&quot;#JSON-gt-String&quot; class=&quot;headerlink&quot; title=&quot;JSON -&amp;gt; String&quot;&gt;&lt;/a&gt;JSON -&amp;gt; String&lt;/h1&gt;&lt;p&gt;function  &lt;
     
     </summary>
     
