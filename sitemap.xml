@@ -4,7 +4,7 @@
   <url>
     <loc>http://lycworks.me/blog/blog/2017/02/14/jquery-and-react/</loc>
     
-    <lastmod>2017-02-14T05:55:20.000Z</lastmod>
+    <lastmod>2017-02-14T05:58:10.000Z</lastmod>
     
   </url>
   
@@ -121,7 +121,7 @@
   </url>
   
   <url>
-    <loc>http://lycworks.me/blog/blog/2017/02/02/2016-07-11-chart-progressbar/</loc>
+    <loc>http://lycworks.me/blog/blog/2017/02/02/2016-07-09-html5-tricks/</loc>
     
     <lastmod>2017-02-02T21:56:37.000Z</lastmod>
     
@@ -170,6 +170,13 @@
   </url>
   
   <url>
+    <loc>http://lycworks.me/blog/blog/2017/02/02/2016-05-17-tags-json-stringify-concept/</loc>
+    
+    <lastmod>2017-02-02T21:56:37.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://lycworks.me/blog/blog/2017/02/02/2016-05-17-JS-Object/</loc>
     
     <lastmod>2017-02-02T21:56:37.000Z</lastmod>
@@ -184,14 +191,7 @@
   </url>
   
   <url>
-    <loc>http://lycworks.me/blog/blog/2017/02/02/2016-05-17-tags-json-stringify-concept/</loc>
-    
-    <lastmod>2017-02-02T21:56:37.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://lycworks.me/blog/blog/2017/02/02/2016-05-18-JS-closure/</loc>
+    <loc>http://lycworks.me/blog/blog/2017/02/02/2016-05-18-JS-function/</loc>
     
     <lastmod>2017-02-02T21:56:37.000Z</lastmod>
     
@@ -205,14 +205,14 @@
   </url>
   
   <url>
-    <loc>http://lycworks.me/blog/blog/2017/02/02/2016-05-20-JS-EC/</loc>
+    <loc>http://lycworks.me/blog/blog/2017/02/02/2016-05-18-JS-closure/</loc>
     
     <lastmod>2017-02-02T21:56:37.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://lycworks.me/blog/blog/2017/02/02/2016-05-18-JS-function/</loc>
+    <loc>http://lycworks.me/blog/blog/2017/02/02/2016-05-20-JS-regex/</loc>
     
     <lastmod>2017-02-02T21:56:37.000Z</lastmod>
     
@@ -233,7 +233,7 @@
   </url>
   
   <url>
-    <loc>http://lycworks.me/blog/blog/2017/02/02/2016-05-20-JS-regex/</loc>
+    <loc>http://lycworks.me/blog/blog/2017/02/02/2016-05-20-JS-EC/</loc>
     
     <lastmod>2017-02-02T21:56:37.000Z</lastmod>
     
@@ -247,7 +247,7 @@
   </url>
   
   <url>
-    <loc>http://lycworks.me/blog/blog/2017/02/02/2016-07-09-html5-tricks/</loc>
+    <loc>http://lycworks.me/blog/blog/2017/02/02/2016-07-11-chart-progressbar/</loc>
     
     <lastmod>2017-02-02T21:56:37.000Z</lastmod>
     
