@@ -5,7 +5,7 @@
   <link href="/blog/atom.xml" rel="self"/>
   
   <link href="http://lycworks.me/blog/"/>
-  <updated>2017-02-18T05:26:01.000Z</updated>
+  <updated>2017-02-25T23:04:36.000Z</updated>
   <id>http://lycworks.me/blog/</id>
   
   <author>
@@ -14,6 +14,88 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>redux</title>
+    <link href="http://lycworks.me/blog/2017/02/25/reduxxxx/"/>
+    <id>http://lycworks.me/blog/2017/02/25/reduxxxx/</id>
+    <published>2017-02-25T21:56:58.000Z</published>
+    <updated>2017-02-25T23:04:36.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>prerequisite - clear understanding of react</p>
+<h1 id="What-is-redux"><a href="#What-is-redux" class="headerlink" title="What is redux?"></a>What is redux?</h1><p>Redux - a state manager that controls data flow and layout properties</p>
+<h1 id="What-is-the-structure"><a href="#What-is-the-structure" class="headerlink" title="What is the structure?"></a>What is the structure?</h1><p>Actions, Reducers, Store?<br>But that’s not the structure, redux is simply a state object that represents your app, and they can be manipulated by the above components!</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">default_state = &#123;</div><div class="line">  users: &#123;&#125;,</div><div class="line">  bgcolor: white</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="Action-the-manipulator"><a href="#Action-the-manipulator" class="headerlink" title="Action - the manipulator"></a>Action - the manipulator</h3><p>usually in the format of js files (they all are actually), within the file, one can declare the methods that is going to manipulate the redux object <code>default_state</code>.</p>
+<p>How it manipulate a state? Through actions dispatched by react components, like <strong>onclick</strong> event or form submission, that change the global <code>default_state</code>‘s properties.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">export function loadUsersAction()&#123;</div><div class="line">  return &#123;</div><div class="line">    type: &apos;LOAD_USERS&apos;,</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>inside an action-creator method, it returns the action for usage in reducer. How they are referred/identified is by <code>type</code>, which is an action tag</li>
+<li>A good practice is to have a separate file that lists all the tags to enhance workflow and avoid typo</li>
+</ul>
+<h3 id="Reducer-the-updater"><a href="#Reducer-the-updater" class="headerlink" title="Reducer - the updater"></a>Reducer - the updater</h3><p>in its js file, one creates the <code>default_state</code> constant, and creates a state update function which is commonly called reducer, that takes two parameters default_state and action respectively.</p>
+<blockquote>
+<p>where it came from? <code>Array.prototype.reduce(reducer, default_state)</code>. For more info, visit <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/Reduce" target="_blank" rel="external">MDN javascript doc</a></p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">export default function appReducer(state = defaultState, action)&#123;</div><div class="line">  switch(action.type)&#123;</div><div class="line">    case &apos;USER_LOADED&apos;:</div><div class="line">      return &#123;</div><div class="line">        ...state, //this is a object spread operator Object.assign() to create copies</div><div class="line">        users: action.users,</div><div class="line">      &#125;;</div><div class="line"></div><div class="line">    case &apos;USER_CREATE&apos;:</div><div class="line">      return&#123;</div><div class="line">        ...state,</div><div class="line">        oneuser: action.oneuser,</div><div class="line">      &#125;;</div><div class="line"></div><div class="line">      default:</div><div class="line">        return state;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>usually, a switcher is used for conditionally updating. How it switches is by the action tag (more complicated is that with middleware, we can create new tags)</li>
+<li>in here we can see we can refer to action’s attribute as well. In the above example, I have a <code>createUserAction(user)</code> in <code>actions.js</code>, where i returned a variable called <code>oneuser</code></li>
+<li>The <code>...</code> means object spread operator. This is equal to <code>Object.assign</code>, which is used for making a copy of an object. It is a good practice to always create new state instead of manipulating the <code>default_state</code></li>
+</ul>
+<h3 id="Store-the-state-packager"><a href="#Store-the-state-packager" class="headerlink" title="Store - the state packager"></a>Store - the state packager</h3><p>You might ask, why we need store when we can update state with reducer? Well, when we are processing get request, we want to return the state to the react components. The easiest way is the provided way, to have a store/manager imported to react’s entry point</p>
+<p>To create a store, we first create <code>store.js</code> like we did for actions and reducers, within the js file we create a <code>createStore</code>, which takes two parameter reducer and middleWare. Here we introduced middleware, which is another reason we might want to use store. We will explain the purpose of middleware next.</p>
+<h3 id="Middleware-the-async-data-flow-handler"><a href="#Middleware-the-async-data-flow-handler" class="headerlink" title="Middleware - the async data flow handler"></a>Middleware - the async data flow handler</h3><p>usually, when there are data, there are requests, when there are request, they are Asynchronous (what is async? refer to this <a href="http://stackoverflow.com/questions/16715380/what-is-difference-between-asynchronous-http-request-and-synchronous-http-reques" target="_blank" rel="external">doc</a>). Having async means there are going to be closure, and even through promise help a lot, it is still ugly code. When the request are dependent on each other, it can be a mess. That’s why we use middleware. Currently, there are two popular choices - <code>redux-saga</code> and <code>thunk</code>. In this lesson, since I only used redux-saga, for thunk info please look elsewhere.</p>
+<h3 id="redux-saga"><a href="#redux-saga" class="headerlink" title="redux-saga"></a><code>redux-saga</code></h3><p><a href="https://redux-saga.github.io/redux-saga/docs/recipes/index.html" target="_blank" rel="external">doc</a></p>
+<p>Saga is a middleware that uses generator functions to perform async transactions. The positive thing about having saga is they can log error, the negative thing is, for every action, there has to be a saga series of action handler and action listener.</p>
+<p>example to illustrate<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">//saga.js</div><div class="line">export function* loadUserSaga()&#123;</div><div class="line">  try&#123;</div><div class="line">    let users = yield getFetch(); //import from api.js</div><div class="line">    yield put(&#123;type:&apos;USER_LOADED&apos;, users: users&#125;)</div><div class="line">  &#125; catch(error) &#123;</div><div class="line">    console.log(error);</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">export function* watchForLoadUsers()&#123;</div><div class="line">  yield takeEvery(&apos;LOAD_USERS&apos;, loadUserSaga);</div><div class="line">&#125;</div><div class="line"></div><div class="line">//reducer.js</div><div class="line">  ...</div><div class="line">  switch(action.type)&#123;</div><div class="line">    case &apos;USER_LOADED&apos;:</div><div class="line">      return &#123;</div><div class="line">        ...state, //object spread operator == Object.assign() to create copies</div><div class="line">        users: action.users,</div><div class="line">      &#125;;</div><div class="line">    ...</div></pre></td></tr></table></figure></p>
+<ul>
+<li>the <code>*</code> means generator function</li>
+<li>the handler is <code>loadUserSaga()</code>, which loads from an api’s fetch, and the response is saved to users and send back to reducer with a action tag <code>USER_LOADED</code>. Then in actions.js, the state can be updated by switch case <code>USER_LOADED</code>.</li>
+<li><code>api.js</code> is where api calls are handled. It is a good practice to have them all in the same place.</li>
+<li><code>put</code> (<code>call</code>, <code>take</code> and <code>takeEvery</code>) <a href="https://redux-saga.github.io/redux-saga/docs/basics/UsingSagaHelpers.html" target="_blank" rel="external"> info</a></li>
+<li>often we create a wrapper <code>rootsaga</code> to start all the saga listeners</li>
+</ul>
+<h1 id="How-it-is-actually-used"><a href="#How-it-is-actually-used" class="headerlink" title="How it is actually used?"></a>How it is actually used?</h1><p>In react store are imported, then store is embedded by a <code>Provider</code>, provided by <code>react-redux</code> module.</p>
+<p>Inside our app’s entry point, in my case is the index.js, we import the store and the saga (<a href="https://redux-saga.github.io/redux-saga/docs/introduction/BeginnerTutorial.html" target="_blank" rel="external">basics implementation details</a>), and pass down to it’s children components as props through <code>Provider</code>, provided by <code>react-redux</code> module.</p>
+<blockquote>
+<p>note, saga only starts once, then watch for actions</p>
+</blockquote>
+<p><code>Provider</code> provides global access to redux store and child components, allow us to use <code>connect()</code> to communicate the data flow</p>
+<p><code>connect()</code> has two parameters <code>mapStateToProps</code> and <code>mapDispatchToProps</code> and a immediate function call on <code>component(Componentname)</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">immediate callback</div><div class="line">function()&#123;&#125;()</div></pre></td></tr></table></figure>
+<p><code>mapStateToProps</code> - <strong>read</strong> redux store state into react props</p>
+<p><code>mapDispatchToProps</code> - <strong>receive</strong> response from dispatched actions and can create variables for injecting to view</p>
+<p>usually when we want to dispatch action from component, we first do <code>connect([params])(Componentname)</code>, then extract <code>dispatch</code> through <code>const { dispatch } = this.props</code>.</p>
+<p><code>dispatch()</code> takes an imported action function</p>
+<p>For the current time, there are no full examples, but hopefully the basics of redux are explained well :)</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;prerequisite - clear understanding of react&lt;/p&gt;
+&lt;h1 id=&quot;What-is-redux&quot;&gt;&lt;a href=&quot;#What-is-redux&quot; class=&quot;headerlink&quot; title=&quot;What is redux?&quot;
+    
+    </summary>
+    
+    
+      <category term="redux" scheme="http://lycworks.me/blog/tags/redux/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>redux</title>
+    <link href="http://lycworks.me/blog/2017/02/21/redux/"/>
+    <id>http://lycworks.me/blog/2017/02/21/redux/</id>
+    <published>2017-02-22T04:55:43.000Z</published>
+    <updated>2017-02-22T04:55:43.000Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>router</title>
@@ -255,9 +337,9 @@
       <category term="Algo" scheme="http://lycworks.me/blog/categories/Algo/"/>
     
     
-      <category term="matrix" scheme="http://lycworks.me/blog/tags/matrix/"/>
-    
       <category term="dfs" scheme="http://lycworks.me/blog/tags/dfs/"/>
+    
+      <category term="matrix" scheme="http://lycworks.me/blog/tags/matrix/"/>
     
   </entry>
   
@@ -590,9 +672,9 @@
       <category term="Algo" scheme="http://lycworks.me/blog/categories/Algo/"/>
     
     
-      <category term="dfs" scheme="http://lycworks.me/blog/tags/dfs/"/>
-    
       <category term="path" scheme="http://lycworks.me/blog/tags/path/"/>
+    
+      <category term="dfs" scheme="http://lycworks.me/blog/tags/dfs/"/>
     
   </entry>
   
@@ -656,194 +738,54 @@
   </entry>
   
   <entry>
-    <title>Jade笔记</title>
-    <link href="http://lycworks.me/blog/2017/02/02/2016-07-20-jade/"/>
-    <id>http://lycworks.me/blog/2017/02/02/2016-07-20-jade/</id>
+    <title>AI笔记</title>
+    <link href="http://lycworks.me/blog/2017/02/02/2016-08-03-AI-note/"/>
+    <id>http://lycworks.me/blog/2017/02/02/2016-08-03-AI-note/</id>
     <published>2017-02-02T21:56:37.000Z</published>
     <updated>2017-02-02T21:56:37.000Z</updated>
     
     <content type="html"><![CDATA[<hr>
-<h4 id="resource-http-naltatis-github-io-jade-syntax-docs"><a href="#resource-http-naltatis-github-io-jade-syntax-docs" class="headerlink" title="resource http://naltatis.github.io/jade-syntax-docs/"></a>resource <code>http://naltatis.github.io/jade-syntax-docs/</code></h4><h1 id="Prerequisite"><a href="#Prerequisite" class="headerlink" title="Prerequisite"></a>Prerequisite</h1><p>npm install pug -g<br>pug index.jade 编译文件 render to html<br>pug -P index.jade 编译成带格式的html文件 render to pretty html<br>pug -P -w index.jade 实时编译 watch jade and render html  </p>
-<h1 id="Jade-Basic"><a href="#Jade-Basic" class="headerlink" title="Jade Basic"></a>Jade Basic</h1><ul>
-<li>tags标签<br>直接在元素名称后加.类名和#ID名 e.g. p#id.class<br>放在(属性名=‘属性值’)小括号中 <code>p(class=&#39;text-center&#39; data-value=&#39;lala&#39;)</code><br>div标签可以省略 .im-a-div(data-type=’div’)  </li>
-<li><p>多行文本<br><code>.</code>  </p>
-<pre><code>p.
-    im first line
-    im second line
-</code></pre></li>
+<h1 id="AI-V-PS"><a href="#AI-V-PS" class="headerlink" title="AI V PS"></a>AI V PS</h1><ul>
+<li>AI is resolution-independent, meaning its resolution is unaffected with zooming. In AI, images are vectors that are<br>mathematically calculated when zooming.  </li>
 </ul>
-<p><code>|</code>  </p>
-<pre><code>p  
-    |im first 
-    |im second
-</code></pre><ul>
-<li><p>注释comment<br>//单行注释： 解析为<code>&lt;!--单行注释--&gt;</code><br>//- 非缓冲,多行: 不显示在编译后的rendered html  </p>
-</li>
-<li><p>变量variable<br>inline变量声明 <code>- var name = Bob</code><br>引用变量 <code>#{name}</code><br>变量优先级- 文档中变量比外面传进来的变量优先级高<br>普遍用法  </p>
-<blockquote>
-<p>cmd传递数据加载json文件 <code>jade index.jade -P -w -O data.json</code><br>express render  </p>
-</blockquote>
-<pre><code>express.set(&apos;view-engine&apos;,&apos;jade&apos;);
-express.render(&apos;jadefile&apos;,&apos;{whatever json obj}&apos; 
-</code></pre></li>
-<li><p>转译Escaping  </p>
-<pre><code>- var data = &apos;&lt;script&gt;..&lt;/script&gt;&apos;  
-p #{data} or p= data =&gt; &apos;&lt;script&gt;..&apos; 
-p !{data} or p!= data =&gt; &lt;script&gt;..&lt;/script&gt;  
-p \#{data} =&gt; &apos;#{data}&apos; 
-</code></pre></li>
+<h1 id="Hotkeys"><a href="#Hotkeys" class="headerlink" title="Hotkeys"></a>Hotkeys</h1><p><code>CTRL + K</code>- preference<br><code>CAPS LOCK</code>- change all to precise cursor ‘+’<br><code>CTRL + R</code>- ruler<br><code>CTRL + 0</code>- fit on screen, <code>CTRL + 1</code>- fit 100%  </p>
+<h1 id="Start-with-An-End-of-Mind"><a href="#Start-with-An-End-of-Mind" class="headerlink" title="Start with An End of Mind"></a>Start with An End of Mind</h1><p><code>what is it for</code></p>
+<h3 id="Type"><a href="#Type" class="headerlink" title="Type"></a>Type</h3><h4 id="Print"><a href="#Print" class="headerlink" title="Print"></a>Print</h4><ul>
+<li>bleed (cut line for printing edge)  </li>
+<li>PPI (300 press-rasterize standard)  </li>
 </ul>
-<blockquote>
-<p>如果没有值，则返回undefined  </p>
-</blockquote>
-<h1 id="Jade-Mixin"><a href="#Jade-Mixin" class="headerlink" title="Jade Mixin"></a>Jade Mixin</h1><p><img src="http://img.mukewang.com/57037ccb0001a47412800720.jpg" alt="mixin examples">  </p>
-<h1 id="Jade-Inheritance-amp-include"><a href="#Jade-Inheritance-amp-include" class="headerlink" title="Jade Inheritance &amp; include"></a>Jade Inheritance &amp; include</h1><p>-模板继承<br>layout.jade中定义了多个bock<br>index.jade中，extends继承layout.jade，填充相应的block  </p>
-<pre><code>-- layout.jade --
-doctype html
-&lt;!--[if IE 8]&gt;&lt;html class=&apos;ie8&apos;&gt;&lt;![endif]--&gt;
-&lt;!--[if IE 9]&gt;&lt;html class=&apos;ie9&apos;&gt;&lt;![endif]--&gt;
-&lt;!--[if !IE]&gt;&lt;!--&gt;&lt;html&gt;&lt;!--&lt;![endif]--&gt;
-head
-    include head //-包含head.jade
-body
-    block desc //-可被覆盖
-        p desc from layout
-    block content
-&lt;/html&gt;
-
--- index.jade --
-extends layout
-
-block content
-    h3 im a block 
-    block desc
-        p desc from index
-</code></pre><ul>
-<li>模板包含  </li>
+<h4 id="Web"><a href="#Web" class="headerlink" title="Web"></a>Web</h4><ul>
+<li>Object align to invisible grid  </li>
+<li>PPI 72 for screen standard  </li>
 </ul>
+<h3 id="Preview"><a href="#Preview" class="headerlink" title="Preview"></a>Preview</h3><p><code>CTRL + Y</code>- outline toggle<br><code>SHIFT + CTRL + Y</code>- pixel preview (for the screen)<br><code>View-&gt;proof set up</code>- preview color blend in rgb and cmyk  </p>
+<p><code>ALT + click</code> - to change area of selection (eg in transform)<br><code>CTRL + click</code> - V select underlied item (eg arm under a shirt)  </p>
+<h1 id="Navigation"><a href="#Navigation" class="headerlink" title="Navigation"></a>Navigation</h1><h3 id="Ruler-Manipulation"><a href="#Ruler-Manipulation" class="headerlink" title="Ruler Manipulation"></a>Ruler Manipulation</h3><p>Top left corner drag to set genesis (0) point<br>with ctrl, easier to do the second drag  </p>
+<h3 id="Object-view-selection"><a href="#Object-view-selection" class="headerlink" title="Object view selection"></a>Object view selection</h3><p>views can be created to switch between customized views (often for complicated vectors)  </p>
+<h1 id="Selection"><a href="#Selection" class="headerlink" title="Selection"></a>Selection</h1><p>V select - normal group select (if group exist)<br>A direct select - group item select (if choose group selection tool, each click select one upper nested level)  </p>
+<h3 id="strategy"><a href="#strategy" class="headerlink" title="strategy"></a>strategy</h3><p>use direct select for embedded item or double click in V selection to go to isolation (quit using esc)  </p>
+<h1 id="Rotate-amp-Scale"><a href="#Rotate-amp-Scale" class="headerlink" title="Rotate &amp; Scale"></a>Rotate &amp; Scale</h1><p>simply click to create anchor point and drag to manipulate scale/rotation  </p>
 <blockquote>
-<p>include 也可引入原生的html页面  </p>
+<p>use alt click to edit anchor point setting<br>command + D to repeat the last thing (eg creating 360 flower)  </p>
 </blockquote>
+<h1 id="Transform"><a href="#Transform" class="headerlink" title="Transform"></a>Transform</h1><p>width - change width, warp - finger paint, wrinkle - melt effect  </p>
+<h1 id="Color-Manipulation"><a href="#Color-Manipulation" class="headerlink" title="Color Manipulation"></a>Color Manipulation</h1><h3 id="RGB-V-CMYK"><a href="#RGB-V-CMYK" class="headerlink" title="RGB V CMYK"></a>RGB V CMYK</h3><p><code>RGB</code>- color addictive, ‘world of light’/screen<br><code>CMYK</code>- color subtractive, ‘world of absorption’/print press  </p>
+<p>Color guide - palette inspiration<br>Color Swatches - drag to add or add group. Export as ASE OR AI<br><code>ALT + DEL</code> - to force delete  </p>
+<h3 id="GLOBAL-processing-and-spot-color"><a href="#GLOBAL-processing-and-spot-color" class="headerlink" title="GLOBAL processing and spot color"></a>GLOBAL processing and spot color</h3><p>double click color, if global, color attached to object woho  </p>
 ]]></content>
     
     <summary type="html">
     
       &lt;hr&gt;
-&lt;h4 id=&quot;resource-http-naltatis-github-io-jade-syntax-docs&quot;&gt;&lt;a href=&quot;#resource-http-naltatis-github-io-jade-syntax-docs&quot; class=&quot;headerli
+&lt;h1 id=&quot;AI-V-PS&quot;&gt;&lt;a href=&quot;#AI-V-PS&quot; class=&quot;headerlink&quot; title=&quot;AI V PS&quot;&gt;&lt;/a&gt;AI V PS&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;AI is resolution-independent, meaning i
     
     </summary>
     
-    
-  </entry>
-  
-  <entry>
-    <title>Snap.SVG</title>
-    <link href="http://lycworks.me/blog/2017/02/02/2016-07-14-svg/"/>
-    <id>http://lycworks.me/blog/2017/02/02/2016-07-14-svg/</id>
-    <published>2017-02-02T21:56:37.000Z</published>
-    <updated>2017-02-02T21:56:37.000Z</updated>
-    
-    <content type="html"><![CDATA[<hr>
-<h1 id="Snap-SVG"><a href="#Snap-SVG" class="headerlink" title="Snap.SVG"></a>Snap.SVG</h1><p>clear<br>        var s = Snap(‘css selector’)<br>        Snap.load(‘whatever.svg’, function(fragment){<br>            s.clear()<br>        })</p>
-<p>get element  </p>
-<pre><code>myRect.attr(&apos;id&apos;);
-</code></pre><p>set element<br>        myRect.attr({<br>            id: ‘newid’<br>        })</p>
-<p>click callback  </p>
-<pre><code>var clickCallback = function(event) {
-    this.attr({ fill: &apos;blue&apos; });
-};
-
-myRect.click(clickCallback);
-</code></pre><p>timer example <a href="https://codepen.io/rachsmith/pen/BqpCd?editors=0010" target="_blank" rel="external">https://codepen.io/rachsmith/pen/BqpCd?editors=0010</a><br>basics <a href="http://webdesign.tutsplus.com/articles/how-to-manipulate-and-animate-svg-with-snapsvg--cms-21323" target="_blank" rel="external">http://webdesign.tutsplus.com/articles/how-to-manipulate-and-animate-svg-with-snapsvg--cms-21323</a><br><a href="http://unicorn-ui.com/blog/intermediate-svg.html" target="_blank" rel="external">http://unicorn-ui.com/blog/intermediate-svg.html</a>, <a href="https://www.sitepoint.com/advanced-snap-svg/" target="_blank" rel="external">https://www.sitepoint.com/advanced-snap-svg/</a>, <a href="http://nocircleno.com/blog/getting-starting-with-svg-and-javascript/" target="_blank" rel="external">http://nocircleno.com/blog/getting-starting-with-svg-and-javascript/</a><br>animation - all <a href="https://codyhouse.co/gem/animate-svg-icons-with-css-and-snap/" target="_blank" rel="external">https://codyhouse.co/gem/animate-svg-icons-with-css-and-snap/</a>, <a href="https://davidwalsh.name/svg-animations-snap" target="_blank" rel="external">https://davidwalsh.name/svg-animations-snap</a><br>animation - path <a href="https://codepen.io/JRGould/pen/dkHhw?editors=0010" target="_blank" rel="external">https://codepen.io/JRGould/pen/dkHhw?editors=0010</a><br>masking exmaple <a href="http://jsfiddle.net/5826ywh7/3/" target="_blank" rel="external">http://jsfiddle.net/5826ywh7/3/</a><br>callback within Snap.load <a href="http://stackoverflow.com/questions/26465119/why-when-i-add-function-into-snap-load-loading-svg-my-method-i-cannot" target="_blank" rel="external">http://stackoverflow.com/questions/26465119/why-when-i-add-function-into-snap-load-loading-svg-my-method-i-cannot</a>  </p>
-<p>more examples <a href="https://www.raymondcamden.com/2013/11/06/Want-help-with-Snapsvg-And-a-few-more-examples/" target="_blank" rel="external">https://www.raymondcamden.com/2013/11/06/Want-help-with-Snapsvg-And-a-few-more-examples/</a>  </p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;hr&gt;
-&lt;h1 id=&quot;Snap-SVG&quot;&gt;&lt;a href=&quot;#Snap-SVG&quot; class=&quot;headerlink&quot; title=&quot;Snap.SVG&quot;&gt;&lt;/a&gt;Snap.SVG&lt;/h1&gt;&lt;p&gt;clear&lt;br&gt;        var s = Snap(‘css select
-    
-    </summary>
-    
-      <category term="SVG" scheme="http://lycworks.me/blog/categories/SVG/"/>
+      <category term="Media" scheme="http://lycworks.me/blog/categories/Media/"/>
     
     
-      <category term="snap.svg, svg" scheme="http://lycworks.me/blog/tags/snap-svg-svg/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>JS进阶笔记</title>
-    <link href="http://lycworks.me/blog/2017/02/02/2016-05-16-JS-deep-note/"/>
-    <id>http://lycworks.me/blog/2017/02/02/2016-05-16-JS-deep-note/</id>
-    <published>2017-02-02T21:56:37.000Z</published>
-    <updated>2017-02-02T21:56:37.000Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="JS类型"><a href="#JS类型" class="headerlink" title="JS类型"></a>JS类型</h1><p>五大原始类型–number,string,boolean,null,undefined<br>Object对象类型，对象类型又包括–array,date,function</p>
-<h1 id="巧用-规则转换类型"><a href="#巧用-规则转换类型" class="headerlink" title="巧用+/-规则转换类型"></a>巧用+/-规则转换类型</h1><p>把字符串变量转换成数字：num-0<br>把数字变量转化成字符串型：num+’’　　</p>
-<h1 id="比较"><a href="#比较" class="headerlink" title="比较"></a>比较</h1><h3 id="类型相同"><a href="#类型相同" class="headerlink" title="类型相同"></a>类型相同</h3><p><code>null===null</code>, <code>undefined===undefined</code>  </p>
-<p>NaN和任何东西都不相等，包括它本身  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">Object同类型不相等，除非和它本身作比较 ``` new object() ≠ new object()```, ```x===x```  </div><div class="line">### 类型不同</div><div class="line">a === b 类型不同直接返回false  </div><div class="line">a  == b 类型不同会尝试隐式转换(尝试类型转换和比较)  </div><div class="line">    number== string // 把字符串转化为数字比较  </div><div class="line">    boolean== ？(任何) // bool值转化为数字1或0  </div><div class="line">    object == number|string // 尝试对象转为基本类型 </div><div class="line">```new String(&apos;hi&apos;)==&apos;hi&apos; //true```  </div><div class="line"></div><div class="line"># 包装类型</div><div class="line">number string boolean 三种原始数据类型是有各自对应的对象包装类型的  </div><div class="line">如果对一个原始的数据类型比如说var string = &quot;xiaoyu&quot; 进行对象的操作js会智能地将原始数据类型转换为一个对应的包装类型  ```string.length```  </div><div class="line">等到你的操作结束之后这个临时产生的包装类型就会自动销毁。```string.tempobj</div></pre></td></tr></table></figure></p>
-<h1 id="类型检测"><a href="#类型检测" class="headerlink" title="类型检测"></a>类型检测</h1><p>5种方法  </p>
-<ol>
-<li><p>typeof 最简单的方法，以字符串的方式返回类型 <code>typeof &quot;bob&quot; === &quot;string&quot;</code>  </p>
-<blockquote>
-<p>弊端是null的失效(typeof返回的是”object”，因此不可以用来检测)  </p>
-</blockquote>
-</li>
-<li><p>对象 instanceof 函数 原形链  - 判断右边的原型链上有没有这个函数对象</p>
-<blockquote>
-<p>弊端原生对象在不同iframe和window检测失效  </p>
-</blockquote>
-</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">function Student()&#123;&#125;</div><div class="line">function Person()&#123;&#125;</div><div class="line">Student.prototype = new Person() //student指向person</div><div class="line">var bob = new Student()</div><div class="line">//bob instanceof student -&gt; true</div><div class="line">//bob instanceof person -&gt; true</div><div class="line">var bob_mom = new Person()</div><div class="line">//mom instanceof student -&gt; false</div><div class="line">//mom instanceof person -&gt; true</div></pre></td></tr></table></figure>
-<ol>
-<li>Object.prototype.toString.apply(函数)<blockquote>
-<p>弊端null和undefined失效(IE返回object)</p>
-</blockquote>
-</li>
-</ol>
-<p>比较小窍门<br>× <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">× 比较类型保险款```Object.prototype.toString.apply(null)-&gt; [Object Null]</div></pre></td></tr></table></figure></p>
-<h1 id="表达式expression"><a href="#表达式expression" class="headerlink" title="表达式expression"></a>表达式expression</h1><ol>
-<li>原始表达式 // 常量、直接量、关键字、变量 3.14、”test”、this、null、i、k、j</li>
-<li>初始化表达式 //[1,2]、{x:1, y:2}</li>
-<li>函数表达式 //  var fe = function(){}、(function(){})()</li>
-<li>属性访问表达式 //  var o = {x:1} 可以用 o.x、o[‘x’]来访问</li>
-<li>调用表达式 // func()；</li>
-<li>对象创建表达式 // new Func(1,2)、new Object</li>
-</ol>
-<h1 id="运算符operator"><a href="#运算符operator" class="headerlink" title="运算符operator"></a>运算符operator</h1><p>1、条件运算符 c?a:b c为true 则取a,否则取b<br>2、逗号运算符 a,b 例如 var s = (1,2,3),则s依次赋值，最后输出为3<br>3、delete运算符 delete obj.x 删除对象obj中的x属性     </p>
-<blockquote>
-<p>在IE9下，obj中必须configurable:true 才可以删除，否则无效 </p>
-</blockquote>
-<p>4、in运算符 判断obj是否有值或window里是否有变量，返回bool值<br>    例如 attr in json 或 ‘document’ in window<br>5、instanceof 判断对象类型 {} instanceof Object // true<br>6、new运算符 创建一个新对象 new obj / new array …   </p>
-<ul>
-<li><p>可以通过<figure class="highlight plain"><figcaption><span>(```in```判断obj是否有值,因此只要赋值就会返回true)</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"> </div></pre></td></tr></table></figure></p>
-<p>  function foo(){}<br>  foo.prototype.x = 1 //原形链赋值<br>  var obj = new foo() //obj.x = 1<br>  obj.hasOwnProperty(‘x’) -&gt; false<br>  obj.<strong>proto</strong>.hasOwnProperty(‘x’) -&gt; true<br>  obj.y = 1 //obj.hasOwnProperty(‘y’) -&gt; true</p>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">7、this对象 全局用指向window，函数内指向函数本身，浮动指针  </div><div class="line">8、typeof 判断对象，返回对象类型 例如 typeof 100 === &apos;number&apos; // true  </div><div class="line">9、void 一元的，判断所有值，返回均为undefined</div><div class="line"></div><div class="line"># block v. var语句</div><div class="line">### block - ```&#123;..&#125;```定义  </div><div class="line">在ES6之前，forloop中的var i ```for(var i=0;i&lt;arr.length;i++)```是可以在之后取值的```console.log(i)```  </div><div class="line">从ES6开始，let的出现-有了块级作用域的概念(local variable)</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>function letTest() {<br>  let x = 31;<br>  if (true) {<br>    let x = 71;  // different variable<br>    console.log(x);  // 71<br>  }<br>  console.log(x);  // 31<br>}<br>```</p>
-<h3 id="var-var-a-1-变量定义"><a href="#var-var-a-1-变量定义" class="headerlink" title="var - var a =1 变量定义"></a>var - <code>var a =1</code> 变量定义</h3><p>误区：在函数里创建 <code>var a = b = 1</code>是有local scope的<br>解答：b相当于隐式创建的全局变量，因此即使是在函数内定义，在函数外b依旧可以被访问到，而a是不可以的  </p>
-<blockquote>
-<p>解决办法是利用逗号 <code>var a, b = 1</code> a和b都变成了local variable</p>
-</blockquote>
-<h1 id="函数对象Create-Object"><a href="#函数对象Create-Object" class="headerlink" title="函数对象Create Object"></a>函数对象Create Object</h1><p>函数声明:<code>function fd(){}</code>在声明之前可以调用fd()<br>函数表达式： <code>var fd=function(){}</code>，不可以在函数表达式之前调用fd(),因为还未创建</p>
-<h1 id="for-in"><a href="#for-in" class="headerlink" title="for in"></a>for in</h1><p>短处是不按顺序，enumerable设定为false后失效</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;JS类型&quot;&gt;&lt;a href=&quot;#JS类型&quot; class=&quot;headerlink&quot; title=&quot;JS类型&quot;&gt;&lt;/a&gt;JS类型&lt;/h1&gt;&lt;p&gt;五大原始类型–number,string,boolean,null,undefined&lt;br&gt;Object对象类型，对象类型
-    
-    </summary>
-    
-      <category term="JS" scheme="http://lycworks.me/blog/categories/JS/"/>
-    
-    
-      <category term="web" scheme="http://lycworks.me/blog/tags/web/"/>
-    
-      <category term="note" scheme="http://lycworks.me/blog/tags/note/"/>
+      <category term="illustrator, image_manipulation" scheme="http://lycworks.me/blog/tags/illustrator-image-manipulation/"/>
     
   </entry>
   
