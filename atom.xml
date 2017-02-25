@@ -5,7 +5,7 @@
   <link href="/blog/atom.xml" rel="self"/>
   
   <link href="http://lycworks.me/blog/"/>
-  <updated>2017-02-25T23:04:36.000Z</updated>
+  <updated>2017-02-25T23:18:12.000Z</updated>
   <id>http://lycworks.me/blog/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://lycworks.me/blog/2017/02/25/reduxxxx/"/>
     <id>http://lycworks.me/blog/2017/02/25/reduxxxx/</id>
     <published>2017-02-25T21:56:58.000Z</published>
-    <updated>2017-02-25T23:04:36.000Z</updated>
+    <updated>2017-02-25T23:18:12.000Z</updated>
     
     <content type="html"><![CDATA[<p>prerequisite - clear understanding of react</p>
 <h1 id="What-is-redux"><a href="#What-is-redux" class="headerlink" title="What is redux?"></a>What is redux?</h1><p>Redux - a state manager that controls data flow and layout properties</p>
@@ -56,18 +56,21 @@
 <li><code>put</code> (<code>call</code>, <code>take</code> and <code>takeEvery</code>) <a href="https://redux-saga.github.io/redux-saga/docs/basics/UsingSagaHelpers.html" target="_blank" rel="external"> info</a></li>
 <li>often we create a wrapper <code>rootsaga</code> to start all the saga listeners</li>
 </ul>
-<h1 id="How-it-is-actually-used"><a href="#How-it-is-actually-used" class="headerlink" title="How it is actually used?"></a>How it is actually used?</h1><p>In react store are imported, then store is embedded by a <code>Provider</code>, provided by <code>react-redux</code> module.</p>
-<p>Inside our app’s entry point, in my case is the index.js, we import the store and the saga (<a href="https://redux-saga.github.io/redux-saga/docs/introduction/BeginnerTutorial.html" target="_blank" rel="external">basics implementation details</a>), and pass down to it’s children components as props through <code>Provider</code>, provided by <code>react-redux</code> module.</p>
+<h1 id="How-it-is-actually-used"><a href="#How-it-is-actually-used" class="headerlink" title="How it is actually used?"></a>How it is actually used?</h1><p>Inside our app’s react entry point, in my case is the index.js, we import the store and the saga (<a href="https://redux-saga.github.io/redux-saga/docs/introduction/BeginnerTutorial.html" target="_blank" rel="external"> implementation details</a>), and pass down to it’s children components as props through <code>Provider</code>, provided by <code>react-redux</code> module.</p>
 <blockquote>
 <p>note, saga only starts once, then watch for actions</p>
 </blockquote>
 <p><code>Provider</code> provides global access to redux store and child components, allow us to use <code>connect()</code> to communicate the data flow</p>
-<p><code>connect()</code> has two parameters <code>mapStateToProps</code> and <code>mapDispatchToProps</code> and a immediate function call on <code>component(Componentname)</code></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">immediate callback</div><div class="line">function()&#123;&#125;()</div></pre></td></tr></table></figure>
+<p><code>connect()</code> has two parameters <code>mapStateToProps</code> and <code>mapDispatchToProps</code> and an immediate function call on <code>Componentname</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">immediate callback</div><div class="line">function()&#123;&#125;(Componentname)</div></pre></td></tr></table></figure>
 <p><code>mapStateToProps</code> - <strong>read</strong> redux store state into react props</p>
 <p><code>mapDispatchToProps</code> - <strong>receive</strong> response from dispatched actions and can create variables for injecting to view</p>
-<p>usually when we want to dispatch action from component, we first do <code>connect([params])(Componentname)</code>, then extract <code>dispatch</code> through <code>const { dispatch } = this.props</code>.</p>
-<p><code>dispatch()</code> takes an imported action function</p>
+<ul>
+<li><p>usually when we want to dispatch action from component, we first do <code>connect([params])(Componentname)</code>, then extract <code>dispatch</code> through <code>const { dispatch } = this.props</code>.</p>
+</li>
+<li><p><code>dispatch()</code> takes an imported action function</p>
+</li>
+</ul>
 <p>For the current time, there are no full examples, but hopefully the basics of redux are explained well :)</p>
 ]]></content>
     
@@ -724,30 +727,54 @@
   </entry>
   
   <entry>
-    <title>JSON</title>
-    <link href="http://lycworks.me/blog/2017/02/02/2016-08-08-json/"/>
-    <id>http://lycworks.me/blog/2017/02/02/2016-08-08-json/</id>
+    <title>AI笔记</title>
+    <link href="http://lycworks.me/blog/2017/02/02/2016-08-03-AI-note/"/>
+    <id>http://lycworks.me/blog/2017/02/02/2016-08-03-AI-note/</id>
     <published>2017-02-02T21:56:37.000Z</published>
     <updated>2017-02-02T21:56:37.000Z</updated>
     
     <content type="html"><![CDATA[<hr>
-<h1 id="JSON-gt-String"><a href="#JSON-gt-String" class="headerlink" title="JSON -&gt; String"></a>JSON -&gt; String</h1><p>function  </p>
-<ul>
-<li>stringify (parse into string representation, has <code>pretty print</code>)  </li>
-<li>parse (parse string into JSON)  <blockquote>
-<p>convert opposite ways  </p>
-</blockquote>
-</li>
+<h1 id="AI-V-PS"><a href="#AI-V-PS" class="headerlink" title="AI V PS"></a>AI V PS</h1><ul>
+<li>AI is resolution-independent, meaning its resolution is unaffected with zooming. In AI, images are vectors that are<br>mathematically calculated when zooming.  </li>
 </ul>
+<h1 id="Hotkeys"><a href="#Hotkeys" class="headerlink" title="Hotkeys"></a>Hotkeys</h1><p><code>CTRL + K</code>- preference<br><code>CAPS LOCK</code>- change all to precise cursor ‘+’<br><code>CTRL + R</code>- ruler<br><code>CTRL + 0</code>- fit on screen, <code>CTRL + 1</code>- fit 100%  </p>
+<h1 id="Start-with-An-End-of-Mind"><a href="#Start-with-An-End-of-Mind" class="headerlink" title="Start with An End of Mind"></a>Start with An End of Mind</h1><p><code>what is it for</code></p>
+<h3 id="Type"><a href="#Type" class="headerlink" title="Type"></a>Type</h3><h4 id="Print"><a href="#Print" class="headerlink" title="Print"></a>Print</h4><ul>
+<li>bleed (cut line for printing edge)  </li>
+<li>PPI (300 press-rasterize standard)  </li>
+</ul>
+<h4 id="Web"><a href="#Web" class="headerlink" title="Web"></a>Web</h4><ul>
+<li>Object align to invisible grid  </li>
+<li>PPI 72 for screen standard  </li>
+</ul>
+<h3 id="Preview"><a href="#Preview" class="headerlink" title="Preview"></a>Preview</h3><p><code>CTRL + Y</code>- outline toggle<br><code>SHIFT + CTRL + Y</code>- pixel preview (for the screen)<br><code>View-&gt;proof set up</code>- preview color blend in rgb and cmyk  </p>
+<p><code>ALT + click</code> - to change area of selection (eg in transform)<br><code>CTRL + click</code> - V select underlied item (eg arm under a shirt)  </p>
+<h1 id="Navigation"><a href="#Navigation" class="headerlink" title="Navigation"></a>Navigation</h1><h3 id="Ruler-Manipulation"><a href="#Ruler-Manipulation" class="headerlink" title="Ruler Manipulation"></a>Ruler Manipulation</h3><p>Top left corner drag to set genesis (0) point<br>with ctrl, easier to do the second drag  </p>
+<h3 id="Object-view-selection"><a href="#Object-view-selection" class="headerlink" title="Object view selection"></a>Object view selection</h3><p>views can be created to switch between customized views (often for complicated vectors)  </p>
+<h1 id="Selection"><a href="#Selection" class="headerlink" title="Selection"></a>Selection</h1><p>V select - normal group select (if group exist)<br>A direct select - group item select (if choose group selection tool, each click select one upper nested level)  </p>
+<h3 id="strategy"><a href="#strategy" class="headerlink" title="strategy"></a>strategy</h3><p>use direct select for embedded item or double click in V selection to go to isolation (quit using esc)  </p>
+<h1 id="Rotate-amp-Scale"><a href="#Rotate-amp-Scale" class="headerlink" title="Rotate &amp; Scale"></a>Rotate &amp; Scale</h1><p>simply click to create anchor point and drag to manipulate scale/rotation  </p>
+<blockquote>
+<p>use alt click to edit anchor point setting<br>command + D to repeat the last thing (eg creating 360 flower)  </p>
+</blockquote>
+<h1 id="Transform"><a href="#Transform" class="headerlink" title="Transform"></a>Transform</h1><p>width - change width, warp - finger paint, wrinkle - melt effect  </p>
+<h1 id="Color-Manipulation"><a href="#Color-Manipulation" class="headerlink" title="Color Manipulation"></a>Color Manipulation</h1><h3 id="RGB-V-CMYK"><a href="#RGB-V-CMYK" class="headerlink" title="RGB V CMYK"></a>RGB V CMYK</h3><p><code>RGB</code>- color addictive, ‘world of light’/screen<br><code>CMYK</code>- color subtractive, ‘world of absorption’/print press  </p>
+<p>Color guide - palette inspiration<br>Color Swatches - drag to add or add group. Export as ASE OR AI<br><code>ALT + DEL</code> - to force delete  </p>
+<h3 id="GLOBAL-processing-and-spot-color"><a href="#GLOBAL-processing-and-spot-color" class="headerlink" title="GLOBAL processing and spot color"></a>GLOBAL processing and spot color</h3><p>double click color, if global, color attached to object woho  </p>
 ]]></content>
     
     <summary type="html">
     
       &lt;hr&gt;
-&lt;h1 id=&quot;JSON-gt-String&quot;&gt;&lt;a href=&quot;#JSON-gt-String&quot; class=&quot;headerlink&quot; title=&quot;JSON -&amp;gt; String&quot;&gt;&lt;/a&gt;JSON -&amp;gt; String&lt;/h1&gt;&lt;p&gt;function  &lt;
+&lt;h1 id=&quot;AI-V-PS&quot;&gt;&lt;a href=&quot;#AI-V-PS&quot; class=&quot;headerlink&quot; title=&quot;AI V PS&quot;&gt;&lt;/a&gt;AI V PS&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;AI is resolution-independent, meaning i
     
     </summary>
     
+      <category term="Media" scheme="http://lycworks.me/blog/categories/Media/"/>
+    
+    
+      <category term="illustrator, image_manipulation" scheme="http://lycworks.me/blog/tags/illustrator-image-manipulation/"/>
     
   </entry>
   

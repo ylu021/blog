@@ -32,20 +32,23 @@
 <li><code>put</code> (<code>call</code>, <code>take</code> and <code>takeEvery</code>) <a href="https://redux-saga.github.io/redux-saga/docs/basics/UsingSagaHelpers.html" target="_blank" rel="external"> info</a></li>
 <li>often we create a wrapper <code>rootsaga</code> to start all the saga listeners</li>
 </ul>
-<h1 id="How-it-is-actually-used"><a href="#How-it-is-actually-used" class="headerlink" title="How it is actually used?"></a>How it is actually used?</h1><p>In react store are imported, then store is embedded by a <code>Provider</code>, provided by <code>react-redux</code> module.</p>
-<p>Inside our app’s entry point, in my case is the index.js, we import the store and the saga (<a href="https://redux-saga.github.io/redux-saga/docs/introduction/BeginnerTutorial.html" target="_blank" rel="external">basics implementation details</a>), and pass down to it’s children components as props through <code>Provider</code>, provided by <code>react-redux</code> module.</p>
+<h1 id="How-it-is-actually-used"><a href="#How-it-is-actually-used" class="headerlink" title="How it is actually used?"></a>How it is actually used?</h1><p>Inside our app’s react entry point, in my case is the index.js, we import the store and the saga (<a href="https://redux-saga.github.io/redux-saga/docs/introduction/BeginnerTutorial.html" target="_blank" rel="external"> implementation details</a>), and pass down to it’s children components as props through <code>Provider</code>, provided by <code>react-redux</code> module.</p>
 <blockquote>
 <p>note, saga only starts once, then watch for actions</p>
 </blockquote>
 <p><code>Provider</code> provides global access to redux store and child components, allow us to use <code>connect()</code> to communicate the data flow</p>
-<p><code>connect()</code> has two parameters <code>mapStateToProps</code> and <code>mapDispatchToProps</code> and a immediate function call on <code>component(Componentname)</code></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">immediate callback</div><div class="line">function()&#123;&#125;()</div></pre></td></tr></table></figure>
+<p><code>connect()</code> has two parameters <code>mapStateToProps</code> and <code>mapDispatchToProps</code> and an immediate function call on <code>Componentname</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">immediate callback</div><div class="line">function()&#123;&#125;(Componentname)</div></pre></td></tr></table></figure>
 <p><code>mapStateToProps</code> - <strong>read</strong> redux store state into react props</p>
 <p><code>mapDispatchToProps</code> - <strong>receive</strong> response from dispatched actions and can create variables for injecting to view</p>
-<p>usually when we want to dispatch action from component, we first do <code>connect([params])(Componentname)</code>, then extract <code>dispatch</code> through <code>const { dispatch } = this.props</code>.</p>
-<p><code>dispatch()</code> takes an imported action function</p>
+<ul>
+<li><p>usually when we want to dispatch action from component, we first do <code>connect([params])(Componentname)</code>, then extract <code>dispatch</code> through <code>const { dispatch } = this.props</code>.</p>
+</li>
+<li><p><code>dispatch()</code> takes an imported action function</p>
+</li>
+</ul>
 <p>For the current time, there are no full examples, but hopefully the basics of redux are explained well :)</p>
-</div><div><label>Tags:</label><a href="/blog/tags/redux/">#redux</a></div></article></div></main><footer><div class="paginator"><a href="/blog/2017/02/17/router/" class="next">NEXT</a></div><div id="disqus_thread"></div><script>var disqus_shortname = 'https-ylu021-github-io-blog';
+</div><div><label>Tags:</label><a href="/blog/tags/redux/">#redux</a></div></article></div></main><footer><div class="paginator"><a href="/blog/2017/02/17/router/" class="next">下一篇</a></div><div id="disqus_thread"></div><script>var disqus_shortname = 'https-ylu021-github-io-blog';
 var disqus_identifier = '2017/02/25/reduxxxx/';
 var disqus_title = 'redux';
 var disqus_url = 'http://lycworks.me/blog/2017/02/25/reduxxxx/';
