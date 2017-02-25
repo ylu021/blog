@@ -5,7 +5,7 @@
   <link href="/blog/atom.xml" rel="self"/>
   
   <link href="http://lycworks.me/blog/"/>
-  <updated>2017-02-25T23:18:12.000Z</updated>
+  <updated>2017-02-25T23:22:46.000Z</updated>
   <id>http://lycworks.me/blog/</id>
   
   <author>
@@ -20,12 +20,13 @@
     <link href="http://lycworks.me/blog/2017/02/25/reduxxxx/"/>
     <id>http://lycworks.me/blog/2017/02/25/reduxxxx/</id>
     <published>2017-02-25T21:56:58.000Z</published>
-    <updated>2017-02-25T23:18:12.000Z</updated>
+    <updated>2017-02-25T23:22:46.000Z</updated>
     
     <content type="html"><![CDATA[<p>prerequisite - clear understanding of react</p>
 <h1 id="What-is-redux"><a href="#What-is-redux" class="headerlink" title="What is redux?"></a>What is redux?</h1><p>Redux - a state manager that controls data flow and layout properties</p>
 <h1 id="What-is-the-structure"><a href="#What-is-the-structure" class="headerlink" title="What is the structure?"></a>What is the structure?</h1><p>Actions, Reducers, Store?<br>But that’s not the structure, redux is simply a state object that represents your app, and they can be manipulated by the above components!</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">default_state = &#123;</div><div class="line">  users: &#123;&#125;,</div><div class="line">  bgcolor: white</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>more details, refer to <a href="http://redux.js.org/" target="_blank" rel="external">doc</a></p>
 <h3 id="Action-the-manipulator"><a href="#Action-the-manipulator" class="headerlink" title="Action - the manipulator"></a>Action - the manipulator</h3><p>usually in the format of js files (they all are actually), within the file, one can declare the methods that is going to manipulate the redux object <code>default_state</code>.</p>
 <p>How it manipulate a state? Through actions dispatched by react components, like <strong>onclick</strong> event or form submission, that change the global <code>default_state</code>‘s properties.</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">export function loadUsersAction()&#123;</div><div class="line">  return &#123;</div><div class="line">    type: &apos;LOAD_USERS&apos;,</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
@@ -72,6 +73,8 @@
 </li>
 </ul>
 <p>For the current time, there are no full examples, but hopefully the basics of redux are explained well :)</p>
+<p>An example by someone else (forgot the link, if someone knows where it is from, please leave a comment)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">import &#123; Component &#125; from &apos;react&apos;;</div><div class="line">import &#123; connect &#125; from &apos;react-redux&apos;;</div><div class="line">import * as actions from &apos;./actions&apos;;</div><div class="line"></div><div class="line">let createHandlers = function(dispatch) &#123;</div><div class="line">  let onClick = function(node, data) &#123;</div><div class="line">    dispatch(actions.nodeClicked(data))</div><div class="line">  &#125;;</div><div class="line"></div><div class="line">  return &#123;</div><div class="line">    onClick,</div><div class="line">    // other handlers</div><div class="line">  &#125;;</div><div class="line">&#125;</div><div class="line"></div><div class="line">class Controls extends Component &#123;</div><div class="line">  constructor(props) &#123;</div><div class="line">    super(props);</div><div class="line">    this.handlers = createHandlers(this.props.dispatch);</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  render() &#123;</div><div class="line">    // pass this.handlers anywhere you&apos;d like</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">export default connect()(Controls);</div></pre></td></tr></table></figure>
 ]]></content>
     
     <summary type="html">
@@ -727,58 +730,6 @@
   </entry>
   
   <entry>
-    <title>AI笔记</title>
-    <link href="http://lycworks.me/blog/2017/02/02/2016-08-03-AI-note/"/>
-    <id>http://lycworks.me/blog/2017/02/02/2016-08-03-AI-note/</id>
-    <published>2017-02-02T21:56:37.000Z</published>
-    <updated>2017-02-02T21:56:37.000Z</updated>
-    
-    <content type="html"><![CDATA[<hr>
-<h1 id="AI-V-PS"><a href="#AI-V-PS" class="headerlink" title="AI V PS"></a>AI V PS</h1><ul>
-<li>AI is resolution-independent, meaning its resolution is unaffected with zooming. In AI, images are vectors that are<br>mathematically calculated when zooming.  </li>
-</ul>
-<h1 id="Hotkeys"><a href="#Hotkeys" class="headerlink" title="Hotkeys"></a>Hotkeys</h1><p><code>CTRL + K</code>- preference<br><code>CAPS LOCK</code>- change all to precise cursor ‘+’<br><code>CTRL + R</code>- ruler<br><code>CTRL + 0</code>- fit on screen, <code>CTRL + 1</code>- fit 100%  </p>
-<h1 id="Start-with-An-End-of-Mind"><a href="#Start-with-An-End-of-Mind" class="headerlink" title="Start with An End of Mind"></a>Start with An End of Mind</h1><p><code>what is it for</code></p>
-<h3 id="Type"><a href="#Type" class="headerlink" title="Type"></a>Type</h3><h4 id="Print"><a href="#Print" class="headerlink" title="Print"></a>Print</h4><ul>
-<li>bleed (cut line for printing edge)  </li>
-<li>PPI (300 press-rasterize standard)  </li>
-</ul>
-<h4 id="Web"><a href="#Web" class="headerlink" title="Web"></a>Web</h4><ul>
-<li>Object align to invisible grid  </li>
-<li>PPI 72 for screen standard  </li>
-</ul>
-<h3 id="Preview"><a href="#Preview" class="headerlink" title="Preview"></a>Preview</h3><p><code>CTRL + Y</code>- outline toggle<br><code>SHIFT + CTRL + Y</code>- pixel preview (for the screen)<br><code>View-&gt;proof set up</code>- preview color blend in rgb and cmyk  </p>
-<p><code>ALT + click</code> - to change area of selection (eg in transform)<br><code>CTRL + click</code> - V select underlied item (eg arm under a shirt)  </p>
-<h1 id="Navigation"><a href="#Navigation" class="headerlink" title="Navigation"></a>Navigation</h1><h3 id="Ruler-Manipulation"><a href="#Ruler-Manipulation" class="headerlink" title="Ruler Manipulation"></a>Ruler Manipulation</h3><p>Top left corner drag to set genesis (0) point<br>with ctrl, easier to do the second drag  </p>
-<h3 id="Object-view-selection"><a href="#Object-view-selection" class="headerlink" title="Object view selection"></a>Object view selection</h3><p>views can be created to switch between customized views (often for complicated vectors)  </p>
-<h1 id="Selection"><a href="#Selection" class="headerlink" title="Selection"></a>Selection</h1><p>V select - normal group select (if group exist)<br>A direct select - group item select (if choose group selection tool, each click select one upper nested level)  </p>
-<h3 id="strategy"><a href="#strategy" class="headerlink" title="strategy"></a>strategy</h3><p>use direct select for embedded item or double click in V selection to go to isolation (quit using esc)  </p>
-<h1 id="Rotate-amp-Scale"><a href="#Rotate-amp-Scale" class="headerlink" title="Rotate &amp; Scale"></a>Rotate &amp; Scale</h1><p>simply click to create anchor point and drag to manipulate scale/rotation  </p>
-<blockquote>
-<p>use alt click to edit anchor point setting<br>command + D to repeat the last thing (eg creating 360 flower)  </p>
-</blockquote>
-<h1 id="Transform"><a href="#Transform" class="headerlink" title="Transform"></a>Transform</h1><p>width - change width, warp - finger paint, wrinkle - melt effect  </p>
-<h1 id="Color-Manipulation"><a href="#Color-Manipulation" class="headerlink" title="Color Manipulation"></a>Color Manipulation</h1><h3 id="RGB-V-CMYK"><a href="#RGB-V-CMYK" class="headerlink" title="RGB V CMYK"></a>RGB V CMYK</h3><p><code>RGB</code>- color addictive, ‘world of light’/screen<br><code>CMYK</code>- color subtractive, ‘world of absorption’/print press  </p>
-<p>Color guide - palette inspiration<br>Color Swatches - drag to add or add group. Export as ASE OR AI<br><code>ALT + DEL</code> - to force delete  </p>
-<h3 id="GLOBAL-processing-and-spot-color"><a href="#GLOBAL-processing-and-spot-color" class="headerlink" title="GLOBAL processing and spot color"></a>GLOBAL processing and spot color</h3><p>double click color, if global, color attached to object woho  </p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;hr&gt;
-&lt;h1 id=&quot;AI-V-PS&quot;&gt;&lt;a href=&quot;#AI-V-PS&quot; class=&quot;headerlink&quot; title=&quot;AI V PS&quot;&gt;&lt;/a&gt;AI V PS&lt;/h1&gt;&lt;ul&gt;
-&lt;li&gt;AI is resolution-independent, meaning i
-    
-    </summary>
-    
-      <category term="Media" scheme="http://lycworks.me/blog/categories/Media/"/>
-    
-    
-      <category term="illustrator, image_manipulation" scheme="http://lycworks.me/blog/tags/illustrator-image-manipulation/"/>
-    
-  </entry>
-  
-  <entry>
     <title>Jade笔记</title>
     <link href="http://lycworks.me/blog/2017/02/02/2016-07-20-jade/"/>
     <id>http://lycworks.me/blog/2017/02/02/2016-07-20-jade/</id>
@@ -856,6 +807,58 @@ block content
     
     </summary>
     
+    
+  </entry>
+  
+  <entry>
+    <title>AI笔记</title>
+    <link href="http://lycworks.me/blog/2017/02/02/2016-08-03-AI-note/"/>
+    <id>http://lycworks.me/blog/2017/02/02/2016-08-03-AI-note/</id>
+    <published>2017-02-02T21:56:37.000Z</published>
+    <updated>2017-02-02T21:56:37.000Z</updated>
+    
+    <content type="html"><![CDATA[<hr>
+<h1 id="AI-V-PS"><a href="#AI-V-PS" class="headerlink" title="AI V PS"></a>AI V PS</h1><ul>
+<li>AI is resolution-independent, meaning its resolution is unaffected with zooming. In AI, images are vectors that are<br>mathematically calculated when zooming.  </li>
+</ul>
+<h1 id="Hotkeys"><a href="#Hotkeys" class="headerlink" title="Hotkeys"></a>Hotkeys</h1><p><code>CTRL + K</code>- preference<br><code>CAPS LOCK</code>- change all to precise cursor ‘+’<br><code>CTRL + R</code>- ruler<br><code>CTRL + 0</code>- fit on screen, <code>CTRL + 1</code>- fit 100%  </p>
+<h1 id="Start-with-An-End-of-Mind"><a href="#Start-with-An-End-of-Mind" class="headerlink" title="Start with An End of Mind"></a>Start with An End of Mind</h1><p><code>what is it for</code></p>
+<h3 id="Type"><a href="#Type" class="headerlink" title="Type"></a>Type</h3><h4 id="Print"><a href="#Print" class="headerlink" title="Print"></a>Print</h4><ul>
+<li>bleed (cut line for printing edge)  </li>
+<li>PPI (300 press-rasterize standard)  </li>
+</ul>
+<h4 id="Web"><a href="#Web" class="headerlink" title="Web"></a>Web</h4><ul>
+<li>Object align to invisible grid  </li>
+<li>PPI 72 for screen standard  </li>
+</ul>
+<h3 id="Preview"><a href="#Preview" class="headerlink" title="Preview"></a>Preview</h3><p><code>CTRL + Y</code>- outline toggle<br><code>SHIFT + CTRL + Y</code>- pixel preview (for the screen)<br><code>View-&gt;proof set up</code>- preview color blend in rgb and cmyk  </p>
+<p><code>ALT + click</code> - to change area of selection (eg in transform)<br><code>CTRL + click</code> - V select underlied item (eg arm under a shirt)  </p>
+<h1 id="Navigation"><a href="#Navigation" class="headerlink" title="Navigation"></a>Navigation</h1><h3 id="Ruler-Manipulation"><a href="#Ruler-Manipulation" class="headerlink" title="Ruler Manipulation"></a>Ruler Manipulation</h3><p>Top left corner drag to set genesis (0) point<br>with ctrl, easier to do the second drag  </p>
+<h3 id="Object-view-selection"><a href="#Object-view-selection" class="headerlink" title="Object view selection"></a>Object view selection</h3><p>views can be created to switch between customized views (often for complicated vectors)  </p>
+<h1 id="Selection"><a href="#Selection" class="headerlink" title="Selection"></a>Selection</h1><p>V select - normal group select (if group exist)<br>A direct select - group item select (if choose group selection tool, each click select one upper nested level)  </p>
+<h3 id="strategy"><a href="#strategy" class="headerlink" title="strategy"></a>strategy</h3><p>use direct select for embedded item or double click in V selection to go to isolation (quit using esc)  </p>
+<h1 id="Rotate-amp-Scale"><a href="#Rotate-amp-Scale" class="headerlink" title="Rotate &amp; Scale"></a>Rotate &amp; Scale</h1><p>simply click to create anchor point and drag to manipulate scale/rotation  </p>
+<blockquote>
+<p>use alt click to edit anchor point setting<br>command + D to repeat the last thing (eg creating 360 flower)  </p>
+</blockquote>
+<h1 id="Transform"><a href="#Transform" class="headerlink" title="Transform"></a>Transform</h1><p>width - change width, warp - finger paint, wrinkle - melt effect  </p>
+<h1 id="Color-Manipulation"><a href="#Color-Manipulation" class="headerlink" title="Color Manipulation"></a>Color Manipulation</h1><h3 id="RGB-V-CMYK"><a href="#RGB-V-CMYK" class="headerlink" title="RGB V CMYK"></a>RGB V CMYK</h3><p><code>RGB</code>- color addictive, ‘world of light’/screen<br><code>CMYK</code>- color subtractive, ‘world of absorption’/print press  </p>
+<p>Color guide - palette inspiration<br>Color Swatches - drag to add or add group. Export as ASE OR AI<br><code>ALT + DEL</code> - to force delete  </p>
+<h3 id="GLOBAL-processing-and-spot-color"><a href="#GLOBAL-processing-and-spot-color" class="headerlink" title="GLOBAL processing and spot color"></a>GLOBAL processing and spot color</h3><p>double click color, if global, color attached to object woho  </p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;hr&gt;
+&lt;h1 id=&quot;AI-V-PS&quot;&gt;&lt;a href=&quot;#AI-V-PS&quot; class=&quot;headerlink&quot; title=&quot;AI V PS&quot;&gt;&lt;/a&gt;AI V PS&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;AI is resolution-independent, meaning i
+    
+    </summary>
+    
+      <category term="Media" scheme="http://lycworks.me/blog/categories/Media/"/>
+    
+    
+      <category term="illustrator, image_manipulation" scheme="http://lycworks.me/blog/tags/illustrator-image-manipulation/"/>
     
   </entry>
   
