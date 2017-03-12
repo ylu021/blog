@@ -5,7 +5,7 @@
   <link href="/blog/atom.xml" rel="self"/>
   
   <link href="http://lycworks.me/blog/"/>
-  <updated>2017-02-25T23:22:46.000Z</updated>
+  <updated>2017-03-12T05:31:38.000Z</updated>
   <id>http://lycworks.me/blog/</id>
   
   <author>
@@ -14,6 +14,70 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>CSS</title>
+    <link href="http://lycworks.me/blog/2017/03/11/CSS/"/>
+    <id>http://lycworks.me/blog/2017/03/11/CSS/</id>
+    <published>2017-03-12T04:43:57.000Z</published>
+    <updated>2017-03-12T05:31:38.000Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="Rules-that-the-pros-said"><a href="#Rules-that-the-pros-said" class="headerlink" title="Rules that the pros said"></a>Rules that the pros said</h1><h3 id="Never-use-ID"><a href="#Never-use-ID" class="headerlink" title="Never use ID"></a>Never use ID</h3><p>Even though ID selector provides a faster speed, but that is only when it is use alone. In addition, in DOM, anything UI that one consider to be unique, data-binding is not unique. To ensure bug-free CSS, we prefer class &gt; id, or like the pros said, never id.</p>
+<blockquote>
+<p>When to use them? When we want to use JS, which can enhance our speed. <code>dom.getElementById()</code>. But js-* to name a class is also suggested for clarity.</p>
+</blockquote>
+<h3 id="Use-one-standard-for-semantic-class-name"><a href="#Use-one-standard-for-semantic-class-name" class="headerlink" title="Use one standard for semantic class name"></a>Use one standard for semantic class name</h3><p><code>app-component-class</code><br>By following this pattern, we can write <code>sass</code> like below<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">myapp-Header</div><div class="line">  background: white</div><div class="line">  &amp;-link //this compiles to myapp-Header-link</div><div class="line">    color: blue</div><div class="line">  &amp;-signup &amp;-isScrolled  //this compiles to .myapp-Header-signup .myapp-Header-isScrolled</div><div class="line">    color: black</div></pre></td></tr></table></figure></p>
+<h3 id="To-continue-the-tradition-of-DRY"><a href="#To-continue-the-tradition-of-DRY" class="headerlink" title="To continue the tradition of DRY"></a>To continue the tradition of DRY</h3><p>avoid as much as possible using child selector and <code>&gt;</code></p>
+<h3 id="How-to-deal-with-css-libraries-and-default-css"><a href="#How-to-deal-with-css-libraries-and-default-css" class="headerlink" title="How to deal with css libraries and default css?"></a>How to deal with css libraries and default css?</h3><ul>
+<li>css reset</li>
+<li>all: initial - remove all styles, but has to be called inside element, and unfortunately <mark>is not supported in all browsers</mark></li>
+<li>Shadow DOM - do not use it, it is still in beta</li>
+</ul>
+<h3 id="use-bootstrap-the-smart-way"><a href="#use-bootstrap-the-smart-way" class="headerlink" title="use bootstrap the smart way"></a>use bootstrap the smart way</h3><p>use what we need with our own customization, <code>@extend</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">.myapp-Button</div><div class="line">  @extend .btn //from bootstrap</div></pre></td></tr></table></figure>
+<h3 id="avoid-important"><a href="#avoid-important" class="headerlink" title="avoid !important"></a>avoid <code>!important</code></h3><p>it is a vicious cycle since important made a css element into higher priority abnormally<br>solution - use CSS linter to check goodness of css</p>
+<h1 id="Practices"><a href="#Practices" class="headerlink" title="Practices"></a>Practices</h1><p>CSS priority list (Repost from a Chinese blogger)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">* - 0</div><div class="line">p - 1 (one element)</div><div class="line">li:first-of-type - 2 (one element, one pseudo e)</div><div class="line">ul li - 2 (2 e&apos;s)</div><div class="line">ul ol+li - 3</div><div class="line">h1 + *[href*=index] - 11 (one attr, one e)</div><div class="line">ul ol li.list-item - 13 (one class, 3 e&apos;s)</div><div class="line">li.list-item.list-item-title - 21 (two class, 1 e)</div><div class="line">#id - 100</div><div class="line">&lt;p style=&quot;&quot;&gt;&lt;/p&gt; - 1000 (one inline styling)</div><div class="line">article p - 2 (2 html selector)</div><div class="line">.class - 10</div><div class="line">div p.class - 12</div><div class="line"></div><div class="line">html #id .class p - 112 (1 html+ 100 id+ 10 class + 1 element)</div></pre></td></tr></table></figure>
+<ul>
+<li>Never combine too many, slow down rendering!!!</li>
+</ul>
+<p>CSS starter kit</p>
+<ul>
+<li>Use reset!!! This is important for browser.<br>Which one? Normalize V reset</li>
+</ul>
+<h3 id="Normalize-v-reset"><a href="#Normalize-v-reset" class="headerlink" title="Normalize v reset"></a>Normalize v reset</h3><p>Normalize is more modular, reset is more like destroy</p>
+<h1 id="Use-BEM-block-element-and-modifier"><a href="#Use-BEM-block-element-and-modifier" class="headerlink" title="Use BEM (block, element and modifier)"></a>Use BEM (block, element and modifier)</h1><p>block - highest priority, the parent<br>element - uses <code>_</code> for child extending eg <code>.nav_link</code><br>modifier - changes some attribute, use <code>--</code> eg <code>.btn--primary</code></p>
+<h1 id="the-rest"><a href="#the-rest" class="headerlink" title="the rest"></a>the rest</h1><ul>
+<li>Modular-fy (suggested reading - atomic design)</li>
+<li>Auto-prefixer </li>
+<li>CSS-validator</li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;Rules-that-the-pros-said&quot;&gt;&lt;a href=&quot;#Rules-that-the-pros-said&quot; class=&quot;headerlink&quot; title=&quot;Rules that the pros said&quot;&gt;&lt;/a&gt;Rules that the
+    
+    </summary>
+    
+    
+      <category term="css" scheme="http://lycworks.me/blog/tags/css/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>flask</title>
+    <link href="http://lycworks.me/blog/2017/03/07/flask/"/>
+    <id>http://lycworks.me/blog/2017/03/07/flask/</id>
+    <published>2017-03-07T16:15:43.000Z</published>
+    <updated>2017-03-07T16:15:43.000Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>redux</title>
@@ -726,139 +790,6 @@
     
     
       <category term="tricks" scheme="http://lycworks.me/blog/tags/tricks/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Jade笔记</title>
-    <link href="http://lycworks.me/blog/2017/02/02/2016-07-20-jade/"/>
-    <id>http://lycworks.me/blog/2017/02/02/2016-07-20-jade/</id>
-    <published>2017-02-02T21:56:37.000Z</published>
-    <updated>2017-02-02T21:56:37.000Z</updated>
-    
-    <content type="html"><![CDATA[<hr>
-<h4 id="resource-http-naltatis-github-io-jade-syntax-docs"><a href="#resource-http-naltatis-github-io-jade-syntax-docs" class="headerlink" title="resource http://naltatis.github.io/jade-syntax-docs/"></a>resource <code>http://naltatis.github.io/jade-syntax-docs/</code></h4><h1 id="Prerequisite"><a href="#Prerequisite" class="headerlink" title="Prerequisite"></a>Prerequisite</h1><p>npm install pug -g<br>pug index.jade 编译文件 render to html<br>pug -P index.jade 编译成带格式的html文件 render to pretty html<br>pug -P -w index.jade 实时编译 watch jade and render html  </p>
-<h1 id="Jade-Basic"><a href="#Jade-Basic" class="headerlink" title="Jade Basic"></a>Jade Basic</h1><ul>
-<li>tags标签<br>直接在元素名称后加.类名和#ID名 e.g. p#id.class<br>放在(属性名=‘属性值’)小括号中 <code>p(class=&#39;text-center&#39; data-value=&#39;lala&#39;)</code><br>div标签可以省略 .im-a-div(data-type=’div’)  </li>
-<li><p>多行文本<br><code>.</code>  </p>
-<pre><code>p.
-    im first line
-    im second line
-</code></pre></li>
-</ul>
-<p><code>|</code>  </p>
-<pre><code>p  
-    |im first 
-    |im second
-</code></pre><ul>
-<li><p>注释comment<br>//单行注释： 解析为<code>&lt;!--单行注释--&gt;</code><br>//- 非缓冲,多行: 不显示在编译后的rendered html  </p>
-</li>
-<li><p>变量variable<br>inline变量声明 <code>- var name = Bob</code><br>引用变量 <code>#{name}</code><br>变量优先级- 文档中变量比外面传进来的变量优先级高<br>普遍用法  </p>
-<blockquote>
-<p>cmd传递数据加载json文件 <code>jade index.jade -P -w -O data.json</code><br>express render  </p>
-</blockquote>
-<pre><code>express.set(&apos;view-engine&apos;,&apos;jade&apos;);
-express.render(&apos;jadefile&apos;,&apos;{whatever json obj}&apos; 
-</code></pre></li>
-<li><p>转译Escaping  </p>
-<pre><code>- var data = &apos;&lt;script&gt;..&lt;/script&gt;&apos;  
-p #{data} or p= data =&gt; &apos;&lt;script&gt;..&apos; 
-p !{data} or p!= data =&gt; &lt;script&gt;..&lt;/script&gt;  
-p \#{data} =&gt; &apos;#{data}&apos; 
-</code></pre></li>
-</ul>
-<blockquote>
-<p>如果没有值，则返回undefined  </p>
-</blockquote>
-<h1 id="Jade-Mixin"><a href="#Jade-Mixin" class="headerlink" title="Jade Mixin"></a>Jade Mixin</h1><p><img src="http://img.mukewang.com/57037ccb0001a47412800720.jpg" alt="mixin examples">  </p>
-<h1 id="Jade-Inheritance-amp-include"><a href="#Jade-Inheritance-amp-include" class="headerlink" title="Jade Inheritance &amp; include"></a>Jade Inheritance &amp; include</h1><p>-模板继承<br>layout.jade中定义了多个bock<br>index.jade中，extends继承layout.jade，填充相应的block  </p>
-<pre><code>-- layout.jade --
-doctype html
-&lt;!--[if IE 8]&gt;&lt;html class=&apos;ie8&apos;&gt;&lt;![endif]--&gt;
-&lt;!--[if IE 9]&gt;&lt;html class=&apos;ie9&apos;&gt;&lt;![endif]--&gt;
-&lt;!--[if !IE]&gt;&lt;!--&gt;&lt;html&gt;&lt;!--&lt;![endif]--&gt;
-head
-    include head //-包含head.jade
-body
-    block desc //-可被覆盖
-        p desc from layout
-    block content
-&lt;/html&gt;
-
--- index.jade --
-extends layout
-
-block content
-    h3 im a block 
-    block desc
-        p desc from index
-</code></pre><ul>
-<li>模板包含  </li>
-</ul>
-<blockquote>
-<p>include 也可引入原生的html页面  </p>
-</blockquote>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;hr&gt;
-&lt;h4 id=&quot;resource-http-naltatis-github-io-jade-syntax-docs&quot;&gt;&lt;a href=&quot;#resource-http-naltatis-github-io-jade-syntax-docs&quot; class=&quot;headerli
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>AI笔记</title>
-    <link href="http://lycworks.me/blog/2017/02/02/2016-08-03-AI-note/"/>
-    <id>http://lycworks.me/blog/2017/02/02/2016-08-03-AI-note/</id>
-    <published>2017-02-02T21:56:37.000Z</published>
-    <updated>2017-02-02T21:56:37.000Z</updated>
-    
-    <content type="html"><![CDATA[<hr>
-<h1 id="AI-V-PS"><a href="#AI-V-PS" class="headerlink" title="AI V PS"></a>AI V PS</h1><ul>
-<li>AI is resolution-independent, meaning its resolution is unaffected with zooming. In AI, images are vectors that are<br>mathematically calculated when zooming.  </li>
-</ul>
-<h1 id="Hotkeys"><a href="#Hotkeys" class="headerlink" title="Hotkeys"></a>Hotkeys</h1><p><code>CTRL + K</code>- preference<br><code>CAPS LOCK</code>- change all to precise cursor ‘+’<br><code>CTRL + R</code>- ruler<br><code>CTRL + 0</code>- fit on screen, <code>CTRL + 1</code>- fit 100%  </p>
-<h1 id="Start-with-An-End-of-Mind"><a href="#Start-with-An-End-of-Mind" class="headerlink" title="Start with An End of Mind"></a>Start with An End of Mind</h1><p><code>what is it for</code></p>
-<h3 id="Type"><a href="#Type" class="headerlink" title="Type"></a>Type</h3><h4 id="Print"><a href="#Print" class="headerlink" title="Print"></a>Print</h4><ul>
-<li>bleed (cut line for printing edge)  </li>
-<li>PPI (300 press-rasterize standard)  </li>
-</ul>
-<h4 id="Web"><a href="#Web" class="headerlink" title="Web"></a>Web</h4><ul>
-<li>Object align to invisible grid  </li>
-<li>PPI 72 for screen standard  </li>
-</ul>
-<h3 id="Preview"><a href="#Preview" class="headerlink" title="Preview"></a>Preview</h3><p><code>CTRL + Y</code>- outline toggle<br><code>SHIFT + CTRL + Y</code>- pixel preview (for the screen)<br><code>View-&gt;proof set up</code>- preview color blend in rgb and cmyk  </p>
-<p><code>ALT + click</code> - to change area of selection (eg in transform)<br><code>CTRL + click</code> - V select underlied item (eg arm under a shirt)  </p>
-<h1 id="Navigation"><a href="#Navigation" class="headerlink" title="Navigation"></a>Navigation</h1><h3 id="Ruler-Manipulation"><a href="#Ruler-Manipulation" class="headerlink" title="Ruler Manipulation"></a>Ruler Manipulation</h3><p>Top left corner drag to set genesis (0) point<br>with ctrl, easier to do the second drag  </p>
-<h3 id="Object-view-selection"><a href="#Object-view-selection" class="headerlink" title="Object view selection"></a>Object view selection</h3><p>views can be created to switch between customized views (often for complicated vectors)  </p>
-<h1 id="Selection"><a href="#Selection" class="headerlink" title="Selection"></a>Selection</h1><p>V select - normal group select (if group exist)<br>A direct select - group item select (if choose group selection tool, each click select one upper nested level)  </p>
-<h3 id="strategy"><a href="#strategy" class="headerlink" title="strategy"></a>strategy</h3><p>use direct select for embedded item or double click in V selection to go to isolation (quit using esc)  </p>
-<h1 id="Rotate-amp-Scale"><a href="#Rotate-amp-Scale" class="headerlink" title="Rotate &amp; Scale"></a>Rotate &amp; Scale</h1><p>simply click to create anchor point and drag to manipulate scale/rotation  </p>
-<blockquote>
-<p>use alt click to edit anchor point setting<br>command + D to repeat the last thing (eg creating 360 flower)  </p>
-</blockquote>
-<h1 id="Transform"><a href="#Transform" class="headerlink" title="Transform"></a>Transform</h1><p>width - change width, warp - finger paint, wrinkle - melt effect  </p>
-<h1 id="Color-Manipulation"><a href="#Color-Manipulation" class="headerlink" title="Color Manipulation"></a>Color Manipulation</h1><h3 id="RGB-V-CMYK"><a href="#RGB-V-CMYK" class="headerlink" title="RGB V CMYK"></a>RGB V CMYK</h3><p><code>RGB</code>- color addictive, ‘world of light’/screen<br><code>CMYK</code>- color subtractive, ‘world of absorption’/print press  </p>
-<p>Color guide - palette inspiration<br>Color Swatches - drag to add or add group. Export as ASE OR AI<br><code>ALT + DEL</code> - to force delete  </p>
-<h3 id="GLOBAL-processing-and-spot-color"><a href="#GLOBAL-processing-and-spot-color" class="headerlink" title="GLOBAL processing and spot color"></a>GLOBAL processing and spot color</h3><p>double click color, if global, color attached to object woho  </p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;hr&gt;
-&lt;h1 id=&quot;AI-V-PS&quot;&gt;&lt;a href=&quot;#AI-V-PS&quot; class=&quot;headerlink&quot; title=&quot;AI V PS&quot;&gt;&lt;/a&gt;AI V PS&lt;/h1&gt;&lt;ul&gt;
-&lt;li&gt;AI is resolution-independent, meaning i
-    
-    </summary>
-    
-      <category term="Media" scheme="http://lycworks.me/blog/categories/Media/"/>
-    
-    
-      <category term="illustrator, image_manipulation" scheme="http://lycworks.me/blog/tags/illustrator-image-manipulation/"/>
     
   </entry>
   
