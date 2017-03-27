@@ -5,7 +5,7 @@
   <link href="/blog/atom.xml" rel="self"/>
   
   <link href="http://lycworks.me/blog/"/>
-  <updated>2017-03-12T05:31:38.000Z</updated>
+  <updated>2017-03-27T07:01:27.000Z</updated>
   <id>http://lycworks.me/blog/</id>
   
   <author>
@@ -14,6 +14,157 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>unit-testing</title>
+    <link href="http://lycworks.me/blog/2017/03/27/unit-testing/"/>
+    <id>http://lycworks.me/blog/2017/03/27/unit-testing/</id>
+    <published>2017-03-27T06:46:31.000Z</published>
+    <updated>2017-03-27T07:01:27.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>Why unit testing? @funfunfunction show the best example, where a radiation app has failed to protect people’s lives..</p>
+<h1 id="3-Rules"><a href="#3-Rules" class="headerlink" title="3 Rules"></a>3 Rules</h1><ol>
+<li>only commit after unit testing</li>
+<li>teach mandatory code reviews</li>
+<li>unbraid your code - using two design patterns injections and facade</li>
+</ol>
+<p>injection pattern - when injecting the param into direct function<br>facade - wrap in a function to mock the process</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Why unit testing? @funfunfunction show the best example, where a radiation app has failed to protect people’s lives..&lt;/p&gt;
+&lt;h1 id=&quot;3-Rules
+    
+    </summary>
+    
+    
+      <category term="softwarepractices" scheme="http://lycworks.me/blog/tags/softwarepractices/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>js-oop</title>
+    <link href="http://lycworks.me/blog/2017/03/27/js-oop/"/>
+    <id>http://lycworks.me/blog/2017/03/27/js-oop/</id>
+    <published>2017-03-27T05:27:44.000Z</published>
+    <updated>2017-03-27T06:46:16.000Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="why-oop-class-inheritance-is-detrimental"><a href="#why-oop-class-inheritance-is-detrimental" class="headerlink" title="why oop class inheritance is detrimental"></a>why oop class inheritance is detrimental</h1><blockquote>
+<p>The Gorilla Banana Problem - You wanted a banana but what you got was a gorilla holding the banana and the entire jungle ~ Joe Armstrong</p>
+</blockquote>
+<p>object composition &gt; class inheritance<br>JS is OOP/prototypal inheritance and functional programming  </p>
+<ul>
+<li>OOP include object without classes, object that links to another object</li>
+<li>Functional Programming include closures, first class functions, lambdas</li>
+</ul>
+<p>Class inheritance should be avoided</p>
+<ul>
+<li>violates DRY principle!</li>
+</ul>
+<p>How to prototypal inheritance</p>
+<ul>
+<li>JS object can be dynamically extended after instantiated</li>
+</ul>
+<p>BUT react uses class! Not really, we can create functions<br>why not class? - props callback hell, diff color buttons</p>
+<h2 id="idea1-factory-functions"><a href="#idea1-factory-functions" class="headerlink" title="idea1 factory functions"></a>idea1 factory functions</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">const dog = () =&gt; &#123;</div><div class="line">  const sound = &apos;woof&apos; //private to dog</div><div class="line">  return &#123;</div><div class="line">    talk: ()=&gt; console.log(sound)</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">//instantiate</div><div class="line">const sniffles = dog()</div><div class="line">sniffles.talk() //outputs: &quot;woof&quot;</div><div class="line">//calling</div><div class="line">button.click(sniffles.talk) //no this variable, no confusion on inheritance!</div></pre></td></tr></table></figure>
+<h2 id="composition-to-the-rescue"><a href="#composition-to-the-rescue" class="headerlink" title="composition to the rescue!"></a>composition to the rescue!</h2><p>composition - design about what they do, instead of are</p>
+<p><code>Object.assign</code> - it takes an object and assigns prop to it (making a new object!)<br>basically, with all of them actions in factory functions, we can do<br><code>xyz = x+y+z</code> where we accept state as function param</p>
+<p>example of how it works @funfunfunction at youtube channel</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">//let&apos;s create a dog driver for fun!</div><div class="line">barker = (stateobj) =&gt; &#123;</div><div class="line">  return &#123;</div><div class="line">    bark: console.log(&apos;woof, I am &apos;+stateobj.name)</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">driver = (stateobj) =&gt; &#123;</div><div class="line">  return &#123;</div><div class="line">    drive: ()=&gt; stateobj.position+=stateobj.speed</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">const dogdriver = (name) =&gt; &#123;</div><div class="line">  let stateobj = &#123;</div><div class="line">    name,</div><div class="line">    speed: 100,</div><div class="line">    position: 0</div><div class="line">  &#125;</div><div class="line">  return Object.assign(</div><div class="line">      &#123;&#125;,</div><div class="line">      barker(stateobj),</div><div class="line">      driver(stateobj)</div><div class="line">  )</div><div class="line">&#125;</div><div class="line"></div><div class="line">const sniffles = dogdriver(&apos;sniffles&apos;)</div><div class="line">sniffles.bark()</div></pre></td></tr></table></figure>
+<blockquote>
+<p>negatives, it is slower than class instantiation, 10,000 instances per frame is better performed with class</p>
+</blockquote>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;why-oop-class-inheritance-is-detrimental&quot;&gt;&lt;a href=&quot;#why-oop-class-inheritance-is-detrimental&quot; class=&quot;headerlink&quot; title=&quot;why oop clas
+    
+    </summary>
+    
+    
+      <category term="javascript" scheme="http://lycworks.me/blog/tags/javascript/"/>
+    
+      <category term="oop" scheme="http://lycworks.me/blog/tags/oop/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>redux-persist</title>
+    <link href="http://lycworks.me/blog/2017/03/23/redux-resist/"/>
+    <id>http://lycworks.me/blog/2017/03/23/redux-resist/</id>
+    <published>2017-03-23T19:50:26.000Z</published>
+    <updated>2017-03-23T20:43:47.000Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="Redux-persist"><a href="#Redux-persist" class="headerlink" title="Redux persist"></a>Redux persist</h1><p><a href="https://juejin.im/entry/57cac7b167f3560057bb00a7" target="_blank" rel="external">when have time, will organize this post</a></p>
+<h3 id="Reason-for-using"><a href="#Reason-for-using" class="headerlink" title="Reason for using"></a>Reason for using</h3><ul>
+<li>saving code to persist a large amount of state</li>
+<li><p>Simple codes (3 lines)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">import &#123;persistStore, autoRehydrate&#125; from ‘redux-persist’</div><div class="line">const store = createStore(reducer.., autoRehydrate())</div><div class="line">persistStore(store)</div></pre></td></tr></table></figure>
+</li>
+<li><p><code>persistStore(store, [config, callback])</code><br>Generating a <code>persistor</code> for <code>store</code> and use autoRehydrate (enhancer) to rehydration action’s dispatch</p>
+</li>
+</ul>
+<blockquote>
+<p>what is enhancer? A way to replace our chunky codes with localStorage stuff</p>
+<p>what is persistor? It subscribes to store changes</p>
+<p>can use blacklist (ignore), whitelist (only), storage engine, transforms (immutable, compress, encrypt, filter..), config obj</p>
+<p>Callback rehydration (changing obj to state)</p>
+<p>Can be chained</p>
+</blockquote>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;Redux-persist&quot;&gt;&lt;a href=&quot;#Redux-persist&quot; class=&quot;headerlink&quot; title=&quot;Redux persist&quot;&gt;&lt;/a&gt;Redux persist&lt;/h1&gt;&lt;p&gt;&lt;a href=&quot;https://juejin.im
+    
+    </summary>
+    
+    
+      <category term="redux" scheme="http://lycworks.me/blog/tags/redux/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>CSS-fixed-div</title>
+    <link href="http://lycworks.me/blog/2017/03/12/CSS-fixed-div/"/>
+    <id>http://lycworks.me/blog/2017/03/12/CSS-fixed-div/</id>
+    <published>2017-03-12T22:14:58.000Z</published>
+    <updated>2017-03-13T04:08:54.000Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="The-popular-way-of-making-a-div-fixated-during-scrolling"><a href="#The-popular-way-of-making-a-div-fixated-during-scrolling" class="headerlink" title="The popular way of making a div fixated during scrolling"></a>The popular way of making a div fixated during scrolling</h1><p><a href="http://codepen.io/ylu21/pen/0384169de1b81c9a71023747d2b3ade9" target="_blank" rel="external">Demo</a></p>
+<p>Using jQuery is currently the best way. Still figuring how to do it vanilla style though.</p>
+<h3 id="Step1-uses-window-onscroll"><a href="#Step1-uses-window-onscroll" class="headerlink" title="Step1 - uses window.onscroll"></a>Step1 - uses window.onscroll</h3><p>what is <code>window.onscroll</code>? A listener that listens to scrolling event. An important thing to know here is, how to <strong>distinguish downward and upward scroll</strong></p>
+<blockquote>
+<p><a href="http://stackoverflow.com/questions/4326845/how-can-i-determine-the-direction-of-a-jquery-scroll-event" target="_blank" rel="external">stackoverflow</a></p>
+</blockquote>
+<p>Using the trick presented on Stackoverflow</p>
+<ul>
+<li>set a global variable <code>lastScrollTop</code> initiate to <code>0</code></li>
+<li>record a dynamic <code>$(window).scrollTop()</code> inside the onscroll listener<blockquote>
+<p>what is scrollTop? - the top of the browser window, can be used with div as well</p>
+</blockquote>
+</li>
+<li>check if the dynamic is bigger than lastScrollTop, and update lastScrollTop accordingly</li>
+</ul>
+<p>full code<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">lastScrollTop = 0</div><div class="line">$(window).scroll((e)=&gt;&#123;</div><div class="line">    var dynamicScrollTop = $(this).scrollTop()</div><div class="line">    if(dynamicScrollTop&gt;lastScrollTop)&#123;</div><div class="line">      //downward</div><div class="line">    &#125;else&#123;</div><div class="line">      //upward</div><div class="line">    &#125;</div><div class="line">    lastScrollTop = dynamicScrollTop</div><div class="line">&#125;)</div></pre></td></tr></table></figure></p>
+<h3 id="Step2-getting-the-end-of-window-scrollTop"><a href="#Step2-getting-the-end-of-window-scrollTop" class="headerlink" title="Step2 - getting the end of window.scrollTop"></a>Step2 - getting the end of window.scrollTop</h3><p>domViewBottom - $(window).scrollTop() + $(window).height()</p>
+<blockquote>
+<p>simply window top + window height. Easy</p>
+</blockquote>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;The-popular-way-of-making-a-div-fixated-during-scrolling&quot;&gt;&lt;a href=&quot;#The-popular-way-of-making-a-div-fixated-during-scrolling&quot; class=
+    
+    </summary>
+    
+    
+      <category term="CSS" scheme="http://lycworks.me/blog/tags/CSS/"/>
+    
+  </entry>
   
   <entry>
     <title>CSS</title>
@@ -268,9 +419,9 @@
     </summary>
     
     
-      <category term="react" scheme="http://lycworks.me/blog/tags/react/"/>
-    
       <category term="javascript" scheme="http://lycworks.me/blog/tags/javascript/"/>
+    
+      <category term="react" scheme="http://lycworks.me/blog/tags/react/"/>
     
   </entry>
   
@@ -663,133 +814,6 @@
     
     
       <category term="trees" scheme="http://lycworks.me/blog/tags/trees/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>bits</title>
-    <link href="http://lycworks.me/blog/2017/02/03/2017-02-03-bits/"/>
-    <id>http://lycworks.me/blog/2017/02/03/2017-02-03-bits/</id>
-    <published>2017-02-03T21:39:46.000Z</published>
-    <updated>2017-02-06T21:44:18.000Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1><blockquote>
-<p>power of 4 - 变态的一道题要求你知道num 只有一个1 表示powerof2 并且之前的bit数量必须是偶数</p>
-</blockquote>
-<h1 id="套路"><a href="#套路" class="headerlink" title="套路"></a>套路</h1><p>power of 2 - <code>x&amp;(x-1)==0</code> where x&gt;0</p>
-<p>查看多少个1</p>
-<p><code>n == (n&amp;-n)</code> - 利用2’s complement, negating的话可以查看原来的数究竟有没有1</p>
-<p>** 前提是n&gt;0 </p>
-<p>let’s do the 套路</p>
-<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">def poweroffour(n):</div><div class="line">	if n==1: return True</div><div class="line"></div><div class="line">	count = 0</div><div class="line">	if (n &amp; (n-1))==0: #if power of 2</div><div class="line">		while n&gt;1:</div><div class="line">			n&gt;&gt;=1 #divided by 2 or shift right</div><div class="line">			count+=1</div><div class="line">		if count%2==0:</div><div class="line">			return True</div><div class="line">	</div><div class="line">	return False</div></pre></td></tr></table></figure>
-<p>power of 3 - find max integer of 3’s power and modulo it  </p>
-<p><code>len(bin(3**x))-2 &lt; 32, x==19</code></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;问题&quot;&gt;&lt;a href=&quot;#问题&quot; class=&quot;headerlink&quot; title=&quot;问题&quot;&gt;&lt;/a&gt;问题&lt;/h1&gt;&lt;blockquote&gt;
-&lt;p&gt;power of 4 - 变态的一道题要求你知道num 只有一个1 表示powerof2 并且之前的bit数量必须
-    
-    </summary>
-    
-    
-      <category term="bits" scheme="http://lycworks.me/blog/tags/bits/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Path路径查找问题</title>
-    <link href="http://lycworks.me/blog/2017/02/02/2017-02-02-find-path/"/>
-    <id>http://lycworks.me/blog/2017/02/02/2017-02-02-find-path/</id>
-    <published>2017-02-03T04:35:21.000Z</published>
-    <updated>2017-02-03T04:35:21.000Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="the-套路"><a href="#the-套路" class="headerlink" title="the 套路"></a>the 套路</h2><h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><p>Unique path - 一个机器人从左上角走到右下角有多少种方法？  </p>
-<p>具体思路使用dp即可。首先把第0排和第0行全部设置为1因为只有一种方法走到。<br>通过左边和上边即可算出连接到中间点所需path数量  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">+ + + +</div><div class="line"></div><div class="line">+ X _ _ #能到达X的路只有上和左</div></pre></td></tr></table></figure>
-<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">dp = [[0 for _ in range(n)] for _ in range(m)]</div><div class="line"></div><div class="line">for j in range(n):</div><div class="line">	dp[0][j] = 1</div><div class="line">for i in range(m):</div><div class="line">	dp[i][j] = 1</div><div class="line">for i in range(1,m):</div><div class="line">	for j in range(1,n):</div><div class="line">		dp[i][j]=dp[i-1][j]+dp[i][j-1]</div><div class="line"></div><div class="line">return dp[m-1][n-1]</div></pre></td></tr></table></figure>
-<h3 id="问题-1"><a href="#问题-1" class="headerlink" title="问题"></a>问题</h3><p>Minimum path sum - 算出最少cost的path  </p>
-<p>跟上一道很像，得出了path sum基本上只要是matrix和dp就把边界算出来，<br>然后再乃个加和比较来求出最小  </p>
-<h3 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">dp[0][0] = matrix[0][0]</div><div class="line">for j in range(1,n): #the sum of first row</div><div class="line">	dp[0][j] = dp[0][j-1]+matrix[0][j]</div><div class="line"></div><div class="line">for i in range(1,m): #first col</div><div class="line">	dp[i][0] = dp[i-1][0]+matrix[i][0]</div><div class="line"></div><div class="line">for i in range(1, m):</div><div class="line">	for j in range(1,n):</div><div class="line">		dp[i][j] = min(dp[i-1][j], dp[i][j-1])+matrix[i][j]</div><div class="line"></div><div class="line">return dp[m-1][n-1]</div></pre></td></tr></table></figure>
-<h2 id="the-变形"><a href="#the-变形" class="headerlink" title="the 变形"></a>the 变形</h2><h3 id="障碍物"><a href="#障碍物" class="headerlink" title="障碍物"></a>障碍物</h3><p>Unique path with obstacles - 每次遇到obstacle都归零  </p>
-<h3 id="思路1"><a href="#思路1" class="headerlink" title="思路1"></a>思路1</h3><p>每次遇到obstacle都归零</p>
-<h4 id="代码-2"><a href="#代码-2" class="headerlink" title="代码"></a>代码</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">visited = [[0 for _ in range(n)]for _ in range(m)]</div><div class="line">visited[0][0] = 1 if matrix[0][0]==0 else 0</div><div class="line"></div><div class="line">for j in range(1, n): #value of first row</div><div class="line">	if matrix[0][j] ==1: visited[0][j] = 0 #reset</div><div class="line">	else: visited[0][j] = visited[0][j-1] #obstacle后面的有可能是0</div><div class="line"></div><div class="line">for i in range(1,m): #same thing for col</div><div class="line">	if matrix[..]</div><div class="line">	else: ..</div><div class="line"></div><div class="line">for i in range(1,m):</div><div class="line">	for j in range(1,n):</div><div class="line">		if matrix[i][j] ==1: #reset</div><div class="line">			visited[i][j] = 0</div><div class="line">		else:</div><div class="line">			visited[i][j] = visited[i-1][j]+visited[i][j-1]</div><div class="line"></div><div class="line">return dp[m-1][n-1]</div></pre></td></tr></table></figure>
-<h3 id="思路2"><a href="#思路2" class="headerlink" title="思路2"></a>思路2</h3><p>只记录column来update每个row （如何update？col前一个）</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">dp = [0 for _ in range(n)]</div><div class="line"></div><div class="line">for row in matrix:</div><div class="line">	for j in range(n):</div><div class="line">		if row[j]==1:</div><div class="line">			dp[j]=0</div><div class="line">		if j&gt;0:</div><div class="line">			dp[j]+=dp[j-1] </div><div class="line">return dp[n-1]</div></pre></td></tr></table></figure>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;the-套路&quot;&gt;&lt;a href=&quot;#the-套路&quot; class=&quot;headerlink&quot; title=&quot;the 套路&quot;&gt;&lt;/a&gt;the 套路&lt;/h2&gt;&lt;h3 id=&quot;问题&quot;&gt;&lt;a href=&quot;#问题&quot; class=&quot;headerlink&quot; title=&quot;问题&quot;&gt;&lt;
-    
-    </summary>
-    
-      <category term="Algo" scheme="http://lycworks.me/blog/categories/Algo/"/>
-    
-    
-      <category term="dfs" scheme="http://lycworks.me/blog/tags/dfs/"/>
-    
-      <category term="path" scheme="http://lycworks.me/blog/tags/path/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>stack什么的</title>
-    <link href="http://lycworks.me/blog/2017/02/02/2017-02-02-stack-md/"/>
-    <id>http://lycworks.me/blog/2017/02/02/2017-02-02-stack-md/</id>
-    <published>2017-02-03T03:27:34.000Z</published>
-    <updated>2017-02-06T20:51:35.000Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="虽然大部分时间都ok，有的时候会被stack搞到。。"><a href="#虽然大部分时间都ok，有的时候会被stack搞到。。" class="headerlink" title="虽然大部分时间都ok，有的时候会被stack搞到。。"></a>虽然大部分时间都ok，有的时候会被stack搞到。。</h2><h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><p>Simplify Path - 简化directory path</p>
-<p>想复杂了。。一开始首先用/分开每个部分，如果是空的或者.则不计算<br>然后把有用的放进stack里，循环时如遇到<code>..</code>则popout它前面的出来  </p>
-<p>假设 <code>path = &quot;/a/./b/../../c/&quot;</code>, 第一步过后变成<code>a,b,../../c</code>, 然后通过stack就可以算出<code>/c</code>  </p>
-<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">path = path.split(&apos;/&apos;)</div><div class="line">res = []</div><div class="line"></div><div class="line">for p in path:</div><div class="line">	if p and p!=&apos;.&apos;:</div><div class="line">		res.append(p)</div><div class="line">stack = []</div><div class="line">for r in res:</div><div class="line">	if r==&apos;..&apos;:</div><div class="line">		if stack: stack.pop() #remove the item after ../</div><div class="line">	else:</div><div class="line">		stack.append(r)</div><div class="line"></div><div class="line">return &apos;/&apos;+&apos;/&apos;.join(stack)</div></pre></td></tr></table></figure>
-<h3 id="问题-1"><a href="#问题-1" class="headerlink" title="问题"></a>问题</h3><p>Valid parentheses - 根据open bracket push end bracket到stack里，如果visit到end bracket pop出来作比较<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">stack = []</div><div class="line">for ss in s:</div><div class="line">	if ss==&apos;(&apos;: stack.append(&apos;)&apos;)</div><div class="line">	elif ss==&apos;[&apos;: ..</div><div class="line">	elif ss==&apos;&#123;&apos;: ..</div><div class="line">	elif not stack or stack.pop()!=ss: #no start bracket or endbracket does not match</div><div class="line">		return False</div><div class="line">return not stack</div></pre></td></tr></table></figure></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;虽然大部分时间都ok，有的时候会被stack搞到。。&quot;&gt;&lt;a href=&quot;#虽然大部分时间都ok，有的时候会被stack搞到。。&quot; class=&quot;headerlink&quot; title=&quot;虽然大部分时间都ok，有的时候会被stack搞到。。&quot;&gt;&lt;/a&gt;虽然大部分时间都
-    
-    </summary>
-    
-      <category term="Algo" scheme="http://lycworks.me/blog/categories/Algo/"/>
-    
-    
-      <category term="stack" scheme="http://lycworks.me/blog/tags/stack/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>一些网上流传的大牛写的算法</title>
-    <link href="http://lycworks.me/blog/2017/02/02/2017-02-02-tricksalgo/"/>
-    <id>http://lycworks.me/blog/2017/02/02/2017-02-02-tricksalgo/</id>
-    <published>2017-02-03T01:52:37.000Z</published>
-    <updated>2017-02-03T02:22:58.000Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="大牛1-Moore’s-Voting"><a href="#大牛1-Moore’s-Voting" class="headerlink" title="大牛1 Moore’s Voting"></a>大牛1 Moore’s Voting</h1><p>使用 - 求最优候选人方案  </p>
-<h1 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h1><p>想象一下投票时每个政客试图互相cancel out对手的票，最后还剩一张票的肯定就赢咯~</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">AABBBBB</div><div class="line">++--+++</div></pre></td></tr></table></figure>
-<h1 id="基本套路"><a href="#基本套路" class="headerlink" title="基本套路"></a>基本套路</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">candidate = num</div><div class="line">votes = 0</div><div class="line"></div><div class="line">for num in nums:</div><div class="line">	if num==candidate:</div><div class="line">		votes+=1</div><div class="line">	else:</div><div class="line">		votes-=1</div><div class="line">	if votes==0:</div><div class="line">		#votes got cancelled out, switch candidate</div><div class="line">		candidate = num</div><div class="line">		votes = 1</div><div class="line"></div><div class="line">return candidate</div></pre></td></tr></table></figure>
-<h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1><p>majority element - size n的array求重复度大于n/3的候选们    </p>
-<p>具体思路是size n的array最多可以有&lt; 3*(n/3) 个candidate, 因此只能有2个  </p>
-<blockquote>
-<p>以此类推n/k的话即是最多可以有k-1个candidate  </p>
-</blockquote>
-<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">res = []</div><div class="line">candidate1 = candidate2 = nums[0]</div><div class="line">votes1 = votes2 = 0</div><div class="line"></div><div class="line">for num in nums:</div><div class="line">	if num==candidate1:</div><div class="line">		votes1+=1</div><div class="line">	elif num==candidate2:</div><div class="line">		votes2+=1</div><div class="line">	elif votes1==0:</div><div class="line">		candidate1 = num</div><div class="line">		votes1 = 1</div><div class="line">	elif votes2==0:</div><div class="line">		candidate2 = num</div><div class="line">		votes2 = 1</div><div class="line">	else:</div><div class="line">		votes1-=1</div><div class="line">		votes2-=1</div><div class="line"></div><div class="line">if nums.count(candidate1)&gt;len(nums)//3:</div><div class="line">	res.append(candidate1)</div><div class="line">if nums.count(candidate2)&gt;len(nums)//3:</div><div class="line">	res.append(candidate2)</div><div class="line"></div><div class="line">return res</div></pre></td></tr></table></figure>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;大牛1-Moore’s-Voting&quot;&gt;&lt;a href=&quot;#大牛1-Moore’s-Voting&quot; class=&quot;headerlink&quot; title=&quot;大牛1 Moore’s Voting&quot;&gt;&lt;/a&gt;大牛1 Moore’s Voting&lt;/h1&gt;&lt;p&gt;使用 - 求
-    
-    </summary>
-    
-      <category term="Algo" scheme="http://lycworks.me/blog/categories/Algo/"/>
-    
-    
-      <category term="tricks" scheme="http://lycworks.me/blog/tags/tricks/"/>
     
   </entry>
   
