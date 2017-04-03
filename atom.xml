@@ -5,7 +5,7 @@
   <link href="/blog/atom.xml" rel="self"/>
   
   <link href="http://lycworks.me/blog/"/>
-  <updated>2017-03-27T07:01:27.000Z</updated>
+  <updated>2017-04-03T03:22:59.000Z</updated>
   <id>http://lycworks.me/blog/</id>
   
   <author>
@@ -14,6 +14,316 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>react-composition</title>
+    <link href="http://lycworks.me/blog/2017/04/02/react-composition/"/>
+    <id>http://lycworks.me/blog/2017/04/02/react-composition/</id>
+    <published>2017-04-03T03:15:15.000Z</published>
+    <updated>2017-04-03T03:22:59.000Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="composition"><a href="#composition" class="headerlink" title="composition"></a>composition</h1><p>Why composition? Flexibility, flexibility, flexibility!<br>It follows the DRY principal</p>
+<p>use cases - profile image, which is often used a lot in diff places</p>
+<h3 id="Steps-to-implementation"><a href="#Steps-to-implementation" class="headerlink" title="Steps to implementation"></a>Steps to implementation</h3><ol>
+<li>create a function</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">export function profile(props) &#123;</div><div class="line">  return (</div><div class="line">      &lt;div className=&quot;profile&quot;+props.size&gt;</div><div class="line">        &lt;img src=&quot;blabla&quot; /&gt;</div><div class="line">        &lt;span&gt;&#123;props.user&#125;&lt;/span&gt;</div><div class="line">      &lt;/div&gt;</div><div class="line">  )</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ol>
+<li>use it. You can see I purposely named it lowercase to distinguish from class Component</li>
+</ol>
+<ul>
+<li>in class</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">import &#123; profile &#125; from &apos;[..path]&apos;;</div><div class="line"></div><div class="line">class Profilepage extends Component &#123;</div><div class="line">  ..</div><div class="line">  render() &#123;</div><div class="line">    return (</div><div class="line">        ..</div><div class="line">        &lt;profile size=&quot;small&quot; user=&quot;&#123;this.state.user&#125;&quot; /&gt;</div><div class="line">    )</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>Simple and powerful, &gt;&gt;&gt;3 composition!</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;composition&quot;&gt;&lt;a href=&quot;#composition&quot; class=&quot;headerlink&quot; title=&quot;composition&quot;&gt;&lt;/a&gt;composition&lt;/h1&gt;&lt;p&gt;Why composition? Flexibility, flex
+    
+    </summary>
+    
+    
+      <category term="react" scheme="http://lycworks.me/blog/tags/react/"/>
+    
+      <category term="composition" scheme="http://lycworks.me/blog/tags/composition/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>javascript</title>
+    <link href="http://lycworks.me/blog/2017/03/28/javascript/"/>
+    <id>http://lycworks.me/blog/2017/03/28/javascript/</id>
+    <published>2017-03-28T21:33:27.000Z</published>
+    <updated>2017-03-28T21:33:27.000Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>css-detail</title>
+    <link href="http://lycworks.me/blog/2017/03/28/css-detail/"/>
+    <id>http://lycworks.me/blog/2017/03/28/css-detail/</id>
+    <published>2017-03-28T21:24:06.000Z</published>
+    <updated>2017-03-28T21:33:16.000Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="Several-new-things-about-CSS"><a href="#Several-new-things-about-CSS" class="headerlink" title="Several new things about CSS"></a>Several new things about CSS</h1><ul>
+<li><p>OOCSS (object oriented CSS), or the term to indicate keep the skin and structure separate, keep container and content separate</p>
+<blockquote>
+<p>Dont do <code>ul li.list-item</code>, do <code>.list-item</code></p>
+</blockquote>
+</li>
+<li><p>ACSS (Atomic CSS), Atoms (html element), molecules (set of html), organism (a set of molecules, header for example), template (wireframe that contains all organisms), pages</p>
+<blockquote>
+<p>however this is not friendly with media queries</p>
+</blockquote>
+</li>
+<li><p>BEM (Block, element, modifier)</p>
+<blockquote>
+<p><code>.block</code>, <code>.block__element</code>, <code>.block-modifier</code></p>
+</blockquote>
+</li>
+<li><p>SMACSS (scalable and modular CSS)</p>
+</li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;Several-new-things-about-CSS&quot;&gt;&lt;a href=&quot;#Several-new-things-about-CSS&quot; class=&quot;headerlink&quot; title=&quot;Several new things about CSS&quot;&gt;&lt;/a&gt;Se
+    
+    </summary>
+    
+    
+      <category term="CSS" scheme="http://lycworks.me/blog/tags/CSS/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>express</title>
+    <link href="http://lycworks.me/blog/2017/03/28/express/"/>
+    <id>http://lycworks.me/blog/2017/03/28/express/</id>
+    <published>2017-03-28T17:04:47.000Z</published>
+    <updated>2017-03-28T17:04:47.000Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>microservices</title>
+    <link href="http://lycworks.me/blog/2017/03/27/microservices/"/>
+    <id>http://lycworks.me/blog/2017/03/27/microservices/</id>
+    <published>2017-03-28T03:34:45.000Z</published>
+    <updated>2017-03-28T23:21:52.000Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="microservices"><a href="#microservices" class="headerlink" title="microservices"></a>microservices</h1><p>why - monoliths or single unit build are responsible for every possible fn<br>changes involve building/deploying the whole app! Especially <strong>scaling</strong></p>
+<p>What is microservice? - An approach to develop a single app as a suite of small services, having multiple api endpoints that can scale individually 组件化，可以实现部分扩展</p>
+<h2 id="POS"><a href="#POS" class="headerlink" title="POS"></a>POS</h2><ul>
+<li>new features can be added as microservice, each deals with one concern only</li>
+<li>maintainable!</li>
+<li>easy to scale! Only scale the necessary parts/APIS</li>
+<li>easy to deploy! Few dep</li>
+<li>err resilience, only some are not working, not the entire crash down</li>
+</ul>
+<h2 id="Challenges"><a href="#Challenges" class="headerlink" title="Challenges"></a>Challenges</h2><ul>
+<li>communication between these APIS<br>options include HTTPS endpoints, API gateway</li>
+</ul>
+<blockquote>
+<p>what is API gateway? A server that is the single entry point, similar to Facade from oo design</p>
+</blockquote>
+<ul>
+<li>Seneca! what it is - helps you exchange JSON messages between your services/js modules   and have good looking and readable codebase<blockquote>
+<p>uses actions and action calls, standard JSON <code>{role:&#39;servicename&#39;, cmd: &#39;action&#39;}</code></p>
+</blockquote>
+</li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;microservices&quot;&gt;&lt;a href=&quot;#microservices&quot; class=&quot;headerlink&quot; title=&quot;microservices&quot;&gt;&lt;/a&gt;microservices&lt;/h1&gt;&lt;p&gt;why - monoliths or single 
+    
+    </summary>
+    
+    
+      <category term="javascript" scheme="http://lycworks.me/blog/tags/javascript/"/>
+    
+      <category term="nodejs" scheme="http://lycworks.me/blog/tags/nodejs/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>mocha</title>
+    <link href="http://lycworks.me/blog/2017/03/27/mocha/"/>
+    <id>http://lycworks.me/blog/2017/03/27/mocha/</id>
+    <published>2017-03-28T03:16:01.000Z</published>
+    <updated>2017-03-28T03:16:01.000Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>promise-fuss</title>
+    <link href="http://lycworks.me/blog/2017/03/27/promise-fuss/"/>
+    <id>http://lycworks.me/blog/2017/03/27/promise-fuss/</id>
+    <published>2017-03-28T02:54:13.000Z</published>
+    <updated>2017-03-31T05:33:32.000Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="Promise"><a href="#Promise" class="headerlink" title="Promise"></a>Promise</h1><p>JS is singlethread, which means it runs after one is done. To achieve multithreaded, we have callbacks and events</p>
+<p><code>addEventListener</code> - but event can happen before we started listen for them! Which takes time!!!</p>
+<p>Promise allowed multithread async with <strong>chain methods</strong>!<br>Promise.all([fn1, fn2]).then(//loaded and do stuff, //failed)</p>
+<h3 id="Terminology"><a href="#Terminology" class="headerlink" title="Terminology"></a>Terminology</h3><p>A promise can be</p>
+<ul>
+<li>fulfilled</li>
+<li>rejected</li>
+<li>pending</li>
+<li>settled</li>
+<li>then</li>
+</ul>
+<h3 id="GetStarted"><a href="#GetStarted" class="headerlink" title="GetStarted"></a>GetStarted</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">var promise = new Promise(function(resolve, reject) &#123;</div><div class="line">    if (worked) resolve(&apos;worked&apos;)</div><div class="line">    else reject(&apos;noooo&apos;)</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;Promise&quot;&gt;&lt;a href=&quot;#Promise&quot; class=&quot;headerlink&quot; title=&quot;Promise&quot;&gt;&lt;/a&gt;Promise&lt;/h1&gt;&lt;p&gt;JS is singlethread, which means it runs after one 
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>dependency-injection</title>
+    <link href="http://lycworks.me/blog/2017/03/27/dependency-injection/"/>
+    <id>http://lycworks.me/blog/2017/03/27/dependency-injection/</id>
+    <published>2017-03-28T02:45:36.000Z</published>
+    <updated>2017-03-28T03:34:24.000Z</updated>
+    
+    <content type="html"><![CDATA[<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">function getAnimals(id) &#123;</div><div class="line">  return window.fetch(&apos;http://animalapi&apos; + id)</div><div class="line">  .then(res=&gt; res.json())</div><div class="line">  .then(data =&gt; data.results[0])</div><div class="line">&#125;</div><div class="line"></div><div class="line">//with dep-inj</div><div class="line">function getAnimals(fetch, id) &#123;</div><div class="line">  return fetch(&apos;http://animalapi&apos; + id)</div><div class="line">  .then(res=&gt; res.json())</div><div class="line">  .then(data =&gt; data.results[0])</div><div class="line">&#125;</div><div class="line"></div><div class="line">getAnimals(window.fetch, 123)</div><div class="line">.then(animal =&gt;</div><div class="line">  document.querySelector(&apos;.animal&apos;).innerHTML = animal.name)</div></pre></td></tr></table></figure>
+<h1 id="what-is-dep-inj"><a href="#what-is-dep-inj" class="headerlink" title="what is dep-inj"></a>what is dep-inj</h1><p>dep is given from outside, pass in as param</p>
+<h1 id="why"><a href="#why" class="headerlink" title="why"></a>why</h1><ul>
+<li>Unit test, the test cannot inspect dependencies! So we have to pass them in<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">describe(&apos;getAnimals&apos;, ()=&gt; &#123;</div><div class="line">    if(&apos;works&apos;, ()=&gt; &#123;</div><div class="line"></div><div class="line">    &#125;)</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="Understand-fetch-API"><a href="#Understand-fetch-API" class="headerlink" title="Understand fetch API"></a>Understand fetch API</h2><p><code>fetch(url, options)</code> returns a promise with response object<br>to know/validate type of data eg JSON, we can do<br>.response.json().then().catch()</p>
+<p>can be further simplified to avoid callback hells</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">function checkStatus(res) &#123;</div><div class="line">  if.. return Promise.resolve(res)</div><div class="line">  else return Promise.reject(..)</div><div class="line">&#125;</div><div class="line"></div><div class="line">function getJSON(res) &#123;</div><div class="line">  return res.json()</div><div class="line">&#125;</div><div class="line"></div><div class="line">fetch(url)</div><div class="line">  .then(checkStatus) //if failed wont go on</div><div class="line">  .then(getJSON)</div><div class="line">  .then(function(data)&#123;</div><div class="line"></div><div class="line">  &#125;)</div><div class="line">  .catch(..)</div></pre></td></tr></table></figure>
+<p>fetch options</p>
+<ul>
+<li>method</li>
+<li>HTTP header</li>
+<li>body</li>
+<li>credentials</li>
+<li>cors</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">var options = &#123;</div><div class="line">  &quot;method&quot; : &quot;post&quot;,</div><div class="line">  &quot;headers&quot; : &#123;</div><div class="line">    &quot;Authorization&quot; : &quot;TOken&quot;</div><div class="line">  &#125;</div><div class="line">    &quot;body&quot;: &quot;Hello world&quot;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>fetch mode options</p>
+<ul>
+<li>same-origin</li>
+<li>cors</li>
+<li>cors-with-forced-preflight</li>
+<li>no-cors</li>
+</ul>
+<p><a href="https://www.youtube.com/watch?v=g6-ZwZmRncs&amp;feature=iv&amp;src_vid=0X1Ns2NRfks&amp;annotation_id=video%3Ae324057a-4c5c-406b-82a9-3ef5a477bbe0" target="_blank" rel="external">Ref</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/di
+    
+    </summary>
+    
+    
+      <category term="dependency-injection" scheme="http://lycworks.me/blog/tags/dependency-injection/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>notes</title>
+    <link href="http://lycworks.me/blog/2017/03/27/notes/"/>
+    <id>http://lycworks.me/blog/2017/03/27/notes/</id>
+    <published>2017-03-28T01:02:50.000Z</published>
+    <updated>2017-03-31T05:33:26.000Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="Nodejs"><a href="#Nodejs" class="headerlink" title="Nodejs"></a>Nodejs</h1><ul>
+<li><strong>single threaded, event based</strong><br>Why it is designed this way?</li>
+<li>I/O is expensive, especially the waiting time..</li>
+<li>Multilith, eg Apache consume too much CPU (one waits for another)</li>
+<li>we must use async callback instead, it is designed to be used this way</li>
+</ul>
+<p>How do we use callback?</p>
+<ul>
+<li>option1 use first-class functions (pass around fn as data and do stuff)</li>
+<li>option2 use composition or anonymous fn, closures that are executed after event</li>
+<li>new option Promise - an abstraction to made callback more readable</li>
+</ul>
+<p>Node should only build small composible parts 组件 that does one thing</p>
+<ul>
+<li><strong>Error First Callback</strong> - err pass in callback function as the first param</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">callbackfunc(err, data) &#123;</div><div class="line">  if (err)&#123;</div><div class="line">    return console.log(err)</div><div class="line">  &#125;</div><div class="line">  console.log(data) //else</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>Avoid callback hells</li>
+</ul>
+<ol>
+<li>break callbacks into independent functions</li>
+<li>use Async control flow library</li>
+<li>generator with promises</li>
+</ol>
+<ul>
+<li>promises<br>a concurrency primitive to handle async operations, execute later~<br>its advantage is that it is chainable<br><code>.then(), .catch()</code></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">new Promise((resolve, reject) =&gt; &#123;</div><div class="line">    //timeout</div><div class="line">&#125;).then(//do stuff after)</div></pre></td></tr></table></figure>
+<ul>
+<li>Consistent Code ESLint</li>
+<li>Functions should do one thing</li>
+<li><p>buildin debugger <code>node debug server.js</code> - <code>n</code> for next line, <code>repl</code> for details of object<br>Add <code>debugger</code> to where you want the execution to end then use <code>c</code> for running debugger</p>
+</li>
+<li><p>Avoid Cookie XSS attacks - when attacker try to inject executable javascript into html response<br>set flags on the set-cookie HTTP header</p>
+</li>
+</ul>
+<ul>
+<li><code>HttpOnly</code> - prevent attack from cross-site scripting</li>
+<li><code>secure</code> - browser only send cookie if request is send through HTTPS; <code>express-cookie</code> have them by default</li>
+</ul>
+<ul>
+<li>dependencies checking - update automatically <code>npm outdated</code></li>
+<li>router - base on diff request, diff response (request handler)</li>
+</ul>
+<h1 id="Puzzles-are-fun-and-annoying"><a href="#Puzzles-are-fun-and-annoying" class="headerlink" title="Puzzles are fun and annoying"></a>Puzzles are fun and annoying</h1><p>promise need <code>.catch()</code> with <code>throw an error</code><br>security credentials must be compared within a fixed time, else prone to timing attacks</p>
+<blockquote>
+<p>what is timing attack? An attacker attempts to compromise a crypto by analyze the time taken to execute the algo (cows/bulls)</p>
+</blockquote>
+<p>Null is an object in JS - bar = null; typeof bar === ‘object’ //true..<br>NaN is a number in JS - number.isNaN() is a better practice<br>delete cannot deal with prototype attr<br>delete array element only makes the index element = undefined, the length does not change</p>
+<p>Two types of function declaration</p>
+<p>var foo = function(){} //runtime declaration, thus hoisting wont work<br>function foo(){} //parse time declaration</p>
+<p>instanceof - prototype child  </p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;Nodejs&quot;&gt;&lt;a href=&quot;#Nodejs&quot; class=&quot;headerlink&quot; title=&quot;Nodejs&quot;&gt;&lt;/a&gt;Nodejs&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;single threaded, event based&lt;/strong&gt;&lt;br
+    
+    </summary>
+    
+    
+      <category term="notes" scheme="http://lycworks.me/blog/tags/notes/"/>
+    
+  </entry>
   
   <entry>
     <title>unit-testing</title>
@@ -419,9 +729,9 @@
     </summary>
     
     
-      <category term="javascript" scheme="http://lycworks.me/blog/tags/javascript/"/>
-    
       <category term="react" scheme="http://lycworks.me/blog/tags/react/"/>
+    
+      <category term="javascript" scheme="http://lycworks.me/blog/tags/javascript/"/>
     
   </entry>
   
@@ -498,322 +808,6 @@
     
     
       <category term="chrome" scheme="http://lycworks.me/blog/tags/chrome/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>MATRIX与我的爱恨情仇</title>
-    <link href="http://lycworks.me/blog/2017/02/08/2017-02-01-matrix/"/>
-    <id>http://lycworks.me/blog/2017/02/08/2017-02-01-matrix/</id>
-    <published>2017-02-09T01:41:10.000Z</published>
-    <updated>2017-02-09T01:41:10.000Z</updated>
-    
-    <content type="html"><![CDATA[<hr>
-<h1 id="matrix-w-o-dfs"><a href="#matrix-w-o-dfs" class="headerlink" title="matrix w/o dfs"></a>matrix w/o dfs</h1><h3 id="只是遍历即可"><a href="#只是遍历即可" class="headerlink" title="只是遍历即可"></a>只是遍历即可</h3><blockquote>
-<p><a href="http://pythontutor.com/visualize.html#code=def%20spiralMatrix%28matrix%29%3A%0A%20%20%20%20pos%20%3D%200%0A%20%20%20%20oldpos%20%3D%20pos%0A%20%20%20%20m%20%3D%20len%28matrix%29%0A%20%20%20%20n%20%3D%20len%28matrix%5B0%5D%29%0A%20%20%20%20res%20%3D%20%5Bfloat%28&#39;-inf&#39;%29%5D%0A%20%20%20%20level%20%3D%20min%28m,n%29%20%23how%20many%20spirals%0A%20%20%20%20while%20pos%3Clevel%3A%0A%20%20%20%20%20%20%20%20%23row%20traversal%0A%20%20%20%20%20%20%20%20for%20j%20in%20range%28pos,%20n-pos%29%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20if%20matrix%5Bpos%5D%5Bj%5D!%3Dres%5B-1%5D%3A%0A%20%20%20%20%20%20%20%20%09%20%20%20%20res.append%28matrix%5Bpos%5D%5Bj%5D%29%20%23rowstart%201,2,3%0A%20%20%20%20%20%20%20%20%23col%20traversal%0A%20%20%20%20%20%20%20%20for%20i%20in%20range%28pos,%20m-pos%29%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20if%20matrix%5Bi%5D%5Bn-pos-1%5D!%3Dres%5B-1%5D%3A%0A%20%20%20%20%20%20%20%20%09%20%20%20%20res.append%28matrix%5Bi%5D%5Bn-pos-1%5D%29%20%23colend%203,6,9%0A%20%20%20%20%20%20%20%20%23row%20traversal%0A%20%20%20%20%20%20%20%20for%20j%20in%20range%28n-pos-1,pos,-1%29%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20if%20matrix%5Bm-pos-1%5D%5Bj%5D!%3Dres%5B-1%5D%3A%0A%20%20%20%20%20%20%20%20%09%20%20%20%20res.append%28matrix%5Bm-pos-1%5D%5Bj%5D%29%20%23rowend%2087%0A%20%20%20%20%20%20%20%20%23col%20traversal%0A%20%20%20%20%20%20%20%20for%20i%20in%20range%28m-pos-1,pos,-1%29%3A%20%0A%20%20%20%20%20%20%20%20%20%20%20%20if%20matrix%5Bi%5D%5Bpos%5D!%3Dres%5B-1%5D%3A%0A%20%20%20%20%20%20%20%20%09%20%20%20%20res.append%28matrix%5Bi%5D%5Bpos%5D%29%20%23colstart%204%0A%20%20%20%20%20%20%20%20%23skip%20repeat%0A%20%20%20%20%20%20%20%20pos%2B%3D1%0A%20%20%20%20return%20res%5B1%3A%5D%0A%20%20%20%20%20%20%20%20%0AspiralMatrix%28%5B%5B1,2,3%5D,%5B4,0,-1%5D,%5B7,8,9%5D%5D%29%0A&amp;cumulative=false&amp;curInstr=0&amp;heapPrimitives=false&amp;mode=display&amp;origin=opt-frontend.js&amp;py=2&amp;rawInputLstJSON=%5B%5D&amp;testCasesJSON=%5B%22%5Cn%23%20assert%20%3Ctest%20condition%3E%22%5D&amp;textReferences=false" target="_blank" rel="external">spiral matrix</a>, <a href="https://goo.gl/YkWbv8" target="_blank" rel="external">generate matrix</a>  </p>
-</blockquote>
-<p>spiral matrix - 重点找到有多少level。level的算法就是画层，横竖哪个小就是哪个<br>generate matrix - level是n给了，重点是重复的横向row和col number需要各减一次  </p>
-<h3 id="用heap吧-python自带这么好用不用多可惜"><a href="#用heap吧-python自带这么好用不用多可惜" class="headerlink" title="用heap吧 python自带这么好用不用多可惜"></a>用heap吧 python自带这么好用不用多可惜</h3><blockquote>
-<p>kth smallest num in matrix -&gt; step1 flatten step2 heapify step3 duh  </p>
-</blockquote>
-<p><strong><em>flatten the array</em></strong><br><code>[flatten for sublist in myarray for flatten in sublist]</code> 绕口令。。  </p>
-<h3 id="setzeros"><a href="#setzeros" class="headerlink" title="setzeros"></a>setzeros</h3><blockquote>
-<p>bombman, set matrix zeroes  </p>
-</blockquote>
-<p>set matrix zeroes - 方法用第一排的横竖记录有没有0，然后第二次loop的时候改</p>
-<h3 id="matrix-transpose"><a href="#matrix-transpose" class="headerlink" title="matrix transpose"></a>matrix transpose</h3><blockquote>
-<p>matrix transpose basic</p>
-</blockquote>
-<h4 id="方法1"><a href="#方法1" class="headerlink" title="方法1"></a>方法1</h4><p><code>map(list, zip(*matrix))</code></p>
-<p>how it works? 首先zip<em>把每个col变成tuple<br>举例 <code>[1,2,3],[4,5,6]</code> -&gt; `zip(</em>arr)<code>-&gt;</code>(1,4), (2,5), (3,6)`, 然后使用map每个form成list  </p>
-<p>然而他的overhead导致O(m*n)  </p>
-<h4 id="方法2"><a href="#方法2" class="headerlink" title="方法2"></a>方法2</h4><p><code>每个col loop 都从i+1 这样最后一个不会被visit到</code>，省时  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">for i in range(m):</div><div class="line">	for j in range(i+1, n):</div><div class="line">		#swap</div></pre></td></tr></table></figure>
-<h3 id="islands"><a href="#islands" class="headerlink" title="islands"></a>islands</h3><p>岛类型的题分为很多种</p>
-<h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><p>perimeter - 4<em>num_lands - 2</em>neighbors (row and col)</p>
-<h3 id="matrix-traverse-Howmany-path"><a href="#matrix-traverse-Howmany-path" class="headerlink" title="matrix traverse Howmany path?"></a>matrix traverse Howmany path?</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">def traverse(matrix):</div><div class="line">    m = len(matrix)</div><div class="line">    n = len(matrix[0])</div><div class="line">    </div><div class="line">    </div><div class="line">    def dfs(matrix, x, y):</div><div class="line">        if x==len(matrix)-1 and y==len(matrix[0])-1 and matrix[x][y]!=1:</div><div class="line">            return 1</div><div class="line">        if x&gt;=len(matrix) or y&gt;=len(matrix[0]) or matrix[x][y]==1:</div><div class="line">            return 0</div><div class="line">        return  dfs(matrix,x+1,y)+dfs(matrix,x,y+1)</div><div class="line">    </div><div class="line">    return dfs(matrix, 0, 0)</div></pre></td></tr></table></figure>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;hr&gt;
-&lt;h1 id=&quot;matrix-w-o-dfs&quot;&gt;&lt;a href=&quot;#matrix-w-o-dfs&quot; class=&quot;headerlink&quot; title=&quot;matrix w/o dfs&quot;&gt;&lt;/a&gt;matrix w/o dfs&lt;/h1&gt;&lt;h3 id=&quot;只是遍历即可&quot;&gt;&lt;a h
-    
-    </summary>
-    
-      <category term="Algo" scheme="http://lycworks.me/blog/categories/Algo/"/>
-    
-    
-      <category term="matrix" scheme="http://lycworks.me/blog/tags/matrix/"/>
-    
-      <category term="dfs" scheme="http://lycworks.me/blog/tags/dfs/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>makefile</title>
-    <link href="http://lycworks.me/blog/2017/02/08/makefile/"/>
-    <id>http://lycworks.me/blog/2017/02/08/makefile/</id>
-    <published>2017-02-09T01:40:26.000Z</published>
-    <updated>2017-02-09T02:32:30.000Z</updated>
-    
-    <content type="html"><![CDATA[<p><a href="https://kitoslab.blogspot.tw/2011/12/makefile.html" target="_blank" rel="external">reference</a></p>
-<h1 id="why-we-need-makefile"><a href="#why-we-need-makefile" class="headerlink" title="why we need makefile"></a>why we need makefile</h1><ul>
-<li>replace repetition of linking</li>
-<li><code>gcc *.c -o prog</code></li>
-<li>quick compiling time (prev way is 1 for everytime so that’s O(n))</li>
-</ul>
-<h1 id="Functions-of-makefile"><a href="#Functions-of-makefile" class="headerlink" title="Functions of makefile"></a>Functions of makefile</h1><ul>
-<li>build</li>
-<li>link</li>
-</ul>
-<h3 id="build"><a href="#build" class="headerlink" title="build"></a>build</h3><p>write inside makefile<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">prog:</div><div class="line">\t gcc a.o b.o c.o -o prog</div></pre></td></tr></table></figure></p>
-<p>terminal <code>make</code> reports no change when changes occur</p>
-<h3 id="update-rebuild"><a href="#update-rebuild" class="headerlink" title="update/rebuild"></a>update/rebuild</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">prog: a.o b.o c.o</div><div class="line">\t gcc a.o b.o c.o -o prog</div><div class="line">a.o: a.c #adding filename after specified output file</div><div class="line">\t gcc a.c -o a.o -c</div><div class="line"></div><div class="line">b.o: b.c</div><div class="line">\t gcc b.c -o b.o -c</div></pre></td></tr></table></figure>
-<h3 id="parallel-option"><a href="#parallel-option" class="headerlink" title="parallel option"></a>parallel option</h3><p>adding <code>-jn</code> n=num of buildtasks<br>eg <code>make -j4</code> #means compile 4 tasks</p>
-<blockquote>
-<p>makefile can be used as parallel execution as well</p>
-</blockquote>
-<h1 id="Common-error"><a href="#Common-error" class="headerlink" title="Common error"></a>Common error</h1><p><code>Makefile:2: *** missing separator.  Stop.</code><br>solution is to check for tabs</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;&lt;a href=&quot;https://kitoslab.blogspot.tw/2011/12/makefile.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;reference&lt;/a&gt;&lt;/p&gt;
-&lt;h1 id=&quot;why-we-need-makefil
-    
-    </summary>
-    
-    
-      <category term="compiler" scheme="http://lycworks.me/blog/tags/compiler/"/>
-    
-      <category term="gcc" scheme="http://lycworks.me/blog/tags/gcc/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>动态规划</title>
-    <link href="http://lycworks.me/blog/2017/02/07/2017-02-01-dp/"/>
-    <id>http://lycworks.me/blog/2017/02/07/2017-02-01-dp/</id>
-    <published>2017-02-08T04:53:26.000Z</published>
-    <updated>2017-02-08T04:53:26.000Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="DP类型"><a href="#DP类型" class="headerlink" title="DP类型"></a>DP类型</h1><ul>
-<li><p>状态转移 <code>dp[x+y]+=dp[x]</code><br>转<br>当你遇到第n+1个数x_n+1的时候，前n+1个数中最大值是什么呢，就是拿这个新x去和之前那个max比，然后留下较大的一个，对吧，写下来就是<br><code>Max_n+1 = (x_n+1 &gt; Max_n) ? x_n+1 : Max_n</code> #if choose add to current max else not choose  </p>
-<h1 id="例题"><a href="#例题" class="headerlink" title="例题 ."></a>例题 .</h1><h3 id="combinationsum"><a href="#combinationsum" class="headerlink" title="combinationsum ."></a>combinationsum .</h3><h3 id="max-sum-subarray-Kadane’s"><a href="#max-sum-subarray-Kadane’s" class="headerlink" title="max sum subarray Kadane’s ."></a>max sum subarray Kadane’s .</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">def maxSum(arr):</div><div class="line">  prevSum = nums[0]</div><div class="line">  maxmax = nums[0]</div><div class="line">  del arr[0]</div><div class="line">  for num in nums:</div><div class="line">    prevSum = max(prevSum+num, num) #compare cursum and curnum</div><div class="line">    maxSum = max(maxSum, prevSum)</div><div class="line">  return maxSum</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<h4 id="follow-up-from-max-subarray"><a href="#follow-up-from-max-subarray" class="headerlink" title="follow up from max subarray ."></a>follow up from max subarray .</h4><ul>
-<li><p>max product subarray - when it is negative, swap max and min continuous product . </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">def maxProduct(arr):</div><div class="line">  prevSum = nums[0]</div><div class="line">  maxProduct = nums[0]</div><div class="line">  minProduct = nums[0]</div><div class="line">  maxmax = nums[0]</div><div class="line">  del arr[0]</div><div class="line">  for num in nums:</div><div class="line">    if num&lt;0:</div><div class="line">      #swap because -*- is happening</div><div class="line">      maxProduct, minProduct = minProduct, maxProduct</div><div class="line">    maxProduct = max(num, maxProduct*num)</div><div class="line">    minProduct = min(num, minProduct*num)</div><div class="line">    maxmax = max(maxmax, maxProduct)</div><div class="line">  return maxmax</div></pre></td></tr></table></figure>
-</li>
-<li><p>Robber</p>
-</li>
-<li>stocks</li>
-</ul>
-<h3 id="两个选择"><a href="#两个选择" class="headerlink" title="两个选择"></a>两个选择</h3><p>例题 栅栏和涂色</p>
-<p>这道题因为栅栏有n，涂色有k个，再加上涂色可以重复最多两次，基本上确定了要算<br>1 - 前一个和后一个是一样颜色 <code>prev = cur</code><br>2 - 前一个和后一个是不同颜色 <code>prev uses k, cur uses k-1 color</code>  </p>
-<h1 id="let’s-写code"><a href="#let’s-写code" class="headerlink" title="let’s 写code"></a>let’s 写code</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">if n&lt;2:</div><div class="line">	return n*k</div><div class="line">same = k</div><div class="line">diff = k*(k-1)</div><div class="line">for i in range(2, n):</div><div class="line">	same, diff = diff, (same+diff)*(k-1)</div><div class="line"></div><div class="line">return same+diff</div></pre></td></tr></table></figure>
-<h3 id="permutation"><a href="#permutation" class="headerlink" title="permutation"></a>permutation</h3><p>例题 count numbers with unique digits  </p>
-<p>digits [0,10)<br>1 for 0<br>10 for 1 - 0~9<br>9<em>9 for 2 - 1-9 +0,5 -&gt; 9个<br>然后就是9</em>8*7..</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">curans = 10</div><div class="line">base = 9</div><div class="line">for i in range(n-2+1) #&gt;2</div><div class="line">	base*= 9-i</div><div class="line">	curans+=base</div></pre></td></tr></table></figure>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;DP类型&quot;&gt;&lt;a href=&quot;#DP类型&quot; class=&quot;headerlink&quot; title=&quot;DP类型&quot;&gt;&lt;/a&gt;DP类型&lt;/h1&gt;&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;状态转移 &lt;code&gt;dp[x+y]+=dp[x]&lt;/code&gt;&lt;br&gt;转&lt;br&gt;当你遇到第n+1个数x_
-    
-    </summary>
-    
-      <category term="Algo" scheme="http://lycworks.me/blog/categories/Algo/"/>
-    
-    
-      <category term="dp" scheme="http://lycworks.me/blog/tags/dp/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>permutation</title>
-    <link href="http://lycworks.me/blog/2017/02/07/permutation/"/>
-    <id>http://lycworks.me/blog/2017/02/07/permutation/</id>
-    <published>2017-02-08T00:11:07.000Z</published>
-    <updated>2017-02-08T00:40:10.000Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="nPr-N-N-r"><a href="#nPr-N-N-r" class="headerlink" title="nPr N!/(N-r)!"></a>nPr N!/(N-r)!</h1><p>5P3 - 5!/(5-3)!</p>
-<p>boomerang - three points same distance<br>loop through each point and count the number of pairs of same distanced, then add their permutations as well</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">res = 0</div><div class="line">for i in range(m):</div><div class="line">	for j in range(m):</div><div class="line">		if i==j: continue</div><div class="line">		distance = calcDistance(points[i],points[j])</div><div class="line">		dic[distance]+=1</div><div class="line">	for v in dic.values():</div><div class="line">		res += v * (v-1) #the permutation of selecting 2 elements</div><div class="line">	dic = &#123;&#125;</div><div class="line"></div><div class="line">return res</div></pre></td></tr></table></figure>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;nPr-N-N-r&quot;&gt;&lt;a href=&quot;#nPr-N-N-r&quot; class=&quot;headerlink&quot; title=&quot;nPr N!/(N-r)!&quot;&gt;&lt;/a&gt;nPr N!/(N-r)!&lt;/h1&gt;&lt;p&gt;5P3 - 5!/(5-3)!&lt;/p&gt;
-&lt;p&gt;boomerang -
-    
-    </summary>
-    
-    
-      <category term="permutation" scheme="http://lycworks.me/blog/tags/permutation/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>find arrray element</title>
-    <link href="http://lycworks.me/blog/2017/02/06/array-element/"/>
-    <id>http://lycworks.me/blog/2017/02/06/array-element/</id>
-    <published>2017-02-06T19:18:01.000Z</published>
-    <updated>2017-02-06T19:34:17.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>#tricks<br>using negative labeling visited nums  </p>
-<h1 id="representative-question"><a href="#representative-question" class="headerlink" title="representative question"></a>representative question</h1><p>disappeared num - from 1-n filled array find the missing num</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">for num in nums:</div><div class="line">	if nums[abs(num)-1]&gt;0: #not visited</div><div class="line">		nums[abs(num)-1] = -nums[abs(num)-1] #why the -1? because the array starts from 0</div><div class="line">res = []</div><div class="line">for i in range(len(nums)):</div><div class="line">	if nums[i]&gt;0:</div><div class="line">		res.append(i+1) #unvisited num</div><div class="line"></div><div class="line">return res</div></pre></td></tr></table></figure>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;#tricks&lt;br&gt;using negative labeling visited nums  &lt;/p&gt;
-&lt;h1 id=&quot;representative-question&quot;&gt;&lt;a href=&quot;#representative-question&quot; class=&quot;headerli
-    
-    </summary>
-    
-    
-      <category term="array" scheme="http://lycworks.me/blog/tags/array/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Divide &amp; Conquer</title>
-    <link href="http://lycworks.me/blog/2017/02/06/2017-02-01-dc/"/>
-    <id>http://lycworks.me/blog/2017/02/06/2017-02-01-dc/</id>
-    <published>2017-02-06T19:16:48.000Z</published>
-    <updated>2017-02-06T19:16:48.000Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="Divide-amp-Recursion-amp-Conquer"><a href="#Divide-amp-Recursion-amp-Conquer" class="headerlink" title="Divide &amp; Recursion &amp; Conquer"></a>Divide &amp; Recursion &amp; Conquer</h1><h2 id="二分aka-two-pointer"><a href="#二分aka-two-pointer" class="headerlink" title="二分aka two pointer"></a>二分aka two pointer</h2><p>算左，算右，算左+右</p>
-<blockquote>
-<p>例题 max subtree path, quicksort</p>
-</blockquote>
-<p>quicksort basic<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">def quicksort(arr):</div><div class="line">  if not arr or len(arr)&lt;=1: return arr</div><div class="line">  pivot = arr[0]</div><div class="line">  left = []</div><div class="line">  right = []</div><div class="line">  for q in arr[1:]:</div><div class="line">    if q&lt;=pivot:</div><div class="line">      left.append(q)</div><div class="line">    else:</div><div class="line">      right.append(q)</div><div class="line">  return quicksort(left)+[pivot]+quicksort(right)</div></pre></td></tr></table></figure></p>
-<h2 id="two-pointer-string"><a href="#two-pointer-string" class="headerlink" title="two pointer+string"></a>two pointer+string</h2><p>reverse vowels - look at left look at right then swap</p>
-<h2 id="exponential"><a href="#exponential" class="headerlink" title="exponential"></a>exponential</h2><p>如果even算两个k的n/2如果odd算n-1的。。类似dp？</p>
-<h2 id="打乱数组"><a href="#打乱数组" class="headerlink" title="打乱数组"></a>打乱数组</h2><p>二分交换a1,a2 and b1,b2<br>使用random算random index然后swap</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;Divide-amp-Recursion-amp-Conquer&quot;&gt;&lt;a href=&quot;#Divide-amp-Recursion-amp-Conquer&quot; class=&quot;headerlink&quot; title=&quot;Divide &amp;amp; Recursion &amp;amp;
-    
-    </summary>
-    
-      <category term="Algo" scheme="http://lycworks.me/blog/categories/Algo/"/>
-    
-    
-      <category term="dc" scheme="http://lycworks.me/blog/tags/dc/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>string-related</title>
-    <link href="http://lycworks.me/blog/2017/02/06/string-related/"/>
-    <id>http://lycworks.me/blog/2017/02/06/string-related/</id>
-    <published>2017-02-06T17:52:28.000Z</published>
-    <updated>2017-02-08T00:41:51.000Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="Palindrome"><a href="#Palindrome" class="headerlink" title="Palindrome"></a>Palindrome</h1><p>What is palindrome? A string that is the same forward backward.<br>What constitutes a palindrome? A string with only one odd or all odd numbers</p>
-<h1 id="Questions"><a href="#Questions" class="headerlink" title="Questions"></a>Questions</h1><p>Longest Palindrome - step1 using dic for counting, then when repeated occurred (means even count), delete the item from the dictionary. In other words, check whether there is any left overs in dic.  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">dic = &#123;&#125; #or defaultdict which is faster</div><div class="line">for ss in s:</div><div class="line">	if ss not in dic:</div><div class="line">		dic[ss] = 1 #this does not matter</div><div class="line">	else:</div><div class="line">		del dic[ss] </div><div class="line">		count+=2</div><div class="line"></div><div class="line">if len(dic)&gt;0: #leftovers must be odd</div><div class="line">	count+=1</div><div class="line"></div><div class="line">return count</div></pre></td></tr></table></figure>
-<p>Palindrome Permutations - check whether there is no or one item left in the dictionary  </p>
-<h1 id="Repeated-Substring-pattern"><a href="#Repeated-Substring-pattern" class="headerlink" title="Repeated Substring pattern"></a>Repeated Substring pattern</h1><p>CC150’s typical question, solution is to see whether the original string is in double s’s [1:-1].  </p>
-<p>For example, <code>s = &#39;abab&#39;</code>, <code>double_s = &#39;abababab&#39;</code>, remove first and last becomes <code>bababa</code>, which only works if the original string is a pattern</p>
-<h1 id="Find-the-diff"><a href="#Find-the-diff" class="headerlink" title="Find the diff"></a>Find the diff</h1><p>Really easy, just make one string into set, then compare the char count in both string</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">for ss in set(t):</div><div class="line">	if s.count(ss)!=t.count(ss):</div><div class="line">		return ss</div></pre></td></tr></table></figure>
-<h1 id="calculate-number"><a href="#calculate-number" class="headerlink" title="calculate number"></a>calculate number</h1><p>reverse the number so it can do the calculation properly</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">sum = carry+f1+f2</div><div class="line">carry = sum//10 -&gt;bring to next stage</div><div class="line">digit = sum%10 -&gt;digit place</div></pre></td></tr></table></figure>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;Palindrome&quot;&gt;&lt;a href=&quot;#Palindrome&quot; class=&quot;headerlink&quot; title=&quot;Palindrome&quot;&gt;&lt;/a&gt;Palindrome&lt;/h1&gt;&lt;p&gt;What is palindrome? A string that is t
-    
-    </summary>
-    
-    
-      <category term="palindrome" scheme="http://lycworks.me/blog/tags/palindrome/"/>
-    
-      <category term="string" scheme="http://lycworks.me/blog/tags/string/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>chrome-plugins</title>
-    <link href="http://lycworks.me/blog/2017/02/05/2017-02-05-chrome-plugins/"/>
-    <id>http://lycworks.me/blog/2017/02/05/2017-02-05-chrome-plugins/</id>
-    <published>2017-02-06T03:29:49.000Z</published>
-    <updated>2017-02-06T04:13:50.000Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="Steps"><a href="#Steps" class="headerlink" title="Steps"></a>Steps</h1><h2 id="1-manifest-json-declares-the-dependencies"><a href="#1-manifest-json-declares-the-dependencies" class="headerlink" title="1 - manifest.json declares the dependencies"></a>1 - <code>manifest.json</code> declares the dependencies</h2><p>within the <code>manifest.json</code> file, we do two things</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">browser_action - what is the purpose</div><div class="line"></div><div class="line">permissions - host permissions to access external APIs</div></pre></td></tr></table></figure>
-<h2 id="2-understand-what-is-the-extension"><a href="#2-understand-what-is-the-extension" class="headerlink" title="2 - understand what is the extension"></a>2 - understand what is the extension</h2><ul>
-<li>a chrome extension ends in <code>.crx</code>, which is great for distribution   </li>
-<li>essentially web pages, thus can use all the APIs that the browser provides to web pages  </li>
-<li>can nteract with other webpages or servers using content scripts or cross-origin XMLhttpRequests  </li>
-<li>can interact with browser features like bookmarks and tabs  </li>
-</ul>
-<h2 id="3-testing"><a href="#3-testing" class="headerlink" title="3 - testing"></a>3 - testing</h2><p>go to <code>chrome://extensions</code> and check developer mode, then load unpacked-extension</p>
-<h2 id="4-development-process"><a href="#4-development-process" class="headerlink" title="4 - development process"></a>4 - development process</h2><p>using tooltip by add <code>default_title</code> attr in browser-action. When making changes, be sure to use <code>cmd+R</code> to reload the updates</p>
-<h2 id="5-UIs"><a href="#5-UIs" class="headerlink" title="5 - UIs"></a>5 - UIs</h2><p>added through browser_actions or page_actions, thus each extension can only use either.  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">browser_actions - extension relevant to global pages  eg mail</div><div class="line">page_action - extension activate/deactivate depend on page eg get-color</div></pre></td></tr></table></figure>
-<h2 id="6-The-architecture"><a href="#6-The-architecture" class="headerlink" title="6 - The architecture"></a>6 - The architecture</h2><h3 id="the-background-page"><a href="#the-background-page" class="headerlink" title="the background page"></a>the background page</h3><p>usually named <code>background.html</code>, two types, one is persistent, one is event.  </p>
-<h3 id="UI-pages"><a href="#UI-pages" class="headerlink" title="UI pages"></a>UI pages</h3><p>displays for settings and etc stuff. Extras </p>
-<blockquote>
-<p>the important thing is, within the extension, html can invoke one another’s method directly</p>
-</blockquote>
-<h3 id="Content-scripts"><a href="#Content-scripts" class="headerlink" title="Content scripts"></a>Content scripts</h3><p>use this to interact with webpages. They are js that executes in context of a page that’s loaded (think document.ready). This script can then read page details and make changes to the page.  </p>
-<blockquote>
-<p>however it cannot manipulate background page’s DOM which is the parent, but it can send or listen to background.html’s commands eg change appearance; send RSS to parent.  </p>
-</blockquote>
-<h3 id="Chrome-APIs"><a href="#Chrome-APIs" class="headerlink" title="Chrome APIs"></a>Chrome APIs</h3><p><code>window.open()</code> which opens an url, in which window, <code>tabs.create</code>  </p>
-<ul>
-<li>these methods are usually asynchronous, however some are synchronous eg <code>return chhrome.runtime.getURL()</code>  </li>
-</ul>
-<h3 id="Saving-data-and-incognito"><a href="#Saving-data-and-incognito" class="headerlink" title="Saving data and incognito"></a>Saving data and incognito</h3><p><code>storage</code> API </p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;Steps&quot;&gt;&lt;a href=&quot;#Steps&quot; class=&quot;headerlink&quot; title=&quot;Steps&quot;&gt;&lt;/a&gt;Steps&lt;/h1&gt;&lt;h2 id=&quot;1-manifest-json-declares-the-dependencies&quot;&gt;&lt;a href=&quot;#
-    
-    </summary>
-    
-    
-      <category term="chrome" scheme="http://lycworks.me/blog/tags/chrome/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>trees</title>
-    <link href="http://lycworks.me/blog/2017/02/03/2017-02-03-trees/"/>
-    <id>http://lycworks.me/blog/2017/02/03/2017-02-03-trees/</id>
-    <published>2017-02-04T01:01:10.000Z</published>
-    <updated>2017-02-06T23:52:16.000Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="特别基础的"><a href="#特别基础的" class="headerlink" title="特别基础的"></a>特别基础的</h1><p>same tree - 检查两个是不是一样，如果一个是空的肯定是false<br>tree path - 检查root是否有left和right，没有加到paths里</p>
-<h1 id="tricky的"><a href="#tricky的" class="headerlink" title="tricky的"></a>tricky的</h1><p>next largest after p - 当大于或等于p时看右边，else看左边<br>在左边的时候有两种scenario<br>no more left child so return the p’s parent<br>more left return it’s right -&gt; which is ans</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">nextLargest(p):</div><div class="line">	if not root:</div><div class="line">		return None</div><div class="line">	if root.val&lt;p.val: #go to the right</div><div class="line">		return nextLargest(root.right, p)</div><div class="line">	else:</div><div class="line">		ans = nextLargest(root.left, p) </div><div class="line">		return ans if ans or root</div></pre></td></tr></table></figure>
-<h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1><p>算第K大个BST的node - 用reverse inorder，然后在第k个时停掉</p>
-<p>Check for valid BST - 设个min和max来确定每个tree是跟root在比</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">if not root:</div><div class="line">	return True #given case</div><div class="line">if root.val &gt;= max or root.val &lt;= min: #equal means false</div><div class="line">	return False</div><div class="line"></div><div class="line">return dfs(root.left, min, root.val) and dfs(root.right, root.val, max)</div></pre></td></tr></table></figure>
-<h1 id="类似的题"><a href="#类似的题" class="headerlink" title="类似的题"></a>类似的题</h1><p>算closest bst value to target - update一个global mindiff和maxnode</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">self.mindiff = float(&apos;inf&apos;)</div><div class="line">self.maxnode = None</div><div class="line"></div><div class="line">self.dfs(root, target)</div><div class="line">return self.maxnode.val</div><div class="line"></div><div class="line">def dfs(self, root, target):</div><div class="line">	if not root:</div><div class="line">		return None #does not matter</div><div class="line">	if abs(root.val*1.0-target)&lt;mindiff:</div><div class="line">		mindiff = abs(root.val*1.0-target)</div><div class="line">		maxnode = root</div><div class="line">	self.dfs(root.left, target)</div><div class="line">	self.dfs(root.right, target)</div></pre></td></tr></table></figure>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;特别基础的&quot;&gt;&lt;a href=&quot;#特别基础的&quot; class=&quot;headerlink&quot; title=&quot;特别基础的&quot;&gt;&lt;/a&gt;特别基础的&lt;/h1&gt;&lt;p&gt;same tree - 检查两个是不是一样，如果一个是空的肯定是false&lt;br&gt;tree path - 检查roo
-    
-    </summary>
-    
-    
-      <category term="trees" scheme="http://lycworks.me/blog/tags/trees/"/>
     
   </entry>
   
