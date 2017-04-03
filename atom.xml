@@ -5,7 +5,7 @@
   <link href="/blog/atom.xml" rel="self"/>
   
   <link href="http://lycworks.me/blog/"/>
-  <updated>2017-04-03T03:22:59.000Z</updated>
+  <updated>2017-04-03T17:35:23.000Z</updated>
   <id>http://lycworks.me/blog/</id>
   
   <author>
@@ -20,9 +20,10 @@
     <link href="http://lycworks.me/blog/2017/04/02/react-composition/"/>
     <id>http://lycworks.me/blog/2017/04/02/react-composition/</id>
     <published>2017-04-03T03:15:15.000Z</published>
-    <updated>2017-04-03T03:22:59.000Z</updated>
+    <updated>2017-04-03T17:35:23.000Z</updated>
     
-    <content type="html"><![CDATA[<h1 id="composition"><a href="#composition" class="headerlink" title="composition"></a>composition</h1><p>Why composition? Flexibility, flexibility, flexibility!<br>It follows the DRY principal</p>
+    <content type="html"><![CDATA[<p><a href="https://juzhiyuan.gitbooks.io/react/content/composition_vs_inheritance.html" target="_blank" rel="external">my ref</a></p>
+<h1 id="composition"><a href="#composition" class="headerlink" title="composition"></a>composition</h1><p>Why composition? Flexibility, flexibility, flexibility!<br>It follows the DRY principal</p>
 <p>use cases - profile image, which is often used a lot in diff places</p>
 <h3 id="Steps-to-implementation"><a href="#Steps-to-implementation" class="headerlink" title="Steps to implementation"></a>Steps to implementation</h3><ol>
 <li>create a function</li>
@@ -40,7 +41,8 @@
     
     <summary type="html">
     
-      &lt;h1 id=&quot;composition&quot;&gt;&lt;a href=&quot;#composition&quot; class=&quot;headerlink&quot; title=&quot;composition&quot;&gt;&lt;/a&gt;composition&lt;/h1&gt;&lt;p&gt;Why composition? Flexibility, flex
+      &lt;p&gt;&lt;a href=&quot;https://juzhiyuan.gitbooks.io/react/content/composition_vs_inheritance.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;my ref&lt;/a&gt;&lt;/p&gt;
+&lt;h1 i
     
     </summary>
     

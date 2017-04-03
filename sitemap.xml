@@ -4,7 +4,7 @@
   <url>
     <loc>http://lycworks.me/blog/blog/2017/04/02/react-composition/</loc>
     
-    <lastmod>2017-04-03T03:22:59.000Z</lastmod>
+    <lastmod>2017-04-03T17:35:23.000Z</lastmod>
     
   </url>
   
@@ -240,14 +240,14 @@
   </url>
   
   <url>
-    <loc>http://lycworks.me/blog/blog/2017/02/02/2016-05-16-JS-deep-note/</loc>
+    <loc>http://lycworks.me/blog/blog/2017/02/02/2016-07-09-css-grid/</loc>
     
     <lastmod>2017-02-02T21:56:37.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://lycworks.me/blog/blog/2017/02/02/2016-08-08-json/</loc>
+    <loc>http://lycworks.me/blog/blog/2017/02/02/2016-05-16-JS-deep-note/</loc>
     
     <lastmod>2017-02-02T21:56:37.000Z</lastmod>
     
@@ -261,28 +261,7 @@
   </url>
   
   <url>
-    <loc>http://lycworks.me/blog/blog/2017/02/02/2016-07-20-jade/</loc>
-    
-    <lastmod>2017-02-02T21:56:37.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://lycworks.me/blog/blog/2017/02/02/2016-05-16-html-note/</loc>
-    
-    <lastmod>2017-02-02T21:56:37.000Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://lycworks.me/blog/blog/2017/02/02/2016-07-14-svg/</loc>
-    
-    <lastmod>2017-02-02T21:56:37.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://lycworks.me/blog/blog/2017/02/02/2016-07-11-chart-progressbar/</loc>
     
     <lastmod>2017-02-02T21:56:37.000Z</lastmod>
     
@@ -296,7 +275,28 @@
   </url>
   
   <url>
-    <loc>http://lycworks.me/blog/blog/2017/02/02/2016-07-09-css-grid/</loc>
+    <loc>http://lycworks.me/blog/blog/2017/02/02/2016-07-11-chart-progressbar/</loc>
+    
+    <lastmod>2017-02-02T21:56:37.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://lycworks.me/blog/blog/2017/02/02/2016-07-09-html5-tricks/</loc>
+    
+    <lastmod>2017-02-02T21:56:37.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://lycworks.me/blog/blog/2017/02/02/2016-07-20-jade/</loc>
+    
+    <lastmod>2017-02-02T21:56:37.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://lycworks.me/blog/blog/2017/02/02/2016-08-08-json/</loc>
     
     <lastmod>2017-02-02T21:56:37.000Z</lastmod>
     
@@ -317,6 +317,13 @@
   </url>
   
   <url>
+    <loc>http://lycworks.me/blog/blog/2017/02/02/2016-05-20-JS-OOP/</loc>
+    
+    <lastmod>2017-02-02T21:56:37.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://lycworks.me/blog/blog/2017/02/02/2016-05-20-JS-regex/</loc>
     
     <lastmod>2017-02-02T21:56:37.000Z</lastmod>
@@ -325,13 +332,6 @@
   
   <url>
     <loc>http://lycworks.me/blog/blog/2017/02/02/2016-05-20-JS-EC/</loc>
-    
-    <lastmod>2017-02-02T21:56:37.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://lycworks.me/blog/blog/2017/02/02/2016-05-20-JS-OOP/</loc>
     
     <lastmod>2017-02-02T21:56:37.000Z</lastmod>
     
@@ -359,14 +359,14 @@
   </url>
   
   <url>
-    <loc>http://lycworks.me/blog/blog/2017/02/02/2016-05-17-tags-json-stringify-concept/</loc>
+    <loc>http://lycworks.me/blog/blog/2017/02/02/2016-05-17-JS-Object/</loc>
     
     <lastmod>2017-02-02T21:56:37.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://lycworks.me/blog/blog/2017/02/02/2016-05-17-JS-Object/</loc>
+    <loc>http://lycworks.me/blog/blog/2017/02/02/2016-05-17-tags-json-stringify-concept/</loc>
     
     <lastmod>2017-02-02T21:56:37.000Z</lastmod>
     
@@ -380,7 +380,7 @@
   </url>
   
   <url>
-    <loc>http://lycworks.me/blog/blog/2017/02/02/2016-07-09-html5-tricks/</loc>
+    <loc>http://lycworks.me/blog/blog/2017/02/02/2016-05-16-html-note/</loc>
     
     <lastmod>2017-02-02T21:56:37.000Z</lastmod>
     
