@@ -1,0 +1,36 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><title> Use cases for reference in React.js · code and eat and drink and life</title><meta name="description" content="Use cases for reference in React.js - YL"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="icon" href="/blog/favicon.png"><link rel="stylesheet" href="/blog/css/apollo.css"><link rel="search" type="application/opensearchdescription+xml" href="http://lycworks.me/blog/atom.xml" title="code and eat and drink and life"></head><body><div class="wrap"><header><a href="/blog/" class="logo-link"><img src="/blog/favicon.png" alt="logo"></a><ul class="nav nav-list"><li class="nav-list-item"><a href="/blog/" target="_self" class="nav-list-link">BLOG</a></li><li class="nav-list-item"><a href="/blog/archives/" target="_self" class="nav-list-link">ARCHIVE</a></li><li class="nav-list-item"><a href="/blog/tags/" target="_self" class="nav-list-link">TAG</a></li><li class="nav-list-item"><a href="http://lycworks.me" target="_blank" class="nav-list-link">WEBSITE</a></li><li class="nav-list-item"><a href="https://github.com/ylu021" target="_blank" class="nav-list-link">GITHUB</a></li><li class="nav-list-item"><a href="/blog/atom.xml" target="_self" class="nav-list-link">RSS</a></li></ul></header><main class="container"><div class="post"><article class="post-block"><h1 class="post-title">Use cases for reference in React.js</h1><div class="post-info">Apr 10, 2017</div><div class="post-content"><h1 id="Powerful-ref"><a href="#Powerful-ref" class="headerlink" title="Powerful ref"></a>Powerful <code>ref</code></h1><h3 id="usage"><a href="#usage" class="headerlink" title="usage"></a>usage</h3><ul>
+<li>integrating third party DOM libraries (which has their own methods for rendering)</li>
+<li>prevent exposing class/components and only use the method through reference</li>
+</ul>
+<h3 id="How-to-use-it"><a href="#How-to-use-it" class="headerlink" title="How to use it"></a>How to use it</h3><ul>
+<li><code>ref</code> can be attached to DOM element/JSX<blockquote>
+<p>it takes a callback with uses the JSX underlying component as the argument, so the method of the underlying can be retrieved by refering to ref</p>
+</blockquote>
+</li>
+</ul>
+<p>this is confusing, let’s see an example<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">focus = ()=&gt; &#123;</div><div class="line">  this.textInput.focus()</div><div class="line">&#125;</div><div class="line"></div><div class="line">..</div><div class="line">&lt;div&gt;</div><div class="line">  &lt;input type=&quot;text&quot; ref=&#123;(inputorsomeplaceholder) =&gt; &#123; this.textInput = inputorsomeplaceholder &#125;&#125; /&gt;</div><div class="line">  &lt;input onClick=&#123; this.focus &#125;&gt;</div><div class="line">&lt;/div&gt;</div></pre></td></tr></table></figure></p>
+<ul>
+<li><code>ref</code> can be attached to class component<blockquote>
+<p>ref receives the mounted instance as the argument and underlying method can be accessed</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="Dont"><a href="#Dont" class="headerlink" title="Dont"></a>Dont</h3><ul>
+<li><code>ref</code> cannot be attached to functional component, since it does not have instance, since mount has to happen before referencing<blockquote>
+<p>so if you want to use ref, change the fn component to a class component</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="use-it-carefully"><a href="#use-it-carefully" class="headerlink" title="use it carefully"></a>use it carefully</h3><ul>
+<li>only use it if you never going to manipulate the underlying component’s state and only accessing through methods</li>
+<li>if you need to change the state, refer to using props to bubble up. A nice video I found while working on a project<a href="https://www.kirupa.com/react/transferring_properties.htm" target="_blank" rel="external">transferring_properties</a>. I also recommending his book since I really like his explanations 233</li>
+</ul>
+</div><div><label>Tags:</label><a href="/blog/tags/react/">#react</a>| <a href="/blog/tags/reference/">#reference</a></div></article></div></main><footer><div class="paginator"><a href="/blog/2017/04/04/responsive/" class="next">NEXT</a></div><div id="disqus_thread"></div><script>var disqus_shortname = 'https-ylu021-github-io-blog';
+var disqus_identifier = '2017/04/10/react-ref/';
+var disqus_title = 'Use cases for reference in React.js';
+var disqus_url = 'http://lycworks.me/blog/2017/04/10/react-ref/';
+(function() {
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();</script><script id="dsq-count-scr" src="//https-ylu021-github-io-blog.disqus.com/count.js" async></script><div class="copyright"><p>© 2017 <a href="http://lycworks.me/blog">YL</a>, powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/pinggod/hexo-theme-apollo" target="_blank">hexo-theme-apollo</a>.</p></div></footer></div><script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" integrity="sha384-crwIf/BuaWM9rM65iM+dWFldgQ1Un8jWZMuh3puxb8TOY9+linwLoI7ZHZT+aekW" crossorigin="anonymous"></script><script>(function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;e=o.createElement(i);r=o.getElementsByTagName(i)[0];e.src='//www.google-analytics.com/analytics.js';r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));ga('create',"UA-71046273-3",'auto');ga('send','pageview');</script></body></html>

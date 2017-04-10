@@ -1,0 +1,62 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><title> responsive · code and eat and drink and life</title><meta name="description" content="responsive - YL"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="icon" href="/blog/favicon.png"><link rel="stylesheet" href="/blog/css/apollo.css"><link rel="search" type="application/opensearchdescription+xml" href="http://lycworks.me/blog/atom.xml" title="code and eat and drink and life"></head><body><div class="wrap"><header><a href="/blog/" class="logo-link"><img src="/blog/favicon.png" alt="logo"></a><ul class="nav nav-list"><li class="nav-list-item"><a href="/blog/" target="_self" class="nav-list-link">BLOG</a></li><li class="nav-list-item"><a href="/blog/archives/" target="_self" class="nav-list-link">ARCHIVE</a></li><li class="nav-list-item"><a href="/blog/tags/" target="_self" class="nav-list-link">TAG</a></li><li class="nav-list-item"><a href="http://lycworks.me" target="_blank" class="nav-list-link">WEBSITE</a></li><li class="nav-list-item"><a href="https://github.com/ylu021" target="_blank" class="nav-list-link">GITHUB</a></li><li class="nav-list-item"><a href="/blog/atom.xml" target="_self" class="nav-list-link">RSS</a></li></ul></header><main class="container"><div class="post"><article class="post-block"><h1 class="post-title">responsive</h1><div class="post-info">Apr 4, 2017</div><div class="post-content"><p>To refresh my mem and record the details for later reference</p>
+<h2 id="viewport"><a href="#viewport" class="headerlink" title="viewport"></a>viewport</h2><ul>
+<li>defines the area of the screen that the browser can render content to</li>
+<li>uses dips for pixels (device-independent pixel)</li>
+<li>if the viewport is not defined, browser will try its best ::)</li>
+<li><p>viewport wide can be calculate using physical pixel/dip ratio</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width,initial-scale=1&quot;&gt;</div></pre></td></tr></table></figure>
+</li>
+<li><p>initial-scale establish a 1:1 relationship between dip and css pixels (css pixels = physical/dpr)</p>
+</li>
+</ul>
+<h2 id="css-relative-positions"><a href="#css-relative-positions" class="headerlink" title="css relative positions"></a>css relative positions</h2><ul>
+<li>width 100% instead of absolute</li>
+<li>add max-width: 100% for img, embed, object, video</li>
+</ul>
+<h2 id="tap-target-size"><a href="#tap-target-size" class="headerlink" title="tap target size"></a>tap target size</h2><ul>
+<li>min-size 48x48 =padding of 1.5em 1.5 times the font size</li>
+</ul>
+<h2 id="start-small"><a href="#start-small" class="headerlink" title="start small"></a>start small</h2><ul>
+<li>prioritizing content and allowing performance thought</li>
+</ul>
+<h2 id="media-queries"><a href="#media-queries" class="headerlink" title="media queries"></a>media queries</h2><ul>
+<li>@media screen and (..)</li>
+<li>two ways max-width and min-width</li>
+<li>max-width applied when viewport is less than the value specified</li>
+<li><mark>never use min-device-width</mark> because it is the screen width..</li>
+</ul>
+<h2 id="decide-breakpoints"><a href="#decide-breakpoints" class="headerlink" title="decide breakpoints"></a>decide breakpoints</h2><ul>
+<li>480, 690, 800 (HAMBURGER), ..</li>
+<li>NO, decide the breakpoints base on contents</li>
+</ul>
+<h2 id="flexbox-for-grid-layout"><a href="#flexbox-for-grid-layout" class="headerlink" title="flexbox for grid layout"></a>flexbox for grid layout</h2><ul>
+<li>default inline arrangement</li>
+<li>add wrap to tell it is ok to wrap, which is great for mobile friendly</li>
+<li>order which makes element arrangement super easy</li>
+</ul>
+<h2 id="backward-compatibility"><a href="#backward-compatibility" class="headerlink" title="backward compatibility"></a>backward compatibility</h2><ul>
+<li>use vendor prefixed version</li>
+</ul>
+<h2 id="responsive-patterns"><a href="#responsive-patterns" class="headerlink" title="responsive patterns"></a>responsive patterns</h2><ul>
+<li>mostly fluid - add auto margins left and right when screen is desktop-wide</li>
+<li>column drop - change column size</li>
+<li>layout shifter - uses order to achieve, default 0, -1 first, 1 last</li>
+<li>** off canvas - nav is usually hidden in hamburger<br>transform and transition<br>flex-grow takes up the remaining viewport</li>
+</ul>
+<h2 id="responsive-images"><a href="#responsive-images" class="headerlink" title="responsive images"></a>responsive images</h2><ul>
+<li>optimize using art direction/picture element, which is still a new tech?</li>
+</ul>
+<h2 id="responsive-tables"><a href="#responsive-tables" class="headerlink" title="responsive tables"></a>responsive tables</h2><ul>
+<li>hidden column</li>
+<li>no more tables - render all as display block and content: attr(data-th)</li>
+<li>contained scrolling - add a div container and add overflow auto </li>
+</ul>
+</div><div><label>Tags:</label><a href="/blog/tags/CSS/">#CSS</a></div></article></div></main><footer><div class="paginator"><a href="/blog/2017/04/10/react-ref/" class="prev">PREV</a><a href="/blog/2017/04/03/HTMLassets/" class="next">NEXT</a></div><div id="disqus_thread"></div><script>var disqus_shortname = 'https-ylu021-github-io-blog';
+var disqus_identifier = '2017/04/04/responsive/';
+var disqus_title = 'responsive';
+var disqus_url = 'http://lycworks.me/blog/2017/04/04/responsive/';
+(function() {
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();</script><script id="dsq-count-scr" src="//https-ylu021-github-io-blog.disqus.com/count.js" async></script><div class="copyright"><p>© 2017 <a href="http://lycworks.me/blog">YL</a>, powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/pinggod/hexo-theme-apollo" target="_blank">hexo-theme-apollo</a>.</p></div></footer></div><script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" integrity="sha384-crwIf/BuaWM9rM65iM+dWFldgQ1Un8jWZMuh3puxb8TOY9+linwLoI7ZHZT+aekW" crossorigin="anonymous"></script><script>(function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;e=o.createElement(i);r=o.getElementsByTagName(i)[0];e.src='//www.google-analytics.com/analytics.js';r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));ga('create',"UA-71046273-3",'auto');ga('send','pageview');</script></body></html>

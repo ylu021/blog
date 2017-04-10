@@ -5,7 +5,7 @@
   <link href="/blog/atom.xml" rel="self"/>
   
   <link href="http://lycworks.me/blog/"/>
-  <updated>2017-04-03T17:35:23.000Z</updated>
+  <updated>2017-04-10T17:54:04.000Z</updated>
   <id>http://lycworks.me/blog/</id>
   
   <author>
@@ -14,6 +14,183 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Use cases for reference in React.js</title>
+    <link href="http://lycworks.me/blog/2017/04/10/react-ref/"/>
+    <id>http://lycworks.me/blog/2017/04/10/react-ref/</id>
+    <published>2017-04-10T17:36:06.000Z</published>
+    <updated>2017-04-10T17:54:04.000Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="Powerful-ref"><a href="#Powerful-ref" class="headerlink" title="Powerful ref"></a>Powerful <code>ref</code></h1><h3 id="usage"><a href="#usage" class="headerlink" title="usage"></a>usage</h3><ul>
+<li>integrating third party DOM libraries (which has their own methods for rendering)</li>
+<li>prevent exposing class/components and only use the method through reference</li>
+</ul>
+<h3 id="How-to-use-it"><a href="#How-to-use-it" class="headerlink" title="How to use it"></a>How to use it</h3><ul>
+<li><code>ref</code> can be attached to DOM element/JSX<blockquote>
+<p>it takes a callback with uses the JSX underlying component as the argument, so the method of the underlying can be retrieved by refering to ref</p>
+</blockquote>
+</li>
+</ul>
+<p>this is confusing, let’s see an example<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">focus = ()=&gt; &#123;</div><div class="line">  this.textInput.focus()</div><div class="line">&#125;</div><div class="line"></div><div class="line">..</div><div class="line">&lt;div&gt;</div><div class="line">  &lt;input type=&quot;text&quot; ref=&#123;(inputorsomeplaceholder) =&gt; &#123; this.textInput = inputorsomeplaceholder &#125;&#125; /&gt;</div><div class="line">  &lt;input onClick=&#123; this.focus &#125;&gt;</div><div class="line">&lt;/div&gt;</div></pre></td></tr></table></figure></p>
+<ul>
+<li><code>ref</code> can be attached to class component<blockquote>
+<p>ref receives the mounted instance as the argument and underlying method can be accessed</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="Dont"><a href="#Dont" class="headerlink" title="Dont"></a>Dont</h3><ul>
+<li><code>ref</code> cannot be attached to functional component, since it does not have instance, since mount has to happen before referencing<blockquote>
+<p>so if you want to use ref, change the fn component to a class component</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="use-it-carefully"><a href="#use-it-carefully" class="headerlink" title="use it carefully"></a>use it carefully</h3><ul>
+<li>only use it if you never going to manipulate the underlying component’s state and only accessing through methods</li>
+<li>if you need to change the state, refer to using props to bubble up. A nice video I found while working on a project<a href="https://www.kirupa.com/react/transferring_properties.htm" target="_blank" rel="external">transferring_properties</a>. I also recommending his book since I really like his explanations 233</li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;Powerful-ref&quot;&gt;&lt;a href=&quot;#Powerful-ref&quot; class=&quot;headerlink&quot; title=&quot;Powerful ref&quot;&gt;&lt;/a&gt;Powerful &lt;code&gt;ref&lt;/code&gt;&lt;/h1&gt;&lt;h3 id=&quot;usage&quot;&gt;&lt;a hr
+    
+    </summary>
+    
+    
+      <category term="react" scheme="http://lycworks.me/blog/tags/react/"/>
+    
+      <category term="reference" scheme="http://lycworks.me/blog/tags/reference/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>responsive</title>
+    <link href="http://lycworks.me/blog/2017/04/04/responsive/"/>
+    <id>http://lycworks.me/blog/2017/04/04/responsive/</id>
+    <published>2017-04-05T01:27:39.000Z</published>
+    <updated>2017-04-05T03:16:48.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>To refresh my mem and record the details for later reference</p>
+<h2 id="viewport"><a href="#viewport" class="headerlink" title="viewport"></a>viewport</h2><ul>
+<li>defines the area of the screen that the browser can render content to</li>
+<li>uses dips for pixels (device-independent pixel)</li>
+<li>if the viewport is not defined, browser will try its best ::)</li>
+<li><p>viewport wide can be calculate using physical pixel/dip ratio</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width,initial-scale=1&quot;&gt;</div></pre></td></tr></table></figure>
+</li>
+<li><p>initial-scale establish a 1:1 relationship between dip and css pixels (css pixels = physical/dpr)</p>
+</li>
+</ul>
+<h2 id="css-relative-positions"><a href="#css-relative-positions" class="headerlink" title="css relative positions"></a>css relative positions</h2><ul>
+<li>width 100% instead of absolute</li>
+<li>add max-width: 100% for img, embed, object, video</li>
+</ul>
+<h2 id="tap-target-size"><a href="#tap-target-size" class="headerlink" title="tap target size"></a>tap target size</h2><ul>
+<li>min-size 48x48 =padding of 1.5em 1.5 times the font size</li>
+</ul>
+<h2 id="start-small"><a href="#start-small" class="headerlink" title="start small"></a>start small</h2><ul>
+<li>prioritizing content and allowing performance thought</li>
+</ul>
+<h2 id="media-queries"><a href="#media-queries" class="headerlink" title="media queries"></a>media queries</h2><ul>
+<li>@media screen and (..)</li>
+<li>two ways max-width and min-width</li>
+<li>max-width applied when viewport is less than the value specified</li>
+<li><mark>never use min-device-width</mark> because it is the screen width..</li>
+</ul>
+<h2 id="decide-breakpoints"><a href="#decide-breakpoints" class="headerlink" title="decide breakpoints"></a>decide breakpoints</h2><ul>
+<li>480, 690, 800 (HAMBURGER), ..</li>
+<li>NO, decide the breakpoints base on contents</li>
+</ul>
+<h2 id="flexbox-for-grid-layout"><a href="#flexbox-for-grid-layout" class="headerlink" title="flexbox for grid layout"></a>flexbox for grid layout</h2><ul>
+<li>default inline arrangement</li>
+<li>add wrap to tell it is ok to wrap, which is great for mobile friendly</li>
+<li>order which makes element arrangement super easy</li>
+</ul>
+<h2 id="backward-compatibility"><a href="#backward-compatibility" class="headerlink" title="backward compatibility"></a>backward compatibility</h2><ul>
+<li>use vendor prefixed version</li>
+</ul>
+<h2 id="responsive-patterns"><a href="#responsive-patterns" class="headerlink" title="responsive patterns"></a>responsive patterns</h2><ul>
+<li>mostly fluid - add auto margins left and right when screen is desktop-wide</li>
+<li>column drop - change column size</li>
+<li>layout shifter - uses order to achieve, default 0, -1 first, 1 last</li>
+<li>** off canvas - nav is usually hidden in hamburger<br>transform and transition<br>flex-grow takes up the remaining viewport</li>
+</ul>
+<h2 id="responsive-images"><a href="#responsive-images" class="headerlink" title="responsive images"></a>responsive images</h2><ul>
+<li>optimize using art direction/picture element, which is still a new tech?</li>
+</ul>
+<h2 id="responsive-tables"><a href="#responsive-tables" class="headerlink" title="responsive tables"></a>responsive tables</h2><ul>
+<li>hidden column</li>
+<li>no more tables - render all as display block and content: attr(data-th)</li>
+<li>contained scrolling - add a div container and add overflow auto </li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;To refresh my mem and record the details for later reference&lt;/p&gt;
+&lt;h2 id=&quot;viewport&quot;&gt;&lt;a href=&quot;#viewport&quot; class=&quot;headerlink&quot; title=&quot;viewport
+    
+    </summary>
+    
+    
+      <category term="CSS" scheme="http://lycworks.me/blog/tags/CSS/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>HTMLassets</title>
+    <link href="http://lycworks.me/blog/2017/04/03/HTMLassets/"/>
+    <id>http://lycworks.me/blog/2017/04/03/HTMLassets/</id>
+    <published>2017-04-03T20:10:02.000Z</published>
+    <updated>2017-04-05T01:26:59.000Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="img"><a href="#img" class="headerlink" title="img"></a><code>img</code></h1><p>including <code>src</code>, <code>alt</code> and <code>title</code>.</p>
+<ul>
+<li><code>src</code> for source, which tend to be relative path for efficiency, and usually images are placed in a folder <code>/images</code> for SEO purpose</li>
+<li><code>alt</code> is text displayed if image fail to load; for reachability, screen-reading</li>
+<li><code>title</code> is the tooltip, which is replaced with HTML5’s <code>&lt;figure&gt;</code> and <code>&lt;figoption&gt;</code> to add captions to images</li>
+</ul>
+<h1 id="video-and-audio"><a href="#video-and-audio" class="headerlink" title="video and audio"></a><code>video</code> and <code>audio</code></h1><p>including <code>src</code>, <code>controls</code> and fallback content</p>
+<ul>
+<li><code>src</code> is the source link, which is often replaced with embedded <code>&lt;source&gt;</code> to achieve browser compatibility</li>
+</ul>
+<blockquote>
+<p>mp4 is largely supported in IE/Safari, where as webm is Chrome and Firefox</p>
+<p>source type is included for MIME parsing that can help browser read the files quicker</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&lt;video&gt;</div><div class="line">  &lt;source src-&quot;bla.mp4&quot; type=&quot;video/mp4&quot;&gt;</div><div class="line">  &lt;source src=&quot;bla.webm&quot; type=&quot;video/webm&quot;&gt;</div><div class="line">  &lt;track kind=&quot;subtitles&quot; src=&quot;bla.vtt&quot; srclang=&quot;en&quot;&gt;</div><div class="line">  &lt;p&gt;HTML5 video is not supported, please view it here [link]&lt;/p&gt;</div><div class="line">&lt;/video&gt;</div></pre></td></tr></table></figure>
+<ul>
+<li><code>controls</code> should be manipulated in javascript, some default options are <code>autoplay</code>, <code>loop</code>, <code>muted</code>..</li>
+<li><p>fallback content is the embedded paragraph in <code>video</code></p>
+</li>
+<li><p>** Enhance reachability - transcript of video using <code>&lt;track&gt;</code> it uses WebVTT format to write text files with metadata input</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">WEBVTT</div><div class="line"></div><div class="line">1</div><div class="line">00:00:22.230 --&gt; 00:00:24.606</div><div class="line">This is a subtitle.</div></pre></td></tr></table></figure>
+<h1 id="embed-iframe-and-object"><a href="#embed-iframe-and-object" class="headerlink" title="embed, iframe and object"></a><code>embed</code>, <code>iframe</code> and <code>object</code></h1><p>iframe replaced the other 2</p>
+<ul>
+<li>options include allowfullscreen, frameborder, src</li>
+<li>can include fallback content</li>
+<li>** it is a SEO practice to include the src when the page loaded</li>
+<li>** security issue, risking clickjacking, use <mark>HTTPS</mark> and use the <code>sandbox</code> option</li>
+</ul>
+<blockquote>
+<p>clickjacking is UI redress, when hacker inject iframe and make it unnoticeable. When user clicked that info are stolen</p>
+<p>sandbox takes value ‘allow-scripts’ or ‘allow-same-origin’ but not both, can be also manipulated in javascript when sending request add the sandbox headers</p>
+</blockquote>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;img&quot;&gt;&lt;a href=&quot;#img&quot; class=&quot;headerlink&quot; title=&quot;img&quot;&gt;&lt;/a&gt;&lt;code&gt;img&lt;/code&gt;&lt;/h1&gt;&lt;p&gt;including &lt;code&gt;src&lt;/code&gt;, &lt;code&gt;alt&lt;/code&gt; and &lt;cod
+    
+    </summary>
+    
+    
+      <category term="HTML" scheme="http://lycworks.me/blog/tags/HTML/"/>
+    
+  </entry>
   
   <entry>
     <title>react-composition</title>
@@ -669,147 +846,6 @@
       <category term="react" scheme="http://lycworks.me/blog/tags/react/"/>
     
       <category term="router" scheme="http://lycworks.me/blog/tags/router/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>ux-thinking</title>
-    <link href="http://lycworks.me/blog/2017/02/14/ux-thinking/"/>
-    <id>http://lycworks.me/blog/2017/02/14/ux-thinking/</id>
-    <published>2017-02-14T18:30:11.000Z</published>
-    <updated>2017-02-14T18:30:11.000Z</updated>
-    
-    <summary type="html">
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>jquery_and_react</title>
-    <link href="http://lycworks.me/blog/2017/02/14/jquery-and-react/"/>
-    <id>http://lycworks.me/blog/2017/02/14/jquery-and-react/</id>
-    <published>2017-02-14T05:03:47.000Z</published>
-    <updated>2017-02-14T05:58:10.000Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="Foreword"><a href="#Foreword" class="headerlink" title="Foreword"></a>Foreword</h1><p>assume one has previous understanding of react. If you want to understand more about the component’s lifecycle and its methods, click here for <a href="https://facebook.github.io/react/docs/react-component.html" target="_blank" rel="external">documentation</a>.</p>
-<h1 id="Why-the-hassle"><a href="#Why-the-hassle" class="headerlink" title="Why the hassle"></a>Why the hassle</h1><p>Even though the trend has become react, there are still a lot of plugins written for jquery. Converting them to pure javascript is painful, so we often prefer to use them directly. How do we embed them in react?</p>
-<h3 id="Create-a-react-component"><a href="#Create-a-react-component" class="headerlink" title="Create a react component"></a>Create a react component</h3><p>in our example, we are trying to display a map element inside a div. therefore, we must first create a <code>Map</code> component (customized name), and inside the <code>render</code> function return a <code>div</code> with <code>ref=</code> for easy accessing (like a tag)</p>
-<h3 id="componentDidMount"><a href="#componentDidMount" class="headerlink" title="componentDidMount()"></a><code>componentDidMount()</code></h3><p>this is where one puts the jquery activation in here. This method belongs to the <code>Map</code> component. When the map component is rendered, we can access the component through <code>this.refs</code>. we can then use this to pass DOM to jQuery and initialize the plugin. After doing a bunch of research, here is my way of doing it.</p>
-<blockquote>
-<p>note jquery should only be load once, else error occurs</p>
-</blockquote>
-<p>First of all, in order for the plugin js file being run after the jQuery module is loaded (<code>npm install jquery</code>), we must declare it after index.html’s <code>&lt;/body&gt;</code> tag.</p>
-<p>Then, according to the loading rule, we assign the imported jQuery to <code>window.jQuery</code> at somewhere for global accessing (personally recommend to do this inside <code>componentDidMount()</code>, which is where the jquery plugin is being called).</p>
-<blockquote>
-<p>what is window.jQuery? It is a global window var that can be accessed by all js files</p>
-</blockquote>
-<p>Sample code<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">//within a react component&apos;s js file</div><div class="line">import jQuery from &apos;jquery&apos; //npm intall jquery --save</div><div class="line"></div><div class="line">componentDidMount() &#123;</div><div class="line">  window.jQuery = jQuery</div><div class="line">  var jq = window.jQuery</div><div class="line"></div><div class="line">  var _this = this //to be used in below closure</div><div class="line">  const &#123;...config&#125; = this.props</div><div class="line">  jq(document).ready(function() &#123;</div><div class="line">    var map = _this.refs.map</div><div class="line">    console.log(jq(map).vectorMap(config));</div><div class="line">  &#125;);</div><div class="line">&#125;</div><div class="line"></div><div class="line">render() &#123;</div><div class="line">  return (&lt;div id=&quot;map&quot; ref=&quot;map&quot;&gt;&lt;/div&gt;)</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<ul>
-<li><code>_this.refs.map</code> refers to the <code>&lt;div&gt;</code> with <code>ref=&quot;map&quot;</code></li>
-<li><p><code>the document.ready</code> must be called if we want to create the map, but this creates a <a href="http://www.w3schools.com/js/js_function_closures.asp" target="_blank" rel="external">closure</a>, so we need to create a local variable to access the outer <code>this</code> environment</p>
-<blockquote>
-<p>another short way to do this is simply declaring <code>const { map } = this.refs</code>, which can then be accessed as <code>_this.refs.map</code></p>
-</blockquote>
-</li>
-<li><p>I’m only using a console.log to print out informations related to this method for debug purposes</p>
-</li>
-<li><code>const {...config} = this.props</code> this is es5 syntax, a oneliner to extract all the properties of this component, and individually assign them, similar to <code>map(arr)</code>.<blockquote>
-<p>The properties are  declared at app.js, where the component is rendered <code>&lt;Map map=&quot;continents_mill&quot; regionStyle={region} onRegionClick={this.handleClick} /&gt;</code></p>
-</blockquote>
-</li>
-</ul>
-<h3 id="componentWillUnmount"><a href="#componentWillUnmount" class="headerlink" title="componentWillUnmount()"></a><code>componentWillUnmount()</code></h3><p>This is where one cleans up the jquery element. Most of the times, for data reset. This is pretty clear, if you are still confused, visit <a href="https://facebook.github.io/react/docs/react-component.html" target="_blank" rel="external">documentation</a>.</p>
-<h3 id="Afterword"><a href="#Afterword" class="headerlink" title="Afterword"></a>Afterword</h3><p>I hope this tutorial is clear and useful, if you have any question or suggestion, feel free to leave a comment below.</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;Foreword&quot;&gt;&lt;a href=&quot;#Foreword&quot; class=&quot;headerlink&quot; title=&quot;Foreword&quot;&gt;&lt;/a&gt;Foreword&lt;/h1&gt;&lt;p&gt;assume one has previous understanding of react
-    
-    </summary>
-    
-    
-      <category term="react" scheme="http://lycworks.me/blog/tags/react/"/>
-    
-      <category term="javascript" scheme="http://lycworks.me/blog/tags/javascript/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>chrome plugin message passing</title>
-    <link href="http://lycworks.me/blog/2017/02/10/chrome-plugin-message/"/>
-    <id>http://lycworks.me/blog/2017/02/10/chrome-plugin-message/</id>
-    <published>2017-02-10T20:19:54.000Z</published>
-    <updated>2017-02-10T21:16:45.000Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="notice-For-self-learning-purpose"><a href="#notice-For-self-learning-purpose" class="headerlink" title="notice: For self learning purpose"></a>notice: For self learning purpose</h1><p>what this does not talk about is the general setup, in this article, only brief messaging method is mentioned</p>
-<blockquote>
-<p>please note i’m using page action for this example</p>
-</blockquote>
-<h3 id="first-of-all-the-structure"><a href="#first-of-all-the-structure" class="headerlink" title="first of all the structure"></a>first of all the structure</h3><p><code>manifest.json</code> settings</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">&quot;background&quot; : &#123;</div><div class="line">    &quot;scripts&quot;: [&quot;background.js&quot;],</div><div class="line">    &quot;persistent&quot;: false</div><div class="line">  &#125;,</div><div class="line"></div><div class="line">&quot;page_action&quot; :</div><div class="line">&#123;</div><div class="line">  &quot;default_icon&quot; : &quot;video-19.png&quot;,</div><div class="line">  &quot;default_title&quot; : &quot;There&apos;s a &lt;video&gt; in this page!&quot;,</div><div class="line">  &quot;default_popup&quot;: &quot;popup.html&quot;</div><div class="line">&#125;,</div><div class="line"></div><div class="line">&quot;permissions&quot;: [</div><div class="line">  &quot;declarativeContent&quot;,</div><div class="line">  &quot;tabs&quot;,</div><div class="line">  &quot;http://*/&quot;,</div><div class="line">  &quot;https://*/&quot;</div><div class="line">],</div><div class="line"></div><div class="line">&quot;content_scripts&quot;: [</div><div class="line">  &#123;</div><div class="line">    &quot;matches&quot;: [&quot;http://*/*&quot;],</div><div class="line">    &quot;js&quot;: [</div><div class="line">      &quot;contentscript.js&quot;</div><div class="line">    ]</div><div class="line">  &#125;</div><div class="line">],</div></pre></td></tr></table></figure>
-<p><code>background.js</code> settings</p>
-<p>what is background? the file that exist even after refreshing pages, purpose is to talk to page dom and contentscript, act as the MVC’s controller</p>
-<p><code>popup.js</code> the extension’s javascript page, to illustrate the purpose, popup.html is also created which looks like this</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&lt;div id=&quot;mainPopup&quot;&gt;</div><div class="line">&lt;h1&gt;Hello extensionizr!&lt;/h1&gt;</div><div class="line">&lt;p&gt;I can add stuff here i suppose, and I can retrive content from the page&lt;/p&gt;</div><div class="line">&lt;div id=&quot;message&quot;&gt;&lt;/div&gt;</div><div class="line">&lt;/div&gt;</div><div class="line">&lt;script src=&apos;popup.js&apos;&gt;&lt;/script&gt;</div></pre></td></tr></table></figure>
-<blockquote>
-<p>the only important thing to know is the last line <code>script</code></p>
-</blockquote>
-<p><code>contentscript.js</code> how one can obtain the chrome current tab’s page’s DOM and its elements</p>
-<p>for example, one can do <code>document.querySelector(&#39;video&#39;)</code></p>
-<h3 id="Some-page-setup-for-specific-usage"><a href="#Some-page-setup-for-specific-usage" class="headerlink" title="Some page setup for specific usage"></a>Some page setup for specific usage</h3><p>before moving on to messaging, let me rephrase the definition of browser_action and page_action.</p>
-<p><code>browser_action</code> is when the extension is visible on every page.<br><code>page_action</code> is when the extension is only activated at current page.</p>
-<p>Ok, so our goal is to only show the extension when the page has a video. How to achieve that is through <code>declarativeContent</code>. For more details visit <a href="https://developer.chrome.com/extensions/declarativeContent" target="_blank" rel="external">url</a>.</p>
-<blockquote>
-<p>The best part about <code>declarativeContent</code> is “one can read the page’s content without requiring permission to do so”</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">chrome.runtime.onInstalled.addListener(function() &#123;</div><div class="line">  chrome.declarativeContent.onPageChanged.removeRules(undefined, function() &#123;</div><div class="line">    chrome.declarativeContent.onPageChanged.addRules([&#123;</div><div class="line">      conditions: [</div><div class="line">        // When a page contains a &lt;video&gt; tag...</div><div class="line">        new chrome.declarativeContent.PageStateMatcher(&#123;</div><div class="line">          css: [&quot;video&quot;]</div><div class="line">        &#125;)</div><div class="line">      ],</div><div class="line">      // ... show the page action.</div><div class="line">      actions: [new chrome.declarativeContent.ShowPageAction() ] //cause page action button to be shown</div><div class="line">    &#125;]);</div><div class="line">  &#125;);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
-<p>up to here our extension pretty much looks like <a href="https://developer.chrome.com/extensions/samples#search:page%20action%20by%20content" target="_blank" rel="external">page action by content</a> provided by Google’s api.</p>
-<h3 id="Now-let’s-try-One-time-messaging"><a href="#Now-let’s-try-One-time-messaging" class="headerlink" title="Now let’s try One time messaging"></a>Now let’s try One time messaging</h3><p>Our goal is to get continuous communication which uses a <code>port</code>, however, to understand the logic first, I propose trying out this example.</p>
-<p>So in this example, our goal is to retrieve the video’s information from the current page. That involves two steps for our page_action (and obviously for browser and storage purpose, we would want to pass to background first, but this is just a simple example so)</p>
-<ol>
-<li>sending a request from extension to contentscript</li>
-<li>in contentscript, send the video content back to extension</li>
-</ol>
-<blockquote>
-<p>extension here means <code>popup.js</code>, which contains our extension setups and methods</p>
-</blockquote>
-<p>Let’s do this!</p>
-<p>First, in <code>popup.js</code>, we use current tab’s callback to do the messaging</p>
-<blockquote>
-<p>how to get current tab? <a href="https://developer.chrome.com/extensions/tabs" target="_blank" rel="external">documentation</a> or check out the code below</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">chrome.tabs.query(&#123; currentWindow: true, active: true &#125;, function(tabs) &#123;</div><div class="line">  console.log(&apos;current tab is&apos;+ tabs[0].id)</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
-<p>Within this callback function, we use executeScript to communicate to <code>contentscript.js</code>.</p>
-<blockquote>
-<p>After doing a lot of research, I discovered this step is often not explained in the documentations and others example, if anyone has any idea why this line is necessary please leave a comment and share your understanding</p>
-</blockquote>
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"> chrome.tabs.executeScript(null,&#123; //null defaults to current tab</div><div class="line">          file: &apos;contentscript.js&apos;</div><div class="line">        &#125;, function() &#123;</div><div class="line"></div><div class="line">&#125;)</div></pre></td></tr></table></figure>
-<p>Within the executeScript’s callabck function, we use <code>chrome.tabs.sendMessage</code> to request</p>
-<blockquote>
-<p>in background and contentscript, we use chrome.runtime.sendMessage, to understand the diff, I recommending reading this <a href="http://stackoverflow.com/questions/41420528/communicate-between-scripts-in-the-background-context-background-script-browse" target="_blank" rel="external">stackoverflow</a></p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">chrome.tabs.sendMessage( tabs[0].id, &#123; greeting: &apos;hello from the page action~&apos; &#125;, function(res) &#123;</div><div class="line">  if(res)&#123; //blabla&#125;</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
-<blockquote>
-<p>res here is whatever received from contentscript, which will be explained next</p>
-</blockquote>
-<p>In <code>contentscript.js</code>, listens using <code>onMessage</code></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">chrome.runtime.onMessage.addListener(function(msg, sender, sendResponse) &#123;</div><div class="line">  if(msg.greeting)</div><div class="line">    console.log(&apos;i got the messge&apos;, msg.greeting)</div><div class="line">    //sendResponse</div><div class="line">    sendResponse(&#123;</div><div class="line">      reply: &apos;yehyeh&apos;,</div><div class="line">      ispaused: document.querySelector（&apos;video&apos;).paused //boolean</div><div class="line">    &#125;)</div><div class="line">    return true</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
-<p><code>sendResponse</code> is a callback works like <code>sendMessage</code>, which sends the dom element attribute as a json object to extension.</p>
-<p>Now back to extension, use <code>ctrl+f</code> search for <code>blabla</code>, this is where you can check response by console log <code>res.reply, res.ispaused</code>.</p>
-<h1 id="Foreword"><a href="#Foreword" class="headerlink" title="Foreword"></a>Foreword</h1><p>That’s it! You should now able to get the video info from the extension. Check popup inspector and page inspector for console. If you have any question or suggestion, please leave a comment below.</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;notice-For-self-learning-purpose&quot;&gt;&lt;a href=&quot;#notice-For-self-learning-purpose&quot; class=&quot;headerlink&quot; title=&quot;notice: For self learning pu
-    
-    </summary>
-    
-    
-      <category term="chrome" scheme="http://lycworks.me/blog/tags/chrome/"/>
     
   </entry>
   

@@ -1,0 +1,43 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><title> HTMLassets · code and eat and drink and life</title><meta name="description" content="HTMLassets - YL"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="icon" href="/blog/favicon.png"><link rel="stylesheet" href="/blog/css/apollo.css"><link rel="search" type="application/opensearchdescription+xml" href="http://lycworks.me/blog/atom.xml" title="code and eat and drink and life"></head><body><div class="wrap"><header><a href="/blog/" class="logo-link"><img src="/blog/favicon.png" alt="logo"></a><ul class="nav nav-list"><li class="nav-list-item"><a href="/blog/" target="_self" class="nav-list-link">BLOG</a></li><li class="nav-list-item"><a href="/blog/archives/" target="_self" class="nav-list-link">ARCHIVE</a></li><li class="nav-list-item"><a href="/blog/tags/" target="_self" class="nav-list-link">TAG</a></li><li class="nav-list-item"><a href="http://lycworks.me" target="_blank" class="nav-list-link">WEBSITE</a></li><li class="nav-list-item"><a href="https://github.com/ylu021" target="_blank" class="nav-list-link">GITHUB</a></li><li class="nav-list-item"><a href="/blog/atom.xml" target="_self" class="nav-list-link">RSS</a></li></ul></header><main class="container"><div class="post"><article class="post-block"><h1 class="post-title">HTMLassets</h1><div class="post-info">Apr 3, 2017</div><div class="post-content"><h1 id="img"><a href="#img" class="headerlink" title="img"></a><code>img</code></h1><p>including <code>src</code>, <code>alt</code> and <code>title</code>.</p>
+<ul>
+<li><code>src</code> for source, which tend to be relative path for efficiency, and usually images are placed in a folder <code>/images</code> for SEO purpose</li>
+<li><code>alt</code> is text displayed if image fail to load; for reachability, screen-reading</li>
+<li><code>title</code> is the tooltip, which is replaced with HTML5’s <code>&lt;figure&gt;</code> and <code>&lt;figoption&gt;</code> to add captions to images</li>
+</ul>
+<h1 id="video-and-audio"><a href="#video-and-audio" class="headerlink" title="video and audio"></a><code>video</code> and <code>audio</code></h1><p>including <code>src</code>, <code>controls</code> and fallback content</p>
+<ul>
+<li><code>src</code> is the source link, which is often replaced with embedded <code>&lt;source&gt;</code> to achieve browser compatibility</li>
+</ul>
+<blockquote>
+<p>mp4 is largely supported in IE/Safari, where as webm is Chrome and Firefox</p>
+<p>source type is included for MIME parsing that can help browser read the files quicker</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&lt;video&gt;</div><div class="line">  &lt;source src-&quot;bla.mp4&quot; type=&quot;video/mp4&quot;&gt;</div><div class="line">  &lt;source src=&quot;bla.webm&quot; type=&quot;video/webm&quot;&gt;</div><div class="line">  &lt;track kind=&quot;subtitles&quot; src=&quot;bla.vtt&quot; srclang=&quot;en&quot;&gt;</div><div class="line">  &lt;p&gt;HTML5 video is not supported, please view it here [link]&lt;/p&gt;</div><div class="line">&lt;/video&gt;</div></pre></td></tr></table></figure>
+<ul>
+<li><code>controls</code> should be manipulated in javascript, some default options are <code>autoplay</code>, <code>loop</code>, <code>muted</code>..</li>
+<li><p>fallback content is the embedded paragraph in <code>video</code></p>
+</li>
+<li><p>** Enhance reachability - transcript of video using <code>&lt;track&gt;</code> it uses WebVTT format to write text files with metadata input</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">WEBVTT</div><div class="line"></div><div class="line">1</div><div class="line">00:00:22.230 --&gt; 00:00:24.606</div><div class="line">This is a subtitle.</div></pre></td></tr></table></figure>
+<h1 id="embed-iframe-and-object"><a href="#embed-iframe-and-object" class="headerlink" title="embed, iframe and object"></a><code>embed</code>, <code>iframe</code> and <code>object</code></h1><p>iframe replaced the other 2</p>
+<ul>
+<li>options include allowfullscreen, frameborder, src</li>
+<li>can include fallback content</li>
+<li>** it is a SEO practice to include the src when the page loaded</li>
+<li>** security issue, risking clickjacking, use <mark>HTTPS</mark> and use the <code>sandbox</code> option</li>
+</ul>
+<blockquote>
+<p>clickjacking is UI redress, when hacker inject iframe and make it unnoticeable. When user clicked that info are stolen</p>
+<p>sandbox takes value ‘allow-scripts’ or ‘allow-same-origin’ but not both, can be also manipulated in javascript when sending request add the sandbox headers</p>
+</blockquote>
+</div><div><label>Tags:</label><a href="/blog/tags/HTML/">#HTML</a></div></article></div></main><footer><div class="paginator"><a href="/blog/2017/04/04/responsive/" class="prev">PREV</a><a href="/blog/2017/04/02/react-composition/" class="next">NEXT</a></div><div id="disqus_thread"></div><script>var disqus_shortname = 'https-ylu021-github-io-blog';
+var disqus_identifier = '2017/04/03/HTMLassets/';
+var disqus_title = 'HTMLassets';
+var disqus_url = 'http://lycworks.me/blog/2017/04/03/HTMLassets/';
+(function() {
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();</script><script id="dsq-count-scr" src="//https-ylu021-github-io-blog.disqus.com/count.js" async></script><div class="copyright"><p>© 2017 <a href="http://lycworks.me/blog">YL</a>, powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/pinggod/hexo-theme-apollo" target="_blank">hexo-theme-apollo</a>.</p></div></footer></div><script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" integrity="sha384-crwIf/BuaWM9rM65iM+dWFldgQ1Un8jWZMuh3puxb8TOY9+linwLoI7ZHZT+aekW" crossorigin="anonymous"></script><script>(function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;e=o.createElement(i);r=o.getElementsByTagName(i)[0];e.src='//www.google-analytics.com/analytics.js';r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));ga('create',"UA-71046273-3",'auto');ga('send','pageview');</script></body></html>
