@@ -5,7 +5,7 @@
   <link href="/blog/atom.xml" rel="self"/>
   
   <link href="http://lycworks.me/blog/"/>
-  <updated>2017-04-10T17:54:04.000Z</updated>
+  <updated>2017-04-10T17:55:11.000Z</updated>
   <id>http://lycworks.me/blog/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://lycworks.me/blog/2017/04/10/react-ref/"/>
     <id>http://lycworks.me/blog/2017/04/10/react-ref/</id>
     <published>2017-04-10T17:36:06.000Z</published>
-    <updated>2017-04-10T17:54:04.000Z</updated>
+    <updated>2017-04-10T17:55:11.000Z</updated>
     
     <content type="html"><![CDATA[<h1 id="Powerful-ref"><a href="#Powerful-ref" class="headerlink" title="Powerful ref"></a>Powerful <code>ref</code></h1><h3 id="usage"><a href="#usage" class="headerlink" title="usage"></a>usage</h3><ul>
 <li>integrating third party DOM libraries (which has their own methods for rendering)</li>
@@ -47,7 +47,7 @@
 </ul>
 <h3 id="use-it-carefully"><a href="#use-it-carefully" class="headerlink" title="use it carefully"></a>use it carefully</h3><ul>
 <li>only use it if you never going to manipulate the underlying component’s state and only accessing through methods</li>
-<li>if you need to change the state, refer to using props to bubble up. A nice video I found while working on a project<a href="https://www.kirupa.com/react/transferring_properties.htm" target="_blank" rel="external">transferring_properties</a>. I also recommending his book since I really like his explanations 233</li>
+<li>if you need to change the state, refer to using props to bubble up. A nice video I found while working on a project <a href="https://www.kirupa.com/react/transferring_properties.htm" target="_blank" rel="external">transferring_properties</a>. I also recommending his book since I really like his explanations 233</li>
 </ul>
 ]]></content>
     
@@ -65,11 +65,11 @@
   </entry>
   
   <entry>
-    <title>responsive</title>
+    <title>Responsive CSS</title>
     <link href="http://lycworks.me/blog/2017/04/04/responsive/"/>
     <id>http://lycworks.me/blog/2017/04/04/responsive/</id>
     <published>2017-04-05T01:27:39.000Z</published>
-    <updated>2017-04-05T03:16:48.000Z</updated>
+    <updated>2017-04-10T17:55:53.000Z</updated>
     
     <content type="html"><![CDATA[<p>To refresh my mem and record the details for later reference</p>
 <h2 id="viewport"><a href="#viewport" class="headerlink" title="viewport"></a>viewport</h2><ul>
@@ -122,7 +122,7 @@
 <h2 id="responsive-tables"><a href="#responsive-tables" class="headerlink" title="responsive tables"></a>responsive tables</h2><ul>
 <li>hidden column</li>
 <li>no more tables - render all as display block and content: attr(data-th)</li>
-<li>contained scrolling - add a div container and add overflow auto </li>
+<li>contained scrolling - add a div container and add overflow auto</li>
 </ul>
 ]]></content>
     
