@@ -69,9 +69,11 @@
     <link href="http://lycworks.me/blog/2017/04/04/responsive/"/>
     <id>http://lycworks.me/blog/2017/04/04/responsive/</id>
     <published>2017-04-05T01:27:39.000Z</published>
-    <updated>2017-04-10T17:55:53.000Z</updated>
+    <updated>2017-04-10T17:58:29.000Z</updated>
     
-    <content type="html"><![CDATA[<p>To refresh my mem and record the details for later reference</p>
+    <content type="html"><![CDATA[<p>Personal note-taking on Udacity courses on Responsive CSS.</p>
+<a id="more"></a>
+<p>To refresh my memory and record the details for later reference.</p>
 <h2 id="viewport"><a href="#viewport" class="headerlink" title="viewport"></a>viewport</h2><ul>
 <li>defines the area of the screen that the browser can render content to</li>
 <li>uses dips for pixels (device-independent pixel)</li>
@@ -128,8 +130,7 @@
     
     <summary type="html">
     
-      &lt;p&gt;To refresh my mem and record the details for later reference&lt;/p&gt;
-&lt;h2 id=&quot;viewport&quot;&gt;&lt;a href=&quot;#viewport&quot; class=&quot;headerlink&quot; title=&quot;viewport
+      &lt;p&gt;Personal note-taking on Udacity courses on Responsive CSS.&lt;/p&gt;
     
     </summary>
     
